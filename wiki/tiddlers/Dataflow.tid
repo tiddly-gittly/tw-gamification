@@ -1,0 +1,21 @@
+created: 20240124144932114
+creator: 林一二
+modified: 20240124154928586
+modifier: 林一二
+tags: Index
+title: Dataflow
+
+<$whiteboard tiddler="DataflowGraph" readonly="yes" zoomToFit="yes" width="100%" height="500px" />
+
+# Wiki changes are normalized to several predefined types
+## so every activities can be used by the game
+## and game don't need to know privacy and details in your wiki
+## other plugins can directly create these type of event
+## a global module listening on tw-events will handle it, and write to a event log tiddler
+# Events are stored in device-specific log files
+## means each device has its own log file, to prevent conflict in the file
+## this file is a queue, process by a game when any game launches
+## file is encrypted
+# When opening the game layout, the game launcher widget will create an adaptor to handle wiki I/O
+## input is all event log files, events on them will be pop out and feed to the game
+## when game state changes, it will store it as encrypted file

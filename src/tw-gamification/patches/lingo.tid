@@ -1,0 +1,26 @@
+title: $:/plugins/linonetwo/mobile-imessage-layout/macros/lingo
+tags: $:/tags/Macro
+
+<!-- //TODO: remove after https://github.com/Jermolene/TiddlyWiki5/pull/7821 is merged -->
+
+\procedure translate(key, lingo-base-fallback, mode:block)
+<!-- Allow assign lingo-base in caption field by accepting the lingo-base-fallback param. -->
+\function target-lingo-base()
+[<lingo-base-fallback>!is[blank]else<lingo-base>]
+\end target-lingo-base
+
+\function add-lang-suffix(base)
+[[$:/language]get[text]get[name]else[en-GB]]
++[addprefix<base>]
+\end add-lang-suffix
+
+<!-- Allow lingo-base to have or not have / ending slash, for better dev experience. Then add, e.g. `en-GB/Key` after it. -->
+\function lingo-target()
+[function[target-lingo-base]suffix[/]]
+:then[function[target-lingo-base]]
+~[function[target-lingo-base]addsuffix[/]]
+:map[function[add-lang-suffix],<currentTiddler>addsuffix[/]addsuffix<key>]
+\end lingo-target
+
+<$transclude $tiddler=<<lingo-target>> $mode=<<mode>> />
+\end

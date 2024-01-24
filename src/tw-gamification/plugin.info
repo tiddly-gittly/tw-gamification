@@ -1,7 +1,7 @@
 {
   "title": "$:/plugins/linonetwo/tw-gamification",
-  "author": "Your Name",
-  "description": "Description of this plugin",
+  "author": "LinOnetwo",
+  "description": "Gameify all wiki activities. Earn exp and gold from completing TODOs! Motivate you with a second life in your wiki.",
   "core-version": ">=5.1.22",
   "plugin-type": "plugin",
   "version": "0.0.1",

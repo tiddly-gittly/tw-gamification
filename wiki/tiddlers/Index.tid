@@ -1,13 +1,9 @@
 created: 20240124144744663
 creator: 林一二
-modified: 20240124144909130
+modified: 20240125093426629
 modifier: 林一二
 title: Index
 
-!! Usage
+\define lingo-base() language/
 
-See [[Readme of plugin|$:/plugins/linonetwo/tw-gamification/readme]].
-
-!! Development
-
-First see [[Dataflow]] of this framework.
+<<translate "Index">>

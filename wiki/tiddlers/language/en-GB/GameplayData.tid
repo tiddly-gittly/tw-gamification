@@ -1,0 +1,35 @@
+title: language/en-GB/GameplayData
+
+(translated with deepl)
+
+!!! Gameplay Data
+
+When using ECS, Components are initialized with specific templates, e.g. when creating an Orc, its Life Component may need to come with a Life Value field, and a default value of 100 points of life.
+
+When publishing a game, the toolchain checks that the play data matches the corresponding definitions as part of the build to avoid online problems. The ontology required for the game is distributed via the `game-ontology` npm package, which provides the relevant testing tools.
+
+!!! Why do I need inspection data?
+
+For example [[Example from CDDA Kenan Mod|https://github.com/Kenan2000/CDDA-Structured-Kenan-Modpack/pull/262/files]], the core data format was changed, causing the data format in the Mod to become outdated and causing the game to crash at runtime.
+
+But if the developers would have detected this issue before release, they could have fixed it themselves before the bug affected users.
+
+!!! Can I only use fields that are available in the ontology?
+
+The ontology provides some commonly used fields that are common between games, but it is not possible to provide all possible fields because the gameplay is infinite, and the ontology only provides some commonly used fields, such as life value, attack power, movement speed, and so on. You can create a subclass with the new fields and use it for the time being, then submit a PR to the ontology repository, wait for the approval and release a new version, then you can use the official ontology.
+
+It is important to note that the purpose of the ontology library is to provide interoperability between games, so that you can use other games' data and gameplay systems directly with a single click, without spending time on adaptation and integration. And it allows game items to circulate between games after certain trading steps, just like you can use My World items in Famine or vice versa, and the development cost to implement linking is low.
+
+If your game is standalone and doesn't need to interoperate with other games, then you can leave the ontology library alone and define your own data format, just like all the games in the world did in the past.
+
+!!! How are game values handled?
+
+In addition to setting the required fields, the game's RDFs will also set the default values of the fields, for example, the default value of life is 100, you can use these default values at the beginning of the game development, and then adjust these values at the later stages of the game development for the sake of the game's balance.
+
+You can also import game data from other developers and inherit a lot of the world background settings, so you don't need to set values for the lawns and ladybugs of the world in the early stages of development.
+
+When trading items across worlds, you will need to define conversion functions for each field if the value systems of the two games differ significantly. Depending on the specific operational strategy, you can convert an item equally based on its ranking in the previous world to an item with a similar experience in the next world, turn all items taken out of the world into toys that can only be looked at but not used, or allow the player to enter the next world in a godly costume. Since the conversion function is defined by the developer of the second world entered, it is likely to be an equal conversion or nullification to prevent the player from skipping too many numerical upkeeps. Due to the large number of conversion functions, it is recommended to use an automated tool to generate them.
+
+!!! Why not use JSON Schema?
+
+Insufficient descriptive ability, the game simulates the real world and has the complexity of real world knowledge, requiring the use of RDF level descriptive ability.

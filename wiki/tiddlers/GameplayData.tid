@@ -1,0 +1,6 @@
+tags: Index
+title: GameplayData
+
+\define lingo-base() language/
+
+<<translate "GameplayData">>

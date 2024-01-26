@@ -17,3 +17,4 @@ title: language/en-GB/Dataflow
 # When opening the game layout, the game launcher widget will create an adaptor to handle wiki I/O
 ## input is all event log files, events on them will be pop out and feed to the game
 ## when game state changes, it will store it as signed file (as composition of multiple verifiable credentials) too
+## the gameplay data and assets such as images also reside in the Tiddlywiki plugin, so the game needs adapters to load the gameplay data and assets

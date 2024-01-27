@@ -7,4 +7,3 @@ edition = "2021"
 
 [dependencies]
 bevy = "0.12.1"
-wasm-bindgen-cli = "0.2.90"

@@ -7,3 +7,5 @@ title: Index
 \define lingo-base() language/
 
 <<translate "Index">>
+
+<<ScpFoundationSiteDirector>>

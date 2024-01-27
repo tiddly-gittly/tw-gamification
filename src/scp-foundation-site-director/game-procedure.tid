@@ -1,0 +1,5 @@
+title: $:/plugins/linonetwo/scp-foundation-site-director/game-procedure
+
+\procedure ScpFoundationSiteDirector()
+<$ScpFoundationSiteDirectorGameWidget />
+\end

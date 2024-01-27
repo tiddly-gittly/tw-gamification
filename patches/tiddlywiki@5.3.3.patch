@@ -1,0 +1,12 @@
+diff --git a/boot/boot.js b/boot/boot.js
+index 1468e00b6b7210422e486504440699fca8b45489..1965efb5c54c603c95a16cd35002d4c21a252141 100644
+--- a/boot/boot.js
++++ b/boot/boot.js
+@@ -2438,6 +2438,7 @@ $tw.boot.initStartup = function(options) {
+ 	$tw.utils.registerFileType("image/svg+xml","utf8",".svg",{flags:["image"]});
+ 	$tw.utils.registerFileType("image/vnd.microsoft.icon","base64",".ico",{flags:["image"]});
+ 	$tw.utils.registerFileType("image/x-icon","base64",".ico",{flags:["image"]});
++	$tw.utils.registerFileType("application/wasm","base64",".wasm");
+ 	$tw.utils.registerFileType("application/font-woff","base64",".woff");
+ 	$tw.utils.registerFileType("application/x-font-ttf","base64",".woff");
+ 	$tw.utils.registerFileType("application/font-woff2","base64",".woff2");

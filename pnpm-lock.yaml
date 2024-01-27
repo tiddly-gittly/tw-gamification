@@ -4,13 +4,21 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  tiddlywiki@5.3.3:
+    hash: m3r5qylx7vz2iratz6xpc4cvgm
+    path: patches/tiddlywiki@5.3.3.patch
+
 dependencies:
+  js-base64:
+    specifier: ^3.7.6
+    version: 3.7.6
   npm-check-updates:
     specifier: ^16.14.12
     version: 16.14.12
   tiddlywiki:
     specifier: ^5.3.3
-    version: 5.3.3
+    version: 5.3.3(patch_hash=m3r5qylx7vz2iratz6xpc4cvgm)
   tiddlywiki-plugin-dev:
     specifier: ^0.0.39
     version: 0.0.39(postcss@8.4.33)(ts-node@10.9.2)
@@ -5425,6 +5433,10 @@ packages:
     resolution: {integrity: sha512-8wb9Yw966OSxApiCt0K3yNJL8pnNeIv+OEq2YMidz4FKP6nonSRoOXc80iXY4JaN2FC11B9qsNmDsm+ZOfMROA==}
     dev: false
 
+  /js-base64@3.7.6:
+    resolution: {integrity: sha512-NPrWuHFxFUknr1KqJRDgUQPexQF0uIJWjeT+2KjEePhitQxQEx5EJBG1lVn5/hc8aLycTpXrDOgPQ6Zq+EDiTA==}
+    dev: false
+
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
     dev: true
@@ -7553,7 +7565,7 @@ packages:
       simple-git: 3.22.0
       stylus: 0.59.0
       tailwindcss: 3.4.1(ts-node@10.9.2)
-      tiddlywiki: 5.3.3
+      tiddlywiki: 5.3.3(patch_hash=m3r5qylx7vz2iratz6xpc4cvgm)
       uglify-js: 3.17.4
       ws: 8.16.0
     transitivePeerDependencies:
@@ -7564,12 +7576,13 @@ packages:
       - utf-8-validate
     dev: false
 
-  /tiddlywiki@5.3.3:
+  /tiddlywiki@5.3.3(patch_hash=m3r5qylx7vz2iratz6xpc4cvgm):
     resolution: {integrity: sha512-PkgVfZNpFFHyMmfFw91igXOJn8Z7IWg3NGXOX5EBqJwzGNeYYOIUg4FqCNsWoqBece20HxtkDue/vTf2jDtdZQ==}
     engines: {node: '>=0.8.2'}
     hasBin: true
     dev: false
     bundledDependencies: []
+    patched: true
 
   /tmp@0.0.33:
     resolution: {integrity: sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==}

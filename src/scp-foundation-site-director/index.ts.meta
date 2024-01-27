@@ -1,3 +1,4 @@
-title: $:/plugins/linonetwo/tw-gamification/test-widget.ts
+title: $:/plugins/linonetwo/scp-foundation-site-director/game-widget.ts
 type: application/javascript
 module-type: widget
+hide-body: yes

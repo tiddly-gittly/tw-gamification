@@ -2,10 +2,11 @@
 	"tiddlers": [
 		{
 			"file": "wasm/game_bg.wasm",
+			"encoding": "base64",
 			"fields": {
-				"type": "application/javascript",
+				"type": "application/wasm",
 				"title": "$:/plugins/linonetwo/scp-foundation-site-director/game_bg.wasm",
-				"module-type": "library"
+				"hide-body": "yes"
 			}
 		}
 	]

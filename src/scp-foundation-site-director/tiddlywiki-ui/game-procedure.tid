@@ -3,4 +3,7 @@ tags: $:/tags/Global
 
 \procedure ScpFoundationSiteDirector()
 <$ScpFoundationSiteDirectorGameWidget />
+<% if [{$:/state/scp-foundation-site-director/loading}match[yes]] %>
+  {{$:/plugins/linonetwo/scp-foundation-site-director/loading-indicator}}
+<% endif %>
 \end

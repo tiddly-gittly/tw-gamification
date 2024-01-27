@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/scp-foundation-site-director/readme
 type: text/vnd.tiddlywiki
 
-! scp-foundation-site-director
+\define lingo-base() $:/plugins/linonetwo/scp-foundation-site-director/language/
 
-Default game for tw-gamification
+<<translate "Readme">>

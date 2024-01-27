@@ -12,8 +12,13 @@ class ScpFoundationSiteDirectorGameWidget extends Widget {
   render(parent: Element, nextSibling: Element) {
     this.parentDomNode = parent;
     this.execute();
-    const containerElement = $tw.utils.domMaker('div', {
+    const canvasElement = $tw.utils.domMaker('canvas', {
       text: 'Loading game...',
+      class: 'tw-gamification-bevy-canvas scp-foundation-site-director',
+    });
+    const containerElement = $tw.utils.domMaker('div', {
+      class: 'tw-gamification-bevy-container',
+      children: [canvasElement],
     });
     nextSibling === null ? parent.append(containerElement) : nextSibling.before(containerElement);
     this.domNodes.push(containerElement);
@@ -28,20 +33,31 @@ class ScpFoundationSiteDirectorGameWidget extends Widget {
 
     if (gameWasm !== undefined) {
       const wasmBuffer = loadWasmModuleFromBase64(gameWasm);
-      console.time('gameLoad'); // 384 ms
+      console.time('gameLoad'); // 384 ~ 1551 ms
       try {
+        this.setLoading(true);
         await wbgInit(wasmBuffer);
       } catch (error) {
         console.error('Game load with error', error);
+      } finally {
+        this.setLoading(false);
       }
       console.timeEnd('gameLoad');
+    }
+  }
+
+  private setLoading(loading: boolean) {
+    if (loading) {
+      $tw.wiki.addTiddler({ title: '$:/state/scp-foundation-site-director/loading', text: 'yes' });
+    } else {
+      $tw.wiki.deleteTiddler('$:/state/scp-foundation-site-director/loading');
     }
   }
 }
 
 function loadWasmModuleFromBase64(encodedWasm: string) {
   // Decode the base64 string to binary data
-  console.time('wasmDecode'); // 157 ms
+  console.time('wasmDecode'); // 157 ~ 445 ms
   const binaryString = window.atob(encodedWasm);
   const binaryLength = binaryString.length;
   const bytes = new Uint8Array(binaryLength);

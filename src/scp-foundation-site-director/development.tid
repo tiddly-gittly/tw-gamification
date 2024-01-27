@@ -7,7 +7,6 @@ Install rust by [ext[https://rustup.rs/]], then
 
 ```sh
 rustup target add wasm32-unknown-unknown
-cargo install wasm-bindgen-cli
 ```
 
 !! Try

@@ -44,12 +44,17 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
+      # Build Rust
       - name: Install Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1
+
+      - name: Install Rust WASM toolchain
+        run: rustup target add wasm32-unknown-unknown
 
       - name: Build example game WASM
         run: pnpm run build:game
 
+      # Build TS
       - name: Build Library and static website
         run: pnpm run publish
 

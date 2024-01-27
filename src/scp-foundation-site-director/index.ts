@@ -1,7 +1,7 @@
 import { widget as Widget } from '$:/core/modules/widgets/widget.js';
 import { IChangedTiddlers } from 'tiddlywiki';
 
-import { initSync } from './game/wasm/game';
+import wbgInit from './game/wasm/game';
 import './index.css';
 
 class ScpFoundationSiteDirectorGameWidget extends Widget {
@@ -18,6 +18,11 @@ class ScpFoundationSiteDirectorGameWidget extends Widget {
     nextSibling === null ? parent.append(containerElement) : nextSibling.before(containerElement);
     this.domNodes.push(containerElement);
 
+    void this.initializeGameCanvas();
+    // TODO: handle destroy using https://github.com/Jermolene/TiddlyWiki5/discussions/5945#discussioncomment-8173023
+  }
+
+  private async initializeGameCanvas() {
     const gameWasm = $tw.wiki.getTiddlerText('$:/plugins/linonetwo/scp-foundation-site-director/game_bg.wasm');
     // wasm is bundled into tw using `game/tiddlywiki.files` as base64
 
@@ -25,7 +30,7 @@ class ScpFoundationSiteDirectorGameWidget extends Widget {
       const wasmBuffer = loadWasmModuleFromBase64(gameWasm);
       console.time('gameLoad'); // 384 ms
       try {
-        initSync(wasmBuffer);
+        await wbgInit(wasmBuffer);
       } catch (error) {
         console.error('Game load with error', error);
       }

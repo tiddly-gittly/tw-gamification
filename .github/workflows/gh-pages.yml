@@ -44,6 +44,12 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
+      - name: Install Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+
+      - name: Build example game WASM
+        run: pnpm run build:game
+
       - name: Build Library and static website
         run: pnpm run publish
 

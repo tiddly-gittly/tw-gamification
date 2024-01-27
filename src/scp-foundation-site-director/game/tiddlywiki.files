@@ -1,13 +1,51 @@
 {
-	"tiddlers": [
-		{
-			"file": "wasm/game_bg.wasm",
-			"encoding": "base64",
-			"fields": {
-				"type": "application/wasm",
-				"title": "$:/plugins/linonetwo/scp-foundation-site-director/game_bg.wasm",
-				"hide-body": "yes"
-			}
-		}
-	]
+  "tiddlers": [
+    {
+      "file": "wasm/game_bg.wasm",
+      "encoding": "base64",
+      "fields": {
+        "type": "application/wasm",
+        "title": "$:/plugins/linonetwo/scp-foundation-site-director/game_bg.wasm",
+        "hide-body": "yes"
+      }
+    }
+  ],
+  "directories": [
+    {
+      "path": "./assets/json",
+      "searchSubdirectories": true,
+      "isTiddlerFile": false,
+      "fields": {
+				"title": {
+					"prefix": "$:/plugins/linonetwo/scp-foundation-site-director/json/",
+          "source": "filepath"
+        },
+        "created": {
+          "source": "created"
+        },
+        "modified": {
+          "source": "modified"
+        },
+        "type": "application/json"
+      }
+    },
+    {
+      "path": "./assets/image",
+      "searchSubdirectories": true,
+      "isTiddlerFile": false,
+      "fields": {
+				"title": {
+					"prefix": "$:/plugins/linonetwo/scp-foundation-site-director/image/",
+          "source": "filepath"
+        },
+        "created": {
+          "source": "created"
+        },
+        "modified": {
+          "source": "modified"
+        },
+        "type": "image/png"
+      }
+    }
+  ]
 }

@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"name": "tw-gamification",
+			"path": "."
+		},
+		{
+			"path": "src/scp-foundation-site-director/game"
+		}
+	],
+	"settings": {
+		"cSpell.words": [
+			"gamification"
+		]
+	}
+}

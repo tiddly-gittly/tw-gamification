@@ -35,9 +35,9 @@ title: $:/plugins/linonetwo/tw-gamification/ControlPanel/ConfigForDefaultEventGe
 \end
 
 ;<<translate "ConfigDescription/EnableDefaultEventGenerator">>
-:<$checkbox tiddler="$:/plugins/linonetwo/tw-gamification/configs/EnableDefaultEventGenerator" field="text" checked="yes" unchecked="no"> <<translate "ConfigDescription/EnableDefaultEventGenerator/Description">></$checkbox>
+:<$checkbox tiddler="$:/plugins/linonetwo/tw-gamification/configs/EnableDefaultEventGenerator" field="text" checked="yes" unchecked="no"> <<translate "ConfigDescription/EnableDefaultEventGenerator/Description" mode:"inline">></$checkbox>
 
-<<translate "ConfigDescription/DefaultEventGeneratorTagsForTask">>
+!!! <<translate "ConfigDescription/DefaultEventGeneratorTagsForTask">>
 
 <$let currentTiddler="$:/plugins/linonetwo/tw-gamification/configs/DefaultEventGeneratorTagsForTask">
   <<single-text-tag-editor>>

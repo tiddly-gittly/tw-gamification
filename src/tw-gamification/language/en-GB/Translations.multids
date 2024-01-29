@@ -6,6 +6,7 @@ PluginConfigs: Plugin Configs
 ConfigDescription: These settings let you customise the behaviour of TW Gamification plugin.
 LanguageSwitcher: <$button set="$:/language" setTo="$:/languages/zh-Hans" style="">🇨🇳 切换至中文</$button>
 GoToGameLayoutButton/Description: Enter Game Layout
+ConfigDescription/DefaultGame: Default Game
 DefaultEventGeneratorConfigs: Default Event Generator Configs
 ConfigDescription/EnableDefaultEventGenerator: Enable Default Event Generator
 ConfigDescription/EnableDefaultEventGenerator/Description: The event generator will convert some wiki actions into events for game to use. If you don't have any other plugins installed that provide an alternative event generator, you must enable this option in order to be able to get in-game rewards.

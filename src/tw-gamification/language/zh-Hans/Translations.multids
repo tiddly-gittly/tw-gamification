@@ -6,6 +6,7 @@ PluginConfigs: 插件设置
 ConfigDescription: 通过这些设置，您可以自定义「游戏太微」插件的行为。
 LanguageSwitcher: <$button set="$:/language" setTo="$:/languages/en-GB" style="">🇬🇧 Switch to English</$button>
 GoToGameLayoutButton/Description: 进入游戏布局
+ConfigDescription/DefaultGame: 默认游戏
 DefaultEventGeneratorConfigs: 默认的事件生成器设置
 ConfigDescription/EnableDefaultEventGenerator: 启用默认的事件生成器
 ConfigDescription/EnableDefaultEventGenerator/Description: 事件生成器将把一些知识库操作转换为事件，以便在游戏中使用。如果你没有装其它提供事件生成器的插件，必须启用这个选项才能在获得游戏奖励。

@@ -10,6 +10,13 @@ caption: <<translate "Name" "$:/plugins/linonetwo/tw-gamification/language/" mod
 
 !! <<translate "PluginConfigs" mode:"inline">>
 
+;<<translate "ConfigDescription/DefaultGame" mode:"inline">>
+:<$select tiddler='$:/plugins/linonetwo/tw-gamification/configs/DefaultGame'>
+	<$list filter='[all[tiddlers+shadows]tag[$:/tags/linonetwo/tw-gamification/Game]]'>
+		<option value=<<currentTiddler>>>{{!!caption}}</option>
+	</$list>
+</$select>
+
 !! <<translate "DefaultEventGeneratorConfigs" mode:"inline">>
 
 {{$:/plugins/linonetwo/tw-gamification/ControlPanel/ConfigForDefaultEventGenerator}}

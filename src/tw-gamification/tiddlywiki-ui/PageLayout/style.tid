@@ -1,0 +1,30 @@
+title: $:/plugins/linonetwo/tw-gamification/PageLayout/style.css
+tags: $:/tags/Stylesheet
+type: text/vnd.tiddlywiki
+
+.tw-gamification-container {
+  height: 100vh;
+}
+.tw-gamification-container > p {
+  margin: 0;
+}
+
+.tw-gamification-main-area {
+  /** minus the tw-gamification-page-control-below-page height */
+  height: calc(100vh - 45px);
+  /** move input to bottom, and let chat near it */
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+.tw-gamification-config-before-use {
+  padding: 3rem;
+  font-size: 1.5rem;
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+}
+.tw-gamification-config-before-use .tc-edit-add-tag {
+  margin: 20px 0;
+}

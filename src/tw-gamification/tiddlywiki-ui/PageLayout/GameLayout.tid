@@ -1,0 +1,35 @@
+title: $:/plugins/linonetwo/tw-gamification/PageLayout/GameLayout
+name: {{$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/GameLayoutImage}}<<translate "Name" "$:/plugins/linonetwo/tw-gamification/language/" mode:"inline">>
+description: <<translate "Description" "$:/plugins/linonetwo/tw-gamification/language/" mode:"inline">>
+tags: $:/tags/Layout
+
+\whitespace trim
+\define containerClasses()
+tc-page-container tc-page-view-$(storyviewTitle)$ tc-language-$(languageTitle)$ tw-gamification-container
+\end
+\import [[$:/core/ui/PageMacros]] [all[shadows+tiddlers]tag[$:/tags/Macro]!has[draft.of]]
+
+<$vars
+	storyviewTitle={{$:/view}}
+	languageTitle={{{ [{$:/language}get[name]] }}}
+>
+
+	<div class=<<containerClasses>>>
+
+		<$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
+
+			<% if [{$:/plugins/linonetwo/tw-gamification/configs/ShowInitialConfigPage}!match[no]] %>
+
+				<$transclude tiddler="$:/plugins/linonetwo/tw-gamification/PageLayout/GameConfigBeforeUse" />
+
+			<% else %>
+
+				{{$:/plugins/linonetwo/tw-gamification/PageLayout/GameStory}}
+
+			<% endif %>
+
+		</$navigator>
+
+	</div>
+
+</$vars>

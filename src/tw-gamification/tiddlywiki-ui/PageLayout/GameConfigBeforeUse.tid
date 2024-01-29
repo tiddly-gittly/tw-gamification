@@ -1,0 +1,7 @@
+title: $:/plugins/linonetwo/tw-gamification/PageLayout/GameConfigBeforeUse
+
+<main class="tw-gamification-config-before-use">
+
+  {{$:/plugins/linonetwo/tw-gamification/ControlPanel/SetTagsForDefaultNormalizer}}
+
+</main>

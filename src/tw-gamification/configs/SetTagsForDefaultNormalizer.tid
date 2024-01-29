@@ -1,0 +1,43 @@
+title: $:/plugins/linonetwo/tw-gamification/ControlPanel/SetTagsForDefaultNormalizer
+
+\define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
+
+\define completeInit() <$action-setfield tiddler="$:/plugins/linonetwo/tw-gamification/configs/ShowInitialConfigPage" text="no" />
+
+\define single-text-tag-editor()
+\whitespace trim
+<!-- copy and modify from $:/plugins/linonetwo/intention-tower-knowledge-graph/configs/Tags -->
+<div class="itkg-setting-tags-item">
+  <$let
+    currentTiddler="$:/plugins/linonetwo/tw-gamification/configs/TagsForTask"
+    palette={{$:/palette}}
+    tempTitle="$:/state/plugins/linonetwo/tw-gamification/configs/TagsForTask"
+    tabIndex={{$:/config/EditTabIndex}}
+    cancelPopups="yes"
+  >
+    <% if [{$:/plugins/linonetwo/tw-gamification/configs/TagsForTask}!match[]] %>
+      <$macrocall $name="tag" tag={{$:/plugins/linonetwo/tw-gamification/configs/TagsForTask}} />
+    <% endif %>
+
+    <$edit-text tiddler=<<tempTitle>> tag="input" field="text" placeholder={{$:/language/EditTemplate/Tags/Add/Placeholder}} />
+
+    <$button>
+      <<completeInit>>
+      <$action-setfield tiddler=<<currentTiddler>> text={{{ [<tempTitle>get[text]] }}}>
+        <$action-setfield tiddler=<<tempTitle>> text="" />
+      </$action-setfield>
+
+      {{$:/language/EditTemplate/Tags/Add/Button}}
+    </$button>
+    
+  </$let> 
+</div>
+\end
+
+<<translate "ConfigDescription.SetTagsForTask">>
+
+<$let currentTiddler="$:/plugins/linonetwo/tw-gamification/configs/TagsForTask">
+  <<single-text-tag-editor>>
+</$let>
+
+<<translate "ConfigDescription.SetTagsForTask.Description">>

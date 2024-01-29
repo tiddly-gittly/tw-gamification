@@ -1,7 +1,11 @@
 title: $:/plugins/linonetwo/tw-gamification/PageLayout/GameConfigBeforeUse
 
+\define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
+
 <main class="tw-gamification-config-before-use">
 
-  {{$:/plugins/linonetwo/tw-gamification/ControlPanel/SetTagsForDefaultNormalizer}}
+  <<translate "LanguageSwitcher">>
+
+  {{$:/plugins/linonetwo/tw-gamification/ControlPanel/ConfigForDefaultEventGenerator}}
 
 </main>

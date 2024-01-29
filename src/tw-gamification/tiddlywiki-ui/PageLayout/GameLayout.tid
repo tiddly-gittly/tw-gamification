@@ -12,15 +12,19 @@ tc-page-container tc-page-view-$(storyviewTitle)$ tc-language-$(languageTitle)$ 
 <$vars
 	storyviewTitle={{$:/view}}
 	languageTitle={{{ [{$:/language}get[name]] }}}
+	isDefaultEventGeneratorEnabled={{{ [{$:/plugins/linonetwo/tw-gamification/configs/EnableDefaultEventGenerator}match[yes]] }}}
+	isDefaultEventGeneratorLackConfig={{{ [{$:/plugins/linonetwo/tw-gamification/configs/DefaultEventGeneratorTagsForTask}match[]] :then[[yes]] }}}
 >
 
 	<div class=<<containerClasses>>>
 
 		<$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
 
-			<% if [{$:/plugins/linonetwo/tw-gamification/configs/ShowInitialConfigPage}!match[no]] %>
+			<!-- and if any config needed by DefaultEventGenerator is empty, show the config page -->
+			<!-- isDefaultEventGeneratorEnabled === 'yes' && isDefaultEventGeneratorLackConfig === 'yes' -->
+			<% if [<isDefaultEventGeneratorEnabled>match[yes]then<isDefaultEventGeneratorLackConfig>match[yes]] %>
 
-				<$transclude tiddler="$:/plugins/linonetwo/tw-gamification/PageLayout/GameConfigBeforeUse" />
+				{{$:/plugins/linonetwo/tw-gamification/PageLayout/GameConfigBeforeUse}}
 
 			<% else %>
 

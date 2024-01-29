@@ -2,6 +2,11 @@ title: $:/plugins/linonetwo/tw-gamification/PageLayout/style.css
 tags: $:/tags/Stylesheet
 type: text/vnd.tiddlywiki
 
+.tw-gamification-single-text-tag-editor-setting-tags-item input {
+  margin-left: 5px;
+  padding: 2px;
+} 
+
 .tw-gamification-container {
   height: 100vh;
 }

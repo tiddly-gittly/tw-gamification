@@ -1,6 +1,5 @@
 import { widget as Widget } from '$:/core/modules/widgets/widget.js';
 import { IChangedTiddlers } from 'tiddlywiki';
-import './index.css';
 
 class ExampleWidget extends Widget {
   refresh(_changedTiddlers: IChangedTiddlers) {

@@ -1,10 +1,11 @@
-import { widget as Widget } from '$:/core/modules/widgets/widget.js';
 import { IChangedTiddlers } from 'tiddlywiki';
 
 import wbgInit from './game/wasm/game';
 import './index.css';
+import { IGamificationEvent } from 'src/tw-gamification/event-generator/GamificationEventTypes';
+import { GameWidget } from 'src/tw-gamification/game-wiki-adaptor/GameWidgetType';
 
-class ScpFoundationSiteDirectorGameWidget extends Widget {
+class ScpFoundationSiteDirectorGameWidget extends GameWidget {
   refresh(_changedTiddlers: IChangedTiddlers) {
     return false;
   }
@@ -22,7 +23,8 @@ class ScpFoundationSiteDirectorGameWidget extends Widget {
     });
     nextSibling === null ? parent.append(containerElement) : nextSibling.before(containerElement);
     this.domNodes.push(containerElement);
-
+    this.popGamificationEvents();
+    // TODO: load assets from asset sub-plugin, and push list and item to game by call rust function
     void this.initializeGameCanvas();
     // TODO: handle destroy using https://github.com/Jermolene/TiddlyWiki5/discussions/5945#discussioncomment-8173023
   }
@@ -53,6 +55,8 @@ class ScpFoundationSiteDirectorGameWidget extends Widget {
       $tw.wiki.deleteTiddler('$:/state/scp-foundation-site-director/loading');
     }
   }
+
+  public async setGamificationEvents(gamificationEventsJSON: IGamificationEvent[]) {}
 }
 
 function loadWasmModuleFromBase64(encodedWasm: string) {

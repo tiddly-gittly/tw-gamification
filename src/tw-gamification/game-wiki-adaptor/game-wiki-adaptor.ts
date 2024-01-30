@@ -1,7 +1,14 @@
 import { widget as Widget } from '$:/core/modules/widgets/widget.js';
-import { IChangedTiddlers } from 'tiddlywiki';
+import { IChangedTiddlers, IParseTreeNode, IWidgetEvent, IWidgetInitialiseOptions, Tiddler } from 'tiddlywiki';
+import { IGamificationEvent } from '../event-generator/GamificationEventTypes';
+import { isGameWidget } from './GameWidgetType';
 
-class ExampleWidget extends Widget {
+class WikiGameAdaptor extends Widget {
+  constructor(parseTreeNode: IParseTreeNode, options?: IWidgetInitialiseOptions) {
+    super(parseTreeNode, options);
+    this.addEventListener('pop-gamification-events', this.popEventsAndSendToGameWidget.bind(this));
+  }
+
   refresh(_changedTiddlers: IChangedTiddlers) {
     return false;
   }
@@ -9,19 +16,37 @@ class ExampleWidget extends Widget {
   render(parent: Element, nextSibling: Element) {
     this.parentDomNode = parent;
     this.execute();
-    const containerElement = $tw.utils.domMaker('p', {
-      text: 'This is a widget!',
+    const containerElement = $tw.utils.domMaker('div', {
+      class: 'game-wiki-adaptor',
     });
     nextSibling === null ? parent.append(containerElement) : nextSibling.before(containerElement);
     this.domNodes.push(containerElement);
   }
+
+  private popEventsAndSendToGameWidget(event: IWidgetEvent) {
+    const gamificationEventTiddlerTitles = $tw.wiki.getTiddlersWithTag('$:/tags/tw-gamification/GamificationEvent');
+    const gamificationEventsJSON = gamificationEventTiddlerTitles
+      .map(title => $tw.wiki.getTiddler(title))
+      .filter((tiddler): tiddler is Tiddler => tiddler !== undefined)
+      .flatMap(tiddler => {
+        try {
+          return JSON.parse(tiddler.fields.text) as IGamificationEvent[];
+        } catch {
+          return [] as IGamificationEvent[];
+        }
+      });
+    // clean up event queue
+    gamificationEventTiddlerTitles.forEach(title => {
+      $tw.wiki.deleteTiddler(title);
+    });
+    // send data to the game
+    if (isGameWidget(event.widget)) {
+      event.widget.setGamificationEvents(gamificationEventsJSON);
+    }
+  }
 }
 
-// 此处导出的模块变量名RandomNumber将作为微件（widget）的名称。使用<$RandomNumber/>调用此微件。
-// Widget在tiddlywiki中的条目名、源文件以及源文件.meta文件名和Widget名字可以不一致。
-// 比如Widget条目名可以为My-Widget,源文件以及源文件.meta文件名可以称为index.ts与index.ts.meta。最终的Widget名却是：RandomNumber，且使用<$RandomNumber/>调用此微件。
-// 如果为一个脚本文件添加了 .meta 将会被视为入口文件。
 declare let exports: {
-  RandomNumber: typeof ExampleWidget;
+  WikiGameAdaptor: typeof WikiGameAdaptor;
 };
-exports.RandomNumber = ExampleWidget;
+exports.WikiGameAdaptor = WikiGameAdaptor;

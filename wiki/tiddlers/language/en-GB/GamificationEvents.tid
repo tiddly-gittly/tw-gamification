@@ -1,0 +1,28 @@
+title: language/en-GB/GamificationEvents
+
+!!! Gamification Event Data
+
+Event data of type [[TypesOfGamificationEvents]] is stored as a JSON list in tiddlers tagged with `$:/tags/tw-gamification/GamificationEvent`.
+
+The TypeScript types are detailed in `src/tw-gamification/event-generator/GamificationEventTypes.ts` in the Github repo.
+
+!!! Example
+
+```json
+[
+  {
+    "type": "LargePunishment",
+    "amount": 100,
+    "message": "You have been deducted 100 points for inappropriate behavior.",
+    "signature": "xxxxxxDigitalSignature",
+    "timestamp": 1580000000000
+  },
+  {
+    "type": "LargeReward",
+    "amount": 100,
+    "message": "You have earned 100 points for correct behavior.",
+    "signature": "xxxxxxDigitalSignature",
+    "timestamp": 1580000000000
+  }
+]
+```

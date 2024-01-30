@@ -3,6 +3,12 @@ use web_sys::console;
 use wasm_bindgen::prelude::*;
 use serde::{Deserialize, Serialize};
 
+#[wasm_bindgen]
+extern "C" {
+    #[wasm_bindgen(js_name = twGamificationSaveGameData)]
+    fn save_game_data(data: &str);
+}
+
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins.set(WindowPlugin {
@@ -27,6 +33,28 @@ struct GamificationEvent {
     r#type: String,
 }
 
+pub fn get_example_gamification_events() -> String {
+    // Example data, replace with your actual data source
+    let events = vec![
+        GamificationEvent {
+            amount: Some(100),
+            message: Some("Reward earned".to_string()),
+            r#type: "LargeReward".to_string(),
+            timestamp: 1672522560,
+            signature: "event1".to_string(),
+        },
+        GamificationEvent {
+            amount: Some(50),
+            message: Some("Small penalty".to_string()),
+            r#type: "SmallPunishment".to_string(),
+            timestamp: 1672522600,
+            signature: "event2".to_string(),
+        },
+    ];
+
+    serde_json::to_string(&events).unwrap_or_else(|_| "[]".to_string())
+}
+
 #[wasm_bindgen]
 pub fn set_gamification_events(events_json_string: &str) {
     match serde_json::from_str::<Vec<GamificationEvent>>(&events_json_string) {
@@ -35,6 +63,9 @@ pub fn set_gamification_events(events_json_string: &str) {
             for event in events {
                 console::log_1(&format!("Event: {:?}", event).into());
             }
+
+            // Send the serialized data to JavaScript
+            save_game_data(&get_example_gamification_events());
         }
         Err(e) => {
             console::log_1(&format!("Error parsing JSON: {:?}", e).into());

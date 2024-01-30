@@ -3,10 +3,18 @@ import { IChangedTiddlers, IParseTreeNode, IWidgetEvent, IWidgetInitialiseOption
 import { IGamificationEvent } from '../event-generator/GamificationEventTypes';
 import { isGameWidget } from './GameWidgetType';
 
+declare global {
+  interface Window {
+    /** Exposed method for wasm based game to save data. */
+    twGamificationSaveGameData: (data: string) => void;
+  }
+}
+
 class GameWikiAdaptor extends Widget {
   constructor(parseTreeNode: IParseTreeNode, options?: IWidgetInitialiseOptions) {
     super(parseTreeNode, options);
     this.addEventListener('pop-gamification-events', this.popEventsAndSendToGameWidget.bind(this));
+    window.twGamificationSaveGameData = this.saveGameData.bind(this);
   }
 
   refresh(changedTiddlers: IChangedTiddlers) {
@@ -48,6 +56,11 @@ class GameWikiAdaptor extends Widget {
     // send data to the game
     void event.widget.setGamificationEvents(gamificationEventsJSON);
     return false;
+  }
+
+  private saveGameData(data: string) {
+    // Handle the serialized data
+    console.log('saveGameData Received game data:', data);
   }
 }
 

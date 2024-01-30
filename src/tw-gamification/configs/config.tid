@@ -13,7 +13,7 @@ caption: <<translate "Name" "$:/plugins/linonetwo/tw-gamification/language/" mod
 ;<<translate "ConfigDescription/DefaultGame" mode:"inline">>
 :<$select tiddler='$:/plugins/linonetwo/tw-gamification/configs/DefaultGame'>
 	<$list filter='[all[tiddlers+shadows]tag[$:/tags/linonetwo/tw-gamification/Game]]'>
-		<option value=<<currentTiddler>>>{{!!caption}}</option>
+		<option value={{!!text}}>{{!!caption}}</option>
 	</$list>
 </$select>
 

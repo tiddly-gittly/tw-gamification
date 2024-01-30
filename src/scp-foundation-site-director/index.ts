@@ -7,6 +7,7 @@ import { GameWidget } from 'src/tw-gamification/game-wiki-adaptor/GameWidgetType
 
 class ScpFoundationSiteDirectorGameWidget extends GameWidget {
   refresh(_changedTiddlers: IChangedTiddlers) {
+    // noting should trigger game refresh (reloading), because it is self-contained. Game state change is triggered by calling method on wasm.
     return false;
   }
 
@@ -50,9 +51,9 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
 
   private setLoading(loading: boolean) {
     if (loading) {
-      $tw.wiki.addTiddler({ title: '$:/state/scp-foundation-site-director/loading', text: 'yes' });
+      $tw.wiki.addTiddler({ title: '$:/state/tw-gamification/scp-foundation-site-director/loading', text: 'yes' });
     } else {
-      $tw.wiki.deleteTiddler('$:/state/scp-foundation-site-director/loading');
+      $tw.wiki.deleteTiddler('$:/state/tw-gamification/scp-foundation-site-director/loading');
     }
   }
 

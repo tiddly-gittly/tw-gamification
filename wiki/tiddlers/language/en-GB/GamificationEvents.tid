@@ -2,7 +2,7 @@ title: language/en-GB/GamificationEvents
 
 !!! Gamification Event Data
 
-Event data of type [[TypesOfGamificationEvents]] is stored as a JSON list in tiddlers tagged with `$:/tags/tw-gamification/GamificationEvent`.
+Gamification Event Tiddlers are tiddlers tagged with `$:/tags/tw-gamification/GamificationEvent`, they store Event data of type [[TypesOfGamificationEvents]] as JSON lists.
 
 The TypeScript types are detailed in `src/tw-gamification/event-generator/GamificationEventTypes.ts` in the Github repo.
 

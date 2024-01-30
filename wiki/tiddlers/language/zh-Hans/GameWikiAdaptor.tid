@@ -1,0 +1,7 @@
+title: language/zh-Hans/GameWikiAdaptor
+
+!! 适配器
+
+!!! 微件刷新
+
+目前只有以 `$:/state/tw-gamification` 开头的状态变化才会触发微件刷新，以避免日常知识库操作、从[[游戏化事件数据条目|GamificationEvents]]弹出数据等引起的刷新，以避免游戏状态丢失。

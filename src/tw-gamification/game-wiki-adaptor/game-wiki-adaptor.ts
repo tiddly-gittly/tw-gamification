@@ -3,24 +3,27 @@ import { IChangedTiddlers, IParseTreeNode, IWidgetEvent, IWidgetInitialiseOption
 import { IGamificationEvent } from '../event-generator/GamificationEventTypes';
 import { isGameWidget } from './GameWidgetType';
 
-class WikiGameAdaptor extends Widget {
+class GameWikiAdaptor extends Widget {
   constructor(parseTreeNode: IParseTreeNode, options?: IWidgetInitialiseOptions) {
     super(parseTreeNode, options);
     this.addEventListener('pop-gamification-events', this.popEventsAndSendToGameWidget.bind(this));
   }
 
-  refresh(_changedTiddlers: IChangedTiddlers) {
+  refresh(changedTiddlers: IChangedTiddlers) {
+    // only refresh if `tw-gamification` related state changes. See [[GameWikiAdaptor]] on wiki.
+    if (Object.keys(changedTiddlers).some(title => title.startsWith('$:/state/tw-gamification'))) {
+      return this.refreshChildren(changedTiddlers);
+    }
     return false;
   }
 
   render(parent: Element, nextSibling: Element) {
-    this.parentDomNode = parent;
-    this.execute();
     const containerElement = $tw.utils.domMaker('div', {
       class: 'game-wiki-adaptor',
     });
     nextSibling === null ? parent.append(containerElement) : nextSibling.before(containerElement);
     this.domNodes.push(containerElement);
+    super.render(containerElement, nextSibling);
   }
 
   private popEventsAndSendToGameWidget(event: IWidgetEvent) {
@@ -49,6 +52,6 @@ class WikiGameAdaptor extends Widget {
 }
 
 declare let exports: {
-  WikiGameAdaptor: typeof WikiGameAdaptor;
+  GameWikiAdaptor: typeof GameWikiAdaptor;
 };
-exports.WikiGameAdaptor = WikiGameAdaptor;
+exports.GameWikiAdaptor = GameWikiAdaptor;

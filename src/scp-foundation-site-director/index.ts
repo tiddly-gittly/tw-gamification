@@ -1,6 +1,6 @@
 import { IChangedTiddlers } from 'tiddlywiki';
 
-import wbgInit, { InitOutput, set_gamification_events } from './game/wasm/game';
+import wbgInit, { InitOutput, set_gamification_events, start_game } from './game/wasm/game';
 import './index.css';
 import { BasicGamificationEventTypes, IGamificationEvent } from 'src/tw-gamification/event-generator/GamificationEventTypes';
 import { GameWidget } from 'src/tw-gamification/game-wiki-adaptor/GameWidgetType';
@@ -45,6 +45,7 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
       try {
         this.setLoading(true);
         this.gameInstance = await wbgInit(wasmBuffer);
+        start_game();
       } catch (error) {
         // https://users.rust-lang.org/t/getting-rid-of-this-error-error-using-exceptions-for-control-flow-dont-mind-me-this-isnt-actually-an-error/92209
         // this cause `this.gameInstance` always undefined

@@ -1,7 +1,7 @@
 use bevy::{prelude::*, sprite::MaterialMesh2dBundle};
-use web_sys::console;
-use wasm_bindgen::prelude::*;
 use serde::{Deserialize, Serialize};
+use wasm_bindgen::prelude::*;
+use web_sys::console;
 
 #[wasm_bindgen]
 extern "C" {
@@ -9,11 +9,14 @@ extern "C" {
     fn save_game_data(data: &str);
 }
 
-fn main() {
+#[wasm_bindgen]
+pub fn start_game() {
     App::new()
         .add_plugins(DefaultPlugins.set(WindowPlugin {
             primary_window: Some(Window {
-                canvas: Some(".tw-gamification-bevy-canvas.scp-foundation-site-director".to_string()),
+                canvas: Some(
+                    ".tw-gamification-bevy-canvas.scp-foundation-site-director".to_string(),
+                ),
                 ..default()
             }),
             ..default()
@@ -31,6 +34,10 @@ struct GamificationEvent {
     signature: String,
     timestamp: i64,
     r#type: String,
+}
+
+fn main() {
+    console::log_1(&"WASM loaded.".into());
 }
 
 pub fn get_example_gamification_events() -> String {
@@ -79,7 +86,7 @@ fn setup(
     mut materials: ResMut<Assets<ColorMaterial>>,
 ) {
     commands.spawn(Camera2dBundle::default());
-    
+
     console::log_1(&"Hello from Bevy!".into());
     // Circle
     commands.spawn(MaterialMesh2dBundle {
@@ -102,7 +109,9 @@ fn setup(
 
     // Quad
     commands.spawn(MaterialMesh2dBundle {
-        mesh: meshes.add(shape::Quad::new(Vec2::new(50., 100.)).into()).into(),
+        mesh: meshes
+            .add(shape::Quad::new(Vec2::new(50., 100.)).into())
+            .into(),
         material: materials.add(Color::LIME_GREEN.into()),
         transform: Transform::from_translation(Vec3::new(50., 0., 0.)),
         ..default()

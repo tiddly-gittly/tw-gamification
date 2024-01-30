@@ -24,6 +24,9 @@ class WikiGameAdaptor extends Widget {
   }
 
   private popEventsAndSendToGameWidget(event: IWidgetEvent) {
+    if (!isGameWidget(event.widget)) {
+      return true;
+    }
     const gamificationEventTiddlerTitles = $tw.wiki.getTiddlersWithTag('$:/tags/tw-gamification/GamificationEvent');
     const gamificationEventsJSON = gamificationEventTiddlerTitles
       .map(title => $tw.wiki.getTiddler(title))
@@ -40,9 +43,8 @@ class WikiGameAdaptor extends Widget {
       $tw.wiki.deleteTiddler(title);
     });
     // send data to the game
-    if (isGameWidget(event.widget)) {
-      event.widget.setGamificationEvents(gamificationEventsJSON);
-    }
+    void event.widget.setGamificationEvents(gamificationEventsJSON);
+    return false;
   }
 }
 

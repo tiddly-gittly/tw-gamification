@@ -12,7 +12,7 @@ export abstract class GameWidget extends Widget {
    * Trigger event dequeue, event tiddlers will be cleared, and events will be sent to game widget by calling `setGamificationEvents` method on the game widget that triggers `popGamificationEvents`.
    */
   protected popGamificationEvents() {
-    this.dispatchEvent('pop-gamification-events');
+    this.dispatchEvent({ type: 'pop-gamification-events', widget: this });
   }
 }
 

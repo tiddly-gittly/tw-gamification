@@ -5,8 +5,8 @@ use web_sys::console;
 
 #[wasm_bindgen]
 extern "C" {
-    #[wasm_bindgen(js_name = twGamificationSaveGameData)]
-    fn save_game_data(data: &str);
+    #[wasm_bindgen(js_name = twGamificationSaveGameData, catch)]
+    fn save_game_data(data: &str) -> Result<(), JsValue>;
 }
 
 #[wasm_bindgen]
@@ -71,8 +71,11 @@ pub fn set_gamification_events(events_json_string: &str) {
                 console::log_1(&format!("Event: {:?}", event).into());
             }
 
-            // Send the serialized data to JavaScript
-            save_game_data(&get_example_gamification_events());
+            // Attempt to send the serialized data to JavaScript
+            match save_game_data(&get_example_gamification_events()) {
+                Ok(_) => console::log_1(&"Data successfully saved".into()),
+                Err(e) => console::log_1(&format!("Failed to save data: {:?}", e).into()),
+            }
         }
         Err(e) => {
             console::log_1(&format!("Error parsing JSON: {:?}", e).into());

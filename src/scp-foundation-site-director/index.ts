@@ -1,6 +1,6 @@
 import { IChangedTiddlers } from 'tiddlywiki';
 
-import wbgInit, { InitOutput, set_gamification_events, start_game } from './game/wasm/game';
+import { InitOutput, initSync, set_gamification_events, start_game } from './game/wasm/game';
 import './index.css';
 import { BasicGamificationEventTypes, IGamificationEvent } from 'src/tw-gamification/event-generator/GamificationEventTypes';
 import { GameWidget } from 'src/tw-gamification/game-wiki-adaptor/GameWidgetType';
@@ -27,15 +27,14 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
     nextSibling === null ? parent.append(containerElement) : nextSibling.before(containerElement);
     this.domNodes.push(containerElement);
     // TODO: load assets from asset sub-plugin, and push list and item to game by call rust function
-    void this.initializeGameCanvas().then(() => {
-      if (this.gameInitialized) {
-        this.popGamificationEvents();
-      }
-    });
+    this.initializeGameCanvas();
+    if (this.gameInitialized) {
+      this.popGamificationEvents();
+    }
     // TODO: handle destroy using https://github.com/Jermolene/TiddlyWiki5/discussions/5945#discussioncomment-8173023
   }
 
-  private async initializeGameCanvas() {
+  private initializeGameCanvas() {
     const gameWasm = $tw.wiki.getTiddlerText('$:/plugins/linonetwo/scp-foundation-site-director/game_bg.wasm');
     // wasm is bundled into tw using `game/tiddlywiki.files` as base64
 
@@ -44,7 +43,8 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
       console.time('gameLoad'); // 384 ~ 1551 ms
       try {
         this.setLoading(true);
-        this.gameInstance = await wbgInit(wasmBuffer);
+        const wasmModule = new WebAssembly.Module(wasmBuffer);
+        this.gameInstance = initSync(wasmModule);
         start_game();
       } catch (error) {
         // https://users.rust-lang.org/t/getting-rid-of-this-error-error-using-exceptions-for-control-flow-dont-mind-me-this-isnt-actually-an-error/92209

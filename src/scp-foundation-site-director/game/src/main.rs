@@ -1,6 +1,7 @@
-//! Shows how to render simple primitive shapes with a single color.
-
 use bevy::{prelude::*, sprite::MaterialMesh2dBundle};
+use web_sys::console;
+use wasm_bindgen::prelude::*;
+use serde::{Deserialize, Serialize};
 
 fn main() {
     App::new()
@@ -15,13 +16,40 @@ fn main() {
         .run();
 }
 
+// TODO: generate rs type from ts type, like in https://github.com/linonetwo/DarkDaysArch
+#[derive(Serialize, Deserialize, Debug)]
+struct GamificationEvent {
+    // Define the fields according to your JSON structure
+    amount: Option<i32>,
+    message: Option<String>,
+    signature: String,
+    timestamp: i64,
+    r#type: String,
+}
+
+#[wasm_bindgen]
+pub fn set_gamification_events(events_json_string: &str) {
+    match serde_json::from_str::<Vec<GamificationEvent>>(&events_json_string) {
+        Ok(events) => {
+            // Log each event or the entire array as you prefer
+            for event in events {
+                console::log_1(&format!("Event: {:?}", event).into());
+            }
+        }
+        Err(e) => {
+            console::log_1(&format!("Error parsing JSON: {:?}", e).into());
+        }
+    }
+}
+
 fn setup(
     mut commands: Commands,
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<ColorMaterial>>,
 ) {
     commands.spawn(Camera2dBundle::default());
-
+    
+    console::log_1(&"Hello from Bevy!".into());
     // Circle
     commands.spawn(MaterialMesh2dBundle {
         mesh: meshes.add(shape::Circle::new(50.).into()).into(),

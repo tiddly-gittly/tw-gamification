@@ -1,9 +1,15 @@
 title: $:/plugins/linonetwo/scp-foundation-site-director/game-procedure
 tags: $:/tags/Global
 
+\whitespace trim
 \procedure ScpFoundationSiteDirector()
+
 <$ScpFoundationSiteDirectorGameWidget />
+
 <% if [{$:/state/tw-gamification/scp-foundation-site-director/loading}match[yes]] %>
+
   {{$:/plugins/linonetwo/scp-foundation-site-director/loading-indicator}}
+
 <% endif %>
+
 \end

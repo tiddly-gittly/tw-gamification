@@ -22,7 +22,8 @@ pub fn start_game() {
                     ".tw-gamification-bevy-canvas.scp-foundation-site-director".to_string(),
                 ),
                 fit_canvas_to_parent: true,
-                prevent_default_event_handling: true,
+                // Set to true will prevent ctrl_shift_L shortcut to work.
+                prevent_default_event_handling: false,
                 ..default()
             }),
             exit_condition: ExitCondition::OnPrimaryClosed,

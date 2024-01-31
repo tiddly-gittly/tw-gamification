@@ -1,6 +1,6 @@
 import { IChangedTiddlers } from 'tiddlywiki';
 
-import { InitOutput, initSync, set_gamification_events, start_game, stop_game } from './game/wasm/game';
+import { destroy, InitOutput, initSync, setGamificationEvents, startGame, stopGame } from './game/wasm/game';
 import './index.css';
 import { BasicGamificationEventTypes, IGamificationEvent } from 'src/tw-gamification/event-generator/GamificationEventTypes';
 import { GameWidget } from 'src/tw-gamification/game-wiki-adaptor/GameWidgetType';
@@ -27,20 +27,22 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
     nextSibling === null ? parent.append(containerElement) : nextSibling.before(containerElement);
     this.domNodes.push(containerElement);
     // TODO: load assets from asset sub-plugin, and push list and item to game by call rust function
+    /**
+     * Delay init next game to next tick, so last game (if any) can be destroyed first.
+     * Without setTimeout, there will be `already borrowed: BorrowMutError` `RuntimeError: unreachable executed` error, when switch from one game to another.
+     */
     setTimeout(() => {
       this.initializeGameCanvas();
       if (this.gameInitialized) {
         this.popGamificationEvents();
       }
-    }, 1000);
+    }, 0);
     // TODO: handle destroy using https://github.com/Jermolene/TiddlyWiki5/discussions/5945#discussioncomment-8173023
   }
 
   destroy(): void {
     super.destroy();
-    // DEBUG: console
-    console.log(`stop_game`);
-    stop_game();
+    stopGame();
   }
 
   private initializeGameCanvas() {
@@ -53,8 +55,9 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
       try {
         this.setLoading(true);
         const wasmModule = new WebAssembly.Module(wasmBuffer);
+        destroy();
         this.gameInstance = initSync(wasmModule);
-        start_game();
+        startGame();
       } catch (error) {
         // https://users.rust-lang.org/t/getting-rid-of-this-error-error-using-exceptions-for-control-flow-dont-mind-me-this-isnt-actually-an-error/92209
         // this cause `this.gameInstance` always undefined
@@ -90,7 +93,7 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
       // TODO: store gamification events in a tiddler, and push them to game when game is initialized
       throw new Error('Game is not initialized yet!');
     }
-    set_gamification_events(JSON.stringify(gamificationEventsJSON));
+    setGamificationEvents(JSON.stringify(gamificationEventsJSON));
   }
 }
 

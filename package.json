@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "tiddlywiki-plugin-dev dev",
     "build": "npm run clean && tiddlywiki-plugin-dev build",
-    "build:game": "cd src/scp-foundation-site-director/game && cargo build --release --target wasm32-unknown-unknown && wasm-bindgen --omit-default-module-path --reference-types --weak-refs --out-name game --out-dir wasm --target web target/wasm32-unknown-unknown/release/game.wasm --debug",
+    "build:game": "zx ./scripts/buildGame.mjs",
     "publish": "npm run clean && tiddlywiki-plugin-dev publish",
     "reset": "rimraf ./**/node_modules",
     "clean": "rimraf dist",
@@ -43,7 +43,8 @@
     "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
     "tw5-typed": "^0.3.11",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "zx": "^7.2.3"
   },
   "dependencies": {
     "js-base64": "^3.7.6",

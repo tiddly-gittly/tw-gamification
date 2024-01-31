@@ -1,9 +1,10 @@
+use bevy::app::AppExit;
+use bevy::window::ExitCondition;
 use bevy::{prelude::*, sprite::MaterialMesh2dBundle};
 use serde::{Deserialize, Serialize};
+use std::sync::atomic::{AtomicBool, Ordering};
 use wasm_bindgen::prelude::*;
 use web_sys::console;
-use std::sync::atomic::{AtomicBool, Ordering};
-use bevy::app::AppExit;
 
 #[wasm_bindgen]
 extern "C" {
@@ -11,7 +12,7 @@ extern "C" {
     fn save_game_data(data: &str) -> Result<(), JsValue>;
 }
 
-#[wasm_bindgen]
+#[wasm_bindgen(js_name = startGame)]
 pub fn start_game() {
     SHOULD_EXIT.store(false, Ordering::SeqCst);
     App::new()
@@ -20,8 +21,11 @@ pub fn start_game() {
                 canvas: Some(
                     ".tw-gamification-bevy-canvas.scp-foundation-site-director".to_string(),
                 ),
+                fit_canvas_to_parent: true,
+                prevent_default_event_handling: true,
                 ..default()
             }),
+            exit_condition: ExitCondition::OnPrimaryClosed,
             ..default()
         }))
         .add_systems(Startup, setup)
@@ -31,9 +35,9 @@ pub fn start_game() {
 
 static SHOULD_EXIT: AtomicBool = AtomicBool::new(false);
 
-#[wasm_bindgen]
+#[wasm_bindgen(js_name = stopGame)]
 pub fn stop_game() {
-    console::log_1(&"Exiting 0.".into());
+    console::log_1(&"stop_game".into());
     SHOULD_EXIT.store(true, Ordering::SeqCst);
 }
 
@@ -41,17 +45,14 @@ pub struct GameControlPlugin;
 
 impl Plugin for GameControlPlugin {
     fn build(&self, app: &mut App) {
-        app
-            .add_systems(Update, exit_system);
+        app.add_systems(Update, exit_system);
     }
 }
 
 fn exit_system(mut exit: EventWriter<AppExit>) {
-    console::log_1(&"Exiting 2.".into());
     if SHOULD_EXIT.load(Ordering::SeqCst) {
-        console::log_1(&"Exiting 3.".into());
+        console::log_1(&"exit_system".into());
         exit.send(AppExit);
-        console::log_1(&"Exiting 4.".into());
     }
 }
 
@@ -92,7 +93,7 @@ pub fn get_example_gamification_events() -> String {
     serde_json::to_string(&events).unwrap_or_else(|_| "[]".to_string())
 }
 
-#[wasm_bindgen]
+#[wasm_bindgen(js_name = setGamificationEvents)]
 pub fn set_gamification_events(events_json_string: &str) {
     match serde_json::from_str::<Vec<GamificationEvent>>(&events_json_string) {
         Ok(events) => {

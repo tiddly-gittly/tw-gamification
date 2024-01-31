@@ -1,6 +1,6 @@
 import { IChangedTiddlers } from 'tiddlywiki';
 
-import { destroy, InitOutput, initSync, setGamificationEvents, startGame, stopGame } from './game/wasm/game';
+import initAsync, { destroy, InitOutput, setGamificationEvents, startGame, stopGame } from './game/wasm/game';
 import './index.css';
 import { BasicGamificationEventTypes, IGamificationEvent } from 'src/tw-gamification/event-generator/GamificationEventTypes';
 import { GameWidget } from 'src/tw-gamification/game-wiki-adaptor/GameWidgetType';
@@ -27,25 +27,31 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
     nextSibling === null ? parent.append(containerElement) : nextSibling.before(containerElement);
     this.domNodes.push(containerElement);
     // TODO: load assets from asset sub-plugin, and push list and item to game by call rust function
+    this.startGame();
+    // TODO: handle destroy using https://github.com/Jermolene/TiddlyWiki5/discussions/5945#discussioncomment-8173023
+  }
+
+  private startGame() {
     /**
-     * Delay init next game to next tick, so last game (if any) can be destroyed first.
+     * Delay init next game to next tick (game loop frame), so last game (if any) can be destroyed first.
      * Without setTimeout, there will be `already borrowed: BorrowMutError` `RuntimeError: unreachable executed` error, when switch from one game to another.
+     *
+     * // TODO: But sometimes there still be `Uncaught TypeError: wasm is undefined` error, when switch from one game to another, maybe switch is too fast? Change from `0` to `1000` fixes this, but it slowdown the game init. And this error throw on global can't be catch here.
      */
-    setTimeout(() => {
-      this.initializeGameCanvas();
+    setTimeout(async () => {
+      await this.initializeGameCanvas();
       if (this.gameInitialized) {
         this.popGamificationEvents();
       }
     }, 0);
-    // TODO: handle destroy using https://github.com/Jermolene/TiddlyWiki5/discussions/5945#discussioncomment-8173023
   }
 
-  destroy(): void {
+  public destroy(): void {
     super.destroy();
     stopGame();
   }
 
-  private initializeGameCanvas() {
+  private async initializeGameCanvas() {
     const gameWasm = $tw.wiki.getTiddlerText('$:/plugins/linonetwo/scp-foundation-site-director/game_bg.wasm');
     // wasm is bundled into tw using `game/tiddlywiki.files` as base64
 
@@ -56,11 +62,15 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
         this.setLoading(true);
         const wasmModule = new WebAssembly.Module(wasmBuffer);
         destroy();
-        this.gameInstance = initSync(wasmModule);
+        /**
+         * Can't use `initSync`, it cause error:
+         * > RangeError: WebAssembly.Compile is disallowed on the main thread, if the buffer size is larger than 8MB. Use WebAssembly.compile, compile on a worker thread
+         */
+        this.gameInstance = await initAsync(wasmModule);
         startGame();
       } catch (error) {
         // https://users.rust-lang.org/t/getting-rid-of-this-error-error-using-exceptions-for-control-flow-dont-mind-me-this-isnt-actually-an-error/92209
-        // this cause `this.gameInstance` always undefined
+        // this throw from `startGame()`, but don't hurt anything.
         if ((error as Error).message.includes('Using exceptions for control flow')) {
           this.gameInitialized = true;
         } else {

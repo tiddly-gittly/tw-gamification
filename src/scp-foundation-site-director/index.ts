@@ -37,7 +37,7 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
      * Delay init next game to next tick (game loop frame), so last game (if any) can be destroyed first.
      * Without setTimeout, there will be `already borrowed: BorrowMutError` `RuntimeError: unreachable executed` error, when switch from one game to another.
      *
-     * // TODO: But sometimes there still be `Uncaught TypeError: wasm is undefined` `Uncaught RuntimeError: unreachable` `Uncaught TypeError: Cannot read properties of undefined (reading 'wasm_bindgen__convert__closures__invoke0_mut__h9f5f8d8886b9ec6c')` `Uncaught TypeError: Cannot read properties of undefined (reading '__wbindgen_export_3')` error, when switch from one game to another, maybe switch is too fast? Change from `0` to `1000` some times still cannot fixes this, and it slowdown the game init. And this error throw on global can't be catch here.
+     * // TODO: But sometimes there still be `Uncaught TypeError: wasm is undefined` `Uncaught RuntimeError: unreachable` `Uncaught TypeError: Cannot read properties of undefined (reading 'wasm_bindgen__convert__closures__invoke0_mut__h9f5f8d8886b9ec6c')` `Uncaught TypeError: Cannot read properties of undefined (reading '__wbindgen_export_3')` error, when switch from one game to another, maybe switch is too fast? Change from `0` to `1000` some times still cannot fixes this, even the game should have been stopped. And it slowdown the game init. And this error throw on global can't be catch here.
      */
     setTimeout(async () => {
       await this.initializeGameCanvas();

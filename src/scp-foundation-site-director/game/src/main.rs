@@ -53,6 +53,7 @@ impl Plugin for GameControlPlugin {
 fn exit_system(mut exit: EventWriter<AppExit>) {
     if SHOULD_EXIT.load(Ordering::SeqCst) {
         console::log_1(&"exit_system".into());
+        // this stop the game. (Tested by switch to calendar layout, and log in system stops.)
         exit.send(AppExit);
     }
 }

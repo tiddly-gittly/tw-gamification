@@ -2,6 +2,8 @@ use bevy::{prelude::*, sprite::MaterialMesh2dBundle};
 use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
 use web_sys::console;
+use std::sync::atomic::{AtomicBool, Ordering};
+use bevy::app::AppExit;
 
 #[wasm_bindgen]
 extern "C" {
@@ -11,6 +13,7 @@ extern "C" {
 
 #[wasm_bindgen]
 pub fn start_game() {
+    SHOULD_EXIT.store(false, Ordering::SeqCst);
     App::new()
         .add_plugins(DefaultPlugins.set(WindowPlugin {
             primary_window: Some(Window {
@@ -22,7 +25,34 @@ pub fn start_game() {
             ..default()
         }))
         .add_systems(Startup, setup)
+        .add_plugins(GameControlPlugin)
         .run();
+}
+
+static SHOULD_EXIT: AtomicBool = AtomicBool::new(false);
+
+#[wasm_bindgen]
+pub fn stop_game() {
+    console::log_1(&"Exiting 0.".into());
+    SHOULD_EXIT.store(true, Ordering::SeqCst);
+}
+
+pub struct GameControlPlugin;
+
+impl Plugin for GameControlPlugin {
+    fn build(&self, app: &mut App) {
+        app
+            .add_systems(Update, exit_system);
+    }
+}
+
+fn exit_system(mut exit: EventWriter<AppExit>) {
+    console::log_1(&"Exiting 2.".into());
+    if SHOULD_EXIT.load(Ordering::SeqCst) {
+        console::log_1(&"Exiting 3.".into());
+        exit.send(AppExit);
+        console::log_1(&"Exiting 4.".into());
+    }
 }
 
 // TODO: generate rs type from ts type, like in https://github.com/linonetwo/DarkDaysArch

@@ -1,6 +1,6 @@
 import { IChangedTiddlers } from 'tiddlywiki';
 
-import { InitOutput, initSync, set_gamification_events, start_game } from './game/wasm/game';
+import { InitOutput, initSync, set_gamification_events, start_game, stop_game } from './game/wasm/game';
 import './index.css';
 import { BasicGamificationEventTypes, IGamificationEvent } from 'src/tw-gamification/event-generator/GamificationEventTypes';
 import { GameWidget } from 'src/tw-gamification/game-wiki-adaptor/GameWidgetType';
@@ -27,11 +27,20 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
     nextSibling === null ? parent.append(containerElement) : nextSibling.before(containerElement);
     this.domNodes.push(containerElement);
     // TODO: load assets from asset sub-plugin, and push list and item to game by call rust function
-    this.initializeGameCanvas();
-    if (this.gameInitialized) {
-      this.popGamificationEvents();
-    }
+    setTimeout(() => {
+      this.initializeGameCanvas();
+      if (this.gameInitialized) {
+        this.popGamificationEvents();
+      }
+    }, 1000);
     // TODO: handle destroy using https://github.com/Jermolene/TiddlyWiki5/discussions/5945#discussioncomment-8173023
+  }
+
+  destroy(): void {
+    super.destroy();
+    // DEBUG: console
+    console.log(`stop_game`);
+    stop_game();
   }
 
   private initializeGameCanvas() {

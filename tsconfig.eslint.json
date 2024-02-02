@@ -19,5 +19,5 @@
     "./*.js",
     "./*.*.js"
   ],
-  "exclude": ["wiki"]
+  "exclude": ["wiki", "src/scp-foundation-site-director/game/wasm"]
 }

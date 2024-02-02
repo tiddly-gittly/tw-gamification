@@ -11,3 +11,4 @@ localization/
 build-resources/
 .vscode/
 .github/
+src/scp-foundation-site-director/game/wasm/

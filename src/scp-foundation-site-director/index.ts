@@ -29,8 +29,6 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
     this.connectionObserver = new ConnectionObserver(entries => {
       // For each entry, print the connection state as well as the target node to the console
       for (const { connected, target } of entries) {
-        console.log('target:', target);
-        console.log('connected:', connected);
         // connected will be false when it first time created and not appended to parent DOM
         if (!connected && this.gameInitialized) {
           this.destroy();
@@ -38,8 +36,6 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
         }
       }
     });
-
-    // Observe 'someElement' for connectedness
     this.connectionObserver.observe(canvasElement);
     nextSibling === null ? parent.append(containerElement) : nextSibling.before(containerElement);
     this.domNodes.push(containerElement);
@@ -57,8 +53,6 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
   }
 
   destroy(): void {
-    // DEBUG: console
-    console.log(`destroy`);
     this.wasmContext?.stopGame?.();
     this.wasmContext = undefined;
     this.gameInitialized = false;

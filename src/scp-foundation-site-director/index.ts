@@ -1,3 +1,4 @@
+import { ConnectionObserver } from '@wessberg/connection-observer';
 import { IChangedTiddlers } from 'tiddlywiki';
 
 import { getWasmContext, WasmContext } from './game/wasm/game';
@@ -8,6 +9,7 @@ import { GameWidget } from 'src/tw-gamification/game-wiki-adaptor/GameWidgetType
 class ScpFoundationSiteDirectorGameWidget extends GameWidget {
   wasmContext?: WasmContext;
   gameInitialized = false;
+  connectionObserver?: ConnectionObserver;
 
   refresh(_changedTiddlers: IChangedTiddlers) {
     // noting should trigger game refresh (reloading), because it is self-contained. Game state change is triggered by calling method on wasm.
@@ -24,6 +26,20 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
       class: 'tw-gamification-bevy-container',
       children: [canvasElement],
     });
+    this.connectionObserver = new ConnectionObserver(entries => {
+      // For each entry, print the connection state as well as the target node to the console
+      for (const { connected, target } of entries) {
+        console.log('target:', target);
+        console.log('connected:', connected);
+        if (!connected) {
+          this.destroy();
+          this.connectionObserver?.disconnect?.()
+        }
+      }
+    });
+
+    // Observe 'someElement' for connectedness
+   this. connectionObserver.observe(canvasElement);
     nextSibling === null ? parent.append(containerElement) : nextSibling.before(containerElement);
     this.domNodes.push(containerElement);
     // TODO: load assets from asset sub-plugin, and push list and item to game by call rust function
@@ -39,8 +55,7 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
     }
   }
 
-  public destroy(): void {
-    super.destroy();
+  private destroy(): void {
     this.wasmContext?.stopGame?.();
     this.wasmContext = undefined;
     this.gameInitialized = false;

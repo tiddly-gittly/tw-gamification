@@ -47,6 +47,7 @@
     "zx": "^7.2.3"
   },
   "dependencies": {
+    "@wessberg/connection-observer": "^1.0.5",
     "js-base64": "^3.7.6",
     "npm-check-updates": "^16.14.12",
     "tiddlywiki": "^5.3.3",

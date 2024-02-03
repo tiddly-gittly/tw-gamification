@@ -1,4 +1,4 @@
 title: $:/plugins/linonetwo/scp-foundation-site-director/game-widget.ts
 type: application/javascript
-module-type: widget
+module-type: library
 hide-body: yes

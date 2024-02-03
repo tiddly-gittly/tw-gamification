@@ -10,6 +10,9 @@ patchedDependencies:
     path: patches/tiddlywiki@5.3.3.patch
 
 dependencies:
+  '@wessberg/connection-observer':
+    specifier: ^1.0.5
+    version: 1.0.5
   js-base64:
     specifier: ^3.7.6
     version: 3.7.6
@@ -2549,6 +2552,11 @@ packages:
   /@ungap/structured-clone@1.2.0:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
+
+  /@wessberg/connection-observer@1.0.5:
+    resolution: {integrity: sha512-QMo1PN81YCl7vNP4fUSF9CYIkQxBmqZW5SNeU3h5ZHtSRMSWVD14GWQqj6I5iWUPLDMTQyM71ElxKSGo8HTcNA==}
+    engines: {node: '>=4.0.0'}
+    dev: false
 
   /abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}

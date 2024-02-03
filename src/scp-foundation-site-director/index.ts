@@ -31,15 +31,16 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
       for (const { connected, target } of entries) {
         console.log('target:', target);
         console.log('connected:', connected);
-        if (!connected) {
+        // connected will be false when it first time created and not appended to parent DOM
+        if (!connected && this.gameInitialized) {
           this.destroy();
-          this.connectionObserver?.disconnect?.()
+          this.connectionObserver?.disconnect?.();
         }
       }
     });
 
     // Observe 'someElement' for connectedness
-   this. connectionObserver.observe(canvasElement);
+    this.connectionObserver.observe(canvasElement);
     nextSibling === null ? parent.append(containerElement) : nextSibling.before(containerElement);
     this.domNodes.push(containerElement);
     // TODO: load assets from asset sub-plugin, and push list and item to game by call rust function
@@ -55,7 +56,9 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
     }
   }
 
-  private destroy(): void {
+  destroy(): void {
+    // DEBUG: console
+    console.log(`destroy`);
     this.wasmContext?.stopGame?.();
     this.wasmContext = undefined;
     this.gameInitialized = false;

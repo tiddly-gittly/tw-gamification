@@ -9,7 +9,7 @@
     return;
   }
   // separate the widget from the exports here, so we can skip the require of react code if `!$tw.browser`. Those ts code will error if loaded in the nodejs side.
-  const components = require('$:/plugins/linonetwo/scp-foundation-site-director/game-widget.js');
+  const components = require('$:/plugins/linonetwo/scp-foundation-site-director/gameLoader/game-widget.js');
   const { ScpFoundationSiteDirectorGameWidget } = components;
   /* eslint-disable @typescript-eslint/no-unsafe-member-access */
   exports.ScpFoundationSiteDirectorGameWidget = ScpFoundationSiteDirectorGameWidget;

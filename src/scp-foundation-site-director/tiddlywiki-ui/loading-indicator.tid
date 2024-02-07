@@ -1,4 +1,4 @@
-title: $:/plugins/linonetwo/scp-foundation-site-director/loading-indicator
+title: $:/plugins/linonetwo/scp-foundation-site-director/tiddlywiki-ui/loading-indicator
 
 \whitespace trim
 \define lingo-base() $:/plugins/linonetwo/scp-foundation-site-director/language/

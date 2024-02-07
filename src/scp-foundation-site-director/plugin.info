@@ -1,6 +1,6 @@
 {
   "title": "$:/plugins/linonetwo/scp-foundation-site-director",
-  "name": "scp-foundation-site-director",
+  "name": "Scp Foundation Site Director",
   "author": "LinOnetwo",
   "description": "Default game for tw-gamification",
   "plugin-type": "plugin",

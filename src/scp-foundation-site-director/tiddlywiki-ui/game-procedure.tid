@@ -1,4 +1,4 @@
-title: $:/plugins/linonetwo/scp-foundation-site-director/game-procedure
+title: $:/plugins/linonetwo/scp-foundation-site-director/tiddlywiki-ui/game-procedure
 tags: $:/tags/Global
 
 \whitespace trim
@@ -8,7 +8,7 @@ tags: $:/tags/Global
 
 <% if [{$:/state/tw-gamification/scp-foundation-site-director/loading}match[yes]] %>
 
-  {{$:/plugins/linonetwo/scp-foundation-site-director/loading-indicator}}
+  {{$:/plugins/linonetwo/scp-foundation-site-director/tiddlywiki-ui/loading-indicator}}
 
 <% endif %>
 

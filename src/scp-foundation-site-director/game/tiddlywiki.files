@@ -8,6 +8,14 @@
         "title": "$:/plugins/linonetwo/scp-foundation-site-director/game_bg.wasm",
         "hide-body": "yes"
       }
+    },
+    {
+      "file": "wasm/game.js",
+      "fields": {
+        "type": "application/javascript",
+        "title": "$:/plugins/linonetwo/scp-foundation-site-director/game.js",
+        "hide-body": "yes"
+      }
     }
   ],
   "directories": [

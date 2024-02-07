@@ -6,5 +6,5 @@
   "plugin-type": "plugin",
   "parent-plugin": "$:/plugins/linonetwo/tw-gamification",
   "version": "0.0.1",
-  "list": "readme tree"
+  "list": "ReadMe tree Development"
 }

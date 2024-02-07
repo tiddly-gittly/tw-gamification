@@ -30,6 +30,7 @@ export async function loadGameModuleFromJSString() {
   const objectURL = URL.createObjectURL(blob);
   // use `await import` to create a new JS context each time, to prevent reuse last game's wasm.
   const gameModule = await import(objectURL) as typeof IGameContext;
+  URL.revokeObjectURL(objectURL);
   console.timeEnd('load game code');
   return gameModule;
 }

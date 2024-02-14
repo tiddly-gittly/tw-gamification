@@ -4,4 +4,4 @@ title: language/en-GB/GameWikiAdaptor
 
 !!! Widget refreshing
 
-Currently only state changes starting with `$:/state/tw-gamification` trigger a widget refresh. To avoid refreshes caused by daily knowledge base operations, popping data from [[Gamification Event Data Tiddlers|GamificationEvents]], etc. to avoid game state loss.
+Currently only state changes starting with `$:/state/tw-gamification` trigger a game widget refresh. To avoid refreshes caused by daily knowledge base operations, popping data from [[Gamification Event Data Tiddlers|GamificationEvents]], etc. to avoid game state loss.

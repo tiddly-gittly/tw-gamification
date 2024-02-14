@@ -1,0 +1,21 @@
+title: $:/plugins/linonetwo/ego-store-lite/language/zh-Hans/Readme
+
+\define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
+
+! <<translate "Name" mode:"inline">>
+
+<<translate "Description" mode:"inline">>
+
+!! 事件源
+
+优先关注早睡早起，
+
+!!! 日历事件
+
+订阅全局新条目事件，是日历条目且之前未创建过，而且带的标签是用户设定的睡眠相关标签，就根据用户设定的入睡时间给予奖励。
+
+# 即时奖励提早准备入睡的行为
+## 带有「准备睡觉」标签的
+## 在入睡时间前两小时，带有「阅读书籍」标签的
+# 延迟奖励第二天实际早睡了的行为结果
+## 带有「睡觉」标签的

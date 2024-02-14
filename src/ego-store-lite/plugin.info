@@ -1,0 +1,9 @@
+{
+  "title": "$:/plugins/linonetwo/ego-store-lite",
+  "name": "ego-store-lite",
+  "author": "LinOnetwo",
+  "description": "Default game for tw-gamification, a simple store to buy bonus for yourself, and you are the store keeper.",
+  "plugin-type": "plugin",
+  "version": "0.0.1",
+  "list": "Readme tree config"
+}

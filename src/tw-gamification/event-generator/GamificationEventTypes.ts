@@ -1,3 +1,5 @@
+import { ITiddlerFields } from 'tiddlywiki';
+
 /**
  * # 小型奖励：类似游戏中的游戏币、金币、钞票，一般是游戏内运营能获得的通用代币
 # 大型奖励：类似游戏中的钻石、原石、宝石、点券，一般是游戏外充值能获得的现金等价物
@@ -19,4 +21,12 @@ export interface IGamificationEvent {
   signature: string;
   timestamp: number;
   type: BasicGamificationEventTypes;
+}
+
+export interface IGeneratorDefinitions extends ITiddlerFields {
+  /**
+   * A valid filter expression that can be used to get the tiddler that will trigger the event.
+   * This will be used as a sub-filter concat after the recent changed tiddlers in Tiddlywiki's `'change'` event, deciding if changed tiddler is what we want.
+   */
+  filter: string;
 }

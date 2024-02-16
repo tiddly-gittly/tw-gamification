@@ -1,7 +1,9 @@
+/* eslint-disable unicorn/no-array-callback-reference */
 /* eslint-disable array-callback-return */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 
-import { IAddGamificationEventParameterObject, IGameEventLogCacheFile } from './GamificationEventLogTypes';
+import { IAddGamificationEventParameterObject, IGameEventLogCacheFile, IGameEventLogCacheItem } from './GamificationEventLogTypes';
+import { IGamificationEvent, IGeneratorDuplicateStrategy } from './GamificationEventTypes';
 
 // eslint-disable-next-line no-var
 declare var exports: {
@@ -24,15 +26,45 @@ exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
     const parameterObject = (event.paramObject ?? {}) as unknown as IAddGamificationEventParameterObject;
     const logCacheFileContent = $tw.wiki.getTiddlerText('$:/state/tw-gamification/log-cache-file');
     const logCache: IGameEventLogCacheFile = logCacheFileContent ? $tw.utils.parseJSONSafe(logCacheFileContent) : [];
-    // TODO: deduplicate the tiddlerTitleTriggerTheEvent
     if ('events' in parameterObject) {
       // Add many events at once
       const events = parameterObject.events;
+      events.forEach(({ event, tiddlerTitle, 'on-duplicate': onDuplicate }) => {
+        checkAndPushAnItemToLogCacheFile(tiddlerTitle, event, { onDuplicate }, { logCache });
+      });
       logCache.push(...events);
     } else {
-      const { tiddlerTitle, ...event } = parameterObject;
-      logCache.push({ event, tiddlerTitle });
+      const { tiddlerTitle, 'on-duplicate': onDuplicate, ...event } = parameterObject;
+      checkAndPushAnItemToLogCacheFile(tiddlerTitle, event, { onDuplicate }, { logCache });
     }
     $tw.wiki.addTiddler({ title: '$:/state/tw-gamification/log-cache-file', text: JSON.stringify(logCache) });
   });
 };
+
+function checkAndPushAnItemToLogCacheFile(
+  tiddlerTitle: string,
+  event: IGamificationEvent,
+  configs: { onDuplicate?: IGeneratorDuplicateStrategy },
+  sources: { logCache: IGameEventLogCacheFile },
+) {
+  // TODO: also check the archive log (the events already used by the game, which clean up in a few days.)
+  const logCache = sources.logCache;
+  const isSameEvent = (item: IGameEventLogCacheItem) => item.tiddlerTitle === tiddlerTitle && item.event.type === event.type;
+  switch (configs.onDuplicate) {
+    case IGeneratorDuplicateStrategy.ignore: {
+      if (logCache.some(isSameEvent)) return;
+      logCache.push({ event, tiddlerTitle });
+      break;
+    }
+    case IGeneratorDuplicateStrategy.append: {
+      logCache.push({ event, tiddlerTitle });
+      return;
+    }
+    case undefined:
+    case IGeneratorDuplicateStrategy.overwrite: {
+      const index = logCache.findIndex(isSameEvent);
+      if (index !== -1) logCache[index] = { event, tiddlerTitle };
+      break;
+    }
+  }
+}

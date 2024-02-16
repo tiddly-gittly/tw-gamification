@@ -45,4 +45,26 @@ export interface IGeneratorDefinitions extends ITiddlerFields {
    * The type of the event.
    */
   ['game-event-type']: BasicGamificationEventTypes;
+  ['on-duplicate']?: IGeneratorDuplicateStrategy;
+}
+
+/**
+ * The strategy to handle the duplicate event (same title and same event type) already exist in the log cache and the archive log.
+ * 
+ * Default to `overwrite`.
+ */
+export enum IGeneratorDuplicateStrategy {
+  /**
+   * When the tiddler that trigger the event is already in the log cache, append the new one to coexist the old one.
+   */
+  append = 'append',
+  /**
+   * When the tiddler that trigger the event is already in the log cache, ignore the new one.
+   */
+  ignore = 'ignore',
+  /**
+   * When the tiddler that trigger the event is already in the log cache, overwrite the old one.
+   * This is the default behavior.
+   */
+  overwrite = 'overwrite',
 }

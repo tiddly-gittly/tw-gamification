@@ -1,4 +1,4 @@
-import { IGamificationEvent } from './GamificationEventTypes';
+import { IGamificationEvent, IGeneratorDuplicateStrategy } from './GamificationEventTypes';
 
 export type IAddGamificationEventParameterObject = IAddGamificationEventParameterObjectFromJS | IAddGamificationEventParameterObjectFromActionWidget;
 /**
@@ -11,6 +11,7 @@ export interface IAddGamificationEventParameterObjectFromJS {
  * A flattened object of `IGameEventLogCacheItem`. Add one event at a time.
  */
 export interface IAddGamificationEventParameterObjectFromActionWidget extends IGamificationEvent {
+  ['on-duplicate']?: IGeneratorDuplicateStrategy;
   tiddlerTitle: string;
 }
 /**
@@ -19,6 +20,7 @@ export interface IAddGamificationEventParameterObjectFromActionWidget extends IG
 export type IGameEventLogCacheFile = IGameEventLogCacheItem[];
 export interface IGameEventLogCacheItem {
   event: IGamificationEvent;
+  ['on-duplicate']?: IGeneratorDuplicateStrategy;
   /**
    * Can be a simple hash of `event` or a public/private key based signature of `event`, to prevent manual edit of it by user.
    */

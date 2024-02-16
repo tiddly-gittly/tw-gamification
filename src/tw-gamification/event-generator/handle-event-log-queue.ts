@@ -4,6 +4,7 @@
 
 import { IAddGamificationEventParameterObject, IGameEventLogCacheFile, IGameEventLogCacheItem } from './GamificationEventLogTypes';
 import { IGamificationEvent, IGeneratorDuplicateStrategy } from './GamificationEventTypes';
+import { getLogQueueTitle } from './getLogQueueTitle';
 
 // eslint-disable-next-line no-var
 declare var exports: {
@@ -20,11 +21,13 @@ exports.name = 'tw-gamification-handle-event-log-queue';
 exports.platforms = ['browser', 'node'];
 exports.after = ['startup'];
 exports.synchronous = true;
+
+const logQueueTitle = getLogQueueTitle();
 exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
   // Listen for widget messages to create one or many IGameEventLogCacheItem, append to the log cache file.
   $tw.rootWidget.addEventListener('tm-add-gamification-event', function(event) {
     const parameterObject = (event.paramObject ?? {}) as unknown as IAddGamificationEventParameterObject;
-    const logCacheFileContent = $tw.wiki.getTiddlerText('$:/state/tw-gamification/log-cache-file');
+    const logCacheFileContent = $tw.wiki.getTiddlerText(logQueueTitle);
     const logCache: IGameEventLogCacheFile = logCacheFileContent ? $tw.utils.parseJSONSafe(logCacheFileContent) : [];
     if ('events' in parameterObject) {
       // Add many events at once
@@ -37,7 +40,7 @@ exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
       const { tiddlerTitle, 'on-duplicate': onDuplicate, ...event } = parameterObject;
       checkAndPushAnItemToLogCacheFile(tiddlerTitle, event, { onDuplicate }, { logCache });
     }
-    $tw.wiki.addTiddler({ title: '$:/state/tw-gamification/log-cache-file', text: JSON.stringify(logCache) });
+    $tw.wiki.addTiddler({ title: logQueueTitle, text: JSON.stringify(logCache) });
   });
 };
 
@@ -50,6 +53,7 @@ function checkAndPushAnItemToLogCacheFile(
   // TODO: also check the archive log (the events already used by the game, which clean up in a few days.)
   const logCache = sources.logCache;
   const isSameEvent = (item: IGameEventLogCacheItem) => item.tiddlerTitle === tiddlerTitle && item.event.type === event.type;
+  // TODO: add signature generation
   switch (configs.onDuplicate) {
     case IGeneratorDuplicateStrategy.ignore: {
       if (logCache.some(isSameEvent)) return;

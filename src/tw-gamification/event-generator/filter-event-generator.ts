@@ -3,7 +3,7 @@
 import { SourceIterator } from 'tiddlywiki';
 import { DEFAULT_AMOUNT } from './constants';
 import { IGameEventLogCacheItem } from './GamificationEventLogTypes';
-import { BasicGamificationEventTypes, IGeneratorDefinitions } from './GamificationEventTypes';
+import { BasicGamificationEventTypes, IFilterEventGeneratorDefinitions } from './GamificationEventTypes';
 
 // eslint-disable-next-line no-var
 declare var exports: {
@@ -39,10 +39,10 @@ exports.startup = function twGamificationFilterEventGeneratorStartupModule() {
     if (!tiddler) return;
     if (!tiddler.fields.filter) return;
     return tiddler.fields;
-  }).filter((item): item is IGeneratorDefinitions => item !== undefined);
+  }).filter((item): item is IFilterEventGeneratorDefinitions => item !== undefined);
   const generatorWithFilterFunctions = generatorDefinitions.map(definition => ({
     ...definition,
-    filter: $tw.wiki.compileFilter(definition.filter),
+    filter: $tw.wiki.compileFilter(definition.trigger),
   }));
   $tw.wiki.addEventListener('change', function(changes) {
     const events: IGameEventLogCacheItem[] = [];
@@ -55,7 +55,7 @@ exports.startup = function twGamificationFilterEventGeneratorStartupModule() {
         });
       });
       if (generatorWithFilterFunctions.length === 0) return;
-      const { 'game-event-amount': amount, 'game-event-message': message, 'game-event-type': event = BasicGamificationEventTypes.SmallReward } = eventGenerator;
+      const { 'game-event-amount': amount, 'game-event-message': message, 'game-event-type': event = BasicGamificationEventTypes.SmallReward, title } = eventGenerator;
 
       events.push(...tiddlerTitleTriggerTheEvent.map(tiddlerTitle => ({
         event: {
@@ -65,6 +65,7 @@ exports.startup = function twGamificationFilterEventGeneratorStartupModule() {
           message: processMessage(message),
         },
         tiddlerTitle,
+        generator: title,
       })));
     });
     if (events.length === 0) return;

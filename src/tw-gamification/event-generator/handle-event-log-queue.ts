@@ -67,6 +67,7 @@ function checkAndPushAnItemToLogCacheFile(
       logCache.push({ event, tiddlerTitle });
       return;
     }
+    // default to overwrite
     case undefined:
     case IGeneratorDuplicateStrategy.overwrite: {
       const index = logCache.findIndex(isSameEvent);

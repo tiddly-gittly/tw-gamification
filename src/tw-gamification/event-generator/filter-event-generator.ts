@@ -3,7 +3,7 @@
 import { SourceIterator } from 'tiddlywiki';
 import { DEFAULT_AMOUNT } from './constants';
 import { IGameEventLogCacheItem } from './GamificationEventLogTypes';
-import { IGeneratorDefinitions } from './GamificationEventTypes';
+import { BasicGamificationEventTypes, IGeneratorDefinitions } from './GamificationEventTypes';
 
 // eslint-disable-next-line no-var
 declare var exports: {
@@ -55,7 +55,7 @@ exports.startup = function twGamificationFilterEventGeneratorStartupModule() {
         });
       });
       if (generatorWithFilterFunctions.length === 0) return;
-      const { 'game-event-amount': amount, 'game-event-message': message, 'game-event-type': event } = eventGenerator;
+      const { 'game-event-amount': amount, 'game-event-message': message, 'game-event-type': event = BasicGamificationEventTypes.SmallReward } = eventGenerator;
 
       events.push(...tiddlerTitleTriggerTheEvent.map(tiddlerTitle => ({
         event: {

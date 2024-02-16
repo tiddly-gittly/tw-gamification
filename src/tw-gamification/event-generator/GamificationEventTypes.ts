@@ -21,7 +21,10 @@ export interface IGamificationEvent {
    * If is not a number, can be a filter string that can be used to get the amount.
    */
   amount?: number | string;
-  event: BasicGamificationEventTypes;
+  /**
+   * Default to `BasicGamificationEventTypes.SmallReward`.
+   */
+  event?: BasicGamificationEventTypes;
   /**
    * A message that can be used to show to user to motivate them.
    * Can be any wiki text.

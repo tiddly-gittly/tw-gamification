@@ -21,13 +21,13 @@ export interface IGamificationEvent {
    * If is not a number, can be a filter string that can be used to get the amount.
    */
   amount?: number | string;
+  event: BasicGamificationEventTypes;
   /**
    * A message that can be used to show to user to motivate them.
    * Can be any wiki text.
    */
   message?: string;
   timestamp: number;
-  type: BasicGamificationEventTypes;
 }
 
 /**
@@ -50,7 +50,7 @@ export interface IGeneratorDefinitions extends ITiddlerFields {
 
 /**
  * The strategy to handle the duplicate event (same title and same event type) already exist in the log cache and the archive log.
- * 
+ *
  * Default to `overwrite`.
  */
 export enum IGeneratorDuplicateStrategy {

@@ -19,16 +19,17 @@ exports.name = 'tw-gamification-handle-event-log-queue';
  * This creates event handlers, should work on both side to receive event from both buttons and event generators.
  */
 exports.platforms = ['browser', 'node'];
-exports.after = ['startup'];
+exports.after = ['story'];
 exports.synchronous = true;
 
-const logQueueTitle = getLogQueueTitle();
 exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
+  const logQueueTitle = getLogQueueTitle();
   // Listen for widget messages to create one or many IGameEventLogCacheItem, append to the log cache file.
-  $tw.rootWidget.addEventListener('tm-add-gamification-event', function(event) {
+  $tw.rootWidget.addEventListener('tm-add-gamification-event', function onAddGamificationEvent(event) {
     const parameterObject = (event.paramObject ?? {}) as unknown as IAddGamificationEventParameterObject;
     const logCacheFileContent = $tw.wiki.getTiddlerText(logQueueTitle);
     const logCache: IGameEventLogCacheFile = logCacheFileContent ? $tw.utils.parseJSONSafe(logCacheFileContent) : [];
+    const logCacheLength = logCache.length;
     if ('events' in parameterObject) {
       // Add many events at once
       const events = parameterObject.events;
@@ -40,6 +41,8 @@ exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
       const { tiddlerTitle, 'on-duplicate': onDuplicate, ...event } = parameterObject;
       checkAndPushAnItemToLogCacheFile(tiddlerTitle, event, { onDuplicate }, { logCache });
     }
+    // if no change, then no need to update the tiddler. Note that update tiddler may trigger 'change' event, which may cause infinite loop if not handle properly.
+    if (logCache.length === logCacheLength) return;
     $tw.wiki.addTiddler({ title: logQueueTitle, text: JSON.stringify(logCache) });
   });
 };
@@ -52,7 +55,7 @@ function checkAndPushAnItemToLogCacheFile(
 ) {
   // TODO: also check the archive log (the events already used by the game, which clean up in a few days.)
   const logCache = sources.logCache;
-  const isSameEvent = (item: IGameEventLogCacheItem) => item.tiddlerTitle === tiddlerTitle && item.event.type === event.type;
+  const isSameEvent = (item: IGameEventLogCacheItem) => item.tiddlerTitle === tiddlerTitle && item.event.event === event.event;
   // TODO: add signature generation
   switch (configs.onDuplicate) {
     case IGeneratorDuplicateStrategy.ignore: {

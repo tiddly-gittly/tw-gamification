@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { SourceIterator } from 'tiddlywiki';
 import { DEFAULT_AMOUNT } from './constants';
-import { IAddGamificationEventParameterObjectFromJS, IGameEventLogCacheItem } from './GamificationEventLogTypes';
-import { IGamificationEvent, IGeneratorDefinitions } from './GamificationEventTypes';
+import { IGameEventLogCacheItem } from './GamificationEventLogTypes';
+import { IGeneratorDefinitions } from './GamificationEventTypes';
 
 // eslint-disable-next-line no-var
 declare var exports: {
@@ -18,10 +18,16 @@ exports.name = 'tw-gamification-filter-event-generator';
  * If we are in mobile, then run on browser. If is in TidGi desktop, then only run on node, skip browser side code execution.
  */
 exports.platforms = ['browser', 'node'];
-exports.after = ['load-modules'];
+// delay execution as we can. Game is of low priority in a knowledge base. And onChange's calculation is heavy here.
+if ($tw.browser) {
+  exports.after = ['render'];
+} else {
+  exports.after = ['commands'];
+}
 exports.synchronous = true;
 exports.startup = function twGamificationFilterEventGeneratorStartupModule() {
   const runOnMobile = $tw.wiki.getTiddlerText('$:/info/mobile');
+  // TODO: need to check for HTML env on desktop like TiddlywikiDesktop. But need to know it is nodejs based on browser, which currently is not possible.
   const allowRunOnFrontend = $tw.browser && runOnMobile;
   const allowRunOnBackend = !!$tw.node;
   if (!allowRunOnFrontend && !allowRunOnBackend) return;
@@ -49,23 +55,24 @@ exports.startup = function twGamificationFilterEventGeneratorStartupModule() {
         });
       });
       if (generatorWithFilterFunctions.length === 0) return;
-      const { 'game-event-amount': amount, 'game-event-message': message, 'game-event-type': type } = eventGenerator;
+      const { 'game-event-amount': amount, 'game-event-message': message, 'game-event-type': event } = eventGenerator;
 
       events.push(...tiddlerTitleTriggerTheEvent.map(tiddlerTitle => ({
         event: {
           timestamp: Date.now(),
-          type,
+          event,
           amount: processAmount(amount),
           message: processMessage(message),
-        } satisfies IGamificationEvent,
+        },
         tiddlerTitle,
       })));
     });
+    if (events.length === 0) return;
     $tw.rootWidget.dispatchEvent({
       type: 'tm-add-gamification-event',
       paramObject: {
         events,
-      } satisfies IAddGamificationEventParameterObjectFromJS,
+      },
     });
   });
 };

@@ -2,9 +2,9 @@
 /* eslint-disable unicorn/no-array-callback-reference */
 /* eslint-disable array-callback-return */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-
+import { CamelCasedProperties } from 'type-fest';
 import { IAddGamificationEventParameterObject, IGameEventLogCacheFile, IGameEventLogCacheItem } from './GamificationEventLogTypes';
-import { IGeneratorOnDuplicateStrategy } from './GamificationEventTypes';
+import { IDuplicationStrategy, IGeneratorFindDuplicateStrategy, IGeneratorOnDuplicateStrategy } from './GamificationEventTypes';
 import { getLogQueueTitle } from './getLogQueueTitle';
 
 // eslint-disable-next-line no-var
@@ -34,13 +34,13 @@ exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
     if ('events' in parameterObject) {
       // Add many events at once
       const events = parameterObject.events;
-      events.forEach(({ event, tiddlerTitle, generator, 'on-duplicate': onDuplicate }) => {
-        checkAndPushAnItemToLogCacheFile({ tiddlerTitle, event, generator }, { onDuplicate }, { logCache });
+      events.forEach(({ event, tiddlerTitle, generator, 'on-duplicate': onDuplicate, 'find-duplicate': findDuplicate }) => {
+        checkAndPushAnItemToLogCacheFile({ tiddlerTitle, event, generator }, { onDuplicate, findDuplicate }, { logCache });
       });
       logCache.push(...events);
     } else {
-      const { tiddlerTitle, 'on-duplicate': onDuplicate, generator, ...event } = parameterObject;
-      checkAndPushAnItemToLogCacheFile({ tiddlerTitle, event, generator: generator || 'ActionWidget' }, { onDuplicate }, { logCache });
+      const { tiddlerTitle, 'on-duplicate': onDuplicate, 'find-duplicate': findDuplicate, generator, ...event } = parameterObject;
+      checkAndPushAnItemToLogCacheFile({ tiddlerTitle, event, generator: generator || 'ActionWidget' }, { onDuplicate, findDuplicate }, { logCache });
     }
     // if no change, then no need to update the tiddler. Note that update tiddler may trigger 'change' event, which may cause infinite loop if not handle properly.
     if (logCache.length === logCacheLength) return;
@@ -50,29 +50,45 @@ exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
 
 function checkAndPushAnItemToLogCacheFile(
   newEventLog: IGameEventLogCacheItem,
-  configs: { onDuplicate?: IGeneratorOnDuplicateStrategy },
+  configs: CamelCasedProperties<IDuplicationStrategy>,
   sources: { logCache: IGameEventLogCacheFile },
 ) {
   // TODO: also check the archive log (the events already used by the game, which clean up in a few days.)
   const logCache = sources.logCache;
+  let hasDuplicate = false;
+  switch (configs.findDuplicate) {
+    case undefined: {
+      // default to ignore the duplicate
+      break;
+    }
+    case IGeneratorFindDuplicateStrategy.debounce: {
+      const debounceTime = 1000;
+      const now = Date.now();
+      const lastEvent = logCache.at(-1);
+      if (lastEvent && lastEvent.tiddlerTitle === newEventLog.tiddlerTitle && lastEvent.event.event === newEventLog.event.event && now - lastEvent.event.timestamp < debounceTime) {
+        hasDuplicate = true;
+      }
+      break;
+    }
+  }
+
   const isSameEvent = (item: IGameEventLogCacheItem) => item.tiddlerTitle === newEventLog.tiddlerTitle && item.event.event === newEventLog.event.event;
   // TODO: add signature generation
   switch (configs.onDuplicate) {
+    // default to ignore
+    case undefined:
     case IGeneratorOnDuplicateStrategy.ignore: {
-      if (logCache.some(isSameEvent)) return;
+      if (hasDuplicate) return;
       logCache.push(newEventLog);
       break;
     }
     case IGeneratorOnDuplicateStrategy.append: {
       logCache.push(newEventLog);
-      return;
     }
-    // default to overwrite
-    case undefined:
-    case IGeneratorOnDuplicateStrategy.overwrite: {
-      const index = logCache.findIndex(isSameEvent);
-      if (index !== -1) logCache[index] = newEventLog;
-      break;
-    }
+      // case IGeneratorOnDuplicateStrategy.overwrite: {
+      //   const index = logCache.findIndex(isSameEvent);
+      //   if (index !== -1) logCache[index] = newEventLog;
+      //   break;
+      // }
   }
 }

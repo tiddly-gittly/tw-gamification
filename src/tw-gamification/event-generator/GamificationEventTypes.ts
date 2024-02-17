@@ -38,19 +38,60 @@ export interface IGamificationEvent {
  *
  * Field start with `game-event` are come from the `IGamificationEvent` interface, by adding a prefix `game-event` to the field name, and concat with `-`.
  */
-export interface IFilterEventGeneratorDefinitions extends ITiddlerFields {
+export interface IFilterEventGeneratorDefinitions extends ITiddlerFields, IDuplicationStrategy {
   ['game-event-amount']?: number | string;
   ['game-event-message']?: string;
   /**
    * The type of the event.
    */
   ['game-event-type']: BasicGamificationEventTypes;
-  ['on-duplicate']?: IGeneratorOnDuplicateStrategy;
   /**
    * A valid filter expression that can be used to get the tiddler that will trigger the event.
    * This will be used as a sub-filter concat after the recent changed tiddlers in Tiddlywiki's `'change'` event, deciding if changed tiddler is what we want.
    */
   trigger: string;
+}
+
+export interface IDuplicationStrategy {
+  /**
+   * Strategy to run to find potential duplicates.
+   */
+  ['find-duplicate']?: IGeneratorFindDuplicateStrategy;
+  /**
+   * Strategy to run when we find a duplicate item.
+   */
+  ['on-duplicate']?: IGeneratorOnDuplicateStrategy;
+}
+
+export interface IFindDuplicateParameters {
+  /**
+   * The time in seconds (default to `60`). For example, `debounce-duration` is `86400`, then if two event is created within 1 day, then it is a duplicate.
+   */
+  ['debounce-duration']?: number;
+  /**
+   * Use the generator title as the condition to find the duplicate event.
+   */
+  ['debounce-generator-title']?: 'yes' | 'no';
+  /**
+   * Choose between `or` and `and` (default to `and`). If `or`, then only one of the title above is enough to find the duplicate event. If `and`, then both of the title is needed to find the duplicate event.
+   */
+  ['debounce-tiddler-condition']?: 'or' | 'and';
+  /**
+   * Use the tiddler title that trigger the event as the condition to find the duplicate event.
+   */
+  ['debounce-tiddler-title']?: 'yes' | 'no';
+  /**
+   * The filter expression to find the duplicate event.
+   *
+   * 1. variable `currentTiddler` is the title of the tiddler that trigger the event.
+   * 1. variable `currentIndex` is the index of the current item we are checking.
+   * 1. variable `currentLog` is the title of the log file we are checking. Use json filter operators with `currentIndex` to get the current log item.
+   *
+   * You can use them to compare the current event with the event in the log file one by one. Return `yes` means it is a duplicate.
+   *
+   * Not sure if this will be slow.
+   */
+  ['find-duplicate-filter']?: string;
 }
 
 /**
@@ -65,17 +106,20 @@ export enum IGeneratorOnDuplicateStrategy {
   append = 'append',
   /**
    * When the tiddler that trigger the event is already in the log cache, ignore the new one.
+   * This is the default behavior.
    */
   ignore = 'ignore',
   /**
    * When the tiddler that trigger the event is already in the log cache, overwrite the old one.
-   * This is the default behavior.
+   * // TODO: Overwrite need to handle the case that item is already used, and exist in readonly archive log. So skip this feature for now.
    */
-  overwrite = 'overwrite',
+  // overwrite = 'overwrite',
 }
 
 /**
  * We hard code some strategy to find duplicate event (to speed up and make it simpler, instead use filter expression for everything).
+ *
+ * Will use `IFindDuplicateParameters` for the parameters.
  */
 export enum IGeneratorFindDuplicateStrategy {
   /**
@@ -83,24 +127,16 @@ export enum IGeneratorFindDuplicateStrategy {
    *
    * Related fields:
    *
-   * - `debounce-duration` field to get the time in seconds (default to `60`). For example, `debounce-duration` is `86400`, then if two event is created within 1 day, then it is a duplicate.
-   * - `debounce-generator-title` field is `yes` (default to `yes`) will use the generator title as the condition to find the duplicate event.
-   * - `debounce-tiddler-title` field is `yes` (default to `yes`) will use the tiddler title that trigger the event as the condition to find the duplicate event.
-   * - `debounce-tiddler-condition` field can choose between `or` and `and` (default to `and`). If `or`, then only one of the title above is enough to find the duplicate event. If `and`, then both of the title is needed to find the duplicate event.
+   * - `debounce-duration`
+   * - `debounce-generator-title
+   * - `debounce-tiddler-title`
+   * - `debounce-tiddler-condition`
    */
   'debounce' = 'debounce',
   /**
    * //TODO: Run a filter expression with some variables to find the duplicate event.
    *
    * Will use `find-duplicate-filter` field to get the filter expression.
-   *
-   * 1. variable `currentTiddler` is the title of the tiddler that trigger the event.
-   * 1. variable `currentIndex` is the index of the current item we are checking.
-   * 1. variable `currentLog` is the title of the log file we are checking. Use json filter operators with `currentIndex` to get the current log item.
-   *
-   * You can use them to compare the current event with the event in the log file one by one. Return `yes` means it is a duplicate.
-   *
-   * Not sure if this will be slow.
    */
   filter = 'filter',
 }

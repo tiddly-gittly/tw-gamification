@@ -75,7 +75,7 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
     }
     console.timeEnd('load game');
     this.setGamificationEvents([{
-      type: BasicGamificationEventTypes.LargeReward,
+      event: BasicGamificationEventTypes.LargeReward,
       signature: 'test',
       timestamp: Date.now(),
       amount: 3,

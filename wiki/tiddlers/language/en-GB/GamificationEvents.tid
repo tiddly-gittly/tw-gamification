@@ -4,6 +4,11 @@ title: language/en-GB/GamificationEvents
 
 Gamification Event Tiddlers are tiddlers tagged with `$:/tags/tw-gamification/GamificationEvent`, they store Event data of type [[TypesOfGamificationEvents]] as JSON lists.
 
+For example,
+
+# [[$:/plugins/linonetwo/tw-gamification/saves/log-cache-file/desktop]]
+# [[$:/plugins/linonetwo/tw-gamification/saves/log-cache-file/mobile]]
+
 The TypeScript types are detailed in `src/tw-gamification/event-generator/GamificationEventTypes.ts` in the Github repo.
 
 !!! Example
@@ -11,18 +16,24 @@ The TypeScript types are detailed in `src/tw-gamification/event-generator/Gamifi
 ```json
 [
   {
-    "type": "LargePunishment",
-    "amount": 100,
-    "message": "You have been deducted 100 points for inappropriate behavior.",
-    "signature": "xxxxxxDigitalSignature",
-    "timestamp": 1580000000000
+    "event": {
+      "type": "LargePunishment",
+      "amount": 100,
+      "message": "You have been deducted 100 points for inappropriate behavior.",
+      "timestamp": 1580000000000
+    },
+    "tiddlerTitle": "Confession: I stayed up late again today",
+    "signature": "xxxxxDigitalSignature"
   },
   {
-    "type": "LargeReward",
-    "amount": 100,
-    "message": "You have earned 100 points for correct behavior.",
-    "signature": "xxxxxxDigitalSignature",
-    "timestamp": 1580000000000
+    "event": {
+      "type": "LargeReward",
+      "amount": 100,
+      "message": "You have earned 100 points for correct behavior.",
+      "timestamp": 1580000000000
+    },
+    "tiddlerTitle": "Fitness Record xxx",
+    "signature": "xxxxxDigitalSignature"
   }
 ]
 ```

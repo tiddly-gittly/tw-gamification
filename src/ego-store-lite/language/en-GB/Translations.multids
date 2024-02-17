@@ -1,0 +1,7 @@
+title: $:/plugins/linonetwo/ego-store-lite/language/en-GB/
+
+Name: Ego Store (lite)
+Description: Default game for tw-gamification, a simple store to buy bonus for yourself, and you are the store keeper.
+ConfigDescription: These settings let you customise the behaviour of ego-store-lite plugin.
+GameLoading: Your store is Loading...
+Event/Message/HappyEarlySleep: Happy Early Sleep!

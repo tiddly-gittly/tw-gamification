@@ -4,6 +4,11 @@ title: language/zh-Hans/GamificationEvents
 
 「游戏化事件数据条目」即加了 `$:/tags/tw-gamification/GamificationEvent` 标签的条目，在里面用 JSON 列表的形式保存了类型为[[待用事件的类型|TypesOfGamificationEvents]]的事件数据。
 
+例如：
+
+# [[$:/plugins/linonetwo/tw-gamification/saves/log-cache-file/desktop]]
+# [[$:/plugins/linonetwo/tw-gamification/saves/log-cache-file/mobile]]
+
 其 TypeScript 类型详见代码库中的 `src/tw-gamification/event-generator/GamificationEventTypes.ts`
 
 !!! 例子
@@ -11,18 +16,24 @@ title: language/zh-Hans/GamificationEvents
 ```json
 [
   {
-    "type": "LargePunishment",
-    "amount": 100,
-    "message": "你的行为不当，被扣除了 100 分。",
-    "signature": "xxxxx数字签名",
-    "timestamp": 1580000000000
+    "event": {
+      "type": "LargePunishment",
+      "amount": 100,
+      "message": "你的行为不当，被扣除了 100 分。",
+      "timestamp": 1580000000000
+    },
+    "tiddlerTitle": "忏悔：我今天又熬夜了",
+    "signature": "xxxxx数字签名"
   },
   {
-    "type": "LargeReward",
-    "amount": 100,
-    "message": "你的行为正确，获得了 100 分。",
-    "signature": "xxxxx数字签名",
-    "timestamp": 1580000000000
+    "event": {
+      "type": "LargeReward",
+      "amount": 100,
+      "message": "你的行为正确，获得了 100 分。",
+      "timestamp": 1580000000000
+    },
+    "tiddlerTitle": "健身记录xxx",
+    "signature": "xxxxx数字签名"
   }
 ]
 ```

@@ -38,7 +38,7 @@ export interface IGamificationEvent {
  *
  * Field start with `game-event` are come from the `IGamificationEvent` interface, by adding a prefix `game-event` to the field name, and concat with `-`.
  */
-export interface IFilterEventGeneratorDefinitions extends ITiddlerFields, IDuplicationStrategy {
+export interface IFilterEventGeneratorDefinitions extends ITiddlerFields, IDuplicationStrategy, IFindDuplicateParameters {
   ['game-event-amount']?: number | string;
   ['game-event-message']?: string;
   /**
@@ -113,7 +113,7 @@ export enum IGeneratorOnDuplicateStrategy {
    * When the tiddler that trigger the event is already in the log cache, overwrite the old one.
    * // TODO: Overwrite need to handle the case that item is already used, and exist in readonly archive log. So skip this feature for now.
    */
-  // overwrite = 'overwrite',
+  overwrite = 'overwrite',
 }
 
 /**

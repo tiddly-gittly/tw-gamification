@@ -16,6 +16,9 @@ dependencies:
   js-base64:
     specifier: ^3.7.6
     version: 3.7.6
+  lodash:
+    specifier: ^4.17.21
+    version: 4.17.21
   npm-check-updates:
     specifier: ^16.14.15
     version: 16.14.15
@@ -36,6 +39,9 @@ devDependencies:
   '@modern-js/tsconfig':
     specifier: ^2.46.1
     version: 2.46.1
+  '@types/lodash':
+    specifier: ^4.14.202
+    version: 4.14.202
   '@types/node':
     specifier: ^20.11.17
     version: 20.11.17
@@ -2224,6 +2230,10 @@ packages:
   /@types/less@3.0.6:
     resolution: {integrity: sha512-PecSzorDGdabF57OBeQO/xFbAkYWo88g4Xvnsx7LRwqLC17I7OoKtA3bQB9uXkY6UkMWCOsA8HSVpaoitscdXw==}
     dev: false
+
+  /@types/lodash@4.14.202:
+    resolution: {integrity: sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==}
+    dev: true
 
   /@types/minimist@1.2.5:
     resolution: {integrity: sha512-hov8bUuiLiyFPGyFPE1lwWhmzYbirOXQNNo40+y3zow8aFVTeyn3VWL0VFFfdNddA8S4Vf0Tc062rzyNr7Paag==}

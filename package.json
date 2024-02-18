@@ -34,6 +34,7 @@
   "devDependencies": {
     "@modern-js/eslint-config": "^2.46.1",
     "@modern-js/tsconfig": "^2.46.1",
+    "@types/lodash": "^4.14.202",
     "@types/node": "^20.11.17",
     "dprint": "^0.45.0",
     "eslint-config-tidgi": "^1.1.5",
@@ -49,6 +50,7 @@
   "dependencies": {
     "@wessberg/connection-observer": "^1.0.5",
     "js-base64": "^3.7.6",
+    "lodash": "^4.17.21",
     "npm-check-updates": "^16.14.15",
     "tiddlywiki": "^5.3.3",
     "tiddlywiki-plugin-dev": "^0.0.39",

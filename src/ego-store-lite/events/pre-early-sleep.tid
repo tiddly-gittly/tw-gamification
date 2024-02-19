@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/ego-store-lite/events/pre-early-sleep
 tags: $:/Tags/Gamification/filter-event-generator
-find-duplicate-filter: [!is[system]field:calendarEntry[yes]!is[draft]betweenhour:10,12[]]
+find-duplicate-filter: [!is[system]field:calendarEntry[yes]!is[draft]betweenhour:22,24[]]
 find-duplicate: debounce
 debounce-duration: 43200
 game-event-amount: 1

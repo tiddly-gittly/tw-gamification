@@ -8,7 +8,7 @@ export const betweenhour = ((source, operator) => {
       const startDate = $tw.utils.parseDate((tiddler.fields.startDate as string | undefined) ?? '');
       const endDate = $tw.utils.parseDate((tiddler.fields.endDate as string | undefined) ?? '');
       if (startDate === null || endDate === null) return;
-      const duration = operator.suffixes?.map?.(Number);
+      const duration = operator.suffixes?.[0]?.map?.(Number);
       if (duration === undefined) return;
       const [hourStart, hourEnd] = duration;
       if (startDate.getHours() >= hourStart && endDate.getHours() <= hourEnd) {

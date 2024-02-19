@@ -49,8 +49,9 @@ exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
       checkAndPushAnItemToLogCacheFile(getEventFromParameterObject(parameterObject), getCheckConfig(parameterObject), { logCache });
     }
     // if no change, then no need to update the tiddler. Note that update tiddler may trigger 'change' event, which may cause infinite loop if not handle properly.
-    if (logCache.length === logCacheLength) return;
+    if (logCache.length === logCacheLength) return false;
     $tw.wiki.addTiddler({ title: logQueueTitle, text: JSON.stringify(logCache) });
+    return false;
   });
 };
 
@@ -79,7 +80,7 @@ function getEventFromParameterObject(
   };
 }
 
-export function checkAndPushAnItemToLogCacheFile(
+function checkAndPushAnItemToLogCacheFile(
   newEventLog: IGameEventLogCacheItem,
   configs: IDuplicationStrategy & IFindDuplicateParameters,
   sources: { logCache: IGameEventLogCacheFile },

@@ -42,14 +42,14 @@ export interface IFilterEventGeneratorDefinitions extends ITiddlerFields, IDupli
   ['game-event-amount']?: number | string;
   ['game-event-message']?: string;
   /**
-   * The type of the event.
-   */
-  ['game-event-type']: BasicGamificationEventTypes;
-  /**
    * A valid filter expression that can be used to get the tiddler that will trigger the event.
    * This will be used as a sub-filter concat after the recent changed tiddlers in Tiddlywiki's `'change'` event, deciding if changed tiddler is what we want.
    */
-  trigger: string;
+  ['game-event-trigger-filter']: string;
+  /**
+   * The type of the event.
+   */
+  ['game-event-type']: BasicGamificationEventTypes;
 }
 
 export interface IDuplicationStrategy {

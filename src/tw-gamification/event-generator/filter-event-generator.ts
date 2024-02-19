@@ -37,12 +37,12 @@ exports.startup = function twGamificationFilterEventGeneratorStartupModule() {
   const generatorDefinitions = $tw.wiki.getTiddlersWithTag(tagForGenerators).map(tiddlerTitle => {
     const tiddler = $tw.wiki.getTiddler(tiddlerTitle);
     if (!tiddler) return;
-    if (!tiddler.fields.filter) return;
+    if (!tiddler.fields['game-event-trigger-filter']) return;
     return tiddler.fields;
   }).filter((item): item is IFilterEventGeneratorDefinitions => item !== undefined);
   const generatorWithFilterFunctions = generatorDefinitions.map(definition => ({
     ...definition,
-    filter: $tw.wiki.compileFilter(definition.trigger),
+    filter: $tw.wiki.compileFilter(definition['game-event-trigger-filter']),
   }));
   $tw.wiki.addEventListener('change', function(changes) {
     const events: IGameEventLogCacheItem[] = [];

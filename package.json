@@ -53,7 +53,7 @@
     "lodash": "^4.17.21",
     "npm-check-updates": "^16.14.15",
     "tiddlywiki": "^5.3.3",
-    "tiddlywiki-plugin-dev": "^0.0.39",
+    "tiddlywiki-plugin-dev": "^0.0.41",
     "type-fest": "^4.10.2"
   },
   "pnpm": {

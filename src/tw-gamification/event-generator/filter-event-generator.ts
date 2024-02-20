@@ -66,6 +66,7 @@ exports.startup = function twGamificationFilterEventGeneratorStartupModule() {
         },
         tiddlerTitle,
         generator: title,
+        ...eventGenerator,
       })));
     });
     if (events.length === 0) return;

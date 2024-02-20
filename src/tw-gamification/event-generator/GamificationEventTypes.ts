@@ -70,14 +70,16 @@ export interface IFindDuplicateParameters {
   ['debounce-duration']?: number;
   /**
    * Use the generator title as the condition to find the duplicate event.
+   * (default to `yes`)
    */
   ['debounce-generator-title']?: 'yes' | 'no';
   /**
-   * Choose between `or` and `and` (default to `and`). If `or`, then only one of the title above is enough to find the duplicate event. If `and`, then both of the title is needed to find the duplicate event.
+   * Choose between `or` and `and` (default to `and`). If `or`, then only one of the title above is enough to find the duplicate event. If `and`, then both of the title is needed to be duplicate to find the duplicate event.
    */
   ['debounce-tiddler-condition']?: 'or' | 'and';
   /**
    * Use the tiddler title that trigger the event as the condition to find the duplicate event.
+   * (default to `yes`)
    */
   ['debounce-tiddler-title']?: 'yes' | 'no';
   /**

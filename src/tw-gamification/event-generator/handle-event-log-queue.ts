@@ -36,20 +36,20 @@ exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
     const parameterObject = (event.paramObject ?? {}) as unknown as IAddGamificationEventParameterObject;
     const logCacheFileContent = $tw.wiki.getTiddlerText(logQueueTitle);
     const logCache: IGameEventLogCacheFile = logCacheFileContent ? $tw.utils.parseJSONSafe(logCacheFileContent) : [];
-    const logCacheLength = logCache.length;
+    let hasModification = false;
     if ('events' in parameterObject) {
       // Add many events at once
       const events = parameterObject.events;
       events.forEach((eventItem) => {
         const { tiddlerTitle, event, generator } = eventItem;
-        checkAndPushAnItemToLogCacheFile({ tiddlerTitle, event, generator }, getCheckConfig(eventItem), { logCache });
+        hasModification = checkAndPushAnItemToLogCacheFile({ tiddlerTitle, event, generator }, getCheckConfig(eventItem), { logCache });
       });
       logCache.push(...events);
     } else {
-      checkAndPushAnItemToLogCacheFile(getEventFromParameterObject(parameterObject), getCheckConfig(parameterObject), { logCache });
+      hasModification = checkAndPushAnItemToLogCacheFile(getEventFromParameterObject(parameterObject), getCheckConfig(parameterObject), { logCache });
     }
     // if no change, then no need to update the tiddler. Note that update tiddler may trigger 'change' event, which may cause infinite loop if not handle properly.
-    if (logCache.length === logCacheLength) return false;
+    if (!hasModification) return false;
     $tw.wiki.addTiddler({ title: logQueueTitle, text: JSON.stringify(logCache) });
     return false;
   });
@@ -57,8 +57,8 @@ exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
 
 function getCheckConfig(
   input: IAddGamificationEventParameterObjectFromActionWidget | IAddGamificationEventParameterObjectFromJSEventItem,
-): IDuplicationStrategy & IFindDuplicateParameters {
-  return pick(input, [
+): IDuplicationStrategy & IFindDuplicateParameters & Required<Pick<IFindDuplicateParameters, 'debounce-duration'>> {
+  const configs = pick(input, [
     'on-duplicate',
     'find-duplicate',
     'debounce-duration',
@@ -67,6 +67,13 @@ function getCheckConfig(
     'debounce-tiddler-title',
     'find-duplicate-filter',
   ]);
+  configs['debounce-tiddler-title'] = configs['debounce-tiddler-title'] || 'yes';
+  configs['debounce-generator-title'] = configs['debounce-generator-title'] || 'yes';
+  configs['debounce-tiddler-condition'] = configs['debounce-tiddler-condition'] || 'and';
+  return {
+    ...configs,
+    'debounce-duration': (configs['debounce-duration'] && Number.isFinite(Number(configs['debounce-duration']))) ? 1000 * Number(configs['debounce-duration']) : 1000 * 60,
+  };
 }
 
 function getEventFromParameterObject(
@@ -82,9 +89,9 @@ function getEventFromParameterObject(
 
 function checkAndPushAnItemToLogCacheFile(
   newEventLog: IGameEventLogCacheItem,
-  configs: IDuplicationStrategy & IFindDuplicateParameters,
+  configs: ReturnType<typeof getCheckConfig>,
   sources: { logCache: IGameEventLogCacheFile },
-) {
+): boolean {
   // TODO: also check the archive log (the events already used by the game, which clean up in a few days.)
   const logCache = sources.logCache;
   let sameEventIndexInLogCache = -1;
@@ -95,13 +102,13 @@ function checkAndPushAnItemToLogCacheFile(
       break;
     }
     case IGeneratorFindDuplicateStrategy.debounce: {
-      const debounceTime = configs['debounce-duration'] || 1000;
+      const debounceTime = configs['debounce-duration'];
       const now = Date.now();
       const checkTiddlerTitle = configs['debounce-tiddler-title'] === 'yes';
       const checkGeneratorTitle = configs['debounce-generator-title'] === 'yes';
-      sameEventIndexInLogCache = logCache.findIndex((log) => {
-        if (checkTiddlerTitle && log.tiddlerTitle !== newEventLog.tiddlerTitle) return false;
-        if (checkGeneratorTitle && log.generator !== newEventLog.generator) return false;
+      const conditionIsAnd = configs['debounce-tiddler-condition'] === 'and';
+      // sort make newest event at the top, to be easier to check for duplicate
+      sameEventIndexInLogCache = logCache.sort((a, b) => b.event.timestamp - a.event.timestamp).findIndex((log) => {
         // TODO: handle the variable pass to the filter
         // if (configs['find-duplicate-filter']) {
         //   const filter = $tw.wiki.compileFilter(configs['find-duplicate-filter']);
@@ -110,7 +117,24 @@ function checkAndPushAnItemToLogCacheFile(
         //     if (result === 'yes') return true;
         //   }
         // }
-        return now - log.event.timestamp < debounceTime;
+        const isDebounced = (now - log.event.timestamp) < debounceTime;
+        // DEBUG: console now,
+        console.log(`now, log.event.timestamp, debounceTime`, now, log.event.timestamp, now - log.event.timestamp, debounceTime);
+        const sameTiddlerTitle = checkTiddlerTitle && log.tiddlerTitle === newEventLog.tiddlerTitle;
+        const sameGeneratorTitle = checkGeneratorTitle && log.generator === newEventLog.generator;
+        // DEBUG: console isDebounced
+        console.log(`isDebounced, sameTiddlerTitle, sameGeneratorTitle`, isDebounced, sameTiddlerTitle, sameGeneratorTitle);
+        if (checkTiddlerTitle && checkGeneratorTitle) {
+          if (conditionIsAnd) {
+            return sameTiddlerTitle && sameGeneratorTitle && isDebounced;
+          } else {
+            return (sameTiddlerTitle || sameGeneratorTitle) && isDebounced;
+          }
+        } else if (checkTiddlerTitle) {
+          return sameTiddlerTitle && isDebounced;
+        } else if (checkGeneratorTitle) {
+          return sameGeneratorTitle && isDebounced;
+        }
       });
       if (sameEventIndexInLogCache > -1) {
         hasDuplicate = true;
@@ -119,22 +143,31 @@ function checkAndPushAnItemToLogCacheFile(
     }
   }
 
+  let hasModification = false;
   // TODO: add signature generation
   switch (configs['on-duplicate']) {
     // default to ignore
     case undefined:
     case IGeneratorOnDuplicateStrategy.ignore: {
-      if (hasDuplicate) return;
+      if (hasDuplicate) break;
       logCache.push(newEventLog);
+      hasModification = true;
       break;
     }
     case IGeneratorOnDuplicateStrategy.append: {
       logCache.push(newEventLog);
+      hasModification = true;
       break;
     }
     case IGeneratorOnDuplicateStrategy.overwrite: {
-      if (sameEventIndexInLogCache !== -1) logCache[sameEventIndexInLogCache] = newEventLog;
+      if (sameEventIndexInLogCache !== -1) {
+        logCache[sameEventIndexInLogCache] = newEventLog;
+        hasModification = true;
+      }
       break;
     }
   }
+  // DEBUG: console hasModification
+  console.log(`hasModification, hasDuplicate`, hasModification, hasDuplicate);
+  return hasModification;
 }

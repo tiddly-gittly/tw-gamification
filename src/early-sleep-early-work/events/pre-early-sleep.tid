@@ -5,3 +5,4 @@ find-duplicate: debounce
 debounce-duration: 43200
 game-event-amount: 1
 game-event-message: <<translate Event/Message/HappyEarlySleep $:/plugins/linonetwo/ego-store-lite/language/>>
+game-event-type: SmallReward

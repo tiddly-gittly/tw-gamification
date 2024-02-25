@@ -1,0 +1,6 @@
+title: $:/plugins/linonetwo/tw-gamification/configs/
+
+DefaultGame: 
+ShowInitialConfigPage: 
+EnableDefaultEventGenerator: yes
+DefaultEventGeneratorTagsForTask: 

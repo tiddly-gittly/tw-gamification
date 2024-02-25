@@ -1,0 +1,10 @@
+{
+  "title": "$:/plugins/linonetwo/early-sleep-early-work",
+  "name": "early-sleep-early-work",
+  "author": "linonetwo",
+  "description": "Focus on going to bed early and waking up early to solve the problem of waking up inefficiently and struggling to get into shape.",
+  "plugin-type": "plugin",
+  "parent-plugin": "$:/plugins/linonetwo/tw-gamification",
+  "version": "0.0.1",
+  "list": "readme"
+}

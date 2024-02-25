@@ -1,0 +1,9 @@
+title: $:/plugins/linonetwo/early-sleep-early-work/language/en-GB/Readme
+
+\define lingo-base() $:/plugins/linonetwo/early-sleep-early-work/language/
+
+! <<translate "Name" mode:"inline">>
+
+<<translate "Description" mode:"inline">>
+
+Focus on going to bed early and waking up early to solve the problem of waking up inefficiently and struggling to get into shape.

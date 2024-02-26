@@ -1,4 +1,4 @@
-title: $:/plugins/linonetwo/early-sleep-early-work/events/pre-early-sleep
+title: $:/plugins/linonetwo/early-sleep-early-work/events/actions/pre-early-sleep
 tags: $:/Tags/Gamification/filter-event-generator
 game-event-trigger-filter: [!is[system]!is[draft]tag{$:/plugins/linonetwo/early-sleep-early-work/configs/AllowedPreSleepEventTypes}field:calendarEntry[yes]starthourlatethan{$:/plugins/linonetwo/early-sleep-early-work/configs/PeriodToPrepareSleep/Start}endhourearlythan{$:/plugins/linonetwo/early-sleep-early-work/configs/PeriodToPrepareSleep/End}]
 find-duplicate: debounce

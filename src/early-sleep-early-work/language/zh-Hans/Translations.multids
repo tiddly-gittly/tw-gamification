@@ -4,6 +4,7 @@ Name: 早睡早起
 Description: 以「早点上床早点起床」为主题的事件包，在早睡和睡前学习促眠时获得奖励
 Configs/Description: 通过这些设置，您可以自定义「早睡早起」插件的行为。
 Event/Message/HappyEarlySleep: 早睡快乐！
+Event/Description/EarlySleep: 打卡早睡
 Configs/Start: 开始
 Configs/End: 结束
 Configs/EndDescription: 使用 24 表示凌晨 0 点整，此外照常。

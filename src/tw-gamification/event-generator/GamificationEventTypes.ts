@@ -32,8 +32,9 @@ export interface IGamificationEvent {
     | BasicGamificationEventTypes.Item;
   /**
    * Title of the tiddler that contains the item information.
+   * Only used when event is `BasicGamificationEventTypes.Item`
    */
-  item: string;
+  item?: string;
   /**
    * A message that can be used to show to user to motivate them.
    * Can be any wiki text.

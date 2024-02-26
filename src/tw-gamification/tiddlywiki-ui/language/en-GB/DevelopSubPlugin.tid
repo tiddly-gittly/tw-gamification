@@ -6,15 +6,15 @@ title: $:/plugins/linonetwo/tw-gamification/language/en-GB/DevelopSubPlugin
 
 Referring to the [[$:/plugins/linonetwo/early-sleep-early-work]] plugin, you can generate events declaratively with tiddlers with specific tags and fields:
 
-!!! Filter Event Generator
+!!! Change Filter
 
-Tiddlers with the <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/filter-event-generator-meta-tag}} /> tag are recognized as "Filter Event Generators".
+Tiddlers with the <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/change-filter-meta-tag}} /> tag are recognized as "Change Filter Event Generators".
 
 Whenever a change is made to the knowledge base, the `game-event-trigger-filter` field on the entry is used as a filter to determine if the tiddler where the change occurred matches the conditions. If the conditions are met, an event is generated. See the `IFilterEventGeneratorDefinitions` type in this repository for specific fields.
 
 !!! Action
 
-Tiddlers with the <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/action-meta-tag}} /> tag will be recognized as `action`.
+Tiddlers with the <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/action-meta-tag}} /> tag will be recognized as "Action Event Generators".
 
 Some games will use the information from these tiddlers to generate a list of buttons. When the button is clicked, the corresponding action widget will be triggered. See the `IActionDefinitions` type in this repository for specific fields.
 

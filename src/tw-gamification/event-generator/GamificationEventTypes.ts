@@ -45,7 +45,7 @@ export interface IGamificationEvent {
 }
 
 /**
- * Fields for a filter based event generator. With tag `$:/Tags/Gamification/filter-event-generator`
+ * Fields for a filter based event generator. With tag `$:/Tags/Gamification/change-filter`
  *
  * Field start with `game-event` are come from the `IGamificationEvent` interface, by adding a prefix `game-event` to the field name, and concat with `-`.
  */

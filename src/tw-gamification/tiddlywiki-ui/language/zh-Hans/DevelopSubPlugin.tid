@@ -4,11 +4,11 @@ title: $:/plugins/linonetwo/tw-gamification/language/zh-Hans/DevelopSubPlugin
 
 !! 事件包
 
-参考 [[$:/plugins/linonetwo/early-sleep-early-work]] 插件，你可以通过带有特定标签和字段的条目，声明式地产生事件：
+参考 [[$:/plugins/linonetwo/early-sleep-early-work]] 插件，你可以通过带有特定标签和字段的条目，制作几类事件生成器，声明式地产生事件：
 
-!!! 筛选器事件生成器
+!!! 变更筛选器
 
-带上 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/filter-event-generator-meta-tag}} /> 标签的条目会被识别为「筛选器事件生成器」。
+带上 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/change-filter-meta-tag}} /> 标签的条目会被识别为「变更筛选器事件生成器」。
 
 每当知识库发生变更时，会用条目上的 `game-event-trigger-filter` 字段作为筛选器，判断发生变更的条目是否符合条件。如果符合条件，会生成一个事件。具体字段请参考本仓库里的 `IFilterEventGeneratorDefinitions` 类型。
 
@@ -16,7 +16,7 @@ title: $:/plugins/linonetwo/tw-gamification/language/zh-Hans/DevelopSubPlugin
 
 {{tag||}}
 
-带上 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/action-meta-tag}} /> 标签的条目会被识别为「动作」。
+带上 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/action-meta-tag}} /> 标签的条目会被识别为「动作事件生成器」。
 
 有的游戏将使用这些条目的信息，生成一个按钮列表。当按钮被点击时，会触发相应的动作微件。具体字段请参考本仓库里的 `IActionDefinitions` 类型。
 

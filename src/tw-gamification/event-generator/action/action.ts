@@ -13,7 +13,7 @@ declare var exports: {
   startup: () => void;
   synchronous: boolean;
 };
-exports.name = 'tw-gamification-filter-event-generator';
+exports.name = 'tw-gamification-action';
 /**
  * If we are in mobile, then run on browser. If is in TidGi desktop, then only run on node, skip browser side code execution.
  */
@@ -25,14 +25,14 @@ if ($tw.browser) {
   exports.after = ['commands'];
 }
 exports.synchronous = true;
-exports.startup = function twGamificationFilterEventGeneratorStartupModule() {
+exports.startup = function twGamificationActionStartupModule() {
   const runOnMobile = $tw.wiki.getTiddlerText('$:/info/mobile');
   // TODO: need to check for HTML env on desktop like TiddlywikiDesktop. But need to know it is nodejs based on browser, which currently is not possible.
   const allowRunOnFrontend = $tw.browser && runOnMobile;
   const allowRunOnBackend = !!$tw.node;
   if (!allowRunOnFrontend && !allowRunOnBackend) return;
 
-  const tagForGenerators = $tw.wiki.getTiddlerText('$:/plugins/linonetwo/tw-gamification/tags/filter-event-generator-meta-tag');
+  const tagForGenerators = $tw.wiki.getTiddlerText('$:/plugins/linonetwo/tw-gamification/tags/change-filter-meta-tag');
   if (!tagForGenerators) return;
   const generatorDefinitions = $tw.wiki.getTiddlersWithTag(tagForGenerators).map(tiddlerTitle => {
     const tiddler = $tw.wiki.getTiddler(tiddlerTitle);

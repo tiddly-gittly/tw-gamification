@@ -3,8 +3,8 @@ tags: $:/tags/ControlPanel/SettingsTab
 caption: <<translate "Name" "$:/plugins/linonetwo/early-sleep-early-work/language/" mode:"inline">>
 
 \define lingo-base() $:/plugins/linonetwo/early-sleep-early-work/language/
-\config-base $:/plugins/linonetwo/early-sleep-early-work/configs/
-\procedure config-title(name) <<config-base>><<name>>
+\define config-base() $:/plugins/linonetwo/early-sleep-early-work/configs/
+\define config-title(name) $(config-base)$$name$
 
 \procedure single-text-tag-editor()
 \whitespace trim
@@ -43,9 +43,9 @@ caption: <<translate "Name" "$:/plugins/linonetwo/early-sleep-early-work/languag
 !! <<translate Configs/PeriodToPrepareSleep mode:"inline">>
 
 ;<<translate Configs/Start mode:"inline">>
-:<$edit-text tiddler=<<config-title PeriodToPrepareSleep/Start>> type="number" />
+:<$edit-text tag="input" tiddler=<<config-title PeriodToPrepareSleep/Start>> type="number" />
 ;<<translate Configs/End mode:"inline">>
-:<$edit-text tiddler=<<config-title PeriodToPrepareSleep/End>> type="number" />
+:<$edit-text tag="input" tiddler=<<config-title PeriodToPrepareSleep/End>> type="number" />
 
 !! <<translate Configs/AllowedPreSleepEventTypes mode:"inline">>
 

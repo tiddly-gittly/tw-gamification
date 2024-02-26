@@ -33,7 +33,7 @@ export interface IGamificationEvent {
   /**
    * Title of the tiddler that contains the item information.
    */
-  id: string;
+  item: string;
   /**
    * A message that can be used to show to user to motivate them.
    * Can be any wiki text.

@@ -15,7 +15,7 @@ export interface IActionDefinitions extends ITiddlerFields, IDuplicationStrategy
   /**
    * Title of the tiddler that contains the item information. `IGamificationEvent['id']`
    */
-  ['game-event-id']?: string;
+  ['game-event-item']?: string;
   ['game-event-message']?: string;
   /**
    * The type of the event.

@@ -2,7 +2,7 @@ import { IDuplicationStrategy, IFindDuplicateParameters } from '../event-generat
 import { IGamificationEvent } from '../event-generator/GamificationEventTypes';
 
 export type IAddGamificationEventParameterObject = IAddGamificationEventParameterObjectFromJS | IAddGamificationEventParameterObjectFromActionWidget;
-export type IAddGamificationEventParameterObjectFromJSEventItem = IGameEventLogCacheItem & IDuplicationStrategy & IFindDuplicateParameters;
+export type IAddGamificationEventParameterObjectFromJSEventItem = IGameEventLogCacheItem & { configs: IDuplicationStrategy & IFindDuplicateParameters };
 /**
  * When sending events from a js based event generator. This can be used to batch add logs.
  */
@@ -12,7 +12,8 @@ export interface IAddGamificationEventParameterObjectFromJS {
 /**
  * A flattened object of `IGameEventLogCacheItem`. Add one event at a time.
  */
-export interface IAddGamificationEventParameterObjectFromActionWidget extends IGamificationEvent, IDuplicationStrategy, IFindDuplicateParameters {
+export interface IAddGamificationEventParameterObjectFromActionWidget extends IGamificationEvent {
+  configs: IDuplicationStrategy & IFindDuplicateParameters;
   /**
    * The title of the tiddler that trigger the event, so it is easier to debug. Default to `ActionWidget` which is just a place holder.
    */

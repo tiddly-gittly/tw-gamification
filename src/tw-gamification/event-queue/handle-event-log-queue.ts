@@ -57,7 +57,7 @@ exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
 function getCheckConfig(
   input: IAddGamificationEventParameterObjectFromActionWidget | IAddGamificationEventParameterObjectFromJSEventItem,
 ): IDuplicationStrategy & IFindDuplicateParameters & Required<Pick<IFindDuplicateParameters, 'debounce-duration'>> {
-  const configs = pick(input, [
+  const configs = pick(input.configs, [
     'on-duplicate',
     'find-duplicate',
     'debounce-duration',
@@ -78,7 +78,7 @@ function getCheckConfig(
 function getEventFromParameterObject(
   parameterObject: IAddGamificationEventParameterObjectFromActionWidget,
 ): IGameEventLogCacheItem {
-  const event = pick(parameterObject, ['amount', 'event', 'message', 'timestamp', 'id']);
+  const event = pick(parameterObject, ['amount', 'event', 'message', 'timestamp', 'item']);
   return {
     event,
     meta: {
@@ -119,12 +119,8 @@ function checkAndPushAnItemToLogCacheFile(
         //   }
         // }
         const isDebounced = (now - log.event.timestamp) < debounceTime;
-        // DEBUG: console now,
-        console.log(`now, log.event.timestamp, debounceTime`, now, log.event.timestamp, now - log.event.timestamp, debounceTime);
         const sameTiddlerTitle = checkTiddlerTitle && log.meta.tiddlerTitle === newEventLog.meta.tiddlerTitle;
         const sameGeneratorTitle = checkGeneratorTitle && log.meta.generator === newEventLog.meta.generator;
-        // DEBUG: console isDebounced
-        console.log(`isDebounced, sameTiddlerTitle, sameGeneratorTitle`, isDebounced, sameTiddlerTitle, sameGeneratorTitle);
         if (checkTiddlerTitle && checkGeneratorTitle) {
           if (conditionIsAnd) {
             return sameTiddlerTitle && sameGeneratorTitle && isDebounced;
@@ -168,7 +164,5 @@ function checkAndPushAnItemToLogCacheFile(
       break;
     }
   }
-  // DEBUG: console hasModification
-  console.log(`hasModification, hasDuplicate`, hasModification, hasDuplicate);
   return hasModification;
 }

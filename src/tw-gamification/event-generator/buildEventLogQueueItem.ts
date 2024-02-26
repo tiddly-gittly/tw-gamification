@@ -1,15 +1,15 @@
-import { IGameEventLogCacheItem } from '../event-queue/GamificationEventLogTypes';
+import { IAddGamificationEventParameterObjectFromJSEventItem } from '../event-queue/GamificationEventLogTypes';
 import { IActionDefinitions } from './action/types';
 import { BasicGamificationEventTypes, IGamificationEvent } from './GamificationEventTypes';
 import { processAmount, processMessage } from './processFields';
 
-export function buildEventLogQueueItem(eventGenerator: IActionDefinitions, tiddlerTitle?: string): IGameEventLogCacheItem {
-  const { 'game-event-amount': amount, 'game-event-message': message, 'game-event-type': eventType = BasicGamificationEventTypes.SmallReward, 'game-event-id': itemID, title } =
+export function buildEventLogQueueItem(eventGenerator: IActionDefinitions, tiddlerTitle?: string): IAddGamificationEventParameterObjectFromJSEventItem {
+  const { 'game-event-amount': amount, 'game-event-message': message, 'game-event-type': eventType = BasicGamificationEventTypes.SmallReward, 'game-event-item': itemID, title } =
     eventGenerator;
 
   const event: IGamificationEvent = {
     timestamp: Date.now(),
-    id: itemID!,
+    item: itemID!,
     event: eventType,
     amount: processAmount(amount),
     message: processMessage(message),
@@ -20,5 +20,6 @@ export function buildEventLogQueueItem(eventGenerator: IActionDefinitions, tiddl
       tiddlerTitle,
       generator: title,
     },
+    configs: eventGenerator,
   });
 }

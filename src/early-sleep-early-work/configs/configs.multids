@@ -1,0 +1,5 @@
+title: $:/plugins/linonetwo/early-sleep-early-work/configs/
+
+PeriodToPrepareSleep/Start: 22
+PeriodToPrepareSleep/End: 24
+AllowedPreSleepEventTypes: 

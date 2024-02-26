@@ -34,6 +34,7 @@
   "devDependencies": {
     "@modern-js/eslint-config": "^2.46.1",
     "@modern-js/tsconfig": "^2.46.1",
+    "@types/lodash": "^4.14.202",
     "@types/node": "^20.11.17",
     "dprint": "^0.45.0",
     "eslint-config-tidgi": "^1.1.5",
@@ -42,16 +43,18 @@
     "postcss": "^8.4.35",
     "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
-    "tw5-typed": "^0.4.8",
+    "tw5-typed": "^0.4.9",
     "typescript": "^5.3.3",
     "zx": "^7.2.3"
   },
   "dependencies": {
     "@wessberg/connection-observer": "^1.0.5",
     "js-base64": "^3.7.6",
+    "lodash": "^4.17.21",
     "npm-check-updates": "^16.14.15",
     "tiddlywiki": "^5.3.3",
-    "tiddlywiki-plugin-dev": "^0.0.39"
+    "tiddlywiki-plugin-dev": "^0.0.41",
+    "type-fest": "^4.10.2"
   },
   "pnpm": {
     "patchedDependencies": {

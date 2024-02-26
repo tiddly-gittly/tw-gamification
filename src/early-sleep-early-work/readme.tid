@@ -1,0 +1,6 @@
+title: $:/plugins/linonetwo/early-sleep-early-work/readme
+type: text/vnd.tiddlywiki
+
+\define lingo-base() $:/plugins/linonetwo/early-sleep-early-work/language/
+
+<<translate "Readme">>

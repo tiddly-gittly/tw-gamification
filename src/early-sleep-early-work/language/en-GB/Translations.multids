@@ -1,0 +1,14 @@
+title: $:/plugins/linonetwo/early-sleep-early-work/language/en-GB/
+
+Name: Early Sleep Early Work
+Description: "Early to Bed, Early to Rise" themed event packs to earn rewards for going to bed early and learning to promote sleep before bedtime.
+Configs/Description: These settings let you customise the behaviour of Early Sleep Early Work plugin.
+Event/Message/HappyEarlySleep: Happy Early Sleep!
+Event/Description/EarlySleep: Clock in early to sleep
+Configs/Start: Start
+Configs/End: End
+Configs/EndDescription: Use 24 for 0:00 AM, otherwise it's business as usual.
+Configs/PeriodToPrepareSleep: Period of time to prepare for sleep
+Configs/PeriodToPrepareSleepDescription: A time to get away from electronics and instant feedback, burn off remaining energy by learning, and get the brain ready for sleep.
+Configs/AllowedPreSleepEventTypes: types of events allowed to be done before bedtime
+Configs/AllowedPreSleepEventTypesDescription: When using the calendar to automatically trigger rewards, only events with this tag will trigger rewards. Currently only one tag is supported, filling in multiple tags will not take effect.

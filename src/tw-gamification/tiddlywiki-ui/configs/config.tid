@@ -1,0 +1,22 @@
+title: $:/plugins/linonetwo/tw-gamification/config
+tags: $:/tags/ControlPanel/SettingsTab
+caption: <<translate "Name" "$:/plugins/linonetwo/tw-gamification/language/" mode:"inline">>
+
+\define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
+
+<<translate "ConfigDescription">>
+
+---
+
+!! <<translate "PluginConfigs" mode:"inline">>
+
+;<<translate "ConfigDescription/DefaultGame" mode:"inline">>
+:<$select tiddler='$:/plugins/linonetwo/tw-gamification/configs/DefaultGame'>
+	<$list filter='[all[tiddlers+shadows]tag[$:/tags/linonetwo/tw-gamification/Game]]'>
+		<option value={{!!text}}>{{!!caption}}</option>
+	</$list>
+</$select>
+
+!! <<translate "DefaultEventGeneratorConfigs" mode:"inline">>
+
+{{$:/plugins/linonetwo/tw-gamification/ControlPanel/ConfigForDefaultEventGenerator}}

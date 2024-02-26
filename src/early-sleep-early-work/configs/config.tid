@@ -1,0 +1,54 @@
+title: $:/plugins/linonetwo/early-sleep-early-work/config
+tags: $:/tags/ControlPanel/SettingsTab
+caption: <<translate "Name" "$:/plugins/linonetwo/early-sleep-early-work/language/" mode:"inline">>
+
+\define lingo-base() $:/plugins/linonetwo/early-sleep-early-work/language/
+\define config-base() $:/plugins/linonetwo/early-sleep-early-work/configs/
+\define config-title(name) $(config-base)$$name$
+
+\procedure single-text-tag-editor()
+\whitespace trim
+<!-- copy and modify from $:/plugins/linonetwo/intention-tower-knowledge-graph/configs/Tags -->
+<div class="tw-gamification-single-text-tag-editor-setting-tags-item">
+  <$let
+    currentTiddler=<<config-title AllowedPreSleepEventTypes>>
+    palette={{$:/palette}}
+    tempTitle="$:/state/plugins/linonetwo/early-sleep-early-work/configs/AllowedPreSleepEventTypes"
+    tabIndex={{$:/config/EditTabIndex}}
+    cancelPopups="yes"
+  >
+    <% if [{$:/plugins/linonetwo/early-sleep-early-work/configs/AllowedPreSleepEventTypes}!match[]] %>
+      <$macrocall $name="tag" tag={{$:/plugins/linonetwo/early-sleep-early-work/configs/AllowedPreSleepEventTypes}} />
+    <% endif %>
+
+    <$edit-text tiddler=<<tempTitle>> tag="input" field="text" placeholder={{$:/language/EditTemplate/Tags/Add/Placeholder}} />
+
+    <$button>
+      <<completeInit>>
+      <$action-setfield tiddler=<<currentTiddler>> text={{{ [<tempTitle>get[text]] }}}>
+        <$action-setfield tiddler=<<tempTitle>> text="" />
+      </$action-setfield>
+
+      {{$:/language/EditTemplate/Tags/Add/Button}}
+    </$button>
+    
+  </$let> 
+</div>
+\end
+
+<<translate "Configs/Description">>
+
+---
+
+!! <<translate Configs/PeriodToPrepareSleep mode:"inline">>
+
+;<<translate Configs/Start mode:"inline">>
+:<$edit-text tag="input" tiddler=<<config-title PeriodToPrepareSleep/Start>> type="number" />
+;<<translate Configs/End mode:"inline">>
+:<$edit-text tag="input" tiddler=<<config-title PeriodToPrepareSleep/End>> type="number" />
+
+!! <<translate Configs/AllowedPreSleepEventTypes mode:"inline">>
+
+<<translate Configs/AllowedPreSleepEventTypesDescription>>
+
+<<single-text-tag-editor>>

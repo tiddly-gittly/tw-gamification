@@ -3,7 +3,7 @@
 import { SourceIterator } from 'tiddlywiki';
 import { DEFAULT_AMOUNT } from './constants';
 import { IGameEventLogCacheItem } from './GamificationEventLogTypes';
-import { BasicGamificationEventTypes, IFilterEventGeneratorDefinitions } from './GamificationEventTypes';
+import { BasicGamificationEventTypes, IFilterEventGeneratorDefinitions, IGamificationEvent } from './GamificationEventTypes';
 
 // eslint-disable-next-line no-var
 declare var exports: {
@@ -55,19 +55,24 @@ exports.startup = function twGamificationFilterEventGeneratorStartupModule() {
         });
       });
       if (generatorWithFilterFunctions.length === 0) return;
-      const { 'game-event-amount': amount, 'game-event-message': message, 'game-event-type': event = BasicGamificationEventTypes.SmallReward, title } = eventGenerator;
+      const { 'game-event-amount': amount, 'game-event-message': message, 'game-event-type': eventType = BasicGamificationEventTypes.SmallReward, 'game-event-id': itemID, title } =
+        eventGenerator;
 
-      events.push(...tiddlerTitleTriggerTheEvent.map(tiddlerTitle => ({
-        event: {
+      events.push(...tiddlerTitleTriggerTheEvent.map((tiddlerTitle): IGameEventLogCacheItem => {
+        const event: IGamificationEvent = {
           timestamp: Date.now(),
-          event,
+          id: itemID!,
+          event: eventType,
           amount: processAmount(amount),
           message: processMessage(message),
-        },
-        tiddlerTitle,
-        generator: title,
-        ...eventGenerator,
-      })));
+        };
+        return ({
+          event,
+          tiddlerTitle,
+          generator: title,
+          ...eventGenerator,
+        });
+      }));
     });
     if (events.length === 0) return;
     $tw.rootWidget.dispatchEvent({

@@ -79,7 +79,7 @@ function getCheckConfig(
 function getEventFromParameterObject(
   parameterObject: IAddGamificationEventParameterObjectFromActionWidget,
 ): IGameEventLogCacheItem {
-  const event = pick(parameterObject, ['amount', 'event', 'message', 'timestamp']);
+  const event = pick(parameterObject, ['amount', 'event', 'message', 'timestamp', 'id']);
   return {
     event,
     generator: parameterObject.generator || 'ActionWidget',

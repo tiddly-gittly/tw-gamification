@@ -5,10 +5,12 @@ import { ITiddlerFields } from 'tiddlywiki';
  * 1. 大型奖励：类似游戏中的钻石、原石、宝石、点券，一般是游戏外充值能获得的现金等价物
  * 1. 小型惩罚：类似游戏中死一次的惩罚，倒扣体力，降低一些NPC好感等
  * 1. 大型惩罚：类似游戏中短暂封号一次的惩罚，中止短时间的生产，角色垂头丧气，抵扣一些消耗品
+ * 1. 物品：类似游戏中的装备、道具、材料、标记物，需要指定一个条目标题，该条目上的字段会作为物品的信息，`caption` 字段作为生成的物品的名字，`icon` 字段作为物品贴图，`text` 字段可以包含动作微件，作为使用物品的触发效果。
  *
  * 事件可以附带一个数量，以及相关的信息文本，如何使用由游戏自行决定。
  */
 export enum BasicGamificationEventTypes {
+  Item = 'Item',
   LargePunishment = 'LargePunishment',
   LargeReward = 'LargeReward',
   SmallPunishment = 'SmallPunishment',
@@ -24,7 +26,16 @@ export interface IGamificationEvent {
   /**
    * Default to `BasicGamificationEventTypes.SmallReward`.
    */
-  event?: BasicGamificationEventTypes;
+  event?:
+    | BasicGamificationEventTypes.LargePunishment
+    | BasicGamificationEventTypes.LargeReward
+    | BasicGamificationEventTypes.SmallPunishment
+    | BasicGamificationEventTypes.SmallReward
+    | BasicGamificationEventTypes.Item;
+  /**
+   * Title of the tiddler that contains the item information.
+   */
+  id: string;
   /**
    * A message that can be used to show to user to motivate them.
    * Can be any wiki text.
@@ -39,7 +50,14 @@ export interface IGamificationEvent {
  * Field start with `game-event` are come from the `IGamificationEvent` interface, by adding a prefix `game-event` to the field name, and concat with `-`.
  */
 export interface IFilterEventGeneratorDefinitions extends ITiddlerFields, IDuplicationStrategy, IFindDuplicateParameters {
+  /**
+   * The amount of the reward, default to 1. `IGamificationEvent['amount']`
+   */
   ['game-event-amount']?: number | string;
+  /**
+   * Title of the tiddler that contains the item information. `IGamificationEvent['id']`
+   */
+  ['game-event-id']?: string;
   ['game-event-message']?: string;
   /**
    * A valid filter expression that can be used to get the tiddler that will trigger the event.

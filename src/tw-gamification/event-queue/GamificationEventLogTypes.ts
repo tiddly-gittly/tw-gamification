@@ -25,17 +25,19 @@ export interface IAddGamificationEventParameterObjectFromActionWidget extends IG
 export type IGameEventLogCacheFile = IGameEventLogCacheItem[];
 export interface IGameEventLogCacheItem {
   event: IGamificationEvent;
-  /**
-   * Title of the event generator tiddler.
-   */
-  generator: string;
-  /**
-   * Can be a simple hash of `event` or a public/private key based signature of `event`, to prevent manual edit of it by user.
-   */
-  signature?: string;
-  /**
-   * Title that triggers the event.
-   * If the event is triggered twice by the same tiddler, then this may be ignored based on `IGeneratorDuplicateStrategy`.
-   */
-  tiddlerTitle: string;
+  meta: {
+    /**
+     * Title of the event generator tiddler.
+     */
+    generator: string;
+    /**
+     * Can be a simple hash of `event` or a public/private key based signature of `event`, to prevent manual edit of it by user.
+     */
+    signature?: string;
+    /**
+     * Title that triggers the event.
+     * If the event is triggered twice by the same tiddler, then this may be ignored based on `IGeneratorDuplicateStrategy`.
+     */
+    tiddlerTitle?: string;
+  };
 }

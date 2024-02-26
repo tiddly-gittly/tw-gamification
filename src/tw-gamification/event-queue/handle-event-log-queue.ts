@@ -41,8 +41,7 @@ exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
       // Add many events at once
       const events = parameterObject.events;
       events.forEach((eventItem) => {
-        const { tiddlerTitle, event, generator } = eventItem;
-        hasModification = checkAndPushAnItemToLogCacheFile({ tiddlerTitle, event, generator }, getCheckConfig(eventItem), { logCache });
+        hasModification = checkAndPushAnItemToLogCacheFile(eventItem, getCheckConfig(eventItem), { logCache });
       });
       logCache.push(...events);
     } else {
@@ -82,8 +81,10 @@ function getEventFromParameterObject(
   const event = pick(parameterObject, ['amount', 'event', 'message', 'timestamp', 'id']);
   return {
     event,
-    generator: parameterObject.generator || 'ActionWidget',
-    tiddlerTitle: parameterObject.tiddlerTitle,
+    meta: {
+      generator: parameterObject.generator || 'ActionWidget',
+      tiddlerTitle: parameterObject.tiddlerTitle,
+    },
   };
 }
 
@@ -120,8 +121,8 @@ function checkAndPushAnItemToLogCacheFile(
         const isDebounced = (now - log.event.timestamp) < debounceTime;
         // DEBUG: console now,
         console.log(`now, log.event.timestamp, debounceTime`, now, log.event.timestamp, now - log.event.timestamp, debounceTime);
-        const sameTiddlerTitle = checkTiddlerTitle && log.tiddlerTitle === newEventLog.tiddlerTitle;
-        const sameGeneratorTitle = checkGeneratorTitle && log.generator === newEventLog.generator;
+        const sameTiddlerTitle = checkTiddlerTitle && log.meta.tiddlerTitle === newEventLog.meta.tiddlerTitle;
+        const sameGeneratorTitle = checkGeneratorTitle && log.meta.generator === newEventLog.meta.generator;
         // DEBUG: console isDebounced
         console.log(`isDebounced, sameTiddlerTitle, sameGeneratorTitle`, isDebounced, sameTiddlerTitle, sameGeneratorTitle);
         if (checkTiddlerTitle && checkGeneratorTitle) {

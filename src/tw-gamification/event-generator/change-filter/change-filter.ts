@@ -2,8 +2,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { SourceIterator } from 'tiddlywiki';
 import { IGameEventLogCacheItem } from '../../event-queue/GamificationEventLogTypes';
-import { DEFAULT_AMOUNT } from '../constants';
-import { BasicGamificationEventTypes, IGamificationEvent } from '../GamificationEventTypes';
+import { buildEventLogQueueItem } from '../buildEventLogQueueItem';
 import { IFilterEventGeneratorDefinitions } from './types';
 
 // eslint-disable-next-line no-var
@@ -46,6 +45,8 @@ exports.startup = function twGamificationFilterEventGeneratorStartupModule() {
     filter: $tw.wiki.compileFilter(definition['game-event-trigger-filter']),
   }));
   $tw.wiki.addEventListener('change', function(changes) {
+    // TODO: debounce and batch process the events
+    // TODO: mark frequently changed and not qualified tiddlers, so that we can skip them to save execution time.
     const events: IGameEventLogCacheItem[] = [];
     generatorWithFilterFunctions.forEach(eventGenerator => {
       // Filter the changes so that we only count changes to tiddlers that we care about
@@ -56,24 +57,7 @@ exports.startup = function twGamificationFilterEventGeneratorStartupModule() {
         });
       });
       if (generatorWithFilterFunctions.length === 0) return;
-      const { 'game-event-amount': amount, 'game-event-message': message, 'game-event-type': eventType = BasicGamificationEventTypes.SmallReward, 'game-event-id': itemID, title } =
-        eventGenerator;
-
-      events.push(...tiddlerTitleTriggerTheEvent.map((tiddlerTitle): IGameEventLogCacheItem => {
-        const event: IGamificationEvent = {
-          timestamp: Date.now(),
-          id: itemID!,
-          event: eventType,
-          amount: processAmount(amount),
-          message: processMessage(message),
-        };
-        return ({
-          event,
-          tiddlerTitle,
-          generator: title,
-          ...eventGenerator,
-        });
-      }));
+      events.push(...tiddlerTitleTriggerTheEvent.map((tiddlerTitle): IGameEventLogCacheItem => buildEventLogQueueItem(eventGenerator, tiddlerTitle)));
     });
     if (events.length === 0) return;
     $tw.rootWidget.dispatchEvent({
@@ -84,26 +68,3 @@ exports.startup = function twGamificationFilterEventGeneratorStartupModule() {
     });
   });
 };
-
-function processAmount(amount: string | number | undefined): number {
-  if (amount === undefined) {
-    return DEFAULT_AMOUNT;
-  }
-  if (typeof amount === 'number' || Number.isFinite(Number(amount))) {
-    return Number(amount);
-  }
-  // try run it as a filter expression, to see if we can get the amount number
-  const amountFilteredResult = $tw.wiki.filterTiddlers(amount)?.[0];
-  if (!amountFilteredResult) {
-    return DEFAULT_AMOUNT;
-  }
-  if (Number.isFinite(Number(amountFilteredResult))) {
-    return Number(amountFilteredResult);
-  }
-  return DEFAULT_AMOUNT;
-}
-
-function processMessage(message: string | undefined): string | undefined {
-  if (!message) return;
-  return $tw.wiki.renderText('text/plain', 'text/vnd.tiddlywiki', message);
-}

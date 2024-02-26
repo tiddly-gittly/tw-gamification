@@ -1,8 +1,8 @@
-title: $:/plugins/linonetwo/ego-store-lite/events/pre-early-sleep
+title: $:/plugins/linonetwo/early-sleep-early-work/events/pre-early-sleep
 tags: $:/Tags/Gamification/filter-event-generator
-game-event-trigger-filter: [!is[system]field:calendarEntry[yes]!is[draft]betweenhour:22,24[]]
+game-event-trigger-filter: [!is[system]!is[draft]tag{$:/plugins/linonetwo/early-sleep-early-work/configs/AllowedPreSleepEventTypes}field:calendarEntry[yes]starthourlatethan{$:/plugins/linonetwo/early-sleep-early-work/configs/PeriodToPrepareSleep/Start}endhourearlythan{$:/plugins/linonetwo/early-sleep-early-work/configs/PeriodToPrepareSleep/End}]
 find-duplicate: debounce
 debounce-duration: 43200
 game-event-amount: 1
-game-event-message: <<translate Event/Message/HappyEarlySleep $:/plugins/linonetwo/ego-store-lite/language/>>
+game-event-message: <<translate Event/Message/HappyEarlySleep $:/plugins/linonetwo/early-sleep-early-work/language/>>
 game-event-type: SmallReward

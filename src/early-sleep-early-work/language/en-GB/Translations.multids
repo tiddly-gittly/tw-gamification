@@ -1,7 +1,6 @@
 title: $:/plugins/linonetwo/early-sleep-early-work/language/en-GB/
 
-Name: Ego Store (lite)
-Description: Default game for tw-gamification, a simple store to buy bonus for yourself, and you are the store keeper.
-ConfigDescription: These settings let you customise the behaviour of early-sleep-early-work plugin.
-GameLoading: Your store is Loading...
+Name: Early Sleep Early Work
+Description: "Early to Bed, Early to Rise" themed event packs to earn rewards for going to bed early and learning to promote sleep before bedtime.
+ConfigDescription: These settings let you customise the behaviour of Early Sleep Early Work plugin.
 Event/Message/HappyEarlySleep: Happy Early Sleep!

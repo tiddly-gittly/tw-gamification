@@ -1,7 +1,12 @@
 title: $:/plugins/linonetwo/early-sleep-early-work/language/zh-Hans/
 
-Name: 自我商店（极速版）
-Description: 「游戏太微」的默认游戏，在一个简单的商店里购买对自己的奖励，而且你自己就是店主
-ConfigDescription: 通过这些设置，您可以自定义「自我商店（极速版）」插件的行为。
-GameLoading: 你的商店加载中……
+Name: 早睡早起
+Description: 以「早点上床早点起床」为主题的事件包，在早睡和睡前学习促眠时获得奖励
+Configs/Description: 通过这些设置，您可以自定义「早睡早起」插件的行为。
 Event/Message/HappyEarlySleep: 早睡快乐！
+Configs/Start: 开始
+Configs/End: 结束
+Configs/PeriodToPrepareSleep: 准备入睡的时间段
+Configs/PeriodToPrepareSleepDescription: 在这段时间内远离电子产品和即时反馈，通过学习消耗剩余的精力，让大脑准备好入睡。
+Configs/AllowedPreSleepEventTypes: 允许睡前做的事件类型
+Configs/AllowedPreSleepEventTypesDescription: 使用日历自动触发奖励时，只有带有这个标签的事件会触发奖励。目前只支持一个标签，填写多个标签不会生效。

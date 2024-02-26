@@ -23,3 +23,9 @@ title: $:/plugins/linonetwo/tw-gamification/language/en-GB/Readme
 # Close the layout and switch back to the default story flow layout
 #* Use the layout switcher button {{$:/core/ui/Buttons/layout}} on the PageControl to switch the layout, can use shortcut key `Ctrl+Shift+L` to open it
 #* Use the shortcut button {{$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/GoToGameLayoutButton}} on the PageControl again, click on it again can switch back and forth between the imessage layout and the The default layout.
+
+!! Developing
+
+See following resources:
+
+* [[DevelopSubPlugin|$:/plugins/linonetwo/tw-gamification/DevelopSubPlugin]]

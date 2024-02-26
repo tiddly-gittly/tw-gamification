@@ -32,7 +32,7 @@ exports.startup = function twGamificationFilterEventGeneratorStartupModule() {
   const allowRunOnBackend = !!$tw.node;
   if (!allowRunOnFrontend && !allowRunOnBackend) return;
 
-  const tagForGenerators = $tw.wiki.getTiddlerText('$:/plugins/linonetwo/tw-gamification/event-generator/filter-event-generator-meta-tag');
+  const tagForGenerators = $tw.wiki.getTiddlerText('$:/plugins/linonetwo/tw-gamification/tags/filter-event-generator-meta-tag');
   if (!tagForGenerators) return;
   const generatorDefinitions = $tw.wiki.getTiddlersWithTag(tagForGenerators).map(tiddlerTitle => {
     const tiddler = $tw.wiki.getTiddler(tiddlerTitle);

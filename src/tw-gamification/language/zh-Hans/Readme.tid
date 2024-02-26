@@ -23,3 +23,9 @@ title: $:/plugins/linonetwo/tw-gamification/language/zh-Hans/Readme
 # 关闭布局，切换回默认卡片流布局
 #* 使用页面工具栏上的布局切换器按钮 {{$:/core/ui/Buttons/layout}} 切换布局，可以使用快捷键 Ctrl+Shift+L 打开它
 #* 再次使用页面工具栏上，本插件增加的快捷按钮 {{$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/GoToGameLayoutButton}} 点击它可以在本插件提供的布局和默认布局之间来回切换
+
+!! 开发
+
+请参阅以下资源：
+
+* [[DevelopSubPlugin|$:/plugins/linonetwo/tw-gamification/DevelopSubPlugin]]

@@ -1,9 +1,9 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { SourceIterator } from 'tiddlywiki';
-import { DEFAULT_AMOUNT } from './constants';
-import { IGameEventLogCacheItem } from './GamificationEventLogTypes';
-import { BasicGamificationEventTypes, IFilterEventGeneratorDefinitions, IGamificationEvent } from './GamificationEventTypes';
+import { IGameEventLogCacheItem } from '../../event-queue/GamificationEventLogTypes';
+import { DEFAULT_AMOUNT } from '../constants';
+import { BasicGamificationEventTypes, IFilterEventGeneratorDefinitions, IGamificationEvent } from '../GamificationEventTypes';
 
 // eslint-disable-next-line no-var
 declare var exports: {

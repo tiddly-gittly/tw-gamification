@@ -6,8 +6,8 @@ Gamification Event Tiddlers are tiddlers tagged with `$:/tags/tw-gamification/Ga
 
 For example,
 
-# [[$:/plugins/linonetwo/tw-gamification/saves/log-cache-file/desktop]]
-# [[$:/plugins/linonetwo/tw-gamification/saves/log-cache-file/mobile]]
+# [[$:/plugins/linonetwo/tw-gamification/event-queue/log-cache-file/desktop]]
+# [[$:/plugins/linonetwo/tw-gamification/event-queue/log-cache-file/mobile]]
 
 The TypeScript types are detailed in `src/tw-gamification/event-generator/GamificationEventTypes.ts` in the Github repo.
 

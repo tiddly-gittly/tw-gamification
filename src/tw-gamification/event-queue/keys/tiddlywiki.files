@@ -5,7 +5,7 @@
       "encoding": "utf8",
       "fields": {
         "type": "text/vnd.tiddlywiki",
-        "title": "$:/plugins/linonetwo/tw-gamification/keys/Readme.tid"
+        "title": "$:/plugins/linonetwo/tw-gamification/event-queue/keys/Readme.tid"
       }
     },
     {
@@ -13,7 +13,7 @@
       "encoding": "utf8",
       "fields": {
         "type": "text/plain",
-        "title": "$:/plugins/linonetwo/tw-gamification/keys/linonetwo-key",
+        "title": "$:/plugins/linonetwo/tw-gamification/event-queue/keys/linonetwo-key",
         "hide-body": "yes"
       }
     },
@@ -22,7 +22,7 @@
       "encoding": "utf8",
       "fields": {
         "type": "text/plain",
-        "title": "$:/plugins/linonetwo/tw-gamification/keys/linonetwo-key.pub",
+        "title": "$:/plugins/linonetwo/tw-gamification/event-queue/keys/linonetwo-key.pub",
         "hide-body": "yes"
       }
     }

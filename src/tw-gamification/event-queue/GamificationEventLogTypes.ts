@@ -1,4 +1,4 @@
-import { IDuplicationStrategy, IFindDuplicateParameters, IGamificationEvent } from './GamificationEventTypes';
+import { IDuplicationStrategy, IFindDuplicateParameters, IGamificationEvent } from '../event-generator/GamificationEventTypes';
 
 export type IAddGamificationEventParameterObject = IAddGamificationEventParameterObjectFromJS | IAddGamificationEventParameterObjectFromActionWidget;
 export type IAddGamificationEventParameterObjectFromJSEventItem = IGameEventLogCacheItem & IDuplicationStrategy & IFindDuplicateParameters;

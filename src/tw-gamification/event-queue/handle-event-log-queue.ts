@@ -3,6 +3,7 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import pick from 'lodash/pick';
+import { IDuplicationStrategy, IFindDuplicateParameters, IGeneratorFindDuplicateStrategy, IGeneratorOnDuplicateStrategy } from '../event-generator/GamificationEventTypes';
 import {
   IAddGamificationEventParameterObject,
   IAddGamificationEventParameterObjectFromActionWidget,
@@ -10,7 +11,6 @@ import {
   IGameEventLogCacheFile,
   IGameEventLogCacheItem,
 } from './GamificationEventLogTypes';
-import { IDuplicationStrategy, IFindDuplicateParameters, IGeneratorFindDuplicateStrategy, IGeneratorOnDuplicateStrategy } from './GamificationEventTypes';
 import { getLogQueueTitle } from './getLogQueueTitle';
 
 // eslint-disable-next-line no-var

@@ -6,7 +6,7 @@
  */
 export function getLogQueueTitle(): string {
   if ($tw.wiki.getTiddlerText('$:/info/mobile') === 'yes') {
-    return '$:/plugins/linonetwo/tw-gamification/saves/log-cache-file/mobile';
+    return '$:/plugins/linonetwo/tw-gamification/event-queue/log-cache-file/mobile';
   }
-  return '$:/plugins/linonetwo/tw-gamification/saves/log-cache-file/desktop';
+  return '$:/plugins/linonetwo/tw-gamification/event-queue/log-cache-file/desktop';
 }

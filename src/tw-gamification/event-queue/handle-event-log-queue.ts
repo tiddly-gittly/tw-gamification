@@ -3,7 +3,7 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import pick from 'lodash/pick';
-import { IDuplicationStrategy, IFindDuplicateParameters, IGeneratorFindDuplicateStrategy, IGeneratorOnDuplicateStrategy } from '../event-generator/GamificationEventTypes';
+import { IDuplicationStrategy, IFindDuplicateParameters, IGeneratorFindDuplicateStrategy, IGeneratorOnDuplicateStrategy } from '../event-generator/DuplicationHandlerTypes';
 import {
   IAddGamificationEventParameterObject,
   IAddGamificationEventParameterObjectFromActionWidget,

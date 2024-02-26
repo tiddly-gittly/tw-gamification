@@ -3,7 +3,8 @@
 import { SourceIterator } from 'tiddlywiki';
 import { IGameEventLogCacheItem } from '../../event-queue/GamificationEventLogTypes';
 import { DEFAULT_AMOUNT } from '../constants';
-import { BasicGamificationEventTypes, IFilterEventGeneratorDefinitions, IGamificationEvent } from '../GamificationEventTypes';
+import { BasicGamificationEventTypes, IGamificationEvent } from '../GamificationEventTypes';
+import { IFilterEventGeneratorDefinitions } from './types';
 
 // eslint-disable-next-line no-var
 declare var exports: {

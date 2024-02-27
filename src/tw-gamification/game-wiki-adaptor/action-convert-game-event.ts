@@ -8,28 +8,38 @@ import { GameWidget } from './GameWidgetType';
  * A default event converter for WikiText based games. Can be used as action widget.
  */
 class ActionConvertGameEvent extends GameWidget {
-  refresh(_changedTiddlers: IChangedTiddlers) {
-    return false;
+  public refresh(changedTiddlers: IChangedTiddlers) {
+    const changedAttributes = this.computeAttributes();
+    if ($tw.utils.count(changedAttributes) > 0) {
+      this.refreshSelf();
+      return true;
+    }
+    return this.refreshChildren(changedTiddlers);
   }
 
   eventTypes: BasicGamificationEventTypes[] | undefined;
 
+  public render(parent: Element, nextSibling: Element) {
+    this.computeAttributes();
+    super.render(parent, nextSibling);
+  }
+
   public execute() {
+    this.eventTypes = this.getAttribute('$eventTypes')?.split?.(' ') as BasicGamificationEventTypes[];
     super.execute();
-    this.eventTypes = this.getAttribute('eventTypes')?.split?.(' ') as BasicGamificationEventTypes[];
   }
 
   public invokeAction(_triggeringWidget: Widget, _event: IWidgetEvent): boolean | undefined {
-    // this method is called when triggered by a parrent button widget
-    // ask provider to pop events and send to this widget's `setGamificationEvents` method
+    // this method is called when triggered by a parent button widget
+    // ask provider to pop events and send to this widget's `setGamificationEvents` method, then call `invokeActions` to invoke child action widgets later.
     this.popGamificationEvents(this.eventTypes);
     return true; // Action was invoked
   }
 
   public setGamificationEvents(gamificationEventsJSON: IGamificationEvent[]) {
     // this method is called by provider when events are popped, and only events type that is in `eventTypes` will be sent here.
-    // TODO: serialize the array to the format that can be used by filter expression
     this.setVariable('gameEvents', JSON.stringify(gamificationEventsJSON));
+    // this can only trigger direct descendants, so anything needs to calculate or filtered need to be done in inline filter expression in transclusion. (But can create custom filter operators to simplify this.)
     const handled = this.invokeActions(this, null);
     return handled;
   }

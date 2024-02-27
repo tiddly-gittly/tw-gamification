@@ -6,11 +6,12 @@ title: language/zh-Hans/examples/convertEvents
   点击接收 <<count-gamification-reward>> 份奖励
 
   <$let experienceSaveFile="$:/state/yourplugin/experience">
-    <$action-convert-game-event>
-      <$list filter="[<gameEvents>]:filter[jsonget[event],[type]compare:eq[SmallReward]]">
-        <$log />
-        <$action-createtiddler $basetitle=<<experienceSaveFile>> $overwrite="yes" text={{{ [<experienceSaveFile>get[text]else[0]] [1] +[sum[]] }}} />
-      </$list>
+    <$action-convert-game-event $eventTypes="SmallReward">
+      <$action-createtiddler
+        $basetitle=<<experienceSaveFile>>
+        $overwrite="yes"
+        text={{{ [<gameEvents>enlistJsonFilterTypeGetEvents[SmallReward]jsonget[amount]] +[sum[]] [<experienceSaveFile>get[text]else[0]] +[sum[]] }}}
+      />
     </$action-convert-game-event>
   </$let>
 

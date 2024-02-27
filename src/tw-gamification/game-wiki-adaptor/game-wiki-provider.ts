@@ -1,5 +1,5 @@
 import { widget as Widget } from '$:/core/modules/widgets/widget.js';
-import { IChangedTiddlers, IParseTreeNode, IWidgetEvent, IWidgetInitialiseOptions, Tiddler } from 'tiddlywiki';
+import { IParseTreeNode, IWidgetEvent, IWidgetInitialiseOptions, Tiddler } from 'tiddlywiki';
 import { BasicGamificationEventTypes, IGamificationEvent } from '../event-generator/GamificationEventTypes';
 import { isGameWidget } from './GameWidgetType';
 
@@ -15,14 +15,6 @@ class GameWikiProvider extends Widget {
     super(parseTreeNode, options);
     this.addEventListener('pop-gamification-events', this.popEventsAndSendToGameWidget.bind(this));
     window.twGamificationSaveGameData = this.saveGameData.bind(this);
-  }
-
-  refresh(changedTiddlers: IChangedTiddlers) {
-    // only refresh if `tw-gamification` related state changes. See [[GameWikiProvider]] on wiki.
-    if (Object.keys(changedTiddlers).some(title => title.startsWith('$:/state/tw-gamification'))) {
-      return this.refreshChildren(changedTiddlers);
-    }
-    return false;
   }
 
   render(parent: Element, nextSibling: Element) {
@@ -41,7 +33,7 @@ class GameWikiProvider extends Widget {
     if (!isGameWidget(event.widget)) {
       return false;
     }
-    // if `eventTypes` is undefined, do nothing, otherwise this will use as a filter. Game developer must declare the event types they want to receive.
+    // if `eventTypes` is undefined, do nothing, otherwise this will use as a filter. Game developer must declare the event types they want to receive. So when a new type is added, there won't be reward lost when a developer don't handle the new event.
     const eventTypes = event.eventTypes as BasicGamificationEventTypes[] | undefined;
     if (eventTypes === undefined) {
       return false;
@@ -68,7 +60,7 @@ class GameWikiProvider extends Widget {
           return { title, list: list.filter(item => !eventTypes.includes(item.type ?? BasicGamificationEventTypes.SmallReward)) };
         });
         unusedGamificationEventsJSONs.forEach(({ title, list }) => {
-          $tw.wiki.addTiddler({ title, text: JSON.stringify(list) });
+          $tw.wiki.addTiddler({ title, text: JSON.stringify(list), tags: ['$:/tags/tw-gamification/GamificationEvent'] });
           // TODO: save log archive JSON by generator, so we can easily create statistic chart for each event
         });
       }

@@ -48,7 +48,7 @@ exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
     }
     // if no change, then no need to update the tiddler. Note that update tiddler may trigger 'change' event, which may cause infinite loop if not handle properly.
     if (!hasModification) return false;
-    $tw.wiki.addTiddler({ title: logQueueTitle, text: JSON.stringify(logCache) });
+    $tw.wiki.addTiddler({ title: logQueueTitle, text: JSON.stringify(logCache), tags: ['$:/tags/tw-gamification/GamificationEvent'] });
     return false;
   });
 };
@@ -163,7 +163,5 @@ function checkAndPushAnItemToLogCacheFile(
       break;
     }
   }
-  // DEBUG: console hasModification
-  console.log(`hasModification, hasDuplicate`, hasModification, hasDuplicate);
   return hasModification;
 }

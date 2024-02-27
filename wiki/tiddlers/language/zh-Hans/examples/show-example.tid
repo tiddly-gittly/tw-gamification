@@ -1,7 +1,7 @@
-title: $:/plugins/linonetwo/tw-gamification/language/zh-Hans/examples/show-example
+title: language/zh-Hans/examples/show-example
 
 \define show-example(name)
-<$let title={{{ [[$:/plugins/linonetwo/tw-gamification/language/zh-Hans/examples/]addsuffix<__name__>] }}}>
+<$let title={{{ [[language/zh-Hans/examples/]addsuffix<__name__>] }}}>
 
 例如：
 

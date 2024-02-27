@@ -10,7 +10,7 @@ declare global {
   }
 }
 
-class GameWikiAdaptor extends Widget {
+class GameWikiProvider extends Widget {
   constructor(parseTreeNode: IParseTreeNode, options?: IWidgetInitialiseOptions) {
     super(parseTreeNode, options);
     this.addEventListener('pop-gamification-events', this.popEventsAndSendToGameWidget.bind(this));
@@ -18,7 +18,7 @@ class GameWikiAdaptor extends Widget {
   }
 
   refresh(changedTiddlers: IChangedTiddlers) {
-    // only refresh if `tw-gamification` related state changes. See [[GameWikiAdaptor]] on wiki.
+    // only refresh if `tw-gamification` related state changes. See [[GameWikiProvider]] on wiki.
     if (Object.keys(changedTiddlers).some(title => title.startsWith('$:/state/tw-gamification'))) {
       return this.refreshChildren(changedTiddlers);
     }
@@ -27,7 +27,7 @@ class GameWikiAdaptor extends Widget {
 
   render(parent: Element, nextSibling: Element) {
     const containerElement = $tw.utils.domMaker('div', {
-      class: 'game-wiki-adaptor',
+      class: 'game-wiki-provider',
     });
     nextSibling === null ? parent.append(containerElement) : nextSibling.before(containerElement);
     this.domNodes.push(containerElement);
@@ -67,6 +67,6 @@ class GameWikiAdaptor extends Widget {
 }
 
 declare let exports: {
-  GameWikiAdaptor: typeof GameWikiAdaptor;
+  GameWikiProvider: typeof GameWikiProvider;
 };
-exports.GameWikiAdaptor = GameWikiAdaptor;
+exports.GameWikiProvider = GameWikiProvider;

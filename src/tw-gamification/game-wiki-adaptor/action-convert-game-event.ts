@@ -1,4 +1,4 @@
-import { IChangedTiddlers } from 'tiddlywiki';
+import { IChangedTiddlers, IWidgetEvent, Widget } from 'tiddlywiki';
 
 import { IGamificationEvent } from '../event-generator/GamificationEventTypes';
 import { GameWidget } from './GameWidgetType';
@@ -10,13 +10,7 @@ class ActionConvertGameEvent extends GameWidget {
   gameInitialized = false;
 
   refresh(_changedTiddlers: IChangedTiddlers) {
-    // noting should trigger game refresh (reloading), because it is self-contained. Game state change is triggered by calling method on wasm.
     return false;
-  }
-
-  render(parent: Element, nextSibling: Element) {
-    this.parentDomNode = parent;
-    this.execute();
   }
 
   public setGamificationEvents(gamificationEventsJSON: IGamificationEvent[]) {
@@ -24,6 +18,16 @@ class ActionConvertGameEvent extends GameWidget {
       // TODO: store gamification events in a tiddler, and push them to game when game is initialized
       throw new Error('Game is not initialized yet!');
     }
+  }
+
+  public invokeAction(triggeringWidget: Widget, event: IWidgetEvent): boolean | undefined {
+    // this method is called when triggered by a parrent button widget
+    // ask 
+    this.popGamificationEvents();
+    this.setVariable('createTiddler-title', title);
+    this.setVariable('createTiddler-draftTitle', draftTitle);
+    this.refreshChildren();
+    return true; // Action was invoked
   }
 }
 

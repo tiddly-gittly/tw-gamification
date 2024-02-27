@@ -8,7 +8,7 @@ title: language/zh-Hans/Index
 
 !! 开发
 
-首先查看本框架的 [[Dataflow]] 。
+首先查看本框架的[[数据流|Dataflow]]，然后阅读[[开发子插件|DevelopSubPlugin]]
 
 在 Github 上点星和关注！[[tiddly-gittly/tw-gamification|https://github.com/tiddly-gittly/tw-gamification]]
 

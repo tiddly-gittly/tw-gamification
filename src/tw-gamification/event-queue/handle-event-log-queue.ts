@@ -43,13 +43,12 @@ exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
       events.forEach((eventItem) => {
         hasModification = checkAndPushAnItemToLogCacheFile(eventItem, getCheckConfig(eventItem), { logCache });
       });
-      logCache.push(...events);
     } else {
       hasModification = checkAndPushAnItemToLogCacheFile(getEventFromParameterObject(parameterObject), getCheckConfig(parameterObject), { logCache });
     }
     // if no change, then no need to update the tiddler. Note that update tiddler may trigger 'change' event, which may cause infinite loop if not handle properly.
     if (!hasModification) return false;
-    $tw.wiki.addTiddler({ title: logQueueTitle, text: JSON.stringify(logCache) });
+    $tw.wiki.addTiddler({ title: logQueueTitle, text: JSON.stringify(logCache), tags: ['$:/tags/tw-gamification/GamificationEvent'] });
     return false;
   });
 };
@@ -78,7 +77,7 @@ function getCheckConfig(
 function getEventFromParameterObject(
   parameterObject: IAddGamificationEventParameterObjectFromActionWidget,
 ): IGameEventLogCacheItem {
-  const event = pick(parameterObject, ['amount', 'event', 'message', 'timestamp', 'item']);
+  const event = pick(parameterObject, ['amount', 'type', 'message', 'timestamp', 'item']);
   return {
     event,
     meta: {

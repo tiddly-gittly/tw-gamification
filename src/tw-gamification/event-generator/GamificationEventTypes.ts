@@ -12,6 +12,7 @@ export enum BasicGamificationEventTypes {
   LargePunishment = 'LargePunishment',
   LargeReward = 'LargeReward',
   SmallPunishment = 'SmallPunishment',
+  /** Default to `BasicGamificationEventTypes.SmallReward` */
   SmallReward = 'SmallReward',
 }
 
@@ -21,15 +22,6 @@ export interface IGamificationEvent {
    * If is not a number, can be a filter string that can be used to get the amount.
    */
   amount?: number | string;
-  /**
-   * Default to `BasicGamificationEventTypes.SmallReward`.
-   */
-  event?:
-    | BasicGamificationEventTypes.LargePunishment
-    | BasicGamificationEventTypes.LargeReward
-    | BasicGamificationEventTypes.SmallPunishment
-    | BasicGamificationEventTypes.SmallReward
-    | BasicGamificationEventTypes.Item;
   /**
    * Title of the tiddler that contains the item information.
    * Only used when event is `BasicGamificationEventTypes.Item`
@@ -41,4 +33,13 @@ export interface IGamificationEvent {
    */
   message?: string;
   timestamp: number;
+  /**
+   * Default to `BasicGamificationEventTypes.SmallReward`.
+   */
+  type?:
+    | BasicGamificationEventTypes.LargePunishment
+    | BasicGamificationEventTypes.LargeReward
+    | BasicGamificationEventTypes.SmallPunishment
+    | BasicGamificationEventTypes.SmallReward
+    | BasicGamificationEventTypes.Item;
 }

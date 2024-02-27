@@ -1,0 +1,17 @@
+title: language/zh-Hans/examples/show-example
+
+\define show-example(name)
+<$let title={{{ [[language/zh-Hans/examples/]addsuffix<__name__>] }}}>
+
+例如：
+
+<$macrocall $name="copy-to-clipboard-above-right" src=<<__src__>>/>
+
+<$codeblock code={{{ [<title>get[text]] }}}/>
+
+渲染效果：
+
+<$transclude tiddler=<<title>> mode="block"/>
+
+</$let>
+\end

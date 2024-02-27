@@ -2,8 +2,8 @@ title: $:/plugins/linonetwo/tw-gamification/PageLayout/GameStory
 
 \whitespace trim
 
-<$GameWikiAdaptor>
+<$GameWikiProvider>
 
   <$transclude $variable={{$:/plugins/linonetwo/tw-gamification/configs/DefaultGame}} />
 
-</$GameWikiAdaptor>
+</$GameWikiProvider>

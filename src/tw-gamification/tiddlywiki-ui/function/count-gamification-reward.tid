@@ -1,0 +1,7 @@
+title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/functions/count-gamification-reward
+tags: $:/tags/Global
+
+<!-- Show how many rewards are there in the event log cache -->
+\function count-gamification-reward()
+[{$:/plugins/linonetwo/tw-gamification/event-queue/log-cache-file/desktop}jsonget[length]] [{$:/plugins/linonetwo/tw-gamification/event-queue/log-cache-file/mobile}jsonget[length]] +[sum[]]
+\end

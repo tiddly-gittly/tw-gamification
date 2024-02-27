@@ -10,7 +10,7 @@ export function buildEventLogQueueItem(eventGenerator: EventGeneratorDefinitions
   const event: IGamificationEvent = {
     timestamp: Date.now(),
     item: itemID,
-    event: eventType,
+    type: eventType,
     amount: processAmount(amount),
     message: processMessage(message),
   };

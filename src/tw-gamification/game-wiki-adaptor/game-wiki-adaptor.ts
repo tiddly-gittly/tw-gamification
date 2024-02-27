@@ -52,8 +52,10 @@ class GameWikiAdaptor extends Widget {
     // clean up event queue
     gamificationEventTiddlerTitles.forEach(title => {
       $tw.wiki.deleteTiddler(title);
+      // TODO: save log archive JSON by generator, so we can easily create statistic chart for each event
     });
     // send data to the game
+    // TODO: send to pure wikitext games
     void event.widget.setGamificationEvents(gamificationEventsJSON);
     return false;
   }

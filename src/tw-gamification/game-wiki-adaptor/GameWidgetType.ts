@@ -4,8 +4,8 @@ import { IGamificationEvent } from '../event-generator/GamificationEventTypes';
 export abstract class GameWidget extends Widget {
   public readonly isGameWidget = true;
   /**
-   * Get game event that needs to be consumed by the game.
-   * You should transform these events to in-game events and send them to the game.
+   * Callback method. You will get game event that needs to be consumed by the game from param.
+   * You should implement this method, and transform received events to in-game events and send them to the game.
    */
   public abstract setGamificationEvents(gamificationEventsJSON: IGamificationEvent[]): void | Promise<void>;
   /**

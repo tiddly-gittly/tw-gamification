@@ -1,0 +1,20 @@
+title: $:/plugins/linonetwo/tw-gamification/language/zh-Hans/examples/convertEvents
+
+<$GameWikiAdaptor>
+  (其它游戏界面)
+
+  <$button>
+    点击接收 <<count-gamification-reward>> 份奖励
+
+    <$let experienceSaveFile="$:/state/yourplugin/experience">
+      <$action-convert-game-event>
+        <$list filter="[<gameEvents>]:filter[jsonget[event],[type]compare:eq[SmallReward]]">
+          <$log />
+          <$action-createtiddler $basetitle=<<experienceSaveFile>> $overwrite="yes" text={{{ [<experienceSaveFile>get[text]else[0]] [1] +[sum[]] }}} />
+        </$list>
+      </$action-convert-game-event>
+    </$let>
+
+  </$button>
+
+</$GameWikiAdaptor>

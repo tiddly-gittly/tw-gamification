@@ -21,5 +21,6 @@ export function processAmount(amount: string | number | undefined): number {
 
 export function processMessage(message: string | undefined): string | undefined {
   if (!message) return;
+  // FIXME: can't get translate variable here
   return $tw.wiki.renderText('text/plain', 'text/vnd.tiddlywiki', message);
 }

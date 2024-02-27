@@ -22,15 +22,6 @@ export interface IGamificationEvent {
    */
   amount?: number | string;
   /**
-   * Default to `BasicGamificationEventTypes.SmallReward`.
-   */
-  event?:
-    | BasicGamificationEventTypes.LargePunishment
-    | BasicGamificationEventTypes.LargeReward
-    | BasicGamificationEventTypes.SmallPunishment
-    | BasicGamificationEventTypes.SmallReward
-    | BasicGamificationEventTypes.Item;
-  /**
    * Title of the tiddler that contains the item information.
    * Only used when event is `BasicGamificationEventTypes.Item`
    */
@@ -41,4 +32,13 @@ export interface IGamificationEvent {
    */
   message?: string;
   timestamp: number;
+  /**
+   * Default to `BasicGamificationEventTypes.SmallReward`.
+   */
+  type?:
+    | BasicGamificationEventTypes.LargePunishment
+    | BasicGamificationEventTypes.LargeReward
+    | BasicGamificationEventTypes.SmallPunishment
+    | BasicGamificationEventTypes.SmallReward
+    | BasicGamificationEventTypes.Item;
 }

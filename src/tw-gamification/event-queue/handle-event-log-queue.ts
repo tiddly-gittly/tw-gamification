@@ -43,7 +43,6 @@ exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
       events.forEach((eventItem) => {
         hasModification = checkAndPushAnItemToLogCacheFile(eventItem, getCheckConfig(eventItem), { logCache });
       });
-      logCache.push(...events);
     } else {
       hasModification = checkAndPushAnItemToLogCacheFile(getEventFromParameterObject(parameterObject), getCheckConfig(parameterObject), { logCache });
     }
@@ -78,7 +77,7 @@ function getCheckConfig(
 function getEventFromParameterObject(
   parameterObject: IAddGamificationEventParameterObjectFromActionWidget,
 ): IGameEventLogCacheItem {
-  const event = pick(parameterObject, ['amount', 'event', 'message', 'timestamp', 'item']);
+  const event = pick(parameterObject, ['amount', 'type', 'message', 'timestamp', 'item']);
   return {
     event,
     meta: {
@@ -164,5 +163,7 @@ function checkAndPushAnItemToLogCacheFile(
       break;
     }
   }
+  // DEBUG: console hasModification
+  console.log(`hasModification, hasDuplicate`, hasModification, hasDuplicate);
   return hasModification;
 }

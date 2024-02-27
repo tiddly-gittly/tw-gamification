@@ -12,6 +12,7 @@ export enum BasicGamificationEventTypes {
   LargePunishment = 'LargePunishment',
   LargeReward = 'LargeReward',
   SmallPunishment = 'SmallPunishment',
+  /** Default to `BasicGamificationEventTypes.SmallReward` */
   SmallReward = 'SmallReward',
 }
 

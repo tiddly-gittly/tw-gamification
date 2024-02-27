@@ -32,7 +32,9 @@ title: language/zh-Hans/DevelopSubPlugin
 
 首先，用一个按钮触发 `<$action-convert-game-event/>` 微件，声明你要处理哪些事件，然后在其内部用筛选器选中你想处理的事件类型，将奖励事件转换为游戏内奖励。注意如果你只声明了你要处理，但是没有正确做转换，那么玩家的奖励事件将会平白丢失。
 
-<<show-example convertEvents>>
+<$GameWikiProvider>
+  <<show-example convertEvents>>
+</$GameWikiProvider>
 
 本框架已经用 `<$GameWikiProvider></$GameWikiProvider>` 微件包围你的游戏内容，它将接受 `<$action-convert-game-event/>` 微件触发的 `pop-gamification-events` 事件，然后将待处理的奖励事件传回给 `<$action-convert-game-event/>` 微件。此后就像例子里的那样，由它内部的其它动作微件，生成你指定的游戏内奖励。
 

@@ -1,6 +1,6 @@
 import { widget as Widget } from '$:/core/modules/widgets/widget.js';
 import { IChangedTiddlers, IParseTreeNode, IWidgetEvent, IWidgetInitialiseOptions, Tiddler } from 'tiddlywiki';
-import { IGamificationEvent } from '../event-generator/GamificationEventTypes';
+import { BasicGamificationEventTypes, IGamificationEvent } from '../event-generator/GamificationEventTypes';
 import { isGameWidget } from './GameWidgetType';
 
 declare global {
@@ -34,30 +34,46 @@ class GameWikiProvider extends Widget {
     super.render(containerElement, nextSibling);
   }
 
-  private popEventsAndSendToGameWidget(event: IWidgetEvent) {
+  /**
+   * @returns handled
+   */
+  private popEventsAndSendToGameWidget(event: IWidgetEvent): boolean {
     if (!isGameWidget(event.widget)) {
-      return true;
+      return false;
+    }
+    // if `eventTypes` is undefined, do nothing, otherwise this will use as a filter. Game developer must declare the event types they want to receive.
+    const eventTypes = event.eventTypes as BasicGamificationEventTypes[] | undefined;
+    if (eventTypes === undefined) {
+      return false;
     }
     const gamificationEventTiddlerTitles = $tw.wiki.getTiddlersWithTag('$:/tags/tw-gamification/GamificationEvent');
-    const gamificationEventsJSON = gamificationEventTiddlerTitles
+    const gamificationEventsJSONs = gamificationEventTiddlerTitles
       .map(title => $tw.wiki.getTiddler(title))
       .filter((tiddler): tiddler is Tiddler => tiddler !== undefined)
-      .flatMap(tiddler => {
+      .map(tiddler => {
         try {
-          return JSON.parse(tiddler.fields.text) as IGamificationEvent[];
+          return { title: tiddler.fields.title, list: JSON.parse(tiddler.fields.text) as IGamificationEvent[] };
         } catch {
-          return [] as IGamificationEvent[];
+          return { title: tiddler.fields.title, list: [] as IGamificationEvent[] };
         }
       });
-    // clean up event queue
-    gamificationEventTiddlerTitles.forEach(title => {
-      $tw.wiki.deleteTiddler(title);
-      // TODO: save log archive JSON by generator, so we can easily create statistic chart for each event
-    });
+    const gamificationEventsJSON = gamificationEventsJSONs.flatMap(({ list }) => list).filter(item => eventTypes.includes(item.type ?? BasicGamificationEventTypes.SmallReward));
     // send data to the game
-    // TODO: send to pure wikitext games
-    void event.widget.setGamificationEvents(gamificationEventsJSON);
-    return false;
+    let handledPromise = event.widget.setGamificationEvents(gamificationEventsJSON);
+    handledPromise = handledPromise instanceof Promise ? handledPromise : Promise.resolve(handledPromise);
+    void handledPromise.then(handled => {
+      if (handled) {
+        // Get rid used event from event queue
+        const unusedGamificationEventsJSONs = gamificationEventsJSONs.map(({ title, list }) => {
+          return { title, list: list.filter(item => !eventTypes.includes(item.type ?? BasicGamificationEventTypes.SmallReward)) };
+        });
+        unusedGamificationEventsJSONs.forEach(({ title, list }) => {
+          $tw.wiki.addTiddler({ title, text: JSON.stringify(list) });
+          // TODO: save log archive JSON by generator, so we can easily create statistic chart for each event
+        });
+      }
+    });
+    return true;
   }
 
   private saveGameData(data: string) {

@@ -1,8 +1,8 @@
-title: $:/plugins/linonetwo/tw-gamification/config
+title: $:/plugins/linonetwo/ego-store-lite/config
 tags: $:/tags/ControlPanel/SettingsTab
-caption: <<translate "Name" "$:/plugins/linonetwo/tw-gamification/language/" mode:"inline">>
+caption: <<translate "Name" "$:/plugins/linonetwo/ego-store-lite/language/" mode:"inline">>
 
-\define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
+\define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
 
 <<translate "ConfigDescription">>
 
@@ -11,7 +11,7 @@ caption: <<translate "Name" "$:/plugins/linonetwo/tw-gamification/language/" mod
 !! <<translate "PluginConfigs" mode:"inline">>
 
 ;<<translate "ConfigDescription/DefaultGame" mode:"inline">>
-:<$select tiddler='$:/plugins/linonetwo/tw-gamification/configs/DefaultGame'>
+:<$select tiddler='$:/plugins/linonetwo/ego-store-lite/configs/DefaultGame'>
 	<$list filter='[all[tiddlers+shadows]tag[$:/tags/linonetwo/tw-gamification/Game]]'>
 		<option value={{!!text}}>{{!!caption}}</option>
 	</$list>
@@ -19,4 +19,4 @@ caption: <<translate "Name" "$:/plugins/linonetwo/tw-gamification/language/" mod
 
 !! <<translate "DefaultEventGeneratorConfigs" mode:"inline">>
 
-{{$:/plugins/linonetwo/tw-gamification/ControlPanel/ConfigForDefaultEventGenerator}}
+{{$:/plugins/linonetwo/ego-store-lite/ControlPanel/ConfigForDefaultEventGenerator}}

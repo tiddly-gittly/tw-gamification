@@ -1,0 +1,75 @@
+.ego-store-lite-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 100%;
+  height: 100%; 
+}
+
+.ego-store-lite-action-list {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.ego-store-lite-action-list-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.ego-store-lite-action-list-item-icon {
+  /* Add icon styles */
+}
+
+.ego-store-lite-action-list-item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ego-store-lite-action-list-item-title {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.ego-store-lite-action-list-item-reward {
+  font-size: 0.9em;
+  color: green;
+}
+
+.ego-store-lite-action-list-item-edit {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  /* Add edit button styles */
+}
+
+.ego-store-lite-action-list-tooltip {
+  display: none;
+  position: absolute;
+  /* Add tooltip styles */
+}
+
+/* Hover state for tooltip */
+.ego-store-lite-action-list-item:hover .ego-store-lite-action-list-tooltip {
+  display: block;
+}
+
+/* Responsive styles */
+@media (max-width: 450px) {
+  .ego-store-lite-action-list-container {
+      flex-direction: column;
+  }
+
+  .ego-store-lite-action-list-item {
+      flex-direction: column;
+  }
+
+  .ego-store-lite-action-list-item-info {
+      align-items: center;
+      text-align: center;
+  }
+}

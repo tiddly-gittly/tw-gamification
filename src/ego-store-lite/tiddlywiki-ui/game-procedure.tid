@@ -1,0 +1,9 @@
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/game-procedure
+tags: $:/tags/Global
+
+\whitespace trim
+\procedure EgoStoreLite()
+
+{{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list}}
+
+\end

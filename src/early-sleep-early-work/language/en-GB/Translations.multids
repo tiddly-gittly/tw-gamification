@@ -3,8 +3,8 @@ title: $:/plugins/linonetwo/early-sleep-early-work/language/en-GB/
 Name: Early Sleep Early Work
 Description: "Early to Bed, Early to Rise" themed event packs to earn rewards for going to bed early and learning to promote sleep before bedtime.
 Configs/Description: These settings let you customise the behaviour of Early Sleep Early Work plugin.
-Event/Message/HappyEarlySleep: Happy Early Sleep!
-Event/Description/EarlySleep: Clock in early to sleep
+Event/EarlySleep/Message: Happy Early Sleep!
+Event/EarlySleep/Description: Clock in early to sleep
 Configs/Start: Start
 Configs/End: End
 Configs/EndDescription: Use 24 for 0:00 AM, otherwise it's business as usual.

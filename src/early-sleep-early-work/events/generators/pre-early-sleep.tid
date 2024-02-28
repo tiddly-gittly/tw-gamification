@@ -4,5 +4,5 @@ game-event-trigger-filter: [!is[system]!is[draft]tag{$:/plugins/linonetwo/early-
 find-duplicate: debounce
 debounce-duration: 43200
 game-event-amount: 1
-game-event-message: <<translate Event/Message/HappyEarlySleep $:/plugins/linonetwo/early-sleep-early-work/language/>>
+game-event-message: <<translate Event/EarlySleep/Message $:/plugins/linonetwo/early-sleep-early-work/language/>>
 game-event-type: SmallReward

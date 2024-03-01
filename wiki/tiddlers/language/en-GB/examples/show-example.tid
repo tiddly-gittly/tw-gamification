@@ -1,0 +1,17 @@
+title: language/en-GB/examples/show-example
+
+\define show-example(name)
+<$let title={{{ [[language/en-GB/examples/]addsuffix<__name__>] }}}>
+
+For example,
+
+<$macrocall $name="copy-to-clipboard-above-right" src=<<__src__>>/>
+
+<$codeblock code={{{ [<title>get[text]] }}}/>
+
+Rendered as:
+
+<$transclude tiddler=<<title>> mode="block"/>
+
+</$let>
+\end

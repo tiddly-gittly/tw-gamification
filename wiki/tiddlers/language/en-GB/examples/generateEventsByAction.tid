@@ -1,0 +1,9 @@
+title: language/en-GB/examples/generateEventsByAction
+
+<$button>
+  <$action-sendmessage
+    $message="tm-gamification-event-action"
+    $param="$:/plugins/linonetwo/early-sleep-early-work/events/actions/early-sleep"
+  />
+  Broken brass, click and give.
+</$button>

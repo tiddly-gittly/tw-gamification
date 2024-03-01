@@ -2,7 +2,7 @@ title: language/zh-Hans/GamificationEvents
 
 !! 游戏化事件数据
 
-「游戏化事件数据条目」即加了 `$:/tags/tw-gamification/GamificationEvent` 标签的条目，在里面用 JSON 列表的形式保存了类型为[[待用事件的类型|TypesOfGamificationEvents]]的事件数据。
+「游戏化事件数据条目」即加了 {{$:/plugins/linonetwo/tw-gamification/tags/cache-log-meta-tag}} 标签的条目，在里面用 JSON 列表的形式保存了类型为[[待用事件的类型|TypesOfGamificationEvents]]的事件数据。
 
 例如：
 

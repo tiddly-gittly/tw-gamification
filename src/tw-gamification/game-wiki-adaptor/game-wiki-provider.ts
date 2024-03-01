@@ -44,9 +44,9 @@ class GameWikiProvider extends Widget {
       .filter((tiddler): tiddler is Tiddler => tiddler !== undefined)
       .map(tiddler => {
         try {
-          return { title: tiddler.fields.title, list: JSON.parse(tiddler.fields.text) as IGamificationEvent[] };
+          return { fields: tiddler.fields, list: JSON.parse(tiddler.fields.text) as IGamificationEvent[] };
         } catch {
-          return { title: tiddler.fields.title, list: [] as IGamificationEvent[] };
+          return { fields: tiddler.fields, list: [] as IGamificationEvent[] };
         }
       });
     const gamificationEventsJSON = gamificationEventsJSONs.flatMap(({ list }) => list).filter(item => eventTypes.includes(item.type ?? BasicGamificationEventTypes.SmallReward));
@@ -56,11 +56,11 @@ class GameWikiProvider extends Widget {
     void handledPromise.then(handled => {
       if (handled) {
         // Get rid used event from event queue
-        const unusedGamificationEventsJSONs = gamificationEventsJSONs.map(({ title, list }) => {
-          return { title, list: list.filter(item => !eventTypes.includes(item.type ?? BasicGamificationEventTypes.SmallReward)) };
+        const unusedGamificationEventsJSONs = gamificationEventsJSONs.map(({ fields, list }) => {
+          return { fields, list: list.filter(item => !eventTypes.includes(item.type ?? BasicGamificationEventTypes.SmallReward)) };
         });
-        unusedGamificationEventsJSONs.forEach(({ title, list }) => {
-          $tw.wiki.addTiddler({ title, text: JSON.stringify(list), tags: ['$:/tags/tw-gamification/GamificationEvent'] });
+        unusedGamificationEventsJSONs.forEach(({ fields, list }) => {
+          $tw.wiki.addTiddler({ ...fields, text: JSON.stringify(list) });
           // TODO: save log archive JSON by generator, so we can easily create statistic chart for each event
         });
       }

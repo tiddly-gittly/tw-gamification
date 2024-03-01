@@ -2,7 +2,7 @@ title: language/en-GB/GamificationEvents
 
 !!! Gamification Event Data
 
-Gamification Event Tiddlers are tiddlers tagged with `$:/tags/tw-gamification/GamificationEvent`, they store Event data of type [[TypesOfGamificationEvents]] as JSON lists.
+Gamification Event Tiddlers are tiddlers tagged with {{$:/plugins/linonetwo/tw-gamification/tags/cache-log-meta-tag}}, they store Event data of type [[TypesOfGamificationEvents]] as JSON lists.
 
 For example,
 

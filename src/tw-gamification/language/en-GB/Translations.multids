@@ -5,6 +5,8 @@ Description: Gameify all wiki activities. Earn exp and gold from completing TODO
 PluginConfigs: Plugin Configs
 ConfigDescription: These settings let you customise the behaviour of TW Gamification plugin.
 SubPluginConfigs: Sub-Plugin Configs
+SubPluginsList: Sub-Plugins List
+Open: Open
 LanguageSwitcher: <$button set="$:/language" setTo="$:/languages/zh-Hans" style="">🇨🇳 切换至中文</$button>
 GoToGameLayoutButton/Description: Enter Game Layout
 ConfigDescription/DefaultGame: Default Game

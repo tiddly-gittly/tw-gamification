@@ -5,6 +5,8 @@ Description: 游戏化你在知识库里的所有操作。通过完成待办事�
 PluginConfigs: 插件设置
 ConfigDescription: 通过这些设置，您可以自定义「游戏太微」插件的行为。
 SubPluginConfigs: 子插件设置
+SubPluginsList: 子插件列表
+Open: 打开
 LanguageSwitcher: <$button set="$:/language" setTo="$:/languages/en-GB" style="">🇬🇧 Switch to English</$button>
 GoToGameLayoutButton/Description: 进入游戏布局
 ConfigDescription/DefaultGame: 默认游戏

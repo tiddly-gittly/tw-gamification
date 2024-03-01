@@ -28,17 +28,13 @@ exports.synchronous = true;
 let eventsToSend: IGameEventLogCacheItem[] = [];
 
 exports.startup = function twGamificationActionStartupModule() {
-  const runOnMobile = $tw.wiki.getTiddlerText('$:/info/mobile');
-  // TODO: need to check for HTML env on desktop like TiddlywikiDesktop. But need to know it is nodejs based on browser, which currently is not possible.
-  const allowRunOnFrontend = $tw.browser && runOnMobile;
-  const allowRunOnBackend = !!$tw.node;
-  if (!allowRunOnFrontend && !allowRunOnBackend) return;
-
   const tagForGenerators = $tw.wiki.getTiddlerText('$:/plugins/linonetwo/tw-gamification/tags/action-meta-tag');
   if (!tagForGenerators) return;
 
   $tw.rootWidget.addEventListener('tm-gamification-event-action', function onGamificationEventAction(event) {
     const actionDefinitionTiddlerTitle = event.param;
+    // DEBUG: console actionDefinitionTiddlerTitle
+    console.log(`actionDefinitionTiddlerTitle`, actionDefinitionTiddlerTitle);
     if (!actionDefinitionTiddlerTitle) return;
     const originalGeneratorDefinition = $tw.wiki.getTiddler(actionDefinitionTiddlerTitle)?.fields;
     if (!originalGeneratorDefinition) return;

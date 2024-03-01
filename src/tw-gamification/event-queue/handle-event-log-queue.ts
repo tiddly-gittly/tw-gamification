@@ -49,7 +49,10 @@ exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
     }
     // if no change, then no need to update the tiddler. Note that update tiddler may trigger 'change' event, which may cause infinite loop if not handle properly.
     if (!hasModification) return false;
-    $tw.wiki.addTiddler({ ...logCacheFile?.fields, title: logQueueTitle, text: JSON.stringify(logCache) });
+    const newText = JSON.stringify(logCache);
+    if (newText === logCacheFileContent) return false;
+    // added here, deleted in `src/tw-gamification/game-wiki-adaptor/game-wiki-provider.ts`
+    $tw.wiki.addTiddler({ ...logCacheFile?.fields, text: newText });
     return false;
   });
 };

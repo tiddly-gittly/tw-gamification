@@ -60,7 +60,10 @@ class GameWikiProvider extends Widget {
           return { fields, list: list.filter(item => !eventTypes.includes(item.type ?? BasicGamificationEventTypes.SmallReward)) };
         });
         unusedGamificationEventsJSONs.forEach(({ fields, list }) => {
-          $tw.wiki.addTiddler({ ...fields, text: JSON.stringify(list) });
+          // also in `src/tw-gamification/event-queue/handle-event-log-queue.ts`
+          const newText = JSON.stringify(list);
+          if (newText === fields.text) return;
+          $tw.wiki.addTiddler({ ...fields, text: newText });
           // TODO: save log archive JSON by generator, so we can easily create statistic chart for each event
         });
       }

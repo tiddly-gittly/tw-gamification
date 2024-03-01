@@ -33,8 +33,6 @@ exports.startup = function twGamificationActionStartupModule() {
 
   $tw.rootWidget.addEventListener('tm-gamification-event-action', function onGamificationEventAction(event) {
     const actionDefinitionTiddlerTitle = event.param;
-    // DEBUG: console actionDefinitionTiddlerTitle
-    console.log(`actionDefinitionTiddlerTitle`, actionDefinitionTiddlerTitle);
     if (!actionDefinitionTiddlerTitle) return;
     const originalGeneratorDefinition = $tw.wiki.getTiddler(actionDefinitionTiddlerTitle)?.fields;
     if (!originalGeneratorDefinition) return;

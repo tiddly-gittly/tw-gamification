@@ -1,15 +1,21 @@
 title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list
 
 <div class="ego-store-lite-action-list">
-  <$list filter="[tag[$:/Tags/Gamification/action]]">
+  <$list filter="[all[shadows+tiddlers]tag[$:/Tags/Gamification/action]]">
     <div class="ego-store-lite-action-list-item" data-title=<<currentTiddler>>>
-      <div class="ego-store-lite-action-list-item-icon"><$transclude $field="icon"/></div>
-      <div class="ego-store-lite-action-list-item-info">
-        <h2 class="ego-store-lite-action-list-item-title"><$transclude $field="caption"/></h2>
-        <p class="ego-store-lite-action-list-item-reward"><$transclude $field="game-event-amount"/> <$transclude $field="game-event-type"/></p>
-      </div>
       <div class="ego-store-lite-action-list-item-edit">…</div>
-      <div class="ego-store-lite-action-list-tooltip"><$transclude $field="description"/></div>
+      <$button>
+        <$action-sendmessage
+          $message="tm-gamification-event-action"
+          $param=<<currentTiddler>>
+        />
+        <div class="ego-store-lite-action-list-item-icon"><$transclude $field="icon"/></div>
+        <div class="ego-store-lite-action-list-item-info">
+          <h2 class="ego-store-lite-action-list-item-title"><$transclude $field="caption"/></h2>
+          <p class="ego-store-lite-action-list-item-reward"><$transclude $field="game-event-amount"/> <$transclude $field="game-event-type"/></p>
+        </div>
+        <div class="ego-store-lite-action-list-description"><$transclude $field="description"/></div>
+      </$button>
     </div>
   </$list>
 </div>

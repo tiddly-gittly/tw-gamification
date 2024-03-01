@@ -1,5 +1,5 @@
 title: $:/plugins/linonetwo/ego-store-lite/config
-tags: $:/tags/ControlPanel/SettingsTab
+tags: $:/tags/ControlPanel/TW-Gamification/SettingsTab
 caption: <<translate "Name" "$:/plugins/linonetwo/ego-store-lite/language/" mode:"inline">>
 
 \define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/

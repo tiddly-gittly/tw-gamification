@@ -2,7 +2,11 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/game-procedure
 tags: $:/tags/Global
 
 \whitespace trim
+\define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
+
 \procedure EgoStoreLite()
+
+!! <<translate ActionsList/Title mode:"inline">>
 
 {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list}}
 

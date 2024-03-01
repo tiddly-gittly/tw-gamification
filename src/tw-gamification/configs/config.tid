@@ -20,3 +20,7 @@ caption: <<translate "Name" "$:/plugins/linonetwo/tw-gamification/language/" mod
 !! <<translate "DefaultEventGeneratorConfigs" mode:"inline">>
 
 {{$:/plugins/linonetwo/tw-gamification/ControlPanel/ConfigForDefaultEventGenerator}}
+
+!! <<translate "SubPluginConfigs" mode:"inline">>
+
+<$macrocall $name="tabs" tabsList="[all[shadows+tiddlers]tag[$:/tags/ControlPanel/TW-Gamification/SettingsTab]!has[draft.of]]"/>

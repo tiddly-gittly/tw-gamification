@@ -1,0 +1,10 @@
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list.css.variable
+tags: $:/tags/Stylesheet
+type: text/css
+
+\import [[$:/themes/tiddlywiki/vanilla/base]]
+
+
+.ego-store-lite-action-list-item {
+  box-shadow: <<colour sidebar-foreground-shadow>>; 
+}

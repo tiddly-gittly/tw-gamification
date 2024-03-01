@@ -1,5 +1,5 @@
 title: $:/plugins/linonetwo/early-sleep-early-work/config
-tags: $:/tags/ControlPanel/SettingsTab
+tags: $:/tags/ControlPanel/TW-Gamification/SettingsTab
 caption: <<translate "Name" "$:/plugins/linonetwo/early-sleep-early-work/language/" mode:"inline">>
 
 \define lingo-base() $:/plugins/linonetwo/early-sleep-early-work/language/

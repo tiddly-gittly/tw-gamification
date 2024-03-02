@@ -18,7 +18,6 @@ caption: <<translate Configs/EventGenerators/Caption mode:"inline">>
       <span class="item-title">
         <$transclude $field="icon" mode="inline" />
         <$transclude $field="caption" mode="inline" />
-        {{!!icon}}
       </span>
       <span class="item-description">
         <$transclude $field="description" mode="inline" />

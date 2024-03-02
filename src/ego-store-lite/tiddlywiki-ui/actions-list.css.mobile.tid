@@ -1,0 +1,21 @@
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list.css.mobile
+tags: $:/tags/Stylesheet
+type: text/css
+
+\import [[$:/themes/tiddlywiki/vanilla/base]]
+
+/* Responsive styles */
+@media (max-width: <<sidebarbreakpoint>>) {
+  .ego-store-lite-action-list-container {
+      flex-direction: column;
+  }
+
+  .ego-store-lite-action-list-item {
+      flex-direction: column;
+  }
+
+  .ego-store-lite-action-list-item-info {
+      align-items: center;
+      text-align: center;
+  }
+}

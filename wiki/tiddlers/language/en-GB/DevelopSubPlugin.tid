@@ -1,5 +1,7 @@
 title: language/en-GB/DevelopSubPlugin
 
+\import [[language/en-GB/examples/show-example]]
+
 ! Developing sub-plugins
 
 !!! Event Package
@@ -18,6 +20,30 @@ Tiddlers with the <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamif
 
 Some games will use the information from these tiddlers to generate a list of buttons. When the button is clicked, the corresponding action widget will be triggered. See the `IActionDefinitions` type in this repository for specific fields.
 
+After it's created, you can trigger it via the Message Widget. Note the change in [[event cache (log-cache-file/desktop)|$:/plugins/linonetwo/tw-gamification/event-queue/log-cache-file/desktop]].
+
+<<show-example generateEventsByAction>>
+
 !!! Games
 
 Refer to the [[$:/plugins/linonetwo/ego-store-lite]] plugin to create simple games in plain text or the [[$:/plugins/linonetwo/scp-foundation-site-director]] plugin to create small to medium sized games based on the Rust language.
+
+!!! Simple game in plain text category
+
+!!!! Handling reward events to convert to in-game rewards
+
+First, trigger the `<$action-convert-game-event/>` Widget with a button that declares which events you want to handle, and then within it, use the filters to select the type of event you want to handle to convert the reward event to an in-game reward. Note that if you just declare what you want to handle, but don't do the conversion correctly, then the player's reward event will be flat out lost.
+
+<$GameWikiProvider>
+  <<show-example convertEvents>>
+</$GameWikiProvider>
+
+The framework already surrounds your game content with `<$GameWikiProvider></$GameWikiProvider>` Widgets, which will accept `pop-gamification-events` events triggered by the `<$action-convert-game-event/>` Widgets and pass the pending reward events back to the `<$action-convert-game-event/>` Widget. After that it's up to the other action Widgets within it to generate the in-game reward you specified, as in the example.
+
+!! Developer's Toolkit
+
+!!! Macros, methods, procedures
+
+!!!! Count unused reward events
+
+<<show-example countEvents>>

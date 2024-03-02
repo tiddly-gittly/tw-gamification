@@ -1,0 +1,17 @@
+title: $:/plugins/linonetwo/tw-gamification/ControlPanel/SubPluginsList
+tags: $:/tags/ControlPanel/TW-Gamification/SettingsTab
+caption: <<translate SubPluginsList $:/plugins/linonetwo/tw-gamification/language/ mode:"inline">>
+
+\define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
+\import [[$:/core/ui/ControlPanel/Modals/AddPlugins]]
+\define install-plugin-button()
+<$button>
+  <$action-navigate $to=<<assetInfo>>/>
+  <<translate Open mode:"inline">>
+  {{$:/core/images/link}}
+</$button>
+\end
+
+<$list filter="[all[tiddlers+shadows]has[parent-plugin]parent-plugin[$:/plugins/linonetwo/tw-gamification]]" variable="assetInfo">
+  <<display-plugin-info plugin>>
+</$list>

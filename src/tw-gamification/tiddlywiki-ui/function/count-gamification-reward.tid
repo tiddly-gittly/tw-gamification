@@ -3,5 +3,5 @@ tags: $:/tags/Global
 
 <!-- Show how many rewards are there in the event log cache -->
 \function count-gamification-reward()
-[{$:/plugins/linonetwo/tw-gamification/event-queue/log-cache-file/desktop}jsonget[length]] [{$:/plugins/linonetwo/tw-gamification/event-queue/log-cache-file/mobile}jsonget[length]] +[sum[]]
+[tag{$:/plugins/linonetwo/tw-gamification/tags/cache-log-meta-tag}get[text]jsonget[length]sum[]]
 \end

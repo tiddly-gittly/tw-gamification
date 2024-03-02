@@ -34,7 +34,8 @@ exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
   // Listen for widget messages to create one or many IGameEventLogCacheItem, append to the log cache file.
   $tw.rootWidget.addEventListener('tm-add-gamification-event', function onAddGamificationEvent(event) {
     const parameterObject = (event.paramObject ?? {}) as unknown as IAddGamificationEventParameterObject;
-    const logCacheFileContent = $tw.wiki.getTiddlerText(logQueueTitle);
+    const logCacheFile = $tw.wiki.getTiddler(logQueueTitle);
+    const logCacheFileContent = logCacheFile?.fields.text;
     const logCache: IGameEventLogCacheFile = logCacheFileContent ? $tw.utils.parseJSONSafe(logCacheFileContent) : [];
     let hasModification = false;
     if ('events' in parameterObject) {
@@ -48,7 +49,10 @@ exports.startup = function twGamificationHandleEventLogQueueStartupModule() {
     }
     // if no change, then no need to update the tiddler. Note that update tiddler may trigger 'change' event, which may cause infinite loop if not handle properly.
     if (!hasModification) return false;
-    $tw.wiki.addTiddler({ title: logQueueTitle, text: JSON.stringify(logCache), tags: ['$:/tags/tw-gamification/GamificationEvent'] });
+    const newText = JSON.stringify(logCache);
+    if (newText === logCacheFileContent) return false;
+    // added here, deleted in `src/tw-gamification/game-wiki-adaptor/game-wiki-provider.ts`
+    $tw.wiki.addTiddler({ ...logCacheFile?.fields, text: newText });
     return false;
   });
 };

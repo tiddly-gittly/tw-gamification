@@ -36,6 +36,10 @@ class ActionConvertGameEvent extends GameWidget {
     return true; // Action was invoked
   }
 
+  public allowActionPropagation() {
+    return false;
+  }
+
   public setGamificationEvents(gamificationEventsJSON: IGamificationEvent[]) {
     // this method is called by provider when events are popped, and only events type that is in `eventTypes` will be sent here.
     this.setVariable('gameEvents', JSON.stringify(gamificationEventsJSON));

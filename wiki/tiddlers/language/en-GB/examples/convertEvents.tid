@@ -1,9 +1,9 @@
-title: language/zh-Hans/examples/convertEvents
+title: language/en-GB/examples/convertEvents
 
-(其它游戏界面)
+(Other game interfaces)
 
 <$button>
-  点击接收 <<count-gamification-reward>> 份奖励
+  Click to receive <<count-gamification-reward>> rewards.
 
   <$let experienceSaveFile="experience">
     <$action-convert-game-event $eventTypes="SmallReward">
@@ -17,4 +17,4 @@ title: language/zh-Hans/examples/convertEvents
 
 </$button>
 
-你有 {{experience}} 点经验。
+You have {{experience}} EXP.

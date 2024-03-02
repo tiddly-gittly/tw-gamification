@@ -1,0 +1,8 @@
+title: $:/plugins/linonetwo/tw-gamification/config/style.css.variable
+tags: $:/tags/Stylesheet
+
+\import [[$:/themes/tiddlywiki/vanilla/base]]
+
+.tw-gamification-event-generator-list .list-item {
+  border: 1px solid <<colour table-border>>;
+}

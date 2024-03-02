@@ -6,10 +6,19 @@ Configs/Description: 通过这些设置，您可以自定义「早睡早起」�
 Event/EarlySleep/Message: 早睡快乐！
 Event/EarlySleep/Caption: 打卡早睡
 Event/EarlySleep/Description: 早于设定的时间入睡，将获得奖励。最好提前开始上床准备入睡。
-Configs/Start: 开始
-Configs/End: 结束
-Configs/EndDescription: 使用 24 表示凌晨 0 点整，此外照常。
-Configs/PeriodToPrepareSleep: 准备入睡的时间段
-Configs/PeriodToPrepareSleepDescription: 在这段时间内远离电子产品和即时反馈，通过学习消耗剩余的精力，让大脑准备好入睡。
-Configs/AllowedPreSleepEventTypes: 允许睡前做的事件类型
-Configs/AllowedPreSleepEventTypesDescription: 使用日历自动触发奖励时，只有带有这个标签的事件会触发奖励。目前只支持一个标签，填写多个标签不会生效。
+Configs/PrepareSleep/Enable/Caption: 启用「准备早睡」事件生成器
+Configs/PrepareSleep/Enable/Description: 勾选启用后，当在所选时段内往日历上记录带所选标签的事件时会触发奖励
+Configs/PrepareSleep/Start: 开始
+Configs/PrepareSleep/End: 结束
+Configs/PrepareSleep/EndDescription: 使用 24 表示凌晨 0 点整，此外照常。
+Configs/PrepareSleep/PeriodToPrepareSleep: 准备入睡的时间段
+Configs/PrepareSleep/PeriodToPrepareSleepDescription: 在这段时间内远离电子产品和即时反馈，通过学习消耗剩余的精力，让大脑准备好入睡。
+Configs/PrepareSleep/AllowedPreSleepEventTypes: 允许睡前做的事件类型
+Configs/PrepareSleep/AllowedPreSleepEventTypesDescription: 使用日历自动触发奖励时，只有带有这个标签的事件会触发奖励。目前只支持一个标签，填写多个标签不会生效。
+Sleep: 睡眠
+Task: 任务
+Configs/CompleteTaskEventGenerator/Caption: 「完成任务」事件生成器设置
+Configs/CompleteTaskEventGenerator/Enable/Caption: 启用「完成任务」事件生成器
+Configs/CompleteTaskEventGenerator/Enable/Description: 勾选启用后，当任务完成，或在日历上记录进度时会触发奖励
+Configs/CompleteTaskEventGenerator/TagsForTask/Caption: 设置任务条目的标签
+Configs/CompleteTaskEventGenerator/TagsForTask/Description: 带有这个标签的标签条目将被视为任务（即标签的标签，这里填的是 A，那么实际的任务 C 与 A 的关系是，A - B - C，任务上打的标签是 B）。当它上面基于「[[超级标签|https://tiddly-gittly.github.io/super-tag/]]」插件的任务状态被设置为完成时，将会获得奖励。（目前仅支持基于 `TMO` 的超级标签，例如[[ITKG 人生管理系统|https://itkg.netlify.app/]]可以开箱即用，这里设置为 `$:/TraitTag/TMO/Task` 即可）

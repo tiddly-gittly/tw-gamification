@@ -9,9 +9,6 @@ SubPluginsList: Sub-Plugins List
 Open: Open
 LanguageSwitcher: <$button set="$:/language" setTo="$:/languages/zh-Hans" style="">🇨🇳 切换至中文</$button>
 GoToGameLayoutButton/Description: Enter Game Layout
-ConfigDescription/DefaultGame: Default Game
-DefaultEventGeneratorConfigs: Default Event Generator Configs
-ConfigDescription/EnableDefaultEventGenerator: Enable Default Event Generator
-ConfigDescription/EnableDefaultEventGenerator/Description: The event generator will convert some wiki actions into events for game to use. If you don't have any other plugins installed that provide an alternative event generator, you must enable this option in order to be able to get in-game rewards.
-ConfigDescription/DefaultEventGeneratorTagsForTask: Set Tags For Task
-ConfigDescription/DefaultEventGeneratorTagsForTask/Description: Tiddlers with this tag will be treated as tasks and will be rewarded when the status of the [["Super Tag"|https://tiddly-gittly.github.io/super-tag/]] based task status is set to complete. (Currently only `TMO`-based supertags are supported, e.g. [[ITKG Life Management System|https://itkg.netlify.app/]] work out-of-the-box, just set "Task" here.）
+Configs/DefaultGame/Description: Default Game
+Configs/EventGenerators/Caption: Event Generators
+ConfigDescription/EnableDefaultEventGenerator/Description: The event generator will convert some wiki actions into events for game to use. The installed event generators will be listed here and you can enable and disable them with checkboxes. Be aware that too many event generators can make the wiki editing lag, you can disable some of the lesser used event generators and instead use the punch card button to trigger bonus events.

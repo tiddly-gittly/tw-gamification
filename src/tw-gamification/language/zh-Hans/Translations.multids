@@ -9,9 +9,6 @@ SubPluginsList: 子插件列表
 Open: 打开
 LanguageSwitcher: <$button set="$:/language" setTo="$:/languages/en-GB" style="">🇬🇧 Switch to English</$button>
 GoToGameLayoutButton/Description: 进入游戏布局
-ConfigDescription/DefaultGame: 默认游戏
-DefaultEventGeneratorConfigs: 默认的事件生成器设置
-ConfigDescription/EnableDefaultEventGenerator: 启用默认的事件生成器
-ConfigDescription/EnableDefaultEventGenerator/Description: 事件生成器将把一些知识库操作转换为事件，以便在游戏中使用。如果你没有装其它提供事件生成器的插件，必须启用这个选项才能在获得游戏奖励。
-ConfigDescription/DefaultEventGeneratorTagsForTask: 设置任务条目的标签
-ConfigDescription/DefaultEventGeneratorTagsForTask/Description: 带有这个标签条目将被视为任务，当它上面基于「[[超级标签|https://tiddly-gittly.github.io/super-tag/]]」插件的任务状态被设置为完成时，将会获得奖励。（目前仅支持基于 `TMO` 的超级标签，例如[[ITKG 人生管理系统|https://itkg.netlify.app/]]可以开箱即用，这里设置为「任务」即可）
+Configs/DefaultGame/Description: 默认游戏
+Configs/EventGenerators/Caption: 事件生成器
+Configs/EventGenerators/Description: 事件生成器将把一些知识库操作转换为事件，以便在游戏中使用。这里将列出已安装的事件生成器，你可以通过复选框启用和关闭它们。要注意过多的事件生成器可能会让知识库编辑卡顿，你可以关闭一些不常用的事件生成器，改为使用打卡按钮来触发奖励事件。

@@ -5,10 +5,19 @@ Description: "Early to Bed, Early to Rise" themed event packs to earn rewards fo
 Configs/Description: These settings let you customise the behaviour of Early Sleep Early Work plugin.
 Event/EarlySleep/Message: Happy Early Sleep!
 Event/EarlySleep/Description: Clock in early to sleep
-Configs/Start: Start
-Configs/End: End
-Configs/EndDescription: Use 24 for 0:00 AM, otherwise it's business as usual.
-Configs/PeriodToPrepareSleep: Period of time to prepare for sleep
-Configs/PeriodToPrepareSleepDescription: A time to get away from electronics and instant feedback, burn off remaining energy by learning, and get the brain ready for sleep.
-Configs/AllowedPreSleepEventTypes: types of events allowed to be done before bedtime
-Configs/AllowedPreSleepEventTypesDescription: When using the calendar to automatically trigger rewards, only events with this tag will trigger rewards. Currently only one tag is supported, filling in multiple tags will not take effect.
+Configs/PrepareSleep/Enable/Caption: Enable "Prepare Sleep" Event Generator
+Configs/PrepareSleep/Enable/Description: Toggled to enable, the reward will be triggered when an event with the selected tag is recorded in the calendar during the selected time period.
+Configs/PrepareSleep/Start: Start
+Configs/PrepareSleep/End: End
+Configs/PrepareSleep/EndDescription: Use 24 for 0:00 AM, otherwise it's business as usual.
+Configs/PrepareSleep/PeriodToPrepareSleep: Period of time to prepare for sleep
+Configs/PrepareSleep/PeriodToPrepareSleepDescription: A time to get away from electronics and instant feedback, burn off remaining energy by learning, and get the brain ready for sleep.
+Configs/PrepareSleep/AllowedPreSleepEventTypes: types of events allowed to be done before bedtime
+Configs/PrepareSleep/AllowedPreSleepEventTypesDescription: When using the calendar to automatically trigger rewards, only events with this tag will trigger rewards. Currently only one tag is supported, filling in multiple tags will not take effect.
+Sleep: Sleep
+Task: Task
+Configs/CompleteTaskEventGenerator/Caption: "Complete Task" Event Generator Configs
+Configs/CompleteTaskEventGenerator/Enable/Caption: Enable "Complete Task" Event Generator
+Configs/CompleteTaskEventGenerator/Enable/Description: Toggled to enable, rewards are triggered when a task is completed, or progress is recorded on the calendar.
+Configs/CompleteTaskEventGenerator/TagsForTask/Caption: Set Tags For Task
+Configs/CompleteTaskEventGenerator/TagsForTask/Description: A tagged tiddler with this tag will be considered a task (the tag of the tag, i.e., filled in here is A, so the actual task C is related to A as, A - B - C, and the tag on the task is B). and will be rewarded when the status of the [["Super Tag"|https://tiddly-gittly.github.io/super-tag/]] based task status is set to complete. (Currently only `TMO`-based supertags are supported, e.g. [[ITKG Life Management System|https://itkg.netlify.app/]] work out-of-the-box, just set `$:/TraitTag/TMO/Task` here.)

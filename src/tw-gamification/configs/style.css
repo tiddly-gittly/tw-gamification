@@ -1,0 +1,46 @@
+.tw-gamification-event-generator-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.tw-gamification-event-generator-list .list-item {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.tw-gamification-event-generator-list .list-item label {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.tw-gamification-event-generator-list .list-item label span {
+  display: flex;
+  flex-direction: column;
+  margin-left: 3px;
+}
+.tw-gamification-event-generator-list .list-item .item-title {
+  font-size: 1.2em;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+}
+.tw-gamification-event-generator-list .list-item .item-title p {
+  margin: 0;
+  margin-left: 0.3em;
+}
+.tw-gamification-event-generator-list .list-item .item-description {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 0.1em;
+}
+.tw-gamification-event-generator-list .list-item label input {
+  width: 2.2em;
+  height: 2.2em;
+}
+.tw-gamification-event-generator-list .list-item .item-description p {
+  margin: 0;
+  margin-left: 0.3em;
+}

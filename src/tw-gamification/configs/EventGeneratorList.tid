@@ -1,0 +1,19 @@
+title: $:/plugins/linonetwo/tw-gamification/ControlPanel/EventGeneratorList
+
+\define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
+
+<div class="tw-gamification-event-generator-list">
+  <$list filter="[all[tiddlers+shadows]tag[$:/Tags/Gamification/change-filter]]">
+    <div class="list-item">
+      <$checkbox tiddler=<<currentTiddler>> field="enabled" checked="yes" unchecked="no">
+        <span class="item-title">
+          <$transclude $tiddler={{!!icon}} mode="inline" />
+          <$transclude $field="caption" mode="inline" />
+        </span>
+        <span class="item-description">
+          <$transclude $field="description" mode="inline" />
+        </span>
+      </$checkbox>
+    </div>
+  </$list>
+</div>

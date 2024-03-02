@@ -4,11 +4,11 @@ caption: <<translate "Name" "$:/plugins/linonetwo/tw-gamification/language/" mod
 
 \define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 
-<<translate "ConfigDescription">>
+<<translate ConfigDescription>>
 
 ---
 
-!! <<translate "PluginConfigs" mode:"inline">>
+!! <<translate PluginConfigs mode:"inline">>
 
 ;<<translate "Configs/DefaultGame/Description" mode:"inline">>
 :<$select tiddler='$:/plugins/linonetwo/tw-gamification/configs/DefaultGame'>
@@ -17,12 +17,10 @@ caption: <<translate "Name" "$:/plugins/linonetwo/tw-gamification/language/" mod
 	</$list>
 </$select>
 
-!! <<translate "SubPluginConfigs" mode:"inline">>
+!! <<translate Configs/SubPlugin/Caption mode:"inline">>
 
 <$macrocall $name="tabs" tabsList="[all[shadows+tiddlers]tag[$:/tags/ControlPanel/TW-Gamification/SettingsTab]!has[draft.of]]" default="$:/plugins/linonetwo/tw-gamification/ControlPanel/SubPluginsList"/>
 
-!! <<translate Configs/EventGenerators/Caption mode:"inline">>
+!! <<translate Configs/Events/Caption mode:"inline">>
 
-<<translate Configs/EventGenerators/Description>>
-
-{{$:/plugins/linonetwo/tw-gamification/ControlPanel/EventGeneratorList}}
+<$macrocall $name="tabs" tabsList="$:/plugins/linonetwo/tw-gamification/ControlPanel/EventGeneratorList $:/plugins/linonetwo/tw-gamification/ControlPanel/EventActionList" default="$:/plugins/linonetwo/tw-gamification/ControlPanel/EventGeneratorList"/>

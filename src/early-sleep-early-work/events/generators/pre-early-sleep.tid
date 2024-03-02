@@ -2,7 +2,7 @@ title: $:/plugins/linonetwo/early-sleep-early-work/events/generators/pre-early-s
 tags: $:/Tags/Gamification/change-filter
 caption: <<translate Configs/PrepareSleep/Enable/Caption $:/plugins/linonetwo/early-sleep-early-work/language/>>
 description: <<translate Configs/PrepareSleep/Enable/Description $:/plugins/linonetwo/early-sleep-early-work/language/>>
-icon: $:/plugins/linonetwo/early-sleep-early-work/icons/pre-early-sleep
+icon: {{$:/plugins/linonetwo/early-sleep-early-work/icons/pre-early-sleep}}
 game-event-trigger-filter: [!is[system]!is[draft]tag{$:/plugins/linonetwo/early-sleep-early-work/configs/AllowedPreSleepEventTypes}field:calendarEntry[yes]starthourlatethan{$:/plugins/linonetwo/early-sleep-early-work/configs/PeriodToPrepareSleep/Start}endhourearlythan{$:/plugins/linonetwo/early-sleep-early-work/configs/PeriodToPrepareSleep/End}]
 find-duplicate: debounce
 debounce-duration: 43200

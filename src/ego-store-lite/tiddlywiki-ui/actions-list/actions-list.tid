@@ -5,7 +5,7 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsLi
 {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/receive-reward}}
 
 <div class="ego-store-lite-action-list">
-  <$list filter="[all[shadows+tiddlers]tag[$:/Tags/Gamification/action]]">
+  <$list filter="[all[shadows+tiddlers]tag[$:/Tags/Gamification/action]!is[draft]]">
     <div class="ego-store-lite-action-list-item" data-title=<<currentTiddler>>>
       <div class="ego-store-lite-action-list-item-edit">…</div>
       <$button>

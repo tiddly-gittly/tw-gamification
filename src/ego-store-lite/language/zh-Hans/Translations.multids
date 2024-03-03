@@ -11,27 +11,28 @@ Golds/Reset/Description: 将金币归零，这将清除所有的金币，没事�
 ActionsList/Title: 打卡行动列表
 Exit/Caption: 退出游戏
 Create/Title/Caption: 创建
-Create/OK: 确认创建
+Create/Close: 取消并关闭
+Create/OK: 确认并创建
 CreateAction/Caption: 创建打卡行动
 CreateEventGenerator/Caption: 创建事件生成器
-CreateAction/Title/Caption: 行动的标题
-CreateAction/Title/Description: 为新行动输入标题。
+CreateAction/Title/Caption: 行动的条目名
+CreateAction/Title/Description: 为新行动输入条目名。
 CreateAction/Tags/Caption: 标签
 CreateAction/Tags/Description: 为行动指定标签。
 CreateAction/FindDuplicate/Caption: 查找重复
 CreateAction/FindDuplicate/Description: 启用或禁用查找重复。
 CreateAction/DebounceDuration/Caption: 防抖持续时间
 CreateAction/DebounceDuration/Description: 设置防抖持续时间（秒）。
-CreateAction/GameEventAmount/Caption: 游戏事件数量
-CreateAction/GameEventAmount/Description: 指定游戏事件的数量。
+CreateAction/GameEventAmount/Caption: 奖励数量
+CreateAction/GameEventAmount/Description: 指定游戏事件触发时提供的奖励或惩罚数量。
 CreateAction/GameEventMessage/Caption: 游戏事件消息
-CreateAction/GameEventMessage/Description: 输入游戏事件的消息。
+CreateAction/GameEventMessage/Description: 输入游戏事件触发时展示给玩家看的消息。
 CreateAction/GameEventType/Caption: 游戏事件类型
 CreateAction/GameEventType/Description: 选择游戏事件的类型。
 CreateAction/Icon/Caption: 图标
-CreateAction/Icon/Description: 为行动选择一个图标。
-CreateAction/Caption/Caption: 标题
-CreateAction/Caption/Description: 为行动提供一个标题。
+CreateAction/Icon/Description: 为行动选择一个图标，可以用 Emoji 或 SVG，也可以用嵌入语法引用 SVG 图片条目。
+CreateAction/Caption/Caption: 展示标题
+CreateAction/Caption/Description: 为行动提供一个用于展示的标题，如果不填则默认展示条目名。
 CreateAction/Description/Caption: 描述
 CreateAction/Description/Description: 详细描述行动。
 CreateAction/Enabled/Caption: 启用

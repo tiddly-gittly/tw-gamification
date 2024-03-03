@@ -29,7 +29,7 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/event-generator}} <<lingo 
 <<lingo Configs/EventGenerators/Description>>
 
 <div class="tw-gamification-event-generator-list">
-  <$list filter="[all[tiddlers+shadows]tag[$:/Tags/Gamification/change-filter]]">
+  <$list filter="[all[tiddlers+shadows]tag[$:/Tags/Gamification/change-filter]!is[draft]]">
     <<event-generator-list-item>>
   </$list>
 </div>

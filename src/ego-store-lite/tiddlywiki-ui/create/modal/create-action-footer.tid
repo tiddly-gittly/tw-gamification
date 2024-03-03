@@ -2,9 +2,20 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-act
 
 \define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
 
-<$button>
-  <$action-createtiddler $basetitle={{$:/state/ego-store-lite/newAction!!draft.title}} $template="$:/state/ego-store-lite/newAction">
+<div class="ego-store-lite-create-modal-buttons">
+  <$button message="tm-close-tiddler">
     <$action-deletetiddler $tiddler="$:/state/ego-store-lite/newAction"/>
-  </$action-createtiddler>
-  <<lingo Create/OK>>
-</$button>
+    <<lingo Create/Close>>
+  </$button>
+  <$button message="tm-close-tiddler">
+    <$action-createtiddler
+      $basetitle={{$:/state/ego-store-lite/newAction!!draft.title}}
+      $template="$:/state/ego-store-lite/newAction"
+      tags={{{ [enlist{$:/state/ego-store-lite/newAction!!tags}] [[$:/Tags/Gamification/action]] }}}
+    >
+      <$action-deletetiddler $tiddler="$:/state/ego-store-lite/newAction"/>
+      <$action-deletefield $tiddler=<<createTiddler-title>> $field="draft.title"/>
+    </$action-createtiddler>
+    <<lingo Create/OK>>
+  </$button>
+</div>

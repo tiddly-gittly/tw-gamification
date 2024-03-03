@@ -1,5 +1,5 @@
 title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-goods/create-goods
-subtitle: <<lingo CreateAction/Caption>>
+subtitle: <<lingo CreateGoods/Caption>>
 footer: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-goods/create-goods-footer}}
 
 \import [[$:/core/ui/EditTemplate/tags]]
@@ -7,78 +7,51 @@ footer: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-
 
 <div class="ego-store-lite-new-item-container">
   <div class="ego-store-lite-new-item-field">
-    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/Title/Caption>></span>
+    <span class="ego-store-lite-new-item-field-label"><<lingo CreateGoods/Title/Caption>></span>
     <$edit-text tag=input tiddler="$:/state/ego-store-lite/newGoods" field="draft.title" class="ego-store-lite-new-item-field-input"/>
-    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/Title/Description>></span>
+    <span class="ego-store-lite-new-item-field-description"><<lingo CreateGoods/Title/Description>></span>
   </div>
 
   <div class="ego-store-lite-new-item-field">
-    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/Caption/Caption>></span>
+    <span class="ego-store-lite-new-item-field-label"><<lingo CreateGoods/Caption/Caption>></span>
     <$edit-text tag=input tiddler="$:/state/ego-store-lite/newGoods" field="caption" class="ego-store-lite-new-item-field-input" placeholder={{$:/state/ego-store-lite/newGoods!!draft.title}}/>
-    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/Caption/Description>></span>
+    <span class="ego-store-lite-new-item-field-description"><<lingo CreateGoods/Caption/Description>></span>
   </div>
 
   <div class="ego-store-lite-new-item-field">
-    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/Description/Caption>></span>
+    <span class="ego-store-lite-new-item-field-label"><<lingo CreateGoods/Description/Caption>></span>
     <$edit-text tag=input tiddler="$:/state/ego-store-lite/newGoods" field="description" class="ego-store-lite-new-item-field-input"/>
-    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/Description/Description>></span>
+    <span class="ego-store-lite-new-item-field-description"><<lingo CreateGoods/Description/Description>></span>
   </div>
 
   <div class="ego-store-lite-new-item-field">
-    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/Icon/Caption>></span>
+    <span class="ego-store-lite-new-item-field-label"><<lingo CreateGoods/Icon/Caption>></span>
     <$edit-text tag=input tiddler="$:/state/ego-store-lite/newGoods" field="icon" class="ego-store-lite-new-item-field-input"/>
-    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/Icon/Description>></span>
+    <span class="ego-store-lite-new-item-field-description"><<lingo CreateGoods/Icon/Description>></span>
   </div>
 
   <div class="ego-store-lite-new-item-field">
-    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/Tags/Caption>></span>
+    <span class="ego-store-lite-new-item-field-label"><<lingo CreateGoods/Tags/Caption>></span>
     <$let saveTiddler="$:/state/ego-store-lite/newGoods" currentTiddler="$:/state/ego-store-lite/newGoods">
       <$macrocall $name="edit-tags-template"/>
     </$let>
-    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/Tags/Description>></span>
-  </div>
-
-  <!-- // TODO: add duplicate type tiddlers, and provide select widget here . And only show debounce-duration if find-duplicate is filled >
-  <!-- <div class="ego-store-lite-new-item-field">
-    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/FindDuplicate/Caption>></span>
-    <$edit-text tag=input tiddler="$:/state/ego-store-lite/newGoods" field="find-duplicate" class="ego-store-lite-new-item-field-input"/>
-    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/FindDuplicate/Description>></span>
+    <span class="ego-store-lite-new-item-field-description"><<lingo CreateGoods/Tags/Description>></span>
   </div>
 
   <div class="ego-store-lite-new-item-field">
-    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/DebounceDuration/Caption>></span>
-    <$edit-text tag=input tiddler="$:/state/ego-store-lite/newGoods" field="debounce-duration" class="ego-store-lite-new-item-field-input"/>
-    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/DebounceDuration/Description>></span>
-  </div> -->
-
-  <div class="ego-store-lite-new-item-field">
-    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/GameEventMessage/Caption>></span>
-    <$edit-text tag=input tiddler="$:/state/ego-store-lite/newGoods" field="game-event-message" class="ego-store-lite-new-item-field-input"/>
-    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/GameEventMessage/Description>></span>
+    <span class="ego-store-lite-new-item-field-label"><<lingo CreateGoods/PurchaseMessage/Caption>></span>
+    <$edit-text tag=input tiddler="$:/state/ego-store-lite/newGoods" field="purchase-message" class="ego-store-lite-new-item-field-input"/>
+    <span class="ego-store-lite-new-item-field-description"><<lingo CreateGoods/PurchaseMessage/Description>></span>
   </div>
 
   <div class="ego-store-lite-new-item-field">
-    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/GameEventType/Caption>></span>
-    <$select
-      tiddler="$:/state/ego-store-lite/newGoods"
-      field="game-event-type"
-      class="ego-store-lite-new-item-field-input"
-    >
-      <$list filter='[all[shadows+tiddlers]tag[$:/Tags/Gamification/EventType]sort[text]]'>
-        <option value={{!!text}}><$transclude field='caption'/></option>
-      </$list>
-    </$select>
-    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/GameEventType/Description>></span>
+    <span class="ego-store-lite-new-item-field-label"><<lingo CreateGoods/GoldAmount/Caption>></span>
+    <$edit-text tag=input type=number tiddler="$:/state/ego-store-lite/newGoods" field="gold-amount" class="ego-store-lite-new-item-field-input"/>
+    <span class="ego-store-lite-new-item-field-description"><<lingo CreateGoods/GoldAmount/Description>></span>
   </div>
 
   <div class="ego-store-lite-new-item-field">
-    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/GameEventAmount/Caption>></span>
-    <$edit-text tag=input type=number tiddler="$:/state/ego-store-lite/newGoods" field="game-event-amount" class="ego-store-lite-new-item-field-input"/>
-    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/GameEventAmount/Description>></span>
-  </div>
-
-  <div class="ego-store-lite-new-item-field">
-    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/Enabled/Caption>></span>
+    <span class="ego-store-lite-new-item-field-label"><<lingo CreateGoods/Enabled/Caption>></span>
     <$checkbox
       tiddler="$:/state/ego-store-lite/newGoods"
       field="enabled"
@@ -86,6 +59,6 @@ footer: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-
       unchecked="no"
       class="ego-store-lite-new-item-field-input"
     />
-    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/Enabled/Description>></span>
+    <span class="ego-store-lite-new-item-field-description"><<lingo CreateGoods/Enabled/Description>></span>
   </div>
 </div>

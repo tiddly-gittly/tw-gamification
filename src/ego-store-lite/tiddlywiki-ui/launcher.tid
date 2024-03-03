@@ -1,0 +1,8 @@
+title: $:/plugins/linonetwo/ego-store-lite/launcher
+tags: $:/tags/simple-layout-launcher/main-tabs
+caption: {{$:/core/images/layout-button}} <<lingo Exit/Caption>>
+
+\whitespace trim
+\define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
+
+<<simple-layout-launcher>>

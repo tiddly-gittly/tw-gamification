@@ -1,0 +1,6 @@
+title: $:/plugins/linonetwo/simple-layout-launcher/simple-layout-launcher.css.variable
+tags: $:/tags/Stylesheet
+
+.linonetwo-simple-layout-launcher-item:hover .linonetwo-simple-layout-launcher-description {
+	background: <<colour tiddler-info-background>>;
+}

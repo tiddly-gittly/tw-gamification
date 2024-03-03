@@ -5,6 +5,7 @@ Description: 「游戏太微」的默认游戏，在一个简单的商店里购�
 ConfigDescription: 通过这些设置，您可以自定义「自我商店（极速版）」插件的行为。
 GameLoading: 你的商店加载中……
 ActionsList/Title: 打卡行动列表
+Exit/Caption: 退出游戏
 Create/Title/Caption: 创建
 Create/OK: 确认创建
 CreateAction/Caption: 创建打卡行动

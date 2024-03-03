@@ -4,6 +4,7 @@ Name: Ego Store (lite)
 Description: Default game for tw-gamification, a simple store to buy bonus for yourself, and you are the store keeper.
 ConfigDescription: These settings let you customise the behaviour of ego-store-lite plugin.
 GameLoading: Your store is Loading...
+Exit/Caption: Exit Game
 ActionsList/Title: Clock in Actions List
 CreateAction/OK: Create Clock in Action
 CreateEventGenerator/Caption: Create Event enerator

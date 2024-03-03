@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/tw-gamification/PageLayout/GameLayout
-name: {{$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/GameLayoutImage}}<<translate "Name" "$:/plugins/linonetwo/tw-gamification/language/" mode:"inline">>
-description: <<translate "Description" "$:/plugins/linonetwo/tw-gamification/language/" mode:"inline">>
+name: {{$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/GameLayoutImage}}<<lingo "Name" "$:/plugins/linonetwo/tw-gamification/language/">>
+description: <<lingo "Description" "$:/plugins/linonetwo/tw-gamification/language/">>
 tags: $:/tags/Layout
 
 \whitespace trim

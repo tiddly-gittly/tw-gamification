@@ -1,5 +1,5 @@
 title: $:/plugins/linonetwo/scp-foundation-site-director/configs/AddToGameList
 tags: $:/tags/linonetwo/tw-gamification/Game
-caption: <<translate "Name" "$:/plugins/linonetwo/scp-foundation-site-director/language/" mode:"inline">>
+caption: <<lingo "Name" "$:/plugins/linonetwo/scp-foundation-site-director/language/">>
 
 ScpFoundationSiteDirector

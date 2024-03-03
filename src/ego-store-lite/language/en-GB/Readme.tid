@@ -2,6 +2,6 @@ title: $:/plugins/linonetwo/ego-store-lite/language/en-GB/Readme
 
 \define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
 
-! <<translate "Name" mode:"inline">>
+! <<lingo "Name">>
 
-<<translate "Description" mode:"inline">>
+<<lingo "Description">>

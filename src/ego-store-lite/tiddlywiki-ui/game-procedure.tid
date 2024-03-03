@@ -6,7 +6,7 @@ tags: $:/tags/Global
 
 \procedure EgoStoreLite()
 
-!! <<translate ActionsList/Title mode:"inline">>
+!! <<lingo ActionsList/Title>>
 
 {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list}}
 

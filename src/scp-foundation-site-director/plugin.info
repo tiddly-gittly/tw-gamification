@@ -6,6 +6,6 @@
   "plugin-type": "plugin",
   "parent-plugin": "$:/plugins/linonetwo/tw-gamification",
   "version": "0.0.1",
-  "readme": "<<translate Readme $:/plugins/linonetwo/scp-foundation-site-director/language/>>",
+  "readme": "<<lingo Readme $:/plugins/linonetwo/scp-foundation-site-director/language/>>",
   "list": "ReadMe tree Development"
 }

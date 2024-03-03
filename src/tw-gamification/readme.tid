@@ -3,4 +3,4 @@ type: text/vnd.tiddlywiki
 
 \define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 
-<<translate "Readme">>
+<<lingo "Readme">>

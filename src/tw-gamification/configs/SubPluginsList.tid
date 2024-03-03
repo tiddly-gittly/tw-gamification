@@ -1,13 +1,13 @@
 title: $:/plugins/linonetwo/tw-gamification/ControlPanel/SubPluginsList
 tags: $:/tags/ControlPanel/TW-Gamification/SettingsTab
-caption: <<translate SubPluginsList $:/plugins/linonetwo/tw-gamification/language/ mode:"inline">>
+caption: <<lingo SubPluginsList $:/plugins/linonetwo/tw-gamification/language/>>
 
 \define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 \import [[$:/core/ui/ControlPanel/Modals/AddPlugins]]
 \define install-plugin-button()
 <$button>
   <$action-navigate $to=<<assetInfo>>/>
-  <<translate Open mode:"inline">>
+  <<lingo Open>>
   {{$:/core/images/link}}
 </$button>
 \end

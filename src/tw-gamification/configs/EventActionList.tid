@@ -1,10 +1,10 @@
 title: $:/plugins/linonetwo/tw-gamification/ControlPanel/EventActionList
-caption: <<translate Configs/EventActions/Caption mode:"inline">>
+caption: <<lingo Configs/EventActions/Caption>>
 
 \define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 \import [[$:/plugins/linonetwo/tw-gamification/ControlPanel/EventGeneratorList]]
 
-<<translate Configs/EventActions/Description>>
+<<lingo Configs/EventActions/Description>>
 
 <div class="tw-gamification-event-generator-list">
   <$list filter="[all[tiddlers+shadows]tag[$:/Tags/Gamification/action]]">

@@ -3,4 +3,4 @@ type: text/vnd.tiddlywiki
 
 \define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
 
-<<translate "Readme">>
+<<lingo "Readme">>

@@ -1,5 +1,5 @@
 title: $:/plugins/linonetwo/ego-store-lite/configs/AddToGameList
 tags: $:/tags/linonetwo/tw-gamification/Game
-caption: <<translate "Name" "$:/plugins/linonetwo/ego-store-lite/language/" mode:"inline">>
+caption: <<lingo "Name" "$:/plugins/linonetwo/ego-store-lite/language/">>
 
 EgoStoreLite

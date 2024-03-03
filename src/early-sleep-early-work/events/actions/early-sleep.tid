@@ -3,9 +3,9 @@ tags: $:/Tags/Gamification/action
 find-duplicate: debounce
 debounce-duration: 43200
 game-event-amount: 1
-game-event-message: <<translate Event/EarlySleep/Message $:/plugins/linonetwo/early-sleep-early-work/language/>>
+game-event-message: <<lingo Event/EarlySleep/Message $:/plugins/linonetwo/early-sleep-early-work/language/>>
 game-event-type: SmallReward
 icon: {{$:/plugins/linonetwo/early-sleep-early-work/icons/early-sleep}}
-caption: <<translate Event/EarlySleep/Caption $:/plugins/linonetwo/early-sleep-early-work/language/>>
-description: <<translate Event/EarlySleep/Description $:/plugins/linonetwo/early-sleep-early-work/language/>>
+caption: <<lingo Event/EarlySleep/Caption $:/plugins/linonetwo/early-sleep-early-work/language/>>
+description: <<lingo Event/EarlySleep/Description $:/plugins/linonetwo/early-sleep-early-work/language/>>
 enabled: yes

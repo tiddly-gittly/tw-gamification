@@ -2,4 +2,4 @@ title: DevelopSubPlugin
 
 \define lingo-base() language/
 
-<<translate "DevelopSubPlugin">>
+<<lingo "DevelopSubPlugin">>

@@ -2,9 +2,9 @@ title: $:/plugins/linonetwo/early-sleep-early-work/language/zh-Hans/Readme
 
 \define lingo-base() $:/plugins/linonetwo/early-sleep-early-work/language/
 
-! <<translate "Name" mode:"inline">>
+! <<lingo "Name">>
 
-<<translate "Description" mode:"inline">>
+<<lingo "Description">>
 
 !! 设计目的
 

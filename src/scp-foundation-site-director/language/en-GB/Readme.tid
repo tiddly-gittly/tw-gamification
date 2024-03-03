@@ -2,6 +2,6 @@ title: $:/plugins/linonetwo/scp-foundation-site-director/language/en-GB/Readme
 
 \define lingo-base() $:/plugins/linonetwo/scp-foundation-site-director/language/
 
-! <<translate "Name" mode:"inline">>
+! <<lingo "Name">>
 
-<<translate "Description" mode:"inline">>
+<<lingo "Description">>

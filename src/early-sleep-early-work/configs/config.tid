@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/early-sleep-early-work/config
 tags: $:/tags/ControlPanel/TW-Gamification/SettingsTab
-caption: <<translate "Name" "$:/plugins/linonetwo/early-sleep-early-work/language/" mode:"inline">>
+caption: <<lingo "Name" "$:/plugins/linonetwo/early-sleep-early-work/language/">>
 
 \define lingo-base() $:/plugins/linonetwo/early-sleep-early-work/language/
 \define config-base() $:/plugins/linonetwo/early-sleep-early-work/configs/
@@ -36,37 +36,37 @@ caption: <<translate "Name" "$:/plugins/linonetwo/early-sleep-early-work/languag
 </div>
 \end
 
-<<translate "Configs/Description">>
+<<lingo "Configs/Description">>
 
 ---
 
-!! <<translate Sleep mode:"inline">>
+!! <<lingo Sleep>>
 
-!!! <<translate Configs/PrepareSleep/PeriodToPrepareSleep mode:"inline">>
+!!! <<lingo Configs/PrepareSleep/PeriodToPrepareSleep>>
 
-;<<translate Configs/PrepareSleep/Enable/Caption mode:"inline">>
-:<$checkbox tiddler="$:/plugins/linonetwo/early-sleep-early-work/events/generators/pre-early-sleep" field="enabled" checked="yes" unchecked="no"> <<translate Configs/PrepareSleep/Enable/Description mode:"inline">></$checkbox>
+;<<lingo Configs/PrepareSleep/Enable/Caption>>
+:<$checkbox tiddler="$:/plugins/linonetwo/early-sleep-early-work/events/generators/pre-early-sleep" field="enabled" checked="yes" unchecked="no"> <<lingo Configs/PrepareSleep/Enable/Description>></$checkbox>
 
-;<<translate Configs/PrepareSleep/Start mode:"inline">>
+;<<lingo Configs/PrepareSleep/Start>>
 :<$edit-text tag="input" tiddler=<<config-title PeriodToPrepareSleep/Start>> type="number" />
-;<<translate Configs/PrepareSleep/End mode:"inline">>
+;<<lingo Configs/PrepareSleep/End>>
 :<$edit-text tag="input" tiddler=<<config-title PeriodToPrepareSleep/End>> type="number" />
 
-!!! <<translate Configs/PrepareSleep/AllowedPreSleepEventTypes mode:"inline">>
+!!! <<lingo Configs/PrepareSleep/AllowedPreSleepEventTypes>>
 
-<<translate Configs/PrepareSleep/AllowedPreSleepEventTypesDescription>>
+<<lingo Configs/PrepareSleep/AllowedPreSleepEventTypesDescription>>
 
 <<single-text-tag-editor AllowedPreSleepEventTypes>>
 
-!! <<translate Task mode:"inline">>
+!! <<lingo Task>>
 
-!!! <<translate Configs/CompleteTaskEventGenerator/Caption mode:"inline">>
+!!! <<lingo Configs/CompleteTaskEventGenerator/Caption>>
 
-;<<translate Configs/CompleteTaskEventGenerator/Enable/Caption mode:"inline">>
-:<$checkbox tiddler="$:/plugins/linonetwo/early-sleep-early-work/events/generators/pre-early-sleep" field="enabled" checked="yes" unchecked="no"> <<translate Configs/CompleteTaskEventGenerator/Enable/Description mode:"inline">></$checkbox>
+;<<lingo Configs/CompleteTaskEventGenerator/Enable/Caption>>
+:<$checkbox tiddler="$:/plugins/linonetwo/early-sleep-early-work/events/generators/pre-early-sleep" field="enabled" checked="yes" unchecked="no"> <<lingo Configs/CompleteTaskEventGenerator/Enable/Description>></$checkbox>
 
-!!! <<translate Configs/CompleteTaskEventGenerator/TagsForTask/Caption >>
+!!! <<lingo Configs/CompleteTaskEventGenerator/TagsForTask/Caption >>
 
 <<single-text-tag-editor TraitTagsForTask>>
 
-<<translate Configs/CompleteTaskEventGenerator/TagsForTask/Description mode:"inline">>
+<<lingo Configs/CompleteTaskEventGenerator/TagsForTask/Description>>

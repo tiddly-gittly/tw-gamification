@@ -1,4 +1,4 @@
 title: $:/SiteTitle
 type: text/vnd.tiddlywiki
 
-<<translate "Name" "$:/plugins/linonetwo/tw-gamification/language/" mode:"inline">>
+<<lingo "Name" "$:/plugins/linonetwo/tw-gamification/language/">>

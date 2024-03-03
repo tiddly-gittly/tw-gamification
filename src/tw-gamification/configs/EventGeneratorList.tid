@@ -1,5 +1,5 @@
 title: $:/plugins/linonetwo/tw-gamification/ControlPanel/EventGeneratorList
-caption: <<translate Configs/EventGenerators/Caption mode:"inline">>
+caption: <<lingo Configs/EventGenerators/Caption>>
 
 \define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 \define event-generator-list-item()
@@ -26,7 +26,7 @@ caption: <<translate Configs/EventGenerators/Caption mode:"inline">>
   </div>
 \end event-generator-list-item
 
-<<translate Configs/EventGenerators/Description>>
+<<lingo Configs/EventGenerators/Description>>
 
 <div class="tw-gamification-event-generator-list">
   <$list filter="[all[tiddlers+shadows]tag[$:/Tags/Gamification/change-filter]]">

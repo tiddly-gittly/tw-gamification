@@ -3,4 +3,4 @@ title: GamificationEvents
 
 \define lingo-base() language/
 
-<<translate "GamificationEvents">>
+<<lingo "GamificationEvents">>

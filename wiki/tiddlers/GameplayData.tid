@@ -3,4 +3,4 @@ title: GameplayData
 
 \define lingo-base() language/
 
-<<translate "GameplayData">>
+<<lingo "GameplayData">>

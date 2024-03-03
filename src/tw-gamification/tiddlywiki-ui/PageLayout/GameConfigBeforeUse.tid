@@ -4,7 +4,7 @@ title: $:/plugins/linonetwo/tw-gamification/PageLayout/GameConfigBeforeUse
 
 <main class="tw-gamification-config-before-use">
 
-  <<translate "LanguageSwitcher">>
+  <<lingo "LanguageSwitcher">>
 
   {{$:/plugins/linonetwo/tw-gamification/ControlPanel/ConfigForDefaultEventGenerator}}
 

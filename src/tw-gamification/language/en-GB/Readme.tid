@@ -2,9 +2,9 @@ title: $:/plugins/linonetwo/tw-gamification/language/en-GB/Readme
 
 \define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 
-! "<<translate "Name" mode:"inline">>" framework
+! "<<lingo "Name">>" framework
 
-<<translate "Description" mode:"inline">>
+<<lingo "Description">>
 
 [[Forum thread - Any gamification plugin?|https://talk.tiddlywiki.org/t/any-gamification-plugin/7894/2]]
 

@@ -8,15 +8,12 @@ caption: <<lingo "Name" "$:/plugins/linonetwo/ego-store-lite/language/">>
 
 ---
 
-!! <<lingo "PluginConfigs">>
+!! <<lingo Golds/Caption>>
 
-;<<lingo "ConfigDescription/DefaultGame">>
-:<$select tiddler='$:/plugins/linonetwo/ego-store-lite/configs/DefaultGame'>
-	<$list filter='[all[tiddlers+shadows]tag[$:/tags/linonetwo/tw-gamification/Game]]'>
-		<option value={{!!text}}>{{!!caption}}</option>
-	</$list>
-</$select>
-
-!! <<lingo "DefaultEventGeneratorConfigs">>
-
-{{$:/plugins/linonetwo/ego-store-lite/ControlPanel/ConfigForDefaultEventGenerator}}
+;<<lingo Golds/Count>>
+:{{$:/plugins/linonetwo/ego-store-lite/configs/Golds}}
+;<<lingo Golds/Reset/Caption>>
+:<$button>
+	<$action-deletetiddler $tiddler="$:/plugins/linonetwo/ego-store-lite/configs/Golds"/>
+	<<lingo Golds/Reset/Caption>>
+</$button> <<lingo Golds/Reset/Description>>

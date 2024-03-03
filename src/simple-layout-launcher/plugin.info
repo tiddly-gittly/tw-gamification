@@ -5,5 +5,5 @@
   "description": "Vanilla style launcher, with Metro style square button and large icon.",
   "plugin-type": "plugin",
   "version": "0.0.1",
-  "list": "readme"
+  "list": "readme tree"
 }

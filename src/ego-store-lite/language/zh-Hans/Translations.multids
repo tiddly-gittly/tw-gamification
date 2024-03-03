@@ -4,6 +4,10 @@ Name: 自我商店（极速版）
 Description: 「游戏太微」的默认游戏，在一个简单的商店里购买对自己的奖励，而且你自己就是店主
 ConfigDescription: 通过这些设置，您可以自定义「自我商店（极速版）」插件的行为。
 GameLoading: 你的商店加载中……
+Golds/Caption: 金币
+Golds/Count: 金币总量
+Golds/Reset/Caption: 重置金币
+Golds/Reset/Description: 将金币归零，这将清除所有的金币，没事别点。只涉及本插件的金币数量，不影响别的插件和游戏。
 ActionsList/Title: 打卡行动列表
 Exit/Caption: 退出游戏
 Create/Title/Caption: 创建

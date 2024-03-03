@@ -1,8 +1,8 @@
-title: $:/plugins/linonetwo/tw-gamification/ControlPanel/EventActionList
-caption: <<lingo Configs/EventActions/Caption>>
+title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/pages/EventActionList
+caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo Configs/EventActions/Caption>>
 
 \define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
-\import [[$:/plugins/linonetwo/tw-gamification/ControlPanel/EventGeneratorList]]
+\import [[$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/pages/EventGeneratorList]]
 
 <<lingo Configs/EventActions/Description>>
 

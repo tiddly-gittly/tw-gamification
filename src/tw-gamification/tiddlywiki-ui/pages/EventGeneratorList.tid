@@ -1,5 +1,5 @@
-title: $:/plugins/linonetwo/tw-gamification/ControlPanel/EventGeneratorList
-caption: <<lingo Configs/EventGenerators/Caption>>
+title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/pages/EventGeneratorList
+caption: {{$:/plugins/linonetwo/tw-gamification/icons/event-generator}} <<lingo Configs/EventGenerators/Caption>>
 
 \define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 \define event-generator-list-item()

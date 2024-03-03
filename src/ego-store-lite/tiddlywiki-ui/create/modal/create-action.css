@@ -1,0 +1,10 @@
+.ego-store-lite-new-action-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.ego-store-lite-new-action-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.3em;
+}

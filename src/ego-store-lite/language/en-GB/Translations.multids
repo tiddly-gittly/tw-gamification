@@ -4,3 +4,28 @@ Name: Ego Store (lite)
 Description: Default game for tw-gamification, a simple store to buy bonus for yourself, and you are the store keeper.
 ConfigDescription: These settings let you customise the behaviour of ego-store-lite plugin.
 GameLoading: Your store is Loading...
+ActionsList/Title: Clock in Actions List
+CreateAction/OK: Create Clock in Action
+CreateEventGenerator/Caption: Create Event enerator
+CreateAction/Title/Caption: Title of the Action
+CreateAction/Title/Description: Enter the title for the new action.
+CreateAction/Tags/Caption: Tags
+CreateAction/Tags/Description: Specify tags for the action.
+CreateAction/FindDuplicate/Caption: Find Duplicate
+CreateAction/FindDuplicate/Description: Enable or disable duplicate finding.
+CreateAction/DebounceDuration/Caption: Debounce Duration
+CreateAction/DebounceDuration/Description: Set the debounce duration in seconds.
+CreateAction/GameEventAmount/Caption: Game Event Amount
+CreateAction/GameEventAmount/Description: Specify the amount for the game event.
+CreateAction/GameEventMessage/Caption: Game Event Message
+CreateAction/GameEventMessage/Description: Enter the message for the game event.
+CreateAction/GameEventType/Caption: Game Event Type
+CreateAction/GameEventType/Description: Choose the type of the game event.
+CreateAction/Icon/Caption: Icon
+CreateAction/Icon/Description: Select an icon for the action.
+CreateAction/Caption/Caption: Caption
+CreateAction/Caption/Description: Provide a caption for the action.
+CreateAction/Description/Caption: Description
+CreateAction/Description/Description: Describe the action in detail.
+CreateAction/Enabled/Caption: Enabled
+CreateAction/Enabled/Description: Toggle to enable or disable the action.

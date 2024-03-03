@@ -1,4 +1,6 @@
-title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/actions-list
+tags: $:/tags/ego-store-lite/main-tabs
+caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsList/Title>>
 
 <div class="ego-store-lite-action-list">
   <$list filter="[all[shadows+tiddlers]tag[$:/Tags/Gamification/action]]">

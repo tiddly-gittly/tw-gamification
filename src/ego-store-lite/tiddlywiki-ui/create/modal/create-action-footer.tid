@@ -1,0 +1,10 @@
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-action-footer
+
+\define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
+
+<$button>
+  <$action-createtiddler $basetitle={{$:/state/ego-store-lite/newAction!!draft.title}} $template="$:/state/ego-store-lite/newAction">
+    <$action-deletetiddler $tiddler="$:/state/ego-store-lite/newAction"/>
+  </$action-createtiddler>
+  <<lingo Create/OK>>
+</$button>

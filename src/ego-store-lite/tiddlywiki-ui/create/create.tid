@@ -1,0 +1,18 @@
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/create
+tags: $:/tags/ego-store-lite/main-tabs
+caption: {{$:/plugins/linonetwo/tw-gamification/icons/add-action}} <<lingo Create/Title/Caption>>
+
+\define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
+
+<div class="ego-store-lite-create-container">
+  <$button class="ego-store-lite-create-button">
+    {{$:/plugins/linonetwo/tw-gamification/icons/add-action}}
+    <<lingo CreateAction/Caption>>
+    <$action-sendmessage $message="tm-modal" $param="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-action"/>
+  </$button>
+  <$button class="ego-store-lite-create-button">
+    {{$:/plugins/linonetwo/tw-gamification/icons/add-event-generator}}
+    <<lingo CreateEventGenerator/Caption>>
+    <$action-sendmessage $message="tm-modal" $param="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-event-generator"/>
+  </$button>
+</div>

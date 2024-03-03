@@ -22,7 +22,7 @@ caption: <<lingo "Name" "$:/plugins/linonetwo/tw-gamification/language/">>
 <$macrocall
 	$name="tabs"
 	tabsList="[all[shadows+tiddlers]tag[$:/tags/ControlPanel/TW-Gamification/SettingsTab]!has[draft.of]]"
-	default="$:/plugins/linonetwo/tw-gamification/ControlPanel/SubPluginsList"
+	default="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/pages/SubPluginsList"
 	explicitState="$:/state/tabs/tw-gamification/config-1"
 />
 
@@ -30,8 +30,8 @@ caption: <<lingo "Name" "$:/plugins/linonetwo/tw-gamification/language/">>
 
 <$macrocall
 	$name="tabs"
-	tabsList="$:/plugins/linonetwo/tw-gamification/ControlPanel/EventGeneratorList
-	$:/plugins/linonetwo/tw-gamification/ControlPanel/EventActionList"
-	default="$:/plugins/linonetwo/tw-gamification/ControlPanel/EventGeneratorList"
+	tabsList="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/pages/EventGeneratorList
+	$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/pages/EventActionList"
+	default="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/pages/EventGeneratorList"
 	explicitState="$:/state/tabs/tw-gamification/config-2"
 />

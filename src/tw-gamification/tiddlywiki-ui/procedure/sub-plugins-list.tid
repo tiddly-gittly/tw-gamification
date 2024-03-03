@@ -1,0 +1,17 @@
+title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/procedure/sub-plugins-list
+
+\define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
+\import [[$:/core/ui/ControlPanel/Modals/AddPlugins]]
+
+\define install-plugin-button()
+<!-- // TODO: allow uninstall sub-plugin from here -->
+<$button>
+  <$action-navigate $to=<<assetInfo>>/>
+  <<lingo Open>>
+  {{$:/core/images/link}}
+</$button>
+\end
+
+<$list filter="[all[tiddlers+shadows]has[parent-plugin]parent-plugin<plugin-name>]" variable="assetInfo">
+  <<display-plugin-info plugin>>
+</$list>

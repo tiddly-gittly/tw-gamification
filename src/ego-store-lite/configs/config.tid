@@ -2,7 +2,9 @@ title: $:/plugins/linonetwo/ego-store-lite/config
 tags: $:/tags/ControlPanel/TW-Gamification/SettingsTab
 caption: <<lingo "Name" "$:/plugins/linonetwo/ego-store-lite/language/">>
 
+\import [[$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/procedure/sub-plugins-list]]
 \define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
+\define plugin-name() $:/plugins/linonetwo/ego-store-lite
 
 <<lingo "ConfigDescription">>
 
@@ -17,3 +19,7 @@ caption: <<lingo "Name" "$:/plugins/linonetwo/ego-store-lite/language/">>
 	<$action-deletetiddler $tiddler="$:/plugins/linonetwo/ego-store-lite/configs/Golds"/>
 	<<lingo Golds/Reset/Caption>>
 </$button> <<lingo Golds/Reset/Description>>
+
+!! <<lingo SubPluginsList $:/plugins/linonetwo/tw-gamification/language/>>
+
+{{$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/procedure/sub-plugins-list}}

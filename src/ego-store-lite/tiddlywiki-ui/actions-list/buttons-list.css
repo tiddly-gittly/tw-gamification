@@ -8,7 +8,7 @@
   font-size: 1.2em;
 }
 
-.ego-store-lite-action-list {
+.ego-store-lite-game-buttons-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -16,7 +16,7 @@
   height: 100%;
 }
 
-.ego-store-lite-action-list-item {
+.ego-store-lite-game-buttons-list-item {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,33 +29,33 @@
   aspect-ratio: 1;
 }
 
-.ego-store-lite-action-list-item > button { 
+.ego-store-lite-game-buttons-list-item > button { 
   width: 100%;
   height: 100%;
 }
 
-.ego-store-lite-action-list-item-icon {
+.ego-store-lite-game-buttons-list-item-icon {
   font-size: 3em;
 }
 
-.ego-store-lite-action-list-item-info {
+.ego-store-lite-game-buttons-list-item-info {
   display: flex;
   flex-direction: column;
 }
 
-.ego-store-lite-action-list-item-title {
+.ego-store-lite-game-buttons-list-item-title {
   font-size: 1.2em;
   margin: 0;
   user-select: none;
 }
 
-.ego-store-lite-action-list-item-reward {
+.ego-store-lite-game-buttons-list-item-reward {
   font-size: 0.9em;
   color: orange;
   user-select: none;
 }
 
-.ego-store-lite-action-list-item-edit {
+.ego-store-lite-game-buttons-list-item-edit {
   font-size: 2em;
   border-radius: 2em;
   opacity: 0.3;
@@ -65,13 +65,13 @@
   top: 0.5em;
   right: 0.5em;
 }
-.ego-store-lite-action-list-item-edit:hover {
+.ego-store-lite-game-buttons-list-item-edit:hover {
   opacity: 1;
 }
-.ego-store-lite-action-list-item-edit:active {
+.ego-store-lite-game-buttons-list-item-edit:active {
   opacity: 0.7;
 }
 
-.ego-store-lite-action-list-description {
+.ego-store-lite-game-buttons-list-description {
   user-select: none;
 }

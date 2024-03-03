@@ -1,0 +1,21 @@
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-goods/create-goods-footer
+
+\define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
+
+<div class="ego-store-lite-create-modal-buttons">
+  <$button message="tm-close-tiddler">
+    <$goods-deletetiddler $tiddler="$:/state/ego-store-lite/newGoods"/>
+    <<lingo Create/Close>>
+  </$button>
+  <$button message="tm-close-tiddler">
+    <$goods-createtiddler
+      $basetitle={{$:/state/ego-store-lite/newGoods!!draft.title}}
+      $template="$:/state/ego-store-lite/newGoods"
+      tags={{{ [{$:/state/ego-store-lite/newGoods}get[tags]enlist-input[]] [[$:/Tags/Gamification/goods]] }}}
+    >
+      <$goods-deletetiddler $tiddler="$:/state/ego-store-lite/newGoods"/>
+      <$goods-deletefield $tiddler=<<createTiddler-title>> draft.title draft.of/>
+    </$goods-createtiddler>
+    <<lingo Create/OK>>
+  </$button>
+</div>

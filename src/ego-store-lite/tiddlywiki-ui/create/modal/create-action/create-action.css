@@ -1,0 +1,24 @@
+.ego-store-lite-new-action-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.ego-store-lite-new-action-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.ego-store-lite-create-modal-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.ego-store-lite-new-action-label {
+  font-size: 1.1em;
+}
+.ego-store-lite-new-action-field-description {
+  font-size: 0.7em;
+}

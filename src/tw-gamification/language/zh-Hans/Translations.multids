@@ -15,3 +15,8 @@ Configs/EventGenerators/Caption: 事件生成器
 Configs/EventGenerators/Description: 事件生成器将把一些知识库操作转换为事件，以便在游戏中使用。这里将列出已安装的事件生成器，你可以通过复选框启用和关闭它们。要注意过多的事件生成器可能会让知识库编辑卡顿，你可以关闭一些不常用的事件生成器，改为使用打卡按钮来触发奖励事件。
 Configs/EventActions/Caption: 事件动作
 Configs/EventActions/Description: 事件动作也就是打卡按钮，实际上它们定义了打卡按钮的功能。由于一般只有在点击按钮时才会触发事件，所以这里的事件动作不会导致卡顿等问题，多多益善。
+EventType/SmallReward/Caption: 小奖励
+EventType/LargeReward/Caption: 大奖励
+EventType/SmallPunishment/Caption: 小惩罚
+EventType/LargePunishment/Caption: 大惩罚
+EventType/Item/Caption: 物品

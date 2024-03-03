@@ -1,6 +1,3 @@
 title: $:/plugins/linonetwo/ego-store-lite/configs/
 
-DefaultGame: 
-ShowInitialConfigPage: 
-EnableDefaultEventGenerator: yes
-DefaultEventGeneratorTagsForTask: 
+Golds: 0

@@ -6,8 +6,13 @@ tags: $:/tags/Global
 
 \procedure EgoStoreLite()
 
-!! <<lingo ActionsList/Title>>
-
-{{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list}}
+<div class="ego-store-lite-container">
+  <$macrocall
+    $name="tabs"
+    tabsList="[all[shadows+tiddlers]tag[$:/tags/ego-store-lite/main-tabs]]"
+    explicitState="$:/state/tabs/ego-store-lite/1"
+    default="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/actions-list"
+  />
+</div>
 
 \end

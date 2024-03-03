@@ -1,5 +1,6 @@
 title: $:/plugins/linonetwo/tw-gamification/PageLayout/GameLayout
-name: {{$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/GameLayoutImage}}<<lingo "Name" "$:/plugins/linonetwo/tw-gamification/language/">>
+name: <<lingo "Name" "$:/plugins/linonetwo/tw-gamification/language/">>
+icon: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/GameLayoutImage
 description: <<lingo "Description" "$:/plugins/linonetwo/tw-gamification/language/">>
 tags: $:/tags/Layout
 
@@ -20,17 +21,7 @@ tc-page-container tc-page-view-$(storyviewTitle)$ tc-language-$(languageTitle)$ 
 
 		<$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
 
-			<!-- and if any config needed by DefaultEventGenerator is empty, show the config page -->
-			<!-- isDefaultEventGeneratorEnabled === 'yes' && isDefaultEventGeneratorLackConfig === 'yes' -->
-			<% if [<isDefaultEventGeneratorEnabled>match[yes]then<isDefaultEventGeneratorLackConfig>match[yes]] %>
-
-				{{$:/plugins/linonetwo/tw-gamification/PageLayout/GameConfigBeforeUse}}
-
-			<% else %>
-
-				{{$:/plugins/linonetwo/tw-gamification/PageLayout/GameStory}}
-
-			<% endif %>
+			{{$:/plugins/linonetwo/tw-gamification/PageLayout/GameStory}}
 
 		</$navigator>
 

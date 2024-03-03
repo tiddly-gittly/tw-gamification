@@ -1,0 +1,19 @@
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/store.css.mobile
+tags: $:/tags/Stylesheet
+type: text/css
+
+/* Responsive styles */
+@media (max-width: <<sidebarbreakpoint>>) {
+  .ego-store-lite-store-list-container {
+      flex-direction: column;
+  }
+
+  .ego-store-lite-store-list-item {
+      flex-direction: column;
+  }
+
+  .ego-store-lite-store-list-item-info {
+      align-items: center;
+      text-align: center;
+  }
+}

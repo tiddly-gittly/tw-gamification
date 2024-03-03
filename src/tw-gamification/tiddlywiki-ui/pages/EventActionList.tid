@@ -1,0 +1,13 @@
+title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/pages/EventActionList
+caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo Configs/EventActions/Caption>>
+
+\define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
+\import [[$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/pages/EventGeneratorList]]
+
+<<lingo Configs/EventActions/Description>>
+
+<div class="tw-gamification-event-generator-list">
+  <$list filter="[all[tiddlers+shadows]tag[$:/Tags/Gamification/action]!is[draft]]">
+    <<event-generator-list-item>>
+  </$list>
+</div>

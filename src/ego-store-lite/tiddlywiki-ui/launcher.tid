@@ -1,5 +1,5 @@
-title: $:/plugins/linonetwo/ego-store-lite/launcher
-tags: $:/tags/simple-layout-launcher/main-tabs
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/launcher
+tags: $:/tags/ego-store-lite/main-tabs
 caption: {{$:/core/images/layout-button}} <<lingo Exit/Caption>>
 
 \whitespace trim

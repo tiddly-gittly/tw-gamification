@@ -10,7 +10,6 @@ Golds/Reset/Caption: Reset Golds
 Golds/Reset/Description: Zero out gold coins, this will clear all gold coins, don't click it if everything is fine. Only the number of gold coins of this plugin is involved, it does not affect other plugins and games.
 Exit/Caption: Exit Game
 ActionsList/Title: Clock in Actions List
-ActionsList/ReceiveRewardWithCount: Click to receive <<count-gamification-reward>> rewards.
 CreateAction/OK: Create Clock in Action
 CreateEventGenerator/Caption: Create Event enerator
 CreateAction/Title/Caption: Title of the Action
@@ -35,3 +34,6 @@ CreateAction/Description/Caption: Description
 CreateAction/Description/Description: Describe the action in detail.
 CreateAction/Enabled/Caption: Enabled
 CreateAction/Enabled/Description: Toggle to enable or disable the action.
+ActionsList/ReceiveRewardWithCount: Click to receive <<count-gamification-reward>> rewards.
+Store/Title: Store
+CreateGoods/Caption: Create Goods

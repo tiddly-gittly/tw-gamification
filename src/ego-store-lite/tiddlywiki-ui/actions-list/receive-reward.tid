@@ -3,7 +3,7 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/receive-re
 \define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
 
 <div class="ego-store-lite-action-receive-reward">
-  <$button>
+  <$button class="receive-reward-button">
     <<lingo ActionsList/ReceiveRewardWithCount>>
 
     <$let goldSaveFile="$:/plugins/linonetwo/ego-store-lite/configs/Golds">

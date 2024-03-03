@@ -1,3 +1,13 @@
+.ego-store-lite-action-receive-reward {
+  width: 100%;
+  margin-bottom: 0.5em;
+}
+.ego-store-lite-action-receive-reward > button.receive-reward-button {
+  width: 100%;
+  height: 100%;
+  font-size: 1.2em;
+}
+
 .ego-store-lite-action-list {
   display: flex;
   flex-direction: row;

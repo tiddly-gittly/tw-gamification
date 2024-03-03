@@ -1,0 +1,7 @@
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/store.css.variable
+tags: $:/tags/Stylesheet
+type: text/css
+
+.ego-store-lite-store-list-item {
+  box-shadow: <<colour sidebar-foreground-shadow>>; 
+}

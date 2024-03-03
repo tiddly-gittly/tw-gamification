@@ -1,22 +1,22 @@
-title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/actions-list
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/store
 tags: $:/tags/ego-store-lite/main-tabs
-caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsList/Title>>
+caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lingo Store/Title>> {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/store-gold-count}}
 
-<div class="ego-store-lite-action-list">
-  <$list filter="[all[shadows+tiddlers]tag[$:/Tags/Gamification/action]]">
-    <div class="ego-store-lite-action-list-item" data-title=<<currentTiddler>>>
-      <div class="ego-store-lite-action-list-item-edit">…</div>
+<div class="ego-store-lite-store-list">
+  <$list filter="[all[shadows+tiddlers]tag[$:/tags/ego-store-lite/goods]]">
+    <div class="ego-store-lite-store-list-item" data-title=<<currentTiddler>>>
+      <div class="ego-store-lite-store-list-item-edit">…</div>
       <$button>
         <$action-sendmessage
           $message="tm-gamification-event-action"
           $param=<<currentTiddler>>
         />
-        <div class="ego-store-lite-action-list-item-icon"><$transclude $field="icon"/></div>
-        <div class="ego-store-lite-action-list-item-info">
-          <h2 class="ego-store-lite-action-list-item-title"><$transclude $field="caption"/></h2>
-          <p class="ego-store-lite-action-list-item-reward"><$transclude $field="game-event-amount"/> <$transclude $field="game-event-type"/></p>
+        <div class="ego-store-lite-store-list-item-icon"><$transclude $field="icon"/></div>
+        <div class="ego-store-lite-store-list-item-info">
+          <h2 class="ego-store-lite-store-list-item-title"><$transclude $field="caption"/></h2>
+          <p class="ego-store-lite-store-list-item-reward"><$transclude $field="game-event-amount"/> <$transclude $field="game-event-type"/></p>
         </div>
-        <div class="ego-store-lite-action-list-description"><$transclude $field="description"/></div>
+        <div class="ego-store-lite-store-list-description"><$transclude $field="description"/></div>
       </$button>
     </div>
   </$list>

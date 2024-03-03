@@ -9,6 +9,7 @@ Golds/Count: 金币总量
 Golds/Reset/Caption: 重置金币
 Golds/Reset/Description: 将金币归零，这将清除所有的金币，没事别点。只涉及本插件的金币数量，不影响别的插件和游戏。
 ActionsList/Title: 打卡行动列表
+ActionsList/ReceiveRewardWithCount: 点击接收 <<count-gamification-reward>> 份奖励
 Exit/Caption: 退出游戏
 Create/Title/Caption: 创建
 Create/OK: 确认创建

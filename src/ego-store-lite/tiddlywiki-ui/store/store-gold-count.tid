@@ -1,0 +1,10 @@
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/store-gold-count
+
+\whitespace trim
+
+<span class="store-gold-count">
+  <<lingo Golds/Count>>
+  <span class="store-gold-count-number">
+    {{$:/plugins/linonetwo/ego-store-lite/configs/Golds}}
+  </span>
+</span>

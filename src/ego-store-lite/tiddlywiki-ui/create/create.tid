@@ -8,8 +8,8 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/add-action}} <<lingo Creat
   <$button class="ego-store-lite-create-button">
     {{$:/plugins/linonetwo/tw-gamification/icons/add-action}}
     <<lingo CreateAction/Caption>>
-    <$action-createtiddler $basetitle="$:/state/ego-store-lite/newAction" $overwrite="yes" $template="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/new-action-template">
-      <$action-sendmessage $message="tm-modal" $param="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-action"/>
+    <$action-createtiddler $basetitle="$:/state/ego-store-lite/newAction" $overwrite="yes" $template="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-action/create-action/new-action-template">
+      <$action-sendmessage $message="tm-modal" $param="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-action/create-action"/>
     </$action-createtiddler>
   </$button>
   <$button class="ego-store-lite-create-button">

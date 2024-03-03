@@ -1,0 +1,14 @@
+title: language/zh-Hans/examples/consumeRewards
+
+(其它游戏界面)
+
+<$let experienceSaveFile="experience" consumeExpAmount="10">
+  <$button>
+    点击消耗 <<consumeExpAmount>> 份经验值
+    <$action-consume-game-reward-tiddler $tiddler=<<experienceSaveFile>> amount=<<consumeExpAmount>>>
+      <$action-sendmessage $message="tm-notify" $param="language/zh-Hans/examples/consumeRewardsNotification"/>
+    </$action-consume-game-reward-tiddler>
+  </$button>
+</$let>
+
+你有 {{experience}} 点经验。

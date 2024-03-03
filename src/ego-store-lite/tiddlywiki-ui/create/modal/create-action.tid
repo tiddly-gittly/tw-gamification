@@ -32,7 +32,7 @@ footer: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-
 
   <div class="ego-store-lite-new-action-item">
     <span class="ego-store-lite-new-action-label"><<lingo CreateAction/Tags/Caption>></span>
-    <$let saveTiddler="$:/state/ego-store-lite/newAction">
+    <$let saveTiddler="$:/state/ego-store-lite/newAction" currentTiddler="$:/state/ego-store-lite/newAction">
       <$macrocall $name="edit-tags-template"/>
     </$let>
     <span class="ego-store-lite-new-action-field-description"><<lingo CreateAction/Tags/Description>></span>

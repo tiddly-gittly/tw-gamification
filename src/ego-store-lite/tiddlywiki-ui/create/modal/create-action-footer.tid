@@ -11,10 +11,10 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-act
     <$action-createtiddler
       $basetitle={{$:/state/ego-store-lite/newAction!!draft.title}}
       $template="$:/state/ego-store-lite/newAction"
-      tags={{{ [enlist{$:/state/ego-store-lite/newAction!!tags}] [[$:/Tags/Gamification/action]] }}}
+      tags={{{ [{$:/state/ego-store-lite/newAction}get[tags]enlist-input[]] [[$:/Tags/Gamification/action]] }}}
     >
       <$action-deletetiddler $tiddler="$:/state/ego-store-lite/newAction"/>
-      <$action-deletefield $tiddler=<<createTiddler-title>> $field="draft.title"/>
+      <$action-deletefield $tiddler=<<createTiddler-title>> draft.title draft.of/>
     </$action-createtiddler>
     <<lingo Create/OK>>
   </$button>

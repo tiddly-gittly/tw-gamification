@@ -55,3 +55,6 @@ CreateGoods/Description/Caption: Description
 CreateGoods/Description/Description: Describe the Goods in detail.
 CreateGoods/Enabled/Caption: Enabled
 CreateGoods/Enabled/Description: Toggle to enable or disable the Goods.
+ConsumeGoods/NotifyAmountFailed: Insufficient gold, unable to buy this product.
+ConsumeGoods/NotifyConditionFailed: The purchase condition is not met.
+ConsumeGoods/Success: The purchase was successful!

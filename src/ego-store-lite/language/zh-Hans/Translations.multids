@@ -56,3 +56,6 @@ CreateGoods/Description/Caption: 描述
 CreateGoods/Description/Description: 详细描述商品。
 CreateGoods/Enabled/Caption: 启用
 CreateGoods/Enabled/Description: 切换以启用或禁用商品。
+ConsumeGoods/NotifyAmountFailed: 金币不足，无法购买此商品
+ConsumeGoods/NotifyConditionFailed: 不满足购买条件，无法购买此商品
+ConsumeGoods/Success: 购买成功！

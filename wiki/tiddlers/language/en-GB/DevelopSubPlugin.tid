@@ -4,7 +4,7 @@ title: language/en-GB/DevelopSubPlugin
 
 ! Developing sub-plugins
 
-!!! Event Package
+!! Event Package
 
 Referring to the [[$:/plugins/linonetwo/early-sleep-early-work]] plugin, you can generate events declaratively with tiddlers with specific tags and fields:
 
@@ -24,13 +24,13 @@ After it's created, you can trigger it via the Message Widget. Note the change i
 
 <<show-example generateEventsByAction>>
 
-!!! Games
+!! Simple game in plain wikitext
 
 Refer to the [[$:/plugins/linonetwo/ego-store-lite]] plugin to create simple games in plain text or the [[$:/plugins/linonetwo/scp-foundation-site-director]] plugin to create small to medium sized games based on the Rust language.
 
-!!! Simple game in plain text category
+Here we will only introduce the development of text-only simple games, because the development of Rust language games online already have a lot of professional materials to learn.
 
-!!!! Handling reward events to convert to in-game rewards
+!!! Handling reward events to convert to in-game rewards
 
 First, trigger the `<$action-convert-game-event/>` Widget with a button that declares which events you want to handle, and then within it, use the filters to select the type of event you want to handle to convert the reward event to an in-game reward. Note that if you just declare what you want to handle, but don't do the conversion correctly, then the player's reward event will be flat out lost.
 
@@ -39,6 +39,21 @@ First, trigger the `<$action-convert-game-event/>` Widget with a button that dec
 </$GameWikiProvider>
 
 The framework already surrounds your game content with `<$GameWikiProvider></$GameWikiProvider>` Widgets, which will accept `pop-gamification-events` events triggered by the `<$action-convert-game-event/>` Widgets and pass the pending reward events back to the `<$action-convert-game-event/>` Widget. After that it's up to the other action Widgets within it to generate the in-game reward you specified, as in the example.
+
+!!! Consume in-game rewards, convert to other in-game rewards
+
+Triggers the `<$action-consume-reward-tiddler/>` widget with a button, declaring which tiddler the value you want to consume exists in and how much to consume. If consumed successfully, it will further trigger other internal action widgets to generate the in-game reward you specified.
+
+# The value stored in the tiddler is greater than the value to be consumed before it will be consumed.
+# The condition field is a filter that determines if the consumption condition is met, and will only be consumed if its return is not null
+
+This widget assumes:
+
+# you store the value in the `text` field of the tiddler (the body part)
+# A number is stored
+# The tiddler is only used to store one type of value (e.g. only for experience values)
+
+<<show-example consumeRewards>>
 
 !! Developer's Toolkit
 

@@ -2,8 +2,10 @@
 import { widget as Widget } from '$:/core/modules/widgets/widget.js';
 import { IChangedTiddlers, IWidgetEvent } from 'tiddlywiki';
 
+const notificationTemplateTitle = '$:/plugins/linonetwo/tw-gamification/game-wiki-adaptor/notification/template';
+
 /**
- * A default event converter for WikiText based games. Can be used as action widget.
+ * A default reward converter for WikiText based games. Can be used as action widget.
  */
 class ActionConsumeRewardTiddler extends Widget {
   public refresh(changedTiddlers: IChangedTiddlers) {
@@ -23,12 +25,16 @@ class ActionConsumeRewardTiddler extends Widget {
   conditionFilter?: string;
   amountToConsume?: number;
   tiddlerTitle?: string;
+  notifyAmountFailed?: string;
+  notifyConditionFailed?: string;
   public execute() {
     this.tiddlerTitle = this.getAttribute('$tiddler');
     this.conditionFilter = this.getAttribute('$condition');
     // fallback to 1 if not provided
     const amountNumber = Number(this.getAttribute('$amount'));
     this.amountToConsume = Number.isNaN(amountNumber) ? 1 : amountNumber;
+    this.notifyAmountFailed = this.getAttribute('$notify-amount-failed');
+    this.notifyConditionFailed = this.getAttribute('$notify-condition-failed');
     super.execute();
   }
 
@@ -57,6 +63,9 @@ class ActionConsumeRewardTiddler extends Widget {
     const notEnoughAmount = (availableAmount - this.amountToConsume) < 0;
     if (notEnoughAmount) {
       // if not enough amount (less than 0 after trying to consume), not doing anything
+      if (this.notifyAmountFailed !== undefined) {
+        this.dispatchEvent({ type: 'tm-notify', widget: this, param: notificationTemplateTitle, paramObject: { message: this.notifyAmountFailed } });
+      }
       return false;
     }
     if (this.conditionFilter === undefined || this.conditionFilter === '') {
@@ -64,7 +73,15 @@ class ActionConsumeRewardTiddler extends Widget {
       return true;
     }
     const result = this.wiki.filterTiddlers(this.conditionFilter, this);
-    return result.length > 0;
+    const conditionMeet = result.length > 0;
+    if (!conditionMeet) {
+      // if condition not meet, not doing anything
+      if (this.notifyConditionFailed !== undefined) {
+        this.dispatchEvent({ type: 'tm-notify', widget: this, param: notificationTemplateTitle, paramObject: { message: this.notifyConditionFailed, condition: result } });
+      }
+      return false;
+    }
+    return true;
   }
 }
 

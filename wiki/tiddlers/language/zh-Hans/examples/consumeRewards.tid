@@ -7,7 +7,7 @@ title: language/zh-Hans/examples/consumeRewards
     点击消耗 <<consumeExpAmount>> 份经验值（前提是你有足够的经验值，且有至少一个未消耗的游戏事件）。
     <$action-consume-reward-tiddler
       $tiddler=<<experienceSaveFile>>
-      $condition="[tag{$:/plugins/linonetwo/tw-gamification/tags/cache-log-meta-tag}get[text]jsonget[length]sum[]compare:number:gt[1]]"
+      $condition="[tag{$:/plugins/linonetwo/tw-gamification/tags/cache-log-meta-tag}get[text]jsonget[length]sum[]compare:number:gteq[1]]"
       $amount=<<consumeExpAmount>>
       $notify-amount-fail="你没有足够的经验值。"
       $notify-condition-fail="你没有足够的未消耗的游戏事件。"

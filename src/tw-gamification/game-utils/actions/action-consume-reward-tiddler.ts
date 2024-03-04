@@ -42,9 +42,13 @@ class ActionConsumeRewardTiddler extends Widget {
     return false;
   }
 
+  availableAmount = 0;
   public invokeAction(_triggeringWidget: Widget, _event: IWidgetEvent): boolean | undefined {
     // this method is called when triggered by a parent button widget
+    const saveFileNumber = Number(this.wiki.getTiddlerText(this.tiddlerTitle ?? ''));
+    this.availableAmount = Number.isNaN(saveFileNumber) ? 0 : saveFileNumber;
     if (!this.checkCondition()) return false;
+    this.consumeAmount();
     const handled = this.invokeActions(this, null);
     return handled; // Action was invoked
   }
@@ -58,9 +62,8 @@ class ActionConsumeRewardTiddler extends Widget {
       // if no amount is provided, not doing anything
       return false;
     }
-    const saveFileNumber = Number(this.wiki.getTiddlerText(this.tiddlerTitle));
-    const availableAmount = Number.isNaN(saveFileNumber) ? 0 : saveFileNumber;
-    const notEnoughAmount = (availableAmount - this.amountToConsume) < 0;
+
+    const notEnoughAmount = (this.availableAmount - this.amountToConsume) < 0;
     if (notEnoughAmount) {
       // if not enough amount (less than 0 after trying to consume), not doing anything
       if (this.notifyAmountFailed !== undefined) {
@@ -82,6 +85,14 @@ class ActionConsumeRewardTiddler extends Widget {
       return false;
     }
     return true;
+  }
+
+  private consumeAmount() {
+    const newAmount = this.availableAmount - (this.amountToConsume ?? 1);
+    if (this.tiddlerTitle === undefined || this.tiddlerTitle === '') {
+      return;
+    }
+    this.wiki.setText(this.tiddlerTitle, 'text', undefined, newAmount.toString());
   }
 }
 

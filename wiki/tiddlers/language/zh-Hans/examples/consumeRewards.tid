@@ -9,8 +9,8 @@ title: language/zh-Hans/examples/consumeRewards
       $tiddler=<<experienceSaveFile>>
       $condition="[tag{$:/plugins/linonetwo/tw-gamification/tags/cache-log-meta-tag}get[text]jsonget[length]sum[]compare:number:gteq[1]]"
       $amount=<<consumeExpAmount>>
-      $notify-amount-fail="你没有足够的经验值。"
-      $notify-condition-fail="你没有足够的未消耗的游戏事件。"
+      $notify-amount-failed="你没有足够的经验值。"
+      $notify-condition-failed="你没有足够的未消耗的游戏事件。"
     >
       <$action-sendmessage $message="tm-notify" $param="language/zh-Hans/examples/consumeRewardsNotification"/>
     </$action-consume-reward-tiddler>

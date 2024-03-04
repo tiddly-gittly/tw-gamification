@@ -2,12 +2,16 @@ title: language/zh-Hans/examples/consumeRewards
 
 (其它游戏界面)
 
-<$let experienceSaveFile="experience" consumeExpAmount="10" condition="[tag{$:/plugins/linonetwo/tw-gamification/tags/cache-log-meta-tag}get[text]jsonget[length]sum[]compare:number:gt[1]]">
+<$let experienceSaveFile="experience" consumeExpAmount="10">
   <$button>
     点击消耗 <<consumeExpAmount>> 份经验值（前提是你有足够的经验值，且有至少一个未消耗的游戏事件）。
-    <$action-consume-game-reward-tiddler $tiddler=<<experienceSaveFile>> amount=<<consumeExpAmount>>>
+    <$action-consume-reward-tiddler
+      $tiddler=<<experienceSaveFile>>
+      $condition="[tag{$:/plugins/linonetwo/tw-gamification/tags/cache-log-meta-tag}get[text]jsonget[length]sum[]compare:number:gt[1]]"
+      $amount=<<consumeExpAmount>>
+    >
       <$action-sendmessage $message="tm-notify" $param="language/zh-Hans/examples/consumeRewardsNotification"/>
-    </$action-consume-game-reward-tiddler>
+    </$action-consume-reward-tiddler>
   </$button>
 </$let>
 

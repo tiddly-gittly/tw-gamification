@@ -2,6 +2,11 @@
 
 import { $, cd, path } from 'zx';
 
+if (process.platform === 'win32') {
+  $.prefix = '';
+  $.shell = 'pwsh.exe';
+}
+
 const gamePath = path.resolve(__dirname, '../src/scp-foundation-site-director/game');
 /**
  * Build the game

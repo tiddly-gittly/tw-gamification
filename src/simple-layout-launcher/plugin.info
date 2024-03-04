@@ -1,6 +1,6 @@
 {
   "title": "$:/plugins/linonetwo/simple-layout-launcher",
-  "name": "simple-layout-launcher",
+  "name": "Simple Layout Launcher",
   "author": "linonetwo",
   "description": "Vanilla style launcher, with Metro style square button and large icon.",
   "plugin-type": "plugin",

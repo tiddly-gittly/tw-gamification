@@ -6,4 +6,37 @@ title: $:/plugins/linonetwo/early-sleep-early-work/language/en-GB/Readme
 
 <<lingo "Description">>
 
-Focus on going to bed early and waking up early to solve the problem of waking up inefficiently and struggling to get into shape.
+!! Design Purpose
+
+Focus on the challenge of going to bed early, waking up early and being inefficient and difficult to get into shape.
+
+!! Event Sources
+
+This plugin provides event sources that are automatically triggered by the calendar, as well as button widgets for manually triggering events, and macros for customizing your own buttons.
+
+!!! Instant Feedback and Expectations
+
+Sleep on big rewards for clocking in and scheduling what you expect to do, and small rewards based on what you actually do after the fact, so that you don't feel bad even if you don't do it, and you don't get stressed out enough to cause sleeplessness. Getting instant gratification gives the feeling of letting go and then you can calm down.
+
+At work, expect only small ones and only give big ones when you actually do it, because work is about keeping expectations high so you can have high arousal levels.
+
+!!! Calendar Events
+
+Subscribing to a global new entry event that is a calendar tiddler and has not been created before, and carries a tag that is a sleep related tag set by the user, gives a reward based on the time the user sets to fall asleep.
+
+# Instantly reward early readiness for sleep with a small large reward
+## with the tag "getting ready for bed"
+## with the tag "reading a book" two hours before bedtime
+# Delayed reward for actually going to bed early the next day, with a small large reward based on the number of hours slept
+## Tagged with "sleep" ##
+
+!!! OO, Launch!
+
+Focus on early work clocking in and whether tomato time was completed.
+
+# Schedule planning tasks with small mini-rewards
+## Calendar entries with tiddlers tagged with "Tasks" will be rewarded with a small bonus based on the expected hours.
+# Tomato work, expect small multiple rewards after countdowns
+## Add a "Start Tomato Clock" button under all tiddlers labeled with "Tasks", click on it to start a countdown, and give a reward when the countdown is over.
+# Encourage logging of problems at work with small rewards
+## Edit tiddlers labeled with "Tasks" once every half an hour, with a small reward.

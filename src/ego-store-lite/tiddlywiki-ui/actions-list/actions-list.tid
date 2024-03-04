@@ -4,27 +4,27 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsLi
 
 {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/receive-reward}}
 
-<div class="ego-store-lite-action-list">
+<div class="ego-store-lite-game-buttons-list">
   <$list filter="[all[shadows+tiddlers]tag[$:/Tags/Gamification/action]!is[draft]]">
-    <div class="ego-store-lite-action-list-item" data-title=<<currentTiddler>>>
-      <div class="ego-store-lite-action-list-item-edit">…</div>
+    <div class="ego-store-lite-game-buttons-list-item" data-title=<<currentTiddler>>>
+      <div class="ego-store-lite-game-buttons-list-item-edit">…</div>
       <$button>
         <$action-sendmessage
           $message="tm-gamification-event-action"
           $param=<<currentTiddler>>
         />
-        <div class="ego-store-lite-action-list-item-icon"><$transclude $field="icon"/></div>
-        <div class="ego-store-lite-action-list-item-info">
-          <h2 class="ego-store-lite-action-list-item-title">
+        <div class="ego-store-lite-game-buttons-list-item-icon"><$transclude $field="icon"/></div>
+        <div class="ego-store-lite-game-buttons-list-item-info">
+          <h2 class="ego-store-lite-game-buttons-list-item-title">
             <$transclude $field="caption">
               <$fill $name="ts-missing">
                 <$transclude $field="title"/>
               </$fill>
             </$transclude>
           </h2>
-          <p class="ego-store-lite-action-list-item-reward"><$transclude $field="game-event-amount"/> <$transclude $field="game-event-type"/></p>
+          <p class="ego-store-lite-game-buttons-list-item-reward"><$transclude $field="game-event-amount"/> <$transclude $field="game-event-type"/></p>
         </div>
-        <div class="ego-store-lite-action-list-description"><$transclude $field="description"/></div>
+        <div class="ego-store-lite-game-buttons-list-description"><$transclude $field="description"/></div>
       </$button>
     </div>
   </$list>

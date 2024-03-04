@@ -1,0 +1,3 @@
+title: language/zh-Hans/examples/consumeRewardsNotification
+
+{{$:/core/images/done-button}} 升级成功，你还剩下 {{experience}} 点经验。

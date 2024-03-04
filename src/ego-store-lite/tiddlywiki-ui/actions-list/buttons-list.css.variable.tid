@@ -2,6 +2,6 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/actions-li
 tags: $:/tags/Stylesheet
 type: text/css
 
-.ego-store-lite-action-list-item {
+.ego-store-lite-game-buttons-list-item {
   box-shadow: <<colour sidebar-foreground-shadow>>; 
 }

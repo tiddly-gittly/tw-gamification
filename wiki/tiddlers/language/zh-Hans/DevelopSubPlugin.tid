@@ -16,8 +16,6 @@ title: language/zh-Hans/DevelopSubPlugin
 
 !!! 动作
 
-{{tag||}}
-
 带上 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/action-meta-tag}} /> 标签的条目会被识别为「动作事件生成器」。
 
 有的游戏将使用这些条目的信息，生成一个按钮列表。当按钮被点击时，会触发相应的动作微件。具体字段请参考本仓库里的 `IActionDefinitions` 类型。
@@ -26,13 +24,13 @@ title: language/zh-Hans/DevelopSubPlugin
 
 <<show-example generateEventsByAction>>
 
-!! 游戏
+!! 纯文本类的简单游戏
 
 参考 [[$:/plugins/linonetwo/ego-store-lite]] 插件制作纯文本类的简单游戏，或参考 [[$:/plugins/linonetwo/scp-foundation-site-director]] 插件制作基于 Rust 语言的中小型游戏。
 
-!!! 纯文本类的简单游戏
+这里我们只介绍开发纯文本类的简单游戏的方法，因为开发 Rust 语言的游戏网上已经有很多专业资料可以学习了。
 
-!!!! 处理奖励事件，转换为游戏内奖励
+!!! 处理奖励事件，转换为游戏内奖励
 
 首先，用一个按钮触发 `<$action-convert-game-event/>` 微件，声明你要处理哪些事件，然后在其内部用筛选器选中你想处理的事件类型，将奖励事件转换为游戏内奖励。注意如果你只声明了你要处理，但是没有正确做转换，那么玩家的奖励事件将会平白丢失。
 
@@ -41,6 +39,21 @@ title: language/zh-Hans/DevelopSubPlugin
 </$GameWikiProvider>
 
 本框架已经用 `<$GameWikiProvider></$GameWikiProvider>` 微件包围你的游戏内容，它将接受 `<$action-convert-game-event/>` 微件触发的 `pop-gamification-events` 事件，然后将待处理的奖励事件传回给 `<$action-convert-game-event/>` 微件。此后就像例子里的那样，由它内部的其它动作微件，生成你指定的游戏内奖励。
+
+!!! 消耗游戏内奖励，转换为其它游戏内奖励
+
+用一个按钮触发 `<$action-consume-reward-tiddler/>` 微件，声明你要消耗的数值存在哪个条目里，以及要消耗多少。如果消耗成功，则会进一步触发内部的其它动作微件，生成你指定的游戏内奖励。
+
+# 条目中存储的数值大于消耗的数值，才会进行消耗
+# condition 字段是一个筛选器，用于判断是否满足消耗条件，其返回不为空时，才会进行消耗
+
+这个微件假设：
+
+# 你将数值存储在条目的 `text` 字段里（即正文部分）
+# 存储的是一个数字
+# 这个条目只用于存储一种类型的数值（例如只用来保存经验值）
+
+<<show-example consumeRewards>>
 
 !! 开发工具包
 

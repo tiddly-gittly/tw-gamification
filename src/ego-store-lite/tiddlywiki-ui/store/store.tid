@@ -2,21 +2,31 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/store
 tags: $:/tags/ego-store-lite/main-tabs
 caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lingo Store/Title>> {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/store-gold-count}}
 
-<div class="ego-store-lite-store-list">
+\define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
+
+<div class="ego-store-lite-game-buttons-list">
   <$list filter="[all[shadows+tiddlers]tag[$:/tags/ego-store-lite/goods]]">
-    <div class="ego-store-lite-store-list-item" data-title=<<currentTiddler>>>
-      <div class="ego-store-lite-store-list-item-edit">…</div>
+    <div class="ego-store-lite-game-buttons-list-item" data-title=<<currentTiddler>>>
+      <div class="ego-store-lite-game-buttons-list-item-edit">…</div>
       <$button>
-        <$action-sendmessage
-          $message="tm-gamification-event-action"
-          $param=<<currentTiddler>>
-        />
-        <div class="ego-store-lite-store-list-item-icon"><$transclude $field="icon"/></div>
-        <div class="ego-store-lite-store-list-item-info">
-          <h2 class="ego-store-lite-store-list-item-title"><$transclude $field="caption"/></h2>
-          <p class="ego-store-lite-store-list-item-reward"><$transclude $field="game-event-amount"/> <$transclude $field="game-event-type"/></p>
+        <$action-consume-reward-tiddler
+          $tiddler="$:/plugins/linonetwo/ego-store-lite/configs/Golds"
+          $amount={{!!gold-amount}}
+          $notify-amount-failed="You do not have enough experience points."
+          $notify-condition-failed="You do not have enough unconsumed game events."
+        >
+          <$action-sendmessage
+            $message="tm-notify"
+            $param="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/buyGoodsNotification"
+            message={{!!purchase-message}}
+          />
+        </$action-consume-reward-tiddler>
+        <div class="ego-store-lite-game-buttons-list-item-icon"><$transclude $field="icon"/></div>
+        <div class="ego-store-lite-game-buttons-list-item-info">
+          <h2 class="ego-store-lite-game-buttons-list-item-title"><$transclude $field="caption"/></h2>
+          <p class="ego-store-lite-game-buttons-list-item-reward"><$transclude $field="game-event-amount"/> <$transclude $field="game-event-type"/></p>
         </div>
-        <div class="ego-store-lite-store-list-description"><$transclude $field="description"/></div>
+        <div class="ego-store-lite-game-buttons-list-description"><$transclude $field="description"/></div>
       </$button>
     </div>
   </$list>

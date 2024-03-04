@@ -1,8 +1,8 @@
 /* eslint-disable unicorn/no-null */
 import { IChangedTiddlers, IWidgetEvent, Widget } from 'tiddlywiki';
 
-import { BasicGamificationEventTypes, IGamificationEvent } from '../event-generator/GamificationEventTypes';
-import { GameWidget } from './GameWidgetType';
+import { BasicGamificationEventTypes, IGamificationEvent } from '../../event-generator/GamificationEventTypes';
+import { GameWidget } from '../GameWidgetType';
 
 /**
  * A default event converter for WikiText based games. Can be used as action widget.

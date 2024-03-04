@@ -39,3 +39,22 @@ CreateAction/Enabled/Description: Toggle to enable or disable the action.
 ActionsList/ReceiveRewardWithCount: Click to receive <<count-gamification-reward>> rewards.
 Store/Title: Store
 CreateGoods/Caption: Create Goods
+CreateGoods/Title/Caption: Title of the Goods
+CreateGoods/Title/Description: Enter the title for the new Goods.
+CreateGoods/Tags/Caption: Tags
+CreateGoods/Tags/Description: Specify tags for the Goods.
+CreateGoods/GoldAmount/Caption: Gold Amount
+CreateGoods/GoldAmount/Description: Specify the amount of the gold for player to purchase this goods.
+CreateGoods/PurchaseMessage/Caption: Purchase Message
+CreateGoods/PurchaseMessage/Description: Enter the message display for player when goods is purchased.
+CreateGoods/Icon/Caption: Icon
+CreateGoods/Icon/Description: Choose an icon for the Goods, can be Emoji or SVG, or reference the SVG image tiddler using the transclude syntax.
+CreateGoods/Caption/Caption: Caption
+CreateGoods/Caption/Description: Provide a caption for the Goods, fallback to title if not specified.
+CreateGoods/Description/Caption: Description
+CreateGoods/Description/Description: Describe the Goods in detail.
+CreateGoods/Enabled/Caption: Enabled
+CreateGoods/Enabled/Description: Toggle to enable or disable the Goods.
+ConsumeGoods/NotifyAmountFailed: Insufficient gold, unable to buy this product.
+ConsumeGoods/NotifyConditionFailed: The purchase condition is not met.
+ConsumeGoods/Success: The purchase was successful!

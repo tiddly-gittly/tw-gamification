@@ -40,3 +40,22 @@ CreateAction/Enabled/Description: 切换以启用或禁用行动。
 ActionsList/ReceiveRewardWithCount: 点击接收 <<count-gamification-reward>> 份奖励
 Store/Title: 商店
 CreateGoods/Caption: 创建商品
+CreateGoods/Title/Caption: 商品的条目名
+CreateGoods/Title/Description: 为新商品输入条目名。
+CreateGoods/Tags/Caption: 标签
+CreateGoods/Tags/Description: 为商品指定标签。
+CreateGoods/GoldAmount/Caption: 金币数量
+CreateGoods/GoldAmount/Description: 指定玩家购买此商品所需的金币数量。
+CreateGoods/PurchaseMessage/Caption: 购买消息
+CreateGoods/PurchaseMessage/Description: 输入购买商品时展示给玩家看的消息。
+CreateGoods/Icon/Caption: 图标
+CreateGoods/Icon/Description: 为商品选择一个图标，可以用 Emoji 或 SVG，也可以用嵌入语法引用 SVG 图片条目。
+CreateGoods/Caption/Caption: 展示标题
+CreateGoods/Caption/Description: 为商品提供一个用于展示的标题，如果不填则默认展示条目名。
+CreateGoods/Description/Caption: 描述
+CreateGoods/Description/Description: 详细描述商品。
+CreateGoods/Enabled/Caption: 启用
+CreateGoods/Enabled/Description: 切换以启用或禁用商品。
+ConsumeGoods/NotifyAmountFailed: 金币不足，无法购买此商品
+ConsumeGoods/NotifyConditionFailed: 不满足购买条件，无法购买此商品
+ConsumeGoods/Success: 购买成功！

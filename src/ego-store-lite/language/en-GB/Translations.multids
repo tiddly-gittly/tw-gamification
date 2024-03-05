@@ -9,7 +9,8 @@ Golds/Count: All Golds
 Golds/Reset/Caption: Reset Golds
 Golds/Reset/Description: Zero out gold coins, this will clear all gold coins, don't click it if everything is fine. Only the number of gold coins of this plugin is involved, it does not affect other plugins and games.
 Exit/Caption: Exit Game
-ActionsList/Title: Clock in Actions List
+Create/Title/Caption: Create
+ActionsList/Title: Actions List
 Create/Close: Cancel and close
 Create/OK: Confirm and create
 CreateAction/Caption: Create Clock in Action

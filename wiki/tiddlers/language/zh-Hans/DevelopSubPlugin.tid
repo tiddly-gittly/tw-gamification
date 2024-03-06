@@ -20,7 +20,7 @@ title: language/zh-Hans/DevelopSubPlugin
 
 有的游戏将使用这些条目的信息，生成一个按钮列表。当按钮被点击时，会触发相应的动作微件。具体字段请参考本仓库里的 `IActionDefinitions` 类型。
 
-在创建了之后，你可以通过消息微件触发它。注意看[[事件缓存（log-cache-file/desktop）|$:/plugins/linonetwo/tw-gamification/reality-event-cache/cache-files/desktop]]里的变化。
+在创建了之后，你可以通过消息微件触发它。注意看[[事件缓存（cache-file/desktop）|$:/plugins/linonetwo/tw-gamification/reality-event-cache/cache-files/desktop]]里的变化。
 
 <<show-example generateEventsByAction>>
 

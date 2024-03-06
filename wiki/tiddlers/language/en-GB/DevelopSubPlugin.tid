@@ -20,7 +20,7 @@ Tiddlers with the <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamif
 
 Some games will use the information from these tiddlers to generate a list of buttons. When the button is clicked, the corresponding action widget will be triggered. See the `IActionDefinitions` type in this repository for specific fields.
 
-After it's created, you can trigger it via the Message Widget. Note the change in [[event cache (log-cache-file/desktop)|$:/plugins/linonetwo/tw-gamification/reality-event-cache/cache-files/desktop]].
+After it's created, you can trigger it via the Message Widget. Note the change in [[event cache (cache-file/desktop)|$:/plugins/linonetwo/tw-gamification/reality-event-cache/cache-files/desktop]].
 
 <<show-example generateEventsByAction>>
 

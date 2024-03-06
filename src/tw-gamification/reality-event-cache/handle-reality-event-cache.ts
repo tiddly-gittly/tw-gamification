@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import pick from 'lodash/pick';
 import { IDuplicationStrategy, IFindDuplicateParameters, IGeneratorFindDuplicateStrategy, IGeneratorOnDuplicateStrategy } from '../reality-event-generator/DuplicationHandlerTypes';
-import { getLogQueueTitle } from './getLogQueueTitle';
+import { getRealityEventCacheTitle } from './cache-files/getTitle';
 import {
   IAddRealityEventParameterObject,
   IAddRealityEventParameterObjectFromActionWidget,
@@ -30,7 +30,7 @@ exports.after = ['story'];
 exports.synchronous = true;
 
 exports.startup = function twGamificationHandleEventCacheQueueStartupModule() {
-  const logQueueTitle = getLogQueueTitle();
+  const logQueueTitle = getRealityEventCacheTitle();
   // Listen for widget messages to create one or many IRealityEventCacheCacheItem, append to the log cache file.
   $tw.rootWidget.addEventListener('tm-add-reality-event', function onAddRealityEvent(event) {
     const parameterObject = (event.paramObject ?? {}) as unknown as IAddRealityEventParameterObject;

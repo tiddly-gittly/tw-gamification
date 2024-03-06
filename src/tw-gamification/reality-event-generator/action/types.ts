@@ -1,7 +1,7 @@
 import { EventGeneratorDefinitions } from '../baseRealityEventGeneratorType';
 
 /**
- * Fields for a filter based event generator. With tag `$:/Tags/Gamification/change-filter`
+ * Fields for a filter based event generator. With tag `$:/Tags/Gamification/ChangeFilter`
  *
  * Field start with `reality-event` are come from the `IRealityEvent` interface, by adding a prefix `reality-event` to the field name, and concat with `-`.
  */

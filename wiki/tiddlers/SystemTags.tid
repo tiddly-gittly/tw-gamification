@@ -1,0 +1,14 @@
+title: SystemTags
+tags: Index
+
+!! <$macrocall $name="tag" tag="$:/Tags/Gamification/Tags" />
+
+<$list filter="[all[shadows+tiddlers]tag[$:/Tags/Gamification/Tags]]">
+
+!!! <$macrocall $name="tag" tag={{!!title}} />
+
+{{!!caption}}
+
+{{!!description}}
+
+</$list>

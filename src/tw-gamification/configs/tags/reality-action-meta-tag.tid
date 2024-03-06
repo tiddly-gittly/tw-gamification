@@ -1,4 +1,6 @@
 title: $:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag
 tags: $:/Tags/Gamification/Tags
+description: <<lingo RealityAction/Description $:/plugins/linonetwo/tw-gamification/language/>>
+caption: <<lingo RealityAction/Caption $:/plugins/linonetwo/tw-gamification/language/>> <<lingo RealityAction/DocsLink $:/plugins/linonetwo/tw-gamification/language/>>
 
 $:/Tags/Gamification/RealityAction

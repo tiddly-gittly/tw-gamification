@@ -61,6 +61,10 @@ This widget assumes:
 
 !! Developer's Toolkit
 
+!!! SystemTags
+
+[[SystemTags]] are used to define the type of tiddler, and the system will use them for the game.
+
 !!! Macros, methods, procedures
 
 !!!! Count unused reward events

@@ -61,6 +61,10 @@ title: language/zh-Hans/DevelopSubPlugin
 
 !! 开发工具包
 
+!!! 系统标签
+
+[[系统标签|SystemTags]]描述了一些框架会使用的标签。
+
 !!! 宏、方法、过程
 
 !!!! 统计未使用的奖励事件

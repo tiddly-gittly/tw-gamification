@@ -1,5 +1,5 @@
 title: $:/plugins/linonetwo/early-sleep-early-work/events/generators/pre-early-sleep
-tags: $:/Tags/Gamification/change-filter
+tags: $:/Tags/Gamification/ChangeFilter
 caption: <<lingo Configs/PrepareSleep/Enable/Caption $:/plugins/linonetwo/early-sleep-early-work/language/>>
 description: <<lingo Configs/PrepareSleep/Enable/Description $:/plugins/linonetwo/early-sleep-early-work/language/>>
 icon: {{$:/plugins/linonetwo/early-sleep-early-work/icons/pre-early-sleep}}

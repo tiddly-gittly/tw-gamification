@@ -1,0 +1,39 @@
+title: language/en-GB/RealityEvents
+
+!!! Reality Event Cache
+
+Reality Event cache Tiddlers are tiddlers tagged with {{$:/plugins/linonetwo/tw-gamification/tags/reality-event-cache-meta-tag}}, they store Event data of type [[TypesOfRealityEvents]] as JSON lists.
+
+For example,
+
+# [[$:/plugins/linonetwo/tw-gamification/reality-event-cache/cache-files/desktop]]
+# [[$:/plugins/linonetwo/tw-gamification/reality-event-cache/cache-files/mobile]]
+
+The TypeScript types are detailed in `src/tw-gamification/reality-event-generator/RealityEventTypes.ts` in the Github repo.
+
+!!! Example
+
+```json
+[
+  {
+    "event": {
+      "type": "LargePunishment",
+      "amount": 100,
+      "message": "You have been deducted 100 points for inappropriate behavior.",
+      "timestamp": 1580000000000
+    },
+    "tiddlerTitle": "Confession: I stayed up late again today",
+    "signature": "xxxxxDigitalSignature"
+  },
+  {
+    "event": {
+      "type": "LargeReward",
+      "amount": 100,
+      "message": "You have earned 100 points for correct behavior.",
+      "timestamp": 1580000000000
+    },
+    "tiddlerTitle": "Fitness Record xxx",
+    "signature": "xxxxxDigitalSignature"
+  }
+]
+```

@@ -1,4 +1,6 @@
 title: $:/plugins/linonetwo/tw-gamification/tags/change-filter-meta-tag
 tags: $:/Tags/Gamification/Tags
+description: <<lingo ChangeFilter/Description $:/plugins/linonetwo/tw-gamification/language/>>
+caption: <<lingo ChangeFilter/Caption $:/plugins/linonetwo/tw-gamification/language/>> <<lingo ChangeFilter/DocsLink $:/plugins/linonetwo/tw-gamification/language/>>
 
-$:/Tags/Gamification/change-filter
+$:/Tags/Gamification/ChangeFilter

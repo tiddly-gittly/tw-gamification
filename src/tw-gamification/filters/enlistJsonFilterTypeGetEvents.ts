@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { IFilterOperator } from 'tiddlywiki';
-import { IGameEventLogCacheFile } from '../event-queue/GamificationEventLogTypes';
+import { IRealityEventCacheCacheFile } from '../reality-event-cache/RealityEventCacheTypes';
 
 export const enlistJsonFilterTypeGetEvents = ((source, operator): string[] => {
   const [typeOfEventToFilter, titleOfGeneratorToFilter] = operator.operands;
@@ -8,7 +8,7 @@ export const enlistJsonFilterTypeGetEvents = ((source, operator): string[] => {
   source(function(_, jsonString) {
     const jsonArray = $tw.utils.parseJSONSafe(jsonString);
     if (Array.isArray(jsonArray)) {
-      (jsonArray as IGameEventLogCacheFile).forEach((item) => {
+      (jsonArray as IRealityEventCacheCacheFile).forEach((item) => {
         /** If generator title is provided, check it. Otherwise let it pass. */
         const isGeneratorMatch = titleOfGeneratorToFilter ? item.meta.generator === titleOfGeneratorToFilter : true;
         /** If eventType is provided, check it. Otherwise let it pass. */

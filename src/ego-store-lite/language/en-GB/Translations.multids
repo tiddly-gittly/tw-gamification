@@ -9,7 +9,8 @@ Golds/Count: All Golds
 Golds/Reset/Caption: Reset Golds
 Golds/Reset/Description: Zero out gold coins, this will clear all gold coins, don't click it if everything is fine. Only the number of gold coins of this plugin is involved, it does not affect other plugins and games.
 Exit/Caption: Exit Game
-ActionsList/Title: Clock in Actions List
+Create/Title/Caption: Create
+ActionsList/Title: Actions List
 Create/Close: Cancel and close
 Create/OK: Confirm and create
 CreateAction/Caption: Create Clock in Action
@@ -22,12 +23,12 @@ CreateAction/FindDuplicate/Caption: Find Duplicate
 CreateAction/FindDuplicate/Description: Enable or disable duplicate finding.
 CreateAction/DebounceDuration/Caption: Debounce Duration
 CreateAction/DebounceDuration/Description: Set the debounce duration in seconds.
-CreateAction/GameEventAmount/Caption: Reward Amount
-CreateAction/GameEventAmount/Description: Specify the amount of the reward/punishment when game event is triggered.
-CreateAction/GameEventMessage/Caption: Game Event Message
-CreateAction/GameEventMessage/Description: Enter the message display for player when game event is triggered.
-CreateAction/GameEventType/Caption: Game Event Type
-CreateAction/GameEventType/Description: Choose the type of the game event.
+CreateAction/RealityEventAmount/Caption: Reward Amount
+CreateAction/RealityEventAmount/Description: Specify the amount of the reward/punishment when game event is triggered.
+CreateAction/RealityEventMessage/Caption: Game Event Message
+CreateAction/RealityEventMessage/Description: Enter the message display for player when game event is triggered.
+CreateAction/RealityEventType/Caption: Game Event Type
+CreateAction/RealityEventType/Description: Choose the type of the game event.
 CreateAction/Icon/Caption: Icon
 CreateAction/Icon/Description: Choose an icon for the action, can be Emoji or SVG, or reference the SVG image tiddler using the transclude syntax.
 CreateAction/Caption/Caption: Caption
@@ -36,7 +37,7 @@ CreateAction/Description/Caption: Description
 CreateAction/Description/Description: Describe the action in detail.
 CreateAction/Enabled/Caption: Enabled
 CreateAction/Enabled/Description: Toggle to enable or disable the action.
-ActionsList/ReceiveRewardWithCount: Click to receive <<count-gamification-reward>> rewards.
+ActionsList/ReceiveRewardWithCount: Click to receive <<count-reality-events>> rewards.
 Store/Title: Store
 CreateGoods/Caption: Create Goods
 CreateGoods/Title/Caption: Title of the Goods

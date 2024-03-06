@@ -2,7 +2,7 @@ title: language/zh-Hans/examples/generateEventsByAction
 
 <$button>
   <$action-sendmessage
-    $message="tm-gamification-event-action"
+    $message="tm-reality-action-event"
     $param="$:/plugins/linonetwo/early-sleep-early-work/events/actions/early-sleep"
   />
   破铜烂铁，点击就送

@@ -1,8 +1,8 @@
-title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/functions/count-gamification-reward
+title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/functions/count-reality-events
 tags: $:/tags/Global
 
 <!-- //TODO: only count by types provided in param -->
 <!-- Show how many rewards are there in the event log cache -->
-\function count-gamification-reward()
-[tag{$:/plugins/linonetwo/tw-gamification/tags/cache-log-meta-tag}get[text]jsonget[length]sum[]]
+\function count-reality-events()
+[tag{$:/plugins/linonetwo/tw-gamification/tags/reality-event-cache-meta-tag}get[text]jsonget[length]sum[]]
 \end

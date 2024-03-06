@@ -2,8 +2,8 @@ import { ConnectionObserver } from '@wessberg/connection-observer';
 import { IChangedTiddlers } from 'tiddlywiki';
 
 import './index.css';
-import { BasicGamificationEventTypes, IGamificationEvent } from 'src/tw-gamification/event-generator/GamificationEventTypes';
 import { GameWidget } from 'src/tw-gamification/game-wiki-adaptor/GameWidgetType';
+import { BasicRealityEventTypes, IRealityEvent } from 'src/tw-gamification/reality-event-generator/RealityEventTypes';
 import { loadGameModuleFromJSString, loadWasmModuleFromBase64 } from './loadModules';
 import { IGameContext } from './types';
 
@@ -45,7 +45,7 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
     this.setLoading(true);
     await this.initializeGameCanvas();
     if (this.gameInitialized) {
-      this.popGamificationEvents();
+      // this.popRealityEvents();
     }
   }
 
@@ -74,9 +74,8 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
       this.setLoading(false);
     }
     console.timeEnd('load game');
-    this.setGamificationEvents([{
-      type: BasicGamificationEventTypes.LargeReward,
-      signature: 'test',
+    this.setRealityEvents([{
+      type: BasicRealityEventTypes.LargeReward,
       timestamp: Date.now(),
       amount: 3,
       message: 'testtest',
@@ -97,12 +96,13 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
     }
   }
 
-  public setGamificationEvents(gamificationEventsJSON: IGamificationEvent[]) {
+  public setRealityEvents(gamificationEventsJSON: IRealityEvent[]) {
     if (!this.gameInitialized) {
       // TODO: store gamification events in a tiddler, and push them to game when game is initialized
       throw new Error('Game is not initialized yet!');
     }
-    this.wasmContext?.setGamificationEvents?.(JSON.stringify(gamificationEventsJSON));
+    // this.wasmContext?.setRealityEvents?.(JSON.stringify(gamificationEventsJSON));
+    return true;
   }
 }
 

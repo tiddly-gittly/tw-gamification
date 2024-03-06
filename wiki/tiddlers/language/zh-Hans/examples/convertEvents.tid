@@ -3,16 +3,16 @@ title: language/zh-Hans/examples/convertEvents
 (其它游戏界面)
 
 <$button>
-  点击接收 <<count-gamification-reward>> 份奖励
+  点击接收 <<count-reality-events>> 份奖励
 
   <$let experienceSaveFile="experience">
-    <$action-convert-game-event $eventTypes="SmallReward">
+    <$action-convert-reality-event $eventTypes="SmallReward">
       <$action-createtiddler
         $basetitle=<<experienceSaveFile>>
         $overwrite="yes"
-        text={{{ [<gameEvents>enlistJsonFilterTypeGetEvents[SmallReward]jsonget[amount]sum[]] =[<experienceSaveFile>get[text]else[0]] +[sum[]] }}}
+        text={{{ [<realityEvents>enlistJsonFilterTypeGetEvents[SmallReward]jsonget[amount]sum[]] =[<experienceSaveFile>get[text]else[0]] +[sum[]] }}}
       />
-    </$action-convert-game-event>
+    </$action-convert-reality-event>
   </$let>
 
 </$button>

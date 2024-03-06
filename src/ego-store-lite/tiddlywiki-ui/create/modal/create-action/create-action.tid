@@ -52,29 +52,29 @@ footer: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-
   </div> -->
 
   <div class="ego-store-lite-new-item-field">
-    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/GameEventMessage/Caption>></span>
-    <$edit-text tag=input tiddler="$:/state/ego-store-lite/newAction" field="game-event-message" class="ego-store-lite-new-item-field-input"/>
-    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/GameEventMessage/Description>></span>
+    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/RealityEventMessage/Caption>></span>
+    <$edit-text tag=input tiddler="$:/state/ego-store-lite/newAction" field="reality-event-message" class="ego-store-lite-new-item-field-input"/>
+    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/RealityEventMessage/Description>></span>
   </div>
 
   <div class="ego-store-lite-new-item-field">
-    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/GameEventType/Caption>></span>
+    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/RealityEventType/Caption>></span>
     <$select
       tiddler="$:/state/ego-store-lite/newAction"
-      field="game-event-type"
+      field="reality-event-type"
       class="ego-store-lite-new-item-field-input"
     >
-      <$list filter='[all[shadows+tiddlers]tag[$:/Tags/Gamification/EventType]sort[text]]'>
+      <$list filter='[all[shadows+tiddlers]tag[$:/Tags/Gamification/RealityEventType]sort[text]]'>
         <option value={{!!text}}><$transclude field='caption'/></option>
       </$list>
     </$select>
-    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/GameEventType/Description>></span>
+    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/RealityEventType/Description>></span>
   </div>
 
   <div class="ego-store-lite-new-item-field">
-    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/GameEventAmount/Caption>></span>
-    <$edit-text tag=input type=number tiddler="$:/state/ego-store-lite/newAction" field="game-event-amount" class="ego-store-lite-new-item-field-input"/>
-    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/GameEventAmount/Description>></span>
+    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/RealityEventAmount/Caption>></span>
+    <$edit-text tag=input type=number tiddler="$:/state/ego-store-lite/newAction" field="reality-event-amount" class="ego-store-lite-new-item-field-input"/>
+    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/RealityEventAmount/Description>></span>
   </div>
 
   <div class="ego-store-lite-new-item-field">

@@ -1,0 +1,6 @@
+title: GameWikiAdaptor
+tags: Index
+
+\define lingo-base() language/
+
+<<lingo "GameWikiAdaptor">>

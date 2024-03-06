@@ -1,6 +1,6 @@
 import { widget as Widget } from '$:/core/modules/widgets/widget.js';
 import { IParseTreeNode, IWidgetEvent, IWidgetInitialiseOptions, Tiddler } from 'tiddlywiki';
-import { BasicGamificationEventTypes, IGamificationEvent } from '../event-generator/GamificationEventTypes';
+import { BasicRealityEventTypes, IRealityEvent } from '../reality-event-generator/RealityEventTypes';
 import { isGameWidget } from './GameWidgetType';
 
 declare global {
@@ -13,7 +13,7 @@ declare global {
 class GameWikiProvider extends Widget {
   constructor(parseTreeNode: IParseTreeNode, options?: IWidgetInitialiseOptions) {
     super(parseTreeNode, options);
-    this.addEventListener('pop-gamification-events', this.popEventsAndSendToGameWidget.bind(this));
+    this.addEventListener('pop-reality-events', this.popEventsAndSendToGameWidget.bind(this));
     window.twGamificationSaveGameData = this.saveGameData.bind(this);
   }
 
@@ -34,33 +34,33 @@ class GameWikiProvider extends Widget {
       return false;
     }
     // if `eventTypes` is undefined, do nothing, otherwise this will use as a filter. Game developer must declare the event types they want to receive. So when a new type is added, there won't be reward lost when a developer don't handle the new event.
-    const eventTypes = event.eventTypes as BasicGamificationEventTypes[] | undefined;
+    const eventTypes = event.eventTypes as BasicRealityEventTypes[] | undefined;
     if (eventTypes === undefined) {
       return false;
     }
-    const gamificationEventTiddlerTitles = $tw.wiki.getTiddlersWithTag('$:/tags/tw-gamification/GamificationEvent');
+    const gamificationEventTiddlerTitles = $tw.wiki.getTiddlersWithTag('$:/tags/tw-gamification/RealityEventCache');
     const gamificationEventsJSONs = gamificationEventTiddlerTitles
       .map(title => $tw.wiki.getTiddler(title))
       .filter((tiddler): tiddler is Tiddler => tiddler !== undefined)
       .map(tiddler => {
         try {
-          return { fields: tiddler.fields, list: JSON.parse(tiddler.fields.text) as IGamificationEvent[] };
+          return { fields: tiddler.fields, list: JSON.parse(tiddler.fields.text) as IRealityEvent[] };
         } catch {
-          return { fields: tiddler.fields, list: [] as IGamificationEvent[] };
+          return { fields: tiddler.fields, list: [] as IRealityEvent[] };
         }
       });
-    const gamificationEventsJSON = gamificationEventsJSONs.flatMap(({ list }) => list).filter(item => eventTypes.includes(item.type ?? BasicGamificationEventTypes.SmallReward));
+    const gamificationEventsJSON = gamificationEventsJSONs.flatMap(({ list }) => list).filter(item => eventTypes.includes(item.type ?? BasicRealityEventTypes.SmallReward));
     // send data to the game
-    let handledPromise = event.widget.setGamificationEvents(gamificationEventsJSON);
+    let handledPromise = event.widget.setRealityEvents(gamificationEventsJSON);
     handledPromise = handledPromise instanceof Promise ? handledPromise : Promise.resolve(handledPromise);
     void handledPromise.then(handled => {
       if (handled) {
         // Get rid used event from event queue
-        const unusedGamificationEventsJSONs = gamificationEventsJSONs.map(({ fields, list }) => {
-          return { fields, list: list.filter(item => !eventTypes.includes(item.type ?? BasicGamificationEventTypes.SmallReward)) };
+        const unusedRealityEventsJSONs = gamificationEventsJSONs.map(({ fields, list }) => {
+          return { fields, list: list.filter(item => !eventTypes.includes(item.type ?? BasicRealityEventTypes.SmallReward)) };
         });
-        unusedGamificationEventsJSONs.forEach(({ fields, list }) => {
-          // also in `src/tw-gamification/event-queue/handle-event-log-queue.ts`
+        unusedRealityEventsJSONs.forEach(({ fields, list }) => {
+          // also in `src/tw-gamification/reality-event-cache/handle-reality-event-cache.ts`
           const newText = JSON.stringify(list);
           if (newText === fields.text) return;
           $tw.wiki.addTiddler({ ...fields, text: newText });

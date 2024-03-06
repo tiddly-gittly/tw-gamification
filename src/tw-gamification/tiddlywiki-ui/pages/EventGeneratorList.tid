@@ -1,5 +1,5 @@
 title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/pages/EventGeneratorList
-caption: {{$:/plugins/linonetwo/tw-gamification/icons/event-generator}} <<lingo Configs/EventGenerators/Caption>>
+caption: {{$:/plugins/linonetwo/tw-gamification/icons/reality-event-generator}} <<lingo Configs/EventGenerators/Caption>>
 
 \define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 \define event-generator-list-item()
@@ -29,7 +29,7 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/event-generator}} <<lingo 
 <<lingo Configs/EventGenerators/Description>>
 
 <div class="tw-gamification-event-generator-list">
-  <$list filter="[all[tiddlers+shadows]tag[$:/Tags/Gamification/change-filter]!is[draft]]">
+  <$list filter="[all[tiddlers+shadows]tag[$:/Tags/Gamification/ChangeFilter]!is[draft]]">
     <<event-generator-list-item>>
   </$list>
 </div>

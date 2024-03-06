@@ -1,6 +1,6 @@
 tags: Index
-title: TypesOfGamificationEvents
+title: TypesOfRealityEvents
 
 \define lingo-base() language/
 
-<<lingo "TypesOfGamificationEvents">>
+<<lingo "TypesOfRealityEvents">>

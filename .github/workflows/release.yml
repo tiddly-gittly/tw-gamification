@@ -4,24 +4,6 @@ on:
   push:
     tags:
       - 'v*.*.*'
-    paths-ignore:
-      - 'README.md'
-      - 'wiki/**'
-      - 'public/**'
-      - 'scripts/**'
-      - '.vscode'
-      - '.idea'
-  pull_request:
-    branches:
-      - master
-      - main
-    paths-ignore:
-      - 'README.md'
-      - 'wiki/**'
-      - 'public/**'
-      - '.scripts/**'
-      - '.vscode'
-      - '.idea'
 
 concurrency:
   group: release-ci-group

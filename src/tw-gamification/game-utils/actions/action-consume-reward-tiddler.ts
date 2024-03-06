@@ -97,6 +97,6 @@ class ActionConsumeRewardTiddler extends Widget {
 }
 
 declare let exports: {
-  'action-consume-reward-tiddler': typeof ActionConsumeRewardTiddler;
+  'action-consume-value-tiddler': typeof ActionConsumeRewardTiddler;
 };
-exports['action-consume-reward-tiddler'] = ActionConsumeRewardTiddler;
+exports['action-consume-value-tiddler'] = ActionConsumeRewardTiddler;

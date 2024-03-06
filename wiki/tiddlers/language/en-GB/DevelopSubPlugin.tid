@@ -46,7 +46,7 @@ Refer to [[Exchangeable Resources|ExchangeableResources]] to design resources th
 
 !!! Consume in-game rewards, convert to other in-game rewards
 
-Triggers the `<$action-consume-reward-tiddler/>` widget with a button, declaring which tiddler the value you want to consume exists in and how much to consume. If consumed successfully, it will further trigger other internal action widgets to generate the in-game reward you specified.
+Triggers the `<$action-consume-value-tiddler/>` widget with a button, declaring which tiddler the value you want to consume exists in and how much to consume. If consumed successfully, it will further trigger other internal action widgets to generate the in-game reward you specified.
 
 # The value stored in the tiddler is greater than the value to be consumed before it will be consumed.
 # The condition field is a filter that determines if the consumption condition is met, and will only be consumed if its return is not null

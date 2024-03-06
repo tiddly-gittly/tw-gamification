@@ -9,7 +9,7 @@ caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lin
     <div class="ego-store-lite-game-buttons-list-item" data-title=<<currentTiddler>>>
       <div class="ego-store-lite-game-buttons-list-item-edit">…</div>
       <$button>
-        <$action-consume-reward-tiddler
+        <$action-consume-value-tiddler
           $tiddler="$:/plugins/linonetwo/ego-store-lite/configs/Golds"
           $amount={{!!gold-amount}}
           $notify-amount-failed="You do not have enough experience points."
@@ -20,7 +20,7 @@ caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lin
             $param="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/buyGoodsNotification"
             message={{!!purchase-message}}
           />
-        </$action-consume-reward-tiddler>
+        </$action-consume-value-tiddler>
         <div class="ego-store-lite-game-buttons-list-item-icon"><$transclude $field="icon"/></div>
         <div class="ego-store-lite-game-buttons-list-item-info">
           <h2 class="ego-store-lite-game-buttons-list-item-title"><$transclude $field="caption"/></h2>

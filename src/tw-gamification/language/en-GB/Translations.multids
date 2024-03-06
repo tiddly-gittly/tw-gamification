@@ -18,3 +18,6 @@ Configs/EventActions/Description: Event actions are also known as clock in butto
 Exchangeable/Caption: Exchangeable resources
 Exchangeable/Description: Resources that can be exchanged across planes, according to the exchange ratio filled in by the developer, they can be exchanged in different game sub-plugins.
 Exchangeable/DocsLink: See the [[development documentation|https://tiddly-gittly.github.io/tw-gamification/#ExchangeableResources]] for details.
+RealityEventType/Caption: Reality Event Type
+RealityEventType/Description: An event triggered by a meaningful action in the real world, consisting of a variety of types describing the amount of significance they have to the player's real-world life, and the amount of in-game reward that will be gained.
+RealityEventType/DocsLink: See [[Dev Docs|https://tiddly-gittly.github.io/tw-gamification/#RealityEvents]] for details.

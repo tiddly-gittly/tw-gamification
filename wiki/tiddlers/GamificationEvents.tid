@@ -1,6 +1,6 @@
 tags: Index
-title: GamificationEvents
+title: RealityEvents
 
 \define lingo-base() language/
 
-<<lingo "GamificationEvents">>
+<<lingo "RealityEvents">>

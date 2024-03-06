@@ -12,15 +12,15 @@ title: language/zh-Hans/DevelopSubPlugin
 
 带上 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/change-filter-meta-tag}} /> 标签的条目会被识别为「变更筛选器事件生成器」。
 
-每当知识库发生变更时，会用条目上的 `game-event-trigger-filter` 字段作为筛选器，判断发生变更的条目是否符合条件。如果符合条件，会生成一个事件。具体字段请参考本仓库里的 `IFilterEventGeneratorDefinitions` 类型。
+每当知识库发生变更时，会用条目上的 `reality-event-trigger-filter` 字段作为筛选器，判断发生变更的条目是否符合条件。如果符合条件，会生成一个事件。具体字段请参考本仓库里的 `IFilterEventGeneratorDefinitions` 类型。
 
 !!! 动作
 
-带上 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/action-meta-tag}} /> 标签的条目会被识别为「动作事件生成器」。
+带上 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> 标签的条目会被识别为「动作事件生成器」。
 
 有的游戏将使用这些条目的信息，生成一个按钮列表。当按钮被点击时，会触发相应的动作微件。具体字段请参考本仓库里的 `IActionDefinitions` 类型。
 
-在创建了之后，你可以通过消息微件触发它。注意看[[事件缓存（log-cache-file/desktop）|$:/plugins/linonetwo/tw-gamification/event-queue/log-cache-file/desktop]]里的变化。
+在创建了之后，你可以通过消息微件触发它。注意看[[事件缓存（log-cache-file/desktop）|$:/plugins/linonetwo/tw-gamification/reality-event-cache/cache-files/desktop]]里的变化。
 
 <<show-example generateEventsByAction>>
 
@@ -32,13 +32,13 @@ title: language/zh-Hans/DevelopSubPlugin
 
 !!! 处理奖励事件，转换为游戏内奖励
 
-首先，用一个按钮触发 `<$action-convert-game-event/>` 微件，声明你要处理哪些事件，然后在其内部用筛选器选中你想处理的事件类型，将奖励事件转换为游戏内奖励。注意如果你只声明了你要处理，但是没有正确做转换，那么玩家的奖励事件将会平白丢失。
+首先，用一个按钮触发 `<$action-convert-reality-event/>` 微件，声明你要处理哪些事件，然后在其内部用筛选器选中你想处理的事件类型，将奖励事件转换为游戏内奖励。注意如果你只声明了你要处理，但是没有正确做转换，那么玩家的奖励事件将会平白丢失。
 
 <$GameWikiProvider>
   <<show-example convertEvents>>
 </$GameWikiProvider>
 
-本框架已经用 `<$GameWikiProvider></$GameWikiProvider>` 微件包围你的游戏内容，它将接受 `<$action-convert-game-event/>` 微件触发的 `pop-gamification-events` 事件，然后将待处理的奖励事件传回给 `<$action-convert-game-event/>` 微件。此后就像例子里的那样，由它内部的其它动作微件，生成你指定的游戏内奖励。
+本框架已经用 `<$GameWikiProvider></$GameWikiProvider>` 微件包围你的游戏内容，它将接受 `<$action-convert-reality-event/>` 微件触发的 `pop-reality-events` 事件，然后将待处理的奖励事件传回给 `<$action-convert-reality-event/>` 微件。此后就像例子里的那样，由它内部的其它动作微件，生成你指定的游戏内奖励。
 
 !!! 设计游戏内奖励
 

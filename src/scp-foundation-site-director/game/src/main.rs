@@ -60,7 +60,7 @@ fn exit_system(mut exit: EventWriter<AppExit>) {
 
 // TODO: generate rs type from ts type, like in https://github.com/linonetwo/DarkDaysArch
 #[derive(Serialize, Deserialize, Debug)]
-struct GamificationEvent {
+struct RealityEvent {
     // Define the fields according to your JSON structure
     amount: Option<i32>,
     message: Option<String>,
@@ -76,14 +76,14 @@ fn main() {
 pub fn get_example_gamification_events() -> String {
     // Example data, replace with your actual data source
     let events = vec![
-        GamificationEvent {
+        RealityEvent {
             amount: Some(100),
             message: Some("Reward earned".to_string()),
             r#type: "LargeReward".to_string(),
             timestamp: 1672522560,
             signature: "event1".to_string(),
         },
-        GamificationEvent {
+        RealityEvent {
             amount: Some(50),
             message: Some("Small penalty".to_string()),
             r#type: "SmallPunishment".to_string(),
@@ -95,9 +95,9 @@ pub fn get_example_gamification_events() -> String {
     serde_json::to_string(&events).unwrap_or_else(|_| "[]".to_string())
 }
 
-#[wasm_bindgen(js_name = setGamificationEvents)]
+#[wasm_bindgen(js_name = setRealityEvents)]
 pub fn set_gamification_events(events_json_string: &str) {
-    match serde_json::from_str::<Vec<GamificationEvent>>(&events_json_string) {
+    match serde_json::from_str::<Vec<RealityEvent>>(&events_json_string) {
         Ok(events) => {
             // Log each event or the entire array as you prefer
             for event in events {

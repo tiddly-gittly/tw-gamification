@@ -24,7 +24,7 @@ caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lin
         <div class="ego-store-lite-game-buttons-list-item-icon"><$transclude $field="icon"/></div>
         <div class="ego-store-lite-game-buttons-list-item-info">
           <h2 class="ego-store-lite-game-buttons-list-item-title"><$transclude $field="caption"/></h2>
-          <p class="ego-store-lite-game-buttons-list-item-reward"><$transclude $field="game-event-amount"/> <$transclude $field="game-event-type"/></p>
+          <p class="ego-store-lite-game-buttons-list-item-reward"><$transclude $field="reality-event-amount"/> <$transclude $field="reality-event-type"/></p>
         </div>
         <div class="ego-store-lite-game-buttons-list-description"><$transclude $field="description"/></div>
       </$button>

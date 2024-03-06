@@ -37,7 +37,7 @@ CreateAction/Description/Caption: Description
 CreateAction/Description/Description: Describe the action in detail.
 CreateAction/Enabled/Caption: Enabled
 CreateAction/Enabled/Description: Toggle to enable or disable the action.
-ActionsList/ReceiveRewardWithCount: Click to receive <<count-gamification-reward>> rewards.
+ActionsList/ReceiveRewardWithCount: Click to receive <<count-reality-events>> rewards.
 Store/Title: Store
 CreateGoods/Caption: Create Goods
 CreateGoods/Title/Caption: Title of the Goods

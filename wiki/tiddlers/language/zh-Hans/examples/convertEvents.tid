@@ -3,7 +3,7 @@ title: language/zh-Hans/examples/convertEvents
 (其它游戏界面)
 
 <$button>
-  点击接收 <<count-gamification-reward>> 份奖励
+  点击接收 <<count-reality-events>> 份奖励
 
   <$let experienceSaveFile="experience">
     <$action-convert-reality-event $eventTypes="SmallReward">

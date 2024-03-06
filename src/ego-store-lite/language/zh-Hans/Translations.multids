@@ -37,7 +37,7 @@ CreateAction/Description/Caption: 描述
 CreateAction/Description/Description: 详细描述行动。
 CreateAction/Enabled/Caption: 启用
 CreateAction/Enabled/Description: 切换以启用或禁用行动。
-ActionsList/ReceiveRewardWithCount: 点击接收 <<count-gamification-reward>> 份奖励
+ActionsList/ReceiveRewardWithCount: 点击接收 <<count-reality-events>> 份奖励
 Store/Title: 商店
 CreateGoods/Caption: 创建商品
 CreateGoods/Title/Caption: 商品的条目名

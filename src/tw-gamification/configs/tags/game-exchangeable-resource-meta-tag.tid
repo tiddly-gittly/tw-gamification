@@ -1,6 +1,6 @@
-title: $:/plugins/linonetwo/tw-gamification/tags/game-event-type-meta-tag
+title: $:/plugins/linonetwo/tw-gamification/tags/game-exchangeable-resource-meta-tag
 tags: $:/Tags/Gamification/Tags
 description: <<lingo Exchangeable/Description $:/plugins/linonetwo/tw-gamification/language/>>
 caption: <<lingo Exchangeable/Caption $:/plugins/linonetwo/tw-gamification/language/>> <<lingo Exchangeable/DocsLink $:/plugins/linonetwo/tw-gamification/language/>>
 
-$:/Tags/Gamification/EventType
+$:/Tags/Gamification/Exchangeable

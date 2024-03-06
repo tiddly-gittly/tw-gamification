@@ -20,3 +20,6 @@ EventType/LargeReward/Caption: 大奖励
 EventType/SmallPunishment/Caption: 小惩罚
 EventType/LargePunishment/Caption: 大惩罚
 EventType/Item/Caption: 物品
+Exchangeable/Caption: 可交易资源
+Exchangeable/Description: 允许跨位面兑换的资源，根据开发者填写的兑换比例，可以在不同的游戏子插件中兑换。
+Exchangeable/DocsLink: 详见[[开发文档|https://tiddly-gittly.github.io/tw-gamification/#ExchangeableResources]]。

@@ -15,3 +15,6 @@ Configs/EventGenerators/Caption: Event Generators
 ConfigDescription/EnableDefaultEventGenerator/Description: The event generator will convert some wiki actions into events for game to use. The installed event generators will be listed here and you can enable and disable them with checkboxes. Be aware that too many event generators can make the wiki editing lag, you can disable some of the lesser used event generators and instead use the clock in button to trigger bonus events.
 Configs/EventActions/Caption: Event Actions
 Configs/EventActions/Description: Event actions are also known as clock in buttons, and they actually define the functionality of the clock in button. Since events are generally only triggered when the button is clicked, event actions here don't cause problems such as lagging, more is better.
+Exchangeable/Caption: Exchangeable resources
+Exchangeable/Description: Resources that can be exchanged across planes, according to the exchange ratio filled in by the developer, they can be exchanged in different game sub-plugins.
+Exchangeable/DocsLink: See the [[development documentation|https://tiddly-gittly.github.io/tw-gamification/#ExchangeableResources]] for details.

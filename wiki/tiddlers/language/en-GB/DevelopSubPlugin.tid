@@ -40,6 +40,10 @@ First, trigger the `<$action-convert-game-event/>` Widget with a button that dec
 
 The framework already surrounds your game content with `<$GameWikiProvider></$GameWikiProvider>` Widgets, which will accept `pop-gamification-events` events triggered by the `<$action-convert-game-event/>` Widgets and pass the pending reward events back to the `<$action-convert-game-event/>` Widget. After that it's up to the other action Widgets within it to generate the in-game reward you specified, as in the example.
 
+!!! Designing in-game rewards
+
+Refer to [[Exchangeable Resources|ExchangeableResources]] to design resources that will attract players from other planes.
+
 !!! Consume in-game rewards, convert to other in-game rewards
 
 Triggers the `<$action-consume-reward-tiddler/>` widget with a button, declaring which tiddler the value you want to consume exists in and how much to consume. If consumed successfully, it will further trigger other internal action widgets to generate the in-game reward you specified.

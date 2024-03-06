@@ -40,6 +40,10 @@ title: language/zh-Hans/DevelopSubPlugin
 
 本框架已经用 `<$GameWikiProvider></$GameWikiProvider>` 微件包围你的游戏内容，它将接受 `<$action-convert-game-event/>` 微件触发的 `pop-gamification-events` 事件，然后将待处理的奖励事件传回给 `<$action-convert-game-event/>` 微件。此后就像例子里的那样，由它内部的其它动作微件，生成你指定的游戏内奖励。
 
+!!! 设计游戏内奖励
+
+参考[[可交换资源|ExchangeableResources]]设计能吸引玩家从别的位面前来游玩的资源。
+
 !!! 消耗游戏内奖励，转换为其它游戏内奖励
 
 用一个按钮触发 `<$action-consume-reward-tiddler/>` 微件，声明你要消耗的数值存在哪个条目里，以及要消耗多少。如果消耗成功，则会进一步触发内部的其它动作微件，生成你指定的游戏内奖励。

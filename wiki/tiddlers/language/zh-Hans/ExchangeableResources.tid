@@ -1,0 +1,23 @@
+title: language/zh-Hans/ExchangeableResources
+
+!! <<lingo Exchangeable/Caption $:/plugins/linonetwo/tw-gamification/language/>>
+
+<<lingo Exchangeable/Description $:/plugins/linonetwo/tw-gamification/language/>>
+
+打了 <$macrocall $name="tag" tag={{$:/plugins/linonetwo/tw-gamification/tags/game-exchangeable-resource-meta-tag}} /> 标签的条目将被框架识别为跨位面货币。以便框架能自动为其开设交易所以及制定汇率。
+
+能进行跨世界交换的货币必须存在条目里面，文本条目是数字。然后用 `ammDefaultLp` 字段描述它和其它世界的汇率，以便自动做市商（AMM）制定初始汇率，这个值也表示了其他世界能够兑换到的最大货币数量。
+
+!!! 自动做市商
+
+你的世界里的每个可交换的资源，框架都会用它们和其它世界的每个可交换的资源开设交易所，形成多对多的关系。你的世界内的资源之间不会自动开设交易所，你的世界内的资源之间的交易将由你自己来制定。
+
+交易所容量初始容量由 `ammDefaultLp` 字段决定。此后将在每一次交易时被兑走，从而被消耗；或兑入，从而增加。在其它位面希望将它的物品兑换成你设计的位面的物品时，将参考你的交易所容量，无法兑换超过当前容量的资源，而且随着资源储量的减少，兑换比例将越来越昂贵。
+
+对于对应大型奖励的资源，你可以将初始容量设置得小一点。这样可以保证你的世界内的资源不会被过度兑换，损坏经济系统。不过也不能设置得过少，否则会降低玩家从别的玩了很久的游戏迁入你的游戏世界的欲望。你可以将这个初始数值视为纳新的运营成本。
+
+!!! 交易所
+
+交易所的界面将由系统自动生成，不过你可以定制它的样式。
+
+假设你的游戏里有一种资源保存在 `$:/plugins/linonetwo/ego-store-lite/configs/Golds` 条目里，另一个游戏的玩家拥有 `$:/plugins/tiddlywiki/intro-game/Experience` 条目，并希望将它交换到你的游戏里，那么系统为它生成的交易所界面将位于 `$:/plugins/linonetwo/ego-store-lite/configs/Golds/Exchange/plugins/tiddlywiki/intro-game/Experience` 条目里。你可以在你的插件里预置这个条目来提供自定义的交易所界面，如果你没有提供，那么系统将（通过嵌入微件的 `<$fill $name="ts-missing">` 功能）生成一个默认的简约的界面。

@@ -5,7 +5,7 @@ Description: 以「早点上床早点起床」为主题的事件包，在早睡�
 Configs/Description: 通过这些设置，您可以自定义「早睡早起」插件的行为。
 Event/EarlySleep/Message: 早睡快乐！
 Event/EarlySleep/Caption: 打卡早睡
-Event/EarlySleep/Description: 早于设定的时间入睡，将获得奖励。最好提前开始上床准备入睡。
+Event/EarlySleep/Description: 早于设定的时间入睡，将获得奖励。最好提前开始上床准备入睡。稍微超出时间也没事，重要的是放下其他事情来睡觉的决心。
 Configs/PrepareSleep/Enable/Caption: 启用「准备早睡」事件生成器
 Configs/PrepareSleep/Enable/Description: 勾选启用后，当在所选时段内往日历上记录带所选标签的事件时会触发奖励
 Configs/PrepareSleep/Start: 开始

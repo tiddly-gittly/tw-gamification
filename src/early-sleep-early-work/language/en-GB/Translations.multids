@@ -4,7 +4,8 @@ Name: Early Sleep Early Work
 Description: "Early to Bed, Early to Rise" themed event packs to earn rewards for going to bed early and learning to promote sleep before bedtime.
 Configs/Description: These settings let you customise the behaviour of Early Sleep Early Work plugin.
 Event/EarlySleep/Message: Happy Early Sleep!
-Event/EarlySleep/Description: Clock in early to sleep
+Event/EarlySleep/Caption: Clock in early to sleep
+Event/EarlySleep/Description: You will be rewarded for going to bed earlier than the set time. It's best to start going to bed earlier to get ready to fall asleep. It's okay to go a little over time, it's the determination to drop everything else and come to bed that counts.
 Configs/PrepareSleep/Enable/Caption: Enable "Prepare Sleep" Event Generator
 Configs/PrepareSleep/Enable/Description: Toggled to enable, the reward will be triggered when an event with the selected tag is recorded in the calendar during the selected time period.
 Configs/PrepareSleep/Start: Start

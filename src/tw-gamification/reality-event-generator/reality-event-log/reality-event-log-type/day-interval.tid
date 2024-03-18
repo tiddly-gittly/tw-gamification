@@ -1,5 +1,5 @@
 title: $:/plugins/linonetwo/tw-gamification/reality-event-generator/reality-event-log-type/day-interval
-caption: <<lingo RealityEventLogType/DayInterval/Caption $:/plugins/linonetwo/tw-gamification/language/>>
-description: <<lingo RealityEventLogType/DayInterval/Description $:/plugins/linonetwo/tw-gamification/language/>>
+caption: <<lingo RealityEventLog/Type/DayInterval/Caption $:/plugins/linonetwo/tw-gamification/language/>>
+description: <<lingo RealityEventLog/Type/DayInterval/Description $:/plugins/linonetwo/tw-gamification/language/>>
 
 day-interval

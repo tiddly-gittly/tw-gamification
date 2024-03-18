@@ -111,7 +111,7 @@ function checkAndPushAnItemToLogCacheFile(
       const checkTiddlerTitle = configs['debounce-tiddler-title'] === 'yes';
       const checkGeneratorTitle = configs['debounce-generator-title'] === 'yes';
       const conditionIsAnd = configs['debounce-tiddler-condition'] === 'and';
-      // sort make newest event at the top, to be easier to check for duplicate
+      // sort make newest event at the top, to be easier to check for duplicate, and we can get index of first duplicate to overwrite
       sameEventIndexInLogCache = logCache.sort((a, b) => b.event.timestamp - a.event.timestamp).findIndex((log) => {
         // TODO: handle the variable pass to the filter
         // if (configs['find-duplicate-filter']) {
@@ -160,10 +160,12 @@ function checkAndPushAnItemToLogCacheFile(
       break;
     }
     case IGeneratorOnDuplicateStrategy.overwrite: {
-      if (sameEventIndexInLogCache !== -1) {
+      if (sameEventIndexInLogCache === -1) {
+        logCache.push(newEventCache);
+      } else {
         logCache[sameEventIndexInLogCache] = newEventCache;
-        hasModification = true;
       }
+      hasModification = true;
       break;
     }
   }

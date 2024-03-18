@@ -12,7 +12,7 @@ export enum RealityEventLogTypes {
    * Use bloom filter or counter like
    *
    * ```yaml
-   * daily-count-1609459200000: 1,0,0,0,3,0,0
+   * daily-count1609459200000: 1,0,0,0,3,0,0
    * ```
    *
    * Each row starts with `daily-count-`, and follow with a date representing the last date of modification, created by `new Date('2021-01-01').getTime()`, and updated on each modify. Each line is for a month, if the value in this row is more than 30, then need to start a new row.
@@ -36,7 +36,7 @@ export enum RealityEventLogTypes {
    * Calculate out each of the previous time points in time based on the last date of the line and the intervals. (last point is the time in lastdate field, last 2nd point is lastdate - 2.61 days). Minimum interval is `0.00001` days (1 min), but we can store it based on interval, if it is larger than 1 day, then store with `toFixed(1)`, if is between 1 hour and 1 day, then store with `toFixed(2)` for `0.04` (1/24), if is between 1 min and 1 hour, then store with `toFixed(5)` for `0.00001`.
    *
    * ```yaml
-   * day-interval-1609459200000: 0.4,0.6,2.4,5.8,4.93,0.94,0.86,0.01,1.49,0.14,0.94,2.18
+   * day-interval1609459200000: 0.4,0.6,2.4,5.8,4.93,0.94,0.86,0.01,1.49,0.14,0.94,2.18
    * ```
    *
    * Each row starts with `day-interval-`, and follow with a date representing the last date of modification, same as `DailyCount`. Each line is for a month, if the value in this row is more than 30, then need to start a new row.
@@ -47,20 +47,21 @@ export enum RealityEventLogTypes {
 export type IDailyCountKey = `${RealityEventLogTypes.DailyCount}${number}`;
 export type IDayIntervalKey = `${RealityEventLogTypes.DayInterval}${number}`;
 export type IDateKey = string;
+export type IRealityEventLogKey = IDailyCountKey | IDayIntervalKey | IDateKey;
 /**
  * Each action or generator have a event log file, text is a DictionaryTiddler described in RealityEventLogTypes.
  * We left the value of each row as string, you need to find the key you want to use, and parse the value as number or date.
  */
 export type IRealityEventLogFile = {
   exists: boolean;
-  items: Record<IDailyCountKey, string>;
+  items: Map<IDailyCountKey, string>;
   type: RealityEventLogTypes.DailyCount;
 } | {
   exists: boolean;
-  items: Record<IDayIntervalKey, string>;
+  items: Map<IDayIntervalKey, string>;
   type: RealityEventLogTypes.DayInterval;
 } | {
   exists: boolean;
-  items: Record<IDateKey, string>;
+  items: Map<IDateKey, string>;
   type: RealityEventLogTypes.Date;
 };

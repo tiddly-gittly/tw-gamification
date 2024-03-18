@@ -3,7 +3,7 @@ import { IChangedTiddlers } from 'tiddlywiki';
 
 import './index.css';
 import { GameWidget } from 'src/tw-gamification/game-wiki-adaptor/GameWidgetType';
-import { BasicRealityEventTypes, IRealityEvent } from 'src/tw-gamification/reality-event-generator/RealityEventTypes';
+import { BasicRealityEventTypes, IRealityEvent } from 'src/tw-gamification/reality-event-generator/reality-event-types/RealityEventTypes';
 import { loadGameModuleFromJSString, loadWasmModuleFromBase64 } from './loadModules';
 import { IGameContext } from './types';
 

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { pick } from 'lodash';
-import { IAddRealityEventParameterObjectFromActionWidget, IAddRealityEventParameterObjectFromJSEventItem } from '../reality-event-cache/RealityEventCacheTypes';
+import { IAddRealityEventParameterObjectFromActionWidget, IAddRealityEventParameterObjectFromJSEventItem } from '../../reality-event-cache/RealityEventCacheTypes';
 import { IDuplicationStrategy, IFindDuplicateParameters } from './DuplicationHandlerTypes';
 
 export function formatDuplicationFields(

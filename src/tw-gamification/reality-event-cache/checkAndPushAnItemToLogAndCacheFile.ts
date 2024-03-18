@@ -1,11 +1,12 @@
-import { IGeneratorFindDuplicateStrategy, IGeneratorOnDuplicateStrategy } from '../reality-event-generator/DuplicationHandlerTypes';
-import type { formatDuplicationFields } from '../reality-event-generator/formatDuplicationFields';
+import { IGeneratorFindDuplicateStrategy, IGeneratorOnDuplicateStrategy } from '../reality-event-generator/deduplication/DuplicationHandlerTypes';
+import type { formatDuplicationFields } from '../reality-event-generator/deduplication/formatDuplicationFields';
+import { IRealityEventLogFile } from '../reality-event-generator/reality-event-log/RealityEventLogTypes';
 import { IRealityEventCacheCacheFile, IRealityEventCacheCacheItem } from './RealityEventCacheTypes';
 
 export function checkAndPushAnItemToLogAndCacheFile(
   newEventCache: IRealityEventCacheCacheItem,
   configs: ReturnType<typeof formatDuplicationFields>,
-  sources: { eventCache: IRealityEventCacheCacheFile },
+  sources: { eventCache: IRealityEventCacheCacheFile; eventLog: IRealityEventLogFile },
 ): boolean {
   // TODO: also check the archive log (the events already used by the game, which clean up in a few days.)
   const eventCache = sources.eventCache;

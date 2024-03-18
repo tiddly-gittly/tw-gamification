@@ -1,5 +1,5 @@
-import { IDuplicationStrategy, IFindDuplicateParameters } from '../reality-event-generator/DuplicationHandlerTypes';
-import { IRealityEvent } from '../reality-event-generator/RealityEventTypes';
+import { IDuplicationStrategy, IFindDuplicateParameters } from '../reality-event-generator/deduplication/DuplicationHandlerTypes';
+import { IRealityEvent } from '../reality-event-generator/reality-event-types/RealityEventTypes';
 
 export type IAddRealityEventParameterObject = IAddRealityEventParameterObjectFromJS | IAddRealityEventParameterObjectFromActionWidget;
 export type IAddRealityEventParameterObjectFromJSEventItem = IRealityEventCacheCacheItem & { configs: IDuplicationStrategy & IFindDuplicateParameters };

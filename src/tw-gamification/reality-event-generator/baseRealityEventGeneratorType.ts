@@ -1,6 +1,6 @@
 import { ITiddlerFields } from 'tiddlywiki';
-import { IDuplicationStrategy, IFindDuplicateParameters } from './DuplicationHandlerTypes';
-import { BasicRealityEventTypes } from './RealityEventTypes';
+import { IDuplicationStrategy, IFindDuplicateParameters } from './deduplication/DuplicationHandlerTypes';
+import { BasicRealityEventTypes } from './reality-event-types/RealityEventTypes';
 
 export interface EventGeneratorDefinitions extends ITiddlerFields, IDuplicationStrategy, IFindDuplicateParameters {
   /**

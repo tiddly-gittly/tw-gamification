@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/no-null */
 import { IChangedTiddlers, IWidgetEvent, Widget } from 'tiddlywiki';
 
-import { BasicRealityEventTypes, IRealityEvent } from '../../reality-event-generator/RealityEventTypes';
+import { BasicRealityEventTypes, IRealityEvent } from '../../reality-event-generator/reality-event-types/RealityEventTypes';
 import { GameWidget } from '../GameWidgetType';
 
 /**

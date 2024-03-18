@@ -1,5 +1,5 @@
 import { widget as Widget } from '$:/core/modules/widgets/widget.js';
-import { BasicRealityEventTypes, IRealityEvent } from '../reality-event-generator/RealityEventTypes';
+import { BasicRealityEventTypes, IRealityEvent } from '../reality-event-generator/reality-event-types/RealityEventTypes';
 
 export abstract class GameWidget extends Widget {
   public readonly isGameWidget = true;

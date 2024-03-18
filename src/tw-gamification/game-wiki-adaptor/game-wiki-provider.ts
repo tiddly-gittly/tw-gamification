@@ -1,6 +1,6 @@
 import { widget as Widget } from '$:/core/modules/widgets/widget.js';
 import { IParseTreeNode, IWidgetEvent, IWidgetInitialiseOptions, Tiddler } from 'tiddlywiki';
-import { BasicRealityEventTypes, IRealityEvent } from '../reality-event-generator/RealityEventTypes';
+import { BasicRealityEventTypes, IRealityEvent } from '../reality-event-generator/reality-event-types/RealityEventTypes';
 import { isGameWidget } from './GameWidgetType';
 
 declare global {

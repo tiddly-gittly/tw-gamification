@@ -1,7 +1,7 @@
-import { IAddRealityEventParameterObjectFromJSEventItem } from '../reality-event-cache/RealityEventCacheTypes';
-import { EventGeneratorDefinitions } from './baseRealityEventGeneratorType';
-import { processAmount, processMessage } from './processFields';
-import { BasicRealityEventTypes, IRealityEvent } from './RealityEventTypes';
+import { EventGeneratorDefinitions } from '../reality-event-generator/baseRealityEventGeneratorType';
+import { processAmount, processMessage } from '../reality-event-generator/processFields';
+import { BasicRealityEventTypes, IRealityEvent } from '../reality-event-generator/reality-event-types/RealityEventTypes';
+import { IAddRealityEventParameterObjectFromJSEventItem } from './RealityEventCacheTypes';
 
 export function buildRealityEventCacheItem(eventGenerator: EventGeneratorDefinitions, tiddlerTitle?: string): IAddRealityEventParameterObjectFromJSEventItem {
   const {

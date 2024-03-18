@@ -3,7 +3,7 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import pick from 'lodash/pick';
-import { formatDuplicationFields } from '../reality-event-generator/formatDuplicationFields';
+import { formatDuplicationFields } from '../reality-event-generator/deduplication/formatDuplicationFields';
 import { getRealityEventCacheTitle } from './cache-files/getTitle';
 import { checkAndPushAnItemToLogAndCacheFile } from './checkAndPushAnItemToLogAndCacheFile';
 import {

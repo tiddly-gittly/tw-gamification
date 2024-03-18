@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { IRealityEventCacheCacheItem } from 'src/tw-gamification/reality-event-cache/RealityEventCacheTypes';
 import type { formatDuplicationFields } from '../deduplication/formatDuplicationFields';
 import { IRealityEventLogFile, RealityEventLogTypes } from './RealityEventLogTypes';
@@ -52,4 +53,11 @@ export function checkEventLogDebounceDuplication(
     }
   }
   return hasDuplicate;
+}
+
+export function isValidLogData(data: ReturnType<typeof $tw.wiki.getTiddlerData>): data is Record<string, string> {
+  if (!data || Array.isArray(data)) {
+    return false;
+  }
+  return true;
 }

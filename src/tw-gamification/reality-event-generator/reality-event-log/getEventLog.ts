@@ -2,6 +2,8 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { isEventGenerator } from '../baseRealityEventGeneratorType';
+import { isValidLogData } from './checkEventLog';
+import { getDefaultEventLogTitle } from './defaultEventLogTitle';
 import { IRealityEventLogFile, IRealityEventLogKey, RealityEventLogTypes } from './RealityEventLogTypes';
 
 /**
@@ -38,14 +40,4 @@ export function getEventLog(eventGeneratorTitle: string | undefined): IRealityEv
     title: logTiddlerTitle,
     type: logTiddlerType,
   } as IRealityEventLogFile;
-}
-
-function getDefaultEventLogTitle(tiddlerTitle: string): string {
-  return `${tiddlerTitle}/Log`;
-}
-function isValidLogData(data: ReturnType<typeof $tw.wiki.getTiddlerData>): data is Record<string, string> {
-  if (!data || Array.isArray(data)) {
-    return false;
-  }
-  return true;
 }

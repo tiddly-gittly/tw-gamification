@@ -23,7 +23,7 @@ export function addEventLog(eventLog: IRealityEventLogFile | undefined, newEvent
        */
       const today = new Date(event.timestamp);
       // check if latest item's timestamp is within 30 days
-      const latestItemKey = (Object.keys(items) as IDailyCountKey[]).filter(key => key.startsWith(RealityEventLogTypes.DailyCount)).sort().pop();
+      const latestItemKey = ([...items.keys()] as IDailyCountKey[]).filter(key => key.startsWith(RealityEventLogTypes.DailyCount)).sort().pop();
       if (latestItemKey === undefined) {
         // directly add a new line
         items.set(`${RealityEventLogTypes.DailyCount}${today.getTime()}`, '1');
@@ -54,7 +54,7 @@ export function addEventLog(eventLog: IRealityEventLogFile | undefined, newEvent
       // day-interval1609459200000: 0.4,0.6,2.4,5.8,4.93,0.94,0.86,0.01,1.49,0.14,0.94,2.18
       const today = new Date(event.timestamp);
       // check if latest item's timestamp is within 30 days
-      const latestItemKey = (Object.keys(items) as IDayIntervalKey[]).filter(key => key.startsWith(RealityEventLogTypes.DayInterval)).sort().pop();
+      const latestItemKey = ([...items.keys()] as IDayIntervalKey[]).filter(key => key.startsWith(RealityEventLogTypes.DayInterval)).sort().pop();
       if (latestItemKey === undefined) {
         // directly add a new line
         items.set(`${RealityEventLogTypes.DayInterval}${today.getTime()}`, '0');

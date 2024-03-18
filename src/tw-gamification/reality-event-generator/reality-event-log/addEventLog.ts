@@ -24,7 +24,10 @@ export function addEventLog(eventLog: IRealityEventLogFile | undefined, newEvent
       const today = new Date(event.timestamp);
       // check if latest item's timestamp is within 30 days
       const latestItemKey = (Object.keys(items) as IDailyCountKey[]).filter(key => key.startsWith(RealityEventLogTypes.DailyCount)).sort().pop();
-      if (latestItemKey !== undefined) {
+      if (latestItemKey === undefined) {
+        // directly add a new line
+        items.set(`${RealityEventLogTypes.DailyCount}${today.getTime()}`, '1');
+      } else {
         const latestItemDate = new Date(Number(latestItemKey.replace(RealityEventLogTypes.DailyCount, '')));
         const nextDateKey: IDailyCountKey = `${RealityEventLogTypes.DailyCount}${today.getTime()}`;
         const latestItem = items.get(latestItemKey);
@@ -52,7 +55,10 @@ export function addEventLog(eventLog: IRealityEventLogFile | undefined, newEvent
       const today = new Date(event.timestamp);
       // check if latest item's timestamp is within 30 days
       const latestItemKey = (Object.keys(items) as IDayIntervalKey[]).filter(key => key.startsWith(RealityEventLogTypes.DayInterval)).sort().pop();
-      if (latestItemKey !== undefined) {
+      if (latestItemKey === undefined) {
+        // directly add a new line
+        items.set(`${RealityEventLogTypes.DayInterval}${today.getTime()}`, '0');
+      } else {
         const latestItemDate = new Date(Number(latestItemKey.replace(RealityEventLogTypes.DayInterval, '')));
         const latestItem = items.get(latestItemKey);
         if (latestItem === undefined || ((today.getTime() - latestItemDate.getTime()) > MAX_EVENT_LOG_ITEM_DURATION)) {

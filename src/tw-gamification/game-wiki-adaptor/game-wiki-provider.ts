@@ -38,7 +38,7 @@ class GameWikiProvider extends Widget {
     if (eventTypes === undefined) {
       return false;
     }
-    const gamificationEventTiddlerTitles = $tw.wiki.getTiddlersWithTag('$:/tags/tw-gamification/RealityEventCache');
+    const gamificationEventTiddlerTitles = $tw.wiki.getTiddlersWithTag('$:/Tags/Gamification/RealityEventCache');
     const gamificationEventsJSONs = gamificationEventTiddlerTitles
       .map(title => $tw.wiki.getTiddler(title))
       .filter((tiddler): tiddler is Tiddler => tiddler !== undefined)

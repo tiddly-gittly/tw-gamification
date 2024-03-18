@@ -29,6 +29,9 @@ RealityEventType/DocsLink: 详见[[框架文档|https://tiddly-gittly.github.io/
 RealityEventCache/Caption: 现实事件缓存
 RealityEventCache/Description: 待处理的现实事件，等待玩家把它们转换为游戏内的数值。
 RealityEventCache/DocsLink: 详见[[框架文档|https://tiddly-gittly.github.io/tw-gamification/]]上的[[开发文档|RealityEvents]]。
+RealityEventLog/Caption: 现实事件记录
+RealityEventLog/Description: 记录事件生成器上发生过的事件的时间，用于生成可视化图表等。
+RealityEventLog/DocsLink: 详见[[框架文档|https://tiddly-gittly.github.io/tw-gamification/]]上的[[开发文档|RealityEvents]]。
 RealityAction/Caption: 现实动作
 RealityAction/Description: 描述了现实世界中有意义的行动，一般被展示为按钮，点击按钮就表示用户打卡了一次，这样就会记录相应的现实事件。
 RealityAction/DocsLink: 详见[[框架文档|https://tiddly-gittly.github.io/tw-gamification/]]上的[[开发文档|DevelopSubPlugin]]。

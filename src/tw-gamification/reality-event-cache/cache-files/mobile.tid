@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/tw-gamification/reality-event-cache/cache-files/mobile
 type: application/json
-tags: $:/tags/tw-gamification/RealityEventCache
+tags: $:/Tags/Gamification/RealityEventCache
 code-body: yes
 
 []

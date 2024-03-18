@@ -10,3 +10,5 @@ reality-event-amount: 1
 reality-event-message: <<lingo Event/EarlySleep/Message $:/plugins/linonetwo/early-sleep-early-work/language/>>
 reality-event-type: SmallReward
 enabled: yes
+hide-body: yes
+type: application/x-tiddler-dictionary

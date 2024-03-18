@@ -4,11 +4,10 @@ caption: <<lingo Configs/PrepareSleep/Enable/Caption $:/plugins/linonetwo/early-
 description: <<lingo Configs/PrepareSleep/Enable/Description $:/plugins/linonetwo/early-sleep-early-work/language/>>
 icon: {{$:/plugins/linonetwo/early-sleep-early-work/icons/pre-early-sleep}}
 reality-event-trigger-filter: [!is[system]!is[draft]tag{$:/plugins/linonetwo/early-sleep-early-work/configs/AllowedPreSleepEventTypes}field:calendarEntry[yes]starthourlatethan{$:/plugins/linonetwo/early-sleep-early-work/configs/PeriodToPrepareSleep/Start}endhourearlythan{$:/plugins/linonetwo/early-sleep-early-work/configs/PeriodToPrepareSleep/End}]
+reality-event-log: $:/plugins/linonetwo/early-sleep-early-work/events/logs/generators/pre-early-sleep
 find-duplicate: debounce
 debounce-duration: 43200
 reality-event-amount: 1
 reality-event-message: <<lingo Event/EarlySleep/Message $:/plugins/linonetwo/early-sleep-early-work/language/>>
 reality-event-type: SmallReward
 enabled: yes
-hide-body: yes
-type: application/x-tiddler-dictionary

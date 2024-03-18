@@ -1,5 +1,11 @@
 /**
- * We save event log in text of tiddler with tag `$:/Tags/Gamification/RealityAction` or `$:/Tags/Gamification/ChangeFilter`, and use data tiddler with fields ends with a UTC time number (`DailyCount123time` `DayInterval`).
+ * We save event log in text of tiddler with tag `$:/Tags/Gamification/RealityEventLog`, and use data tiddler with fields ends with a UTC time number (`DailyCount123time` `DayInterval`).
+ * Actions can use `reality-event-log` field to point to the log file containing the data described below.
+ *
+ * ```tid
+ * hide-body: yes
+ * type: application/x-tiddler-dictionary
+ * title:
  */
 export enum RealityEventLogTypes {
   /**
@@ -36,3 +42,21 @@ export enum RealityEventLogTypes {
    */
   DayInterval = 'DayInterval',
 }
+
+export type IDailyCountKey = `${RealityEventLogTypes.DailyCount}${number}`;
+export type IDayIntervalKey = `${RealityEventLogTypes.DayInterval}${number}`;
+export type IDateKey = string;
+/**
+ * Each action or generator have a event log file, text is a DictionaryTiddler described in RealityEventLogTypes.
+ * We left the value of each row as string, you need to find the key you want to use, and parse the value as number or date.
+ */
+export type IRealityEventLogFile = {
+  items: Record<IDailyCountKey, string>;
+  type: RealityEventLogTypes.DailyCount;
+} | {
+  items: Record<IDayIntervalKey, string>;
+  type: RealityEventLogTypes.DayInterval;
+} | {
+  items: Record<IDateKey, string>;
+  type: RealityEventLogTypes.Date;
+};

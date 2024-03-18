@@ -5,9 +5,8 @@ debounce-duration: 43200
 reality-event-amount: 1
 reality-event-message: <<lingo Event/EarlySleep/Message $:/plugins/linonetwo/early-sleep-early-work/language/>>
 reality-event-type: SmallReward
+reality-event-log: $:/plugins/linonetwo/early-sleep-early-work/events/logs/actions/early-sleep
 icon: {{$:/plugins/linonetwo/early-sleep-early-work/icons/early-sleep}}
 caption: <<lingo Event/EarlySleep/Caption $:/plugins/linonetwo/early-sleep-early-work/language/>>
 description: <<lingo Event/EarlySleep/Description $:/plugins/linonetwo/early-sleep-early-work/language/>>
 enabled: yes
-hide-body: yes
-type: application/x-tiddler-dictionary

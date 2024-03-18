@@ -1,0 +1,5 @@
+title: $:/plugins/linonetwo/tw-gamification/reality-event-generator/reality-event-log-type/date
+caption: <<lingo RealityEventLogType/Date/Caption $:/plugins/linonetwo/tw-gamification/language/>>
+description: <<lingo RealityEventLogType/Date/Description $:/plugins/linonetwo/tw-gamification/language/>>
+
+date

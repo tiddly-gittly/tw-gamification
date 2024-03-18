@@ -15,7 +15,7 @@ export enum RealityEventLogTypes {
    * daily-count1609459200000: 1,0,0,0,3,0,0
    * ```
    *
-   * Each row starts with `daily-count-`, and follow with a date representing the last date of modification, created by `new Date('2021-01-01').getTime()`, and updated on each modify. Each line is for a month, if the value in this row is more than 30, then need to start a new row.
+   * Each row starts with `daily-count`, and follow with a date representing the last date of modification, created by `new Date('2021-01-01').getTime()`, and updated on each modify. Each line is for a month, if the value in this row is more than 30, then need to start a new row.
    */
   DailyCount = 'daily-count',
   /**

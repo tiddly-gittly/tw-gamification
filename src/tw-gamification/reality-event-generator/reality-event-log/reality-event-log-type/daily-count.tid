@@ -1,0 +1,5 @@
+title: $:/plugins/linonetwo/tw-gamification/reality-event-generator/reality-event-log-type/daily-count
+caption: <<lingo RealityEventLogType/DailyCount/Caption $:/plugins/linonetwo/tw-gamification/language/>>
+description: <<lingo RealityEventLogType/DailyCount/Description $:/plugins/linonetwo/tw-gamification/language/>>
+
+daily-count

@@ -27,6 +27,12 @@ RealityEventCache/DocsLink: See [[Dev Docs|RealityEvents]] on [[framework doc si
 RealityEventLog/Caption: Reality Event Log
 RealityEventLog/Description: Records the time of events that have occurred on the event generator for use in visualization, etc. Type is `application/x-tiddler-dictionary`.
 RealityEventLog/DocsLink: See [[Dev Docs|RealityEvents]] on [[framework doc site|https://tiddly-gittly.github.io/tw-gamification/#]] for details.
+RealityEventLog/Type/DayInterval/Caption: Day Interval
+RealityEventLog/Type/DayInterval/Description: Stored in days, suitable for hourly, frequent events.
+RealityEventLog/Type/Date/Caption: Specific date
+RealityEventLog/Type/Date/Description: store specific dates one by one, suitable for events that occur centrally for a period of time, and rarely occur thereafter, or events that occur more irregularly.
+RealityEventLog/Type/DailyCount/Caption: Counter on day
+RealityEventLog/Type/DailyCount/Description: store count of events in days, only save the number of times per day, not the specific time point to save space, suitable for events that occur very frequently.
 RealityAction/Caption: Reality Action
 RealityAction/Description: describes a real-world meaningful action, typically displayed as a button, where clicking the button indicates that the user has clocked in once, so that the corresponding reality event will be recorded.
 RealityAction/DocsLink: See [[Dev Docs|DevelopSubPlugin]] on [[framework doc site|https://tiddly-gittly.github.io/tw-gamification/#]] for details.

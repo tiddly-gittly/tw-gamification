@@ -1,47 +1,53 @@
 import { IRealityEventCacheCacheItem } from 'src/tw-gamification/reality-event-cache/RealityEventCacheTypes';
-import { IRealityEventLogFile } from './RealityEventLogTypes';
+import type { formatDuplicationFields } from '../deduplication/formatDuplicationFields';
+import { IRealityEventLogFile, RealityEventLogTypes } from './RealityEventLogTypes';
 
-export function checkEventLogDuplication(eventLog: IRealityEventLogFile | undefined, newEventCacheItem: IRealityEventCacheCacheItem): boolean {
+export function checkEventLogDebounceDuplication(
+  newEventCacheItem: IRealityEventCacheCacheItem,
+  eventLog: IRealityEventLogFile | undefined,
+  configs: ReturnType<typeof formatDuplicationFields>,
+): boolean {
+  const checkGeneratorTitle = configs['debounce-generator-title'] === 'yes';
+  if (!checkGeneratorTitle) return false;
+  const checkTiddlerTitle = configs['debounce-tiddler-title'] === 'yes';
+  const conditionIsAnd = configs['debounce-tiddler-condition'] === 'and';
+  // we don't have tiddler title in the event log, so we can't check it, pretend to be no duplicate
+  if (checkTiddlerTitle && conditionIsAnd) return false;
   if (eventLog === undefined) return false;
   const { event } = newEventCacheItem;
+  const today = new Date(event.timestamp).getTime();
   const { items, type: realityEventLogTypes } = eventLog;
   let hasDuplicate = false;
+  const debounceDuration = Number(configs['debounce-duration']);
   switch (realityEventLogTypes) {
-    case 'date': {
-      const today = new Date(event.timestamp);
-      const todayString = today.toDateString();
-      const hasSameDate = [...items.values()].some((timestampString) => {
-        const timestamp = Number(timestampString);
-        const date = new Date(timestamp);
-        return date.toDateString() === todayString;
-      });
-      if (hasSameDate) {
-        hasDuplicate = true;
+    case RealityEventLogTypes.Date: {
+      const latestItemKey = [...items.values()].sort().pop();
+      if (latestItemKey === undefined) {
+        hasDuplicate = false;
+        break;
       }
+      const latestItemDate = new Date(latestItemKey);
+      hasDuplicate = (today - latestItemDate.getTime()) < debounceDuration;
       break;
     }
-    case 'daily-count': {
-      const today = new Date(event.timestamp);
-      const todayString = today.toDateString();
-      const hasSameDate = [...items.values()].some((countString) => {
-        const count = Number(countString);
-        return count > 0;
-      });
-      if (hasSameDate) {
-        hasDuplicate = true;
+    case RealityEventLogTypes.DailyCount: {
+      const latestItemKey = (Object.keys(items)).filter(key => key.startsWith(RealityEventLogTypes.DailyCount)).sort().pop();
+      if (latestItemKey === undefined) {
+        hasDuplicate = false;
+        break;
       }
+      const latestItemDate = new Date(Number(latestItemKey.replace(RealityEventLogTypes.DailyCount, '')));
+      hasDuplicate = (today - latestItemDate.getTime()) < debounceDuration;
       break;
     }
-    case 'day-interval': {
-      const today = new Date(event.timestamp);
-      const todayString = today.toDateString();
-      const hasSameDate = [...items.values()].some((intervalString) => {
-        const interval = Number(intervalString);
-        return interval > 0;
-      });
-      if (hasSameDate) {
-        hasDuplicate = true;
+    case RealityEventLogTypes.DayInterval: {
+      const latestItemKey = (Object.keys(items)).filter(key => key.startsWith(RealityEventLogTypes.DayInterval)).sort().pop();
+      if (latestItemKey === undefined) {
+        hasDuplicate = false;
+        break;
       }
+      const latestItemDate = new Date(Number(latestItemKey.replace(RealityEventLogTypes.DayInterval, '')));
+      hasDuplicate = (today - latestItemDate.getTime()) < debounceDuration;
       break;
     }
   }

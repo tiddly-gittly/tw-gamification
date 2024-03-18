@@ -6,7 +6,7 @@ export function checkEventCacheDebounceDuplication(
   eventCache: IRealityEventCacheCacheFile,
   configs: ReturnType<typeof formatDuplicationFields>,
 ): number {
-  const debounceDuration = Number(configs['debounce-duration']);
+  const debounceDuration = configs['debounce-duration'];
   const { event, meta } = newEventCacheItem;
   const now = new Date(event.timestamp).getTime();
   const checkTiddlerTitle = configs['debounce-tiddler-title'] === 'yes';

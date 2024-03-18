@@ -73,6 +73,9 @@ export function addEventLog(eventLog: IRealityEventLogFile | undefined, newEvent
       break;
     }
   }
+
+  // set back to wiki
+  updateEventLogFile(eventLog);
 }
 
 /**
@@ -87,4 +90,8 @@ function formatDayInterval(intervalInMs: number): string {
   } else {
     return intervalInDay.toFixed(5);
   }
+}
+
+function updateEventLogFile(eventLog: IRealityEventLogFile) {
+  $tw.wiki.setTiddlerData(eventLog.title, Object.fromEntries(eventLog.items));
 }

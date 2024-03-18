@@ -18,15 +18,15 @@ export function checkEventLogDebounceDuplication(
   const today = new Date(event.timestamp).getTime();
   const { items, type: realityEventLogTypes } = eventLog;
   let hasDuplicate = false;
-  const debounceDuration = Number(configs['debounce-duration']);
+  const debounceDuration = configs['debounce-duration'];
   switch (realityEventLogTypes) {
     case RealityEventLogTypes.Date: {
-      const latestItemKey = [...items.values()].sort().pop();
-      if (latestItemKey === undefined) {
+      const latestItemValue = [...items.values()].sort().pop();
+      if (latestItemValue === undefined) {
         hasDuplicate = false;
         break;
       }
-      const latestItemDate = new Date(latestItemKey);
+      const latestItemDate = new Date(Number(latestItemValue));
       hasDuplicate = (today - latestItemDate.getTime()) < debounceDuration;
       break;
     }

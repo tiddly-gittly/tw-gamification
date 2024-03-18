@@ -64,7 +64,7 @@ function getEventFromParameterObject(
   return {
     event,
     meta: {
-      generator: parameterObject.generator || 'ActionWidget',
+      generator: parameterObject.generator,
       tiddlerTitle: parameterObject.tiddlerTitle,
     },
   };

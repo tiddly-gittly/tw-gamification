@@ -26,7 +26,7 @@ export interface IFindDuplicateParameters {
   ['debounce-tiddler-condition']?: 'or' | 'and';
   /**
    * Use the tiddler title that trigger the event as the condition to find the duplicate event.
-   * (default to `yes`)
+   * (default to `no`) If set to 'yes' will cause log based debounce not working.
    */
   ['debounce-tiddler-title']?: 'yes' | 'no';
   /**

@@ -16,7 +16,7 @@ export function formatDuplicationFields(
     'debounce-tiddler-title',
     'find-duplicate-filter',
   ]);
-  configs['debounce-tiddler-title'] = configs['debounce-tiddler-title'] || 'yes';
+  configs['debounce-tiddler-title'] = configs['debounce-tiddler-title'] || 'no';
   configs['debounce-generator-title'] = configs['debounce-generator-title'] || 'yes';
   configs['debounce-tiddler-condition'] = configs['debounce-tiddler-condition'] || 'and';
   return {

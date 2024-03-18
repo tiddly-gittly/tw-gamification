@@ -55,13 +55,16 @@ export type IRealityEventLogKey = IDailyCountKey | IDayIntervalKey | IDateKey;
 export type IRealityEventLogFile = {
   exists: boolean;
   items: Map<IDailyCountKey, string>;
+  title: string;
   type: RealityEventLogTypes.DailyCount;
 } | {
   exists: boolean;
   items: Map<IDayIntervalKey, string>;
+  title: string;
   type: RealityEventLogTypes.DayInterval;
 } | {
   exists: boolean;
   items: Map<IDateKey, string>;
+  title: string;
   type: RealityEventLogTypes.Date;
 };

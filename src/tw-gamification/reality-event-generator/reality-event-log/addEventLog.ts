@@ -18,7 +18,7 @@ export function addEventLog(eventLog: IRealityEventLogFile | undefined, newEvent
     case RealityEventLogTypes.DailyCount: {
       /**
        * ```yaml
-       * daily-count-1609459200000: 1,0,0,0,3,0,0
+       * daily-count1609459200000: 1,0,0,0,3,0,0
        * ```
        */
       const today = new Date(event.timestamp);

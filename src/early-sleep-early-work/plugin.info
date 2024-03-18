@@ -7,6 +7,6 @@
   "parent-plugin": "$:/plugins/linonetwo/tw-gamification",
   "dependents": "$:/plugins/linonetwo/tw-gamification",
   "readme": "<<lingo Readme $:/plugins/linonetwo/early-sleep-early-work/language/>>",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "list": "readme config tree"
 }

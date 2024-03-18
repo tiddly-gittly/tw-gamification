@@ -21,7 +21,8 @@ export interface IAddRealityEventParameterObjectFromActionWidget extends IRealit
   tiddlerTitle: string;
 }
 /**
- * Each device have a log cache file, text is a JSONstringified Object of this type.
+ * Each device have a event cache file, text is a JSONstringified Object of this type.
+ * "Cache" means it will be deleted when processed, for example, when the event is used by the game.
  */
 export type IRealityEventCacheCacheFile = IRealityEventCacheCacheItem[];
 export interface IRealityEventCacheCacheItem {

@@ -24,11 +24,13 @@ CreateAction/FindDuplicate/Description: 启用或禁用查找重复。
 CreateAction/DebounceDuration/Caption: 防抖持续时间
 CreateAction/DebounceDuration/Description: 设置防抖持续时间（秒）。
 CreateAction/RealityEventAmount/Caption: 奖励数量
-CreateAction/RealityEventAmount/Description: 指定游戏事件触发时提供的奖励或惩罚数量。
-CreateAction/RealityEventMessage/Caption: 游戏事件消息
-CreateAction/RealityEventMessage/Description: 输入游戏事件触发时展示给玩家看的消息。
-CreateAction/RealityEventType/Caption: 游戏事件类型
-CreateAction/RealityEventType/Description: 选择游戏事件的类型。
+CreateAction/RealityEventAmount/Description: 指定现实事件触发时提供的奖励或惩罚数量。
+CreateAction/RealityEventMessage/Caption: 现实事件消息
+CreateAction/RealityEventMessage/Description: 输入现实事件触发时展示给玩家看的消息。
+CreateAction/RealityEventType/Caption: 现实事件类型
+CreateAction/RealityEventType/Description: 选择本动作会生成的现实事件的类型。
+CreateAction/RealityEventLogType/Caption: 现实事件记录类型
+CreateAction/RealityEventLogType/Description: 选择本动作的完成记录使用的存档格式，如果不填则默认使用「具体日期」。
 CreateAction/Icon/Caption: 图标
 CreateAction/Icon/Description: 为行动选择一个图标，可以用 Emoji 或 SVG，也可以用嵌入语法引用 SVG 图片条目。
 CreateAction/Caption/Caption: 展示标题

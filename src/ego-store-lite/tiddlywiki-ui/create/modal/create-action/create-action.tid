@@ -78,6 +78,25 @@ footer: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-
   </div>
 
   <div class="ego-store-lite-new-item-field">
+    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/RealityEventLogType/Caption>></span>
+    <$select
+      tiddler="$:/state/ego-store-lite/newAction"
+      field="reality-event-log-type"
+      class="ego-store-lite-new-item-field-input"
+    >
+      <$list filter='[all[shadows]prefix[$:/plugins/linonetwo/tw-gamification/reality-event-generator/reality-event-log-type/]]'>
+        <option value={{!!text}}><$transclude field='caption'/> - <$transclude field='description'/></option>
+      </$list>
+    </$select>
+    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/RealityEventLogType/Description>></span>
+  </div>
+  <div class="ego-store-lite-new-item-field-description">
+    <$wikify name="description" text={{{[[$:/state/ego-store-lite/newAction]get[reality-event-log-type]add-prefix[$:/plugins/linonetwo/tw-gamification/reality-event-generator/reality-event-log-type/]get[description]]}}}>
+      <<description>>
+    </$wikify>
+  </div>
+
+  <div class="ego-store-lite-new-item-field">
     <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/Enabled/Caption>></span>
     <$checkbox
       tiddler="$:/state/ego-store-lite/newAction"

@@ -84,14 +84,14 @@ footer: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-
       field="reality-event-log-type"
       class="ego-store-lite-new-item-field-input"
     >
-      <$list filter='[all[shadows]prefix[$:/plugins/linonetwo/tw-gamification/reality-event-generator/reality-event-log-type/]]'>
+      <$list filter='[all[shadows]prefix[$:/plugins/linonetwo/activity-log-tools/log-file-types/]]'>
         <option value={{!!text}}><$transclude $field='caption'/> - <$transclude $field='description'/></option>
       </$list>
     </$select>
     <span class="ego-store-lite-new-item-field-description">
       <<lingo CreateAction/RealityEventLogType/Description>>
       <$transclude
-        $tiddler={{{[[$:/state/ego-store-lite/newAction]get[reality-event-log-type]addprefix[$:/plugins/linonetwo/tw-gamification/reality-event-generator/reality-event-log-type/]]}}}
+        $tiddler={{{[[$:/state/ego-store-lite/newAction]get[reality-event-log-type]addprefix[$:/plugins/linonetwo/activity-log-tools/log-file-types/]]}}}
         $field='description'
       />
     </span>

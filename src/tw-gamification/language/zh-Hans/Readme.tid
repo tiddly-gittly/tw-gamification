@@ -2,9 +2,9 @@ title: $:/plugins/linonetwo/tw-gamification/language/zh-Hans/Readme
 
 \define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 
-! 「<<lingo "Name">>」框架
+! 「<<lingo Name>>」框架
 
-<<lingo "Description">>
+<<lingo Description>>
 
 [[中文论坛 - 设计人生游戏化的插件讨论|https://talk.tidgi.fun/topic/110]]
 

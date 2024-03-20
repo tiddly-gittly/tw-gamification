@@ -17,5 +17,5 @@ declare module '$:/plugins/linonetwo/activity-log-tools/log-file-tools/createAct
 
 declare module '$:/plugins/linonetwo/activity-log-tools/log-file-tools/getActivityLog' {
   import { IActivityLogFile, LogFileTypes } from 'src/activity-log-tools/log-file-types/LogFileTypes';
-  export declare function getActivityLog(logTiddlerType: LogFileTypes, logTiddlerTitle: string): IActivityLogFile | undefined;
+  export declare function getActivityLog(logTiddlerTitle: string, logTiddlerType: LogFileTypes): IActivityLogFile | undefined;
 }

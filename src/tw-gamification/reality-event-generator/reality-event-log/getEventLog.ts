@@ -19,5 +19,5 @@ export function getEventLog(eventGeneratorTitle: string | undefined): IActivityL
   }
   const logTiddlerTitle = eventGeneratorTiddler.fields['reality-event-log'] || getDefaultEventLogTitle(eventGeneratorTitle);
   const logTiddlerType: LogFileTypes = (eventGeneratorTiddler.fields['activity-log-file-type'] || LogFileTypes.Date) as LogFileTypes;
-  return getActivityLog(logTiddlerType, logTiddlerTitle);
+  return getActivityLog(logTiddlerTitle, logTiddlerType);
 }

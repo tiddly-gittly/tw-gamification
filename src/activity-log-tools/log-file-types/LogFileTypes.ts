@@ -1,3 +1,5 @@
+import { ITiddlerFields } from 'tiddlywiki';
+
 /**
  * We save event log in text of tiddler with tag `$:/Tags/Gamification/RealityEventLog`, and use data tiddler with fields ends with a UTC time number (`DailyCount123time` `DayInterval`).
  * Actions can use `reality-event-log` field to point to the log file containing the data described below.
@@ -68,3 +70,8 @@ export type IActivityLogFile = {
   title: string;
   type: LogFileTypes.Date;
 };
+
+export interface IActivityLogTiddlerFields extends ITiddlerFields {
+  'activity-log-file-type': LogFileTypes;
+  type: 'application/x-tiddler-dictionary';
+}

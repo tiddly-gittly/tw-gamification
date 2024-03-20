@@ -7,7 +7,7 @@ import { IActivityLogFile, IActivityLogKey, LogFileTypes } from '../log-file-typ
 /**
  * @returns Event log in memory, may not existed in tiddler store, you still need to call createActivityLog to create it.
  */
-export function getActivityLog(logTiddlerType: LogFileTypes, logTiddlerTitle: string): IActivityLogFile {
+export function getActivityLog(logTiddlerTitle: string, logTiddlerType: LogFileTypes): IActivityLogFile {
   const tiddlerExists = $tw.wiki.getTiddler(logTiddlerTitle) !== undefined;
   const items = $tw.wiki.getTiddlerData(logTiddlerTitle);
   if (!isValidActivityLogData(items)) {

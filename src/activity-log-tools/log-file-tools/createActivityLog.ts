@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { ITiddlerFields } from 'tiddlywiki';
-import { LogFileTypes } from '../log-file-types/LogFileTypes';
+import { IActivityLogTiddlerFields, LogFileTypes } from '../log-file-types/LogFileTypes';
 
 /**
  * Will create a new log file if not exist.
@@ -12,12 +12,14 @@ export function createActivityLog(logTiddlerType: LogFileTypes, fields: Partial<
   const tiddlerExists = $tw.wiki.getTiddler(fields.title) !== undefined;
   if (!tiddlerExists || options?.overwrite) {
     // create a new log file if not exist.
-    $tw.wiki.addTiddler({
-      ...fields,
-      type: 'application/x-tiddler-dictionary',
-      text: '',
-      'hide-body': 'yes',
-      'activity-log-file-type': logTiddlerType,
-    });
+    $tw.wiki.addTiddler(
+      {
+        ...fields,
+        type: 'application/x-tiddler-dictionary',
+        text: '',
+        'hide-body': 'yes',
+        'activity-log-file-type': logTiddlerType,
+      } satisfies IActivityLogTiddlerFields,
+    );
   }
 }

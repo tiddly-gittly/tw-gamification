@@ -1,4 +1,5 @@
-import { IDailyCountKey, IDayIntervalKey, IActivityLogFile, LogFileTypes } from '../log-file-types/LogFileTypes';
+import { createActivityLog } from '$:/plugins/linonetwo/activity-log-tools/log-file-tools/createActivityLog';
+import { IActivityLogFile, IDailyCountKey, IDayIntervalKey, LogFileTypes } from '../log-file-types/LogFileTypes';
 
 /** 30 days in ms */
 const MAX_ACTIVITY_LOG_ITEM_DURATION = 30 * 24 * 60 * 60 * 1000;
@@ -96,5 +97,8 @@ function formatDayInterval(intervalInMs: number): string {
 }
 
 function updateActivityLogFile(activityLog: IActivityLogFile) {
+  // create new one if not exist.
+  createActivityLog(activityLog.type, { title: activityLog.title });
+  // need to create one before save, to have `fields.type === "application/x-tiddler-dictionary"`, otherwise tw will save as json instead.
   $tw.wiki.setTiddlerData(activityLog.title, Object.fromEntries(activityLog.items));
 }

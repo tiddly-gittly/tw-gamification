@@ -5,16 +5,10 @@ import { isValidActivityLogData } from '$:/plugins/linonetwo/activity-log-tools/
 import { IActivityLogFile, IActivityLogKey, LogFileTypes } from '../log-file-types/LogFileTypes';
 
 /**
- * Will create a new log file if not exist.
- * So if you don't want to create a new log file, you should not call this.
- * @returns Event log or undefined, undefined means no need to consider event log, for example, one-time event triggered in tutorial.
+ * @returns Event log in memory, may not existed in tiddler store, you still need to call createActivityLog to create it.
  */
-export function getActivityLog(logTiddlerType: LogFileTypes, logTiddlerTitle: string): IActivityLogFile | undefined {
+export function getActivityLog(logTiddlerType: LogFileTypes, logTiddlerTitle: string): IActivityLogFile {
   const tiddlerExists = $tw.wiki.getTiddler(logTiddlerTitle) !== undefined;
-  if (!tiddlerExists) {
-    // create a new log file if not exist.
-    $tw.wiki.addTiddler({ title: logTiddlerTitle, tags: ['$:/Tags/Gamification/RealityEventLog'], type: 'application/x-tiddler-dictionary', text: '', 'hide-body': 'yes' });
-  }
   const items = $tw.wiki.getTiddlerData(logTiddlerTitle);
   if (!isValidActivityLogData(items)) {
     // return empty one with default type

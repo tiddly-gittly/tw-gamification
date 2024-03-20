@@ -47,12 +47,12 @@ export enum LogFileTypes {
 export type IDailyCountKey = `${LogFileTypes.DailyCount}${number}`;
 export type IDayIntervalKey = `${LogFileTypes.DayInterval}${number}`;
 export type IDateKey = string;
-export type IRealityEventLogKey = IDailyCountKey | IDayIntervalKey | IDateKey;
+export type IActivityLogKey = IDailyCountKey | IDayIntervalKey | IDateKey;
 /**
  * Each action or generator have a event log file, text is a DictionaryTiddler described in RealityEventLogTypes.
  * We left the value of each row as string, you need to find the key you want to use, and parse the value as number or date.
  */
-export type ILogFile = {
+export type IActivityLogFile = {
   exists: boolean;
   items: Map<IDailyCountKey, string>;
   title: string;

@@ -2,3 +2,9 @@ title: $:/plugins/linonetwo/activity-log-tools/language/en-GB/
 
 Name: Activity Log Tools
 Description: Filter and library to read and write to daily activity save log tiddlers, for gamification frameworks, visualization frameworks, etc.
+RealityEventLog/Type/DayInterval/Caption: Day Interval
+RealityEventLog/Type/DayInterval/Description: Stored in days, suitable for hourly, frequent events. Save file small, calculation slow, vis is good.
+RealityEventLog/Type/Date/Caption: Specific date
+RealityEventLog/Type/Date/Description: store specific dates one by one, suitable for events that occur centrally for a period of time, and rarely occur thereafter, or events that occur more irregularly. Save file large, calculation fast, vis is good.
+RealityEventLog/Type/DailyCount/Caption: Counter on day
+RealityEventLog/Type/DailyCount/Description: store count of events in days, only save the number of times per day, not the specific time point to save space, suitable for events that occur very frequently. Save file small, calculation fast, vis is bad.

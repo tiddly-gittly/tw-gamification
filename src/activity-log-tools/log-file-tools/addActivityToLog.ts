@@ -1,18 +1,15 @@
-import { IRealityEventCacheCacheItem } from 'src/tw-gamification/reality-event-cache/RealityEventCacheTypes';
-import { IDailyCountKey, IDayIntervalKey, ILogFile, LogFileTypes } from '../log-file-types/LogFileTypes';
+import { IDailyCountKey, IDayIntervalKey, IActivityLogFile, LogFileTypes } from '../log-file-types/LogFileTypes';
 
 /** 30 days in ms */
-const MAX_EVENT_LOG_ITEM_DURATION = 30 * 24 * 60 * 60 * 1000;
+const MAX_ACTIVITY_LOG_ITEM_DURATION = 30 * 24 * 60 * 60 * 1000;
 
-export function addActivityToLog(eventLog: ILogFile | undefined, newEventCacheItem: IRealityEventCacheCacheItem) {
-  if (eventLog === undefined) return;
-  const { event } = newEventCacheItem;
-  // items keys have same order as the order they in the text, so if we always put latest item on top, we can find latest item on top. See `$tw.utils.parseFields` used by `getTiddlerData`
-  const { items, type: realityEventLogTypes } = eventLog;
-  switch (realityEventLogTypes) {
+export function addActivityToLog(activityLog: IActivityLogFile | undefined, newActivityTimestamp: number) {
+  if (activityLog === undefined) return;
+  const { items, type: logFileTypes } = activityLog;
+  switch (logFileTypes) {
     case LogFileTypes.Date: {
       const nextDateIndex = String(Object.keys(items).length);
-      items.set(nextDateIndex, String(event.timestamp));
+      items.set(nextDateIndex, String(newActivityTimestamp));
       break;
     }
     case LogFileTypes.DailyCount: {
@@ -21,7 +18,7 @@ export function addActivityToLog(eventLog: ILogFile | undefined, newEventCacheIt
        * daily-count1609459200000: 1,0,0,0,3,0,0
        * ```
        */
-      const today = new Date(event.timestamp);
+      const today = new Date(newActivityTimestamp);
       // check if latest item's timestamp is within 30 days
       const latestItemKey = ([...items.keys()] as IDailyCountKey[]).filter(key => key.startsWith(LogFileTypes.DailyCount)).sort().pop();
       if (latestItemKey === undefined) {
@@ -31,7 +28,7 @@ export function addActivityToLog(eventLog: ILogFile | undefined, newEventCacheIt
         const latestItemDate = new Date(Number(latestItemKey.replace(LogFileTypes.DailyCount, '')));
         const nextDateKey: IDailyCountKey = `${LogFileTypes.DailyCount}${today.getTime()}`;
         const latestItem = items.get(latestItemKey);
-        if (latestItem === undefined || ((today.getTime() - latestItemDate.getTime()) > MAX_EVENT_LOG_ITEM_DURATION)) {
+        if (latestItem === undefined || ((today.getTime() - latestItemDate.getTime()) > MAX_ACTIVITY_LOG_ITEM_DURATION)) {
           // > 30 days, create a new item
           // 1 means count today do this 1 times.
           items.set(nextDateKey, '1');
@@ -52,7 +49,7 @@ export function addActivityToLog(eventLog: ILogFile | undefined, newEventCacheIt
     }
     case LogFileTypes.DayInterval: {
       // day-interval1609459200000: 0.4,0.6,2.4,5.8,4.93,0.94,0.86,0.01,1.49,0.14,0.94,2.18
-      const today = new Date(event.timestamp);
+      const today = new Date(newActivityTimestamp);
       // check if latest item's timestamp is within 30 days
       const latestItemKey = ([...items.keys()] as IDayIntervalKey[]).filter(key => key.startsWith(LogFileTypes.DayInterval)).sort().pop();
       if (latestItemKey === undefined) {
@@ -61,7 +58,7 @@ export function addActivityToLog(eventLog: ILogFile | undefined, newEventCacheIt
       } else {
         const latestItemDate = new Date(Number(latestItemKey.replace(LogFileTypes.DayInterval, '')));
         const latestItem = items.get(latestItemKey);
-        if (latestItem === undefined || ((today.getTime() - latestItemDate.getTime()) > MAX_EVENT_LOG_ITEM_DURATION)) {
+        if (latestItem === undefined || ((today.getTime() - latestItemDate.getTime()) > MAX_ACTIVITY_LOG_ITEM_DURATION)) {
           // > 30 days, create a new item
           const nextDateKey: IDayIntervalKey = `${LogFileTypes.DayInterval}${today.getTime()}`;
           // in interval mode, first one is always 0. Later ones are the interval between the last one and the modify date in the key.
@@ -81,7 +78,7 @@ export function addActivityToLog(eventLog: ILogFile | undefined, newEventCacheIt
   }
 
   // set back to wiki
-  updateActivityLogFile(eventLog);
+  updateActivityLogFile(activityLog);
 }
 
 /**
@@ -98,6 +95,6 @@ function formatDayInterval(intervalInMs: number): string {
   }
 }
 
-function updateActivityLogFile(eventLog: ILogFile) {
-  $tw.wiki.setTiddlerData(eventLog.title, Object.fromEntries(eventLog.items));
+function updateActivityLogFile(activityLog: IActivityLogFile) {
+  $tw.wiki.setTiddlerData(activityLog.title, Object.fromEntries(activityLog.items));
 }

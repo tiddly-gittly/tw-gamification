@@ -19,7 +19,7 @@ export interface EventGeneratorDefinitions extends ITiddlerFields, IDuplicationS
   /**
    * Indicate the format of event log file. Default to `date`.
    */
-  ['reality-event-log-type']?: RealityEventLogTypes;
+  ['activity-log-file-type']?: RealityEventLogTypes;
   ['reality-event-message']?: string;
   /**
    * The type of the event.

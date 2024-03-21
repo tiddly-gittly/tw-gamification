@@ -21,37 +21,91 @@ export const activitydaycounts = ((source, operator): string[] => {
       results.push('');
       return;
     }
-    const [dateStart, dateEnd, activityLog] = rangeAndLogFile;
+    const [filterRangeStartDate, filterRangeEndDate, activityLog] = rangeAndLogFile;
     const { items, type: logTypes } = activityLog;
     switch (logTypes) {
       case LogFileTypes.DailyCount: {
-        const dailyCounts = new Map<string, number>();
-        for (const [key, value] of items) {
-          const date = new Date(Number(key));
-          if (date.getTime() < dateStart.getTime() || date.getTime() > dateEnd.getTime()) {
+        const dailyCountRowsInRange = new Map<Date, number[]>();
+        for (const [rowStartDateString, rowOfCountsString] of items) {
+          const rowStartDate = new Date(Number(rowStartDateString.replace(LogFileTypes.DailyCount, '')));
+          if (rowStartDate.getTime() < filterRangeStartDate.getTime() || rowStartDate.getTime() > filterRangeEndDate.getTime()) {
             continue;
           }
-          dailyCounts.set(key, Number(value));
+          // value is comma separated value, each is a count for that day, started at rowStartDateString
+          const rowOfCounts = rowOfCountsString.split(',').map(item => {
+            const count = Number(item);
+            if (Number.isInteger(count)) return count;
+            else return 0;
+          });
+          dailyCountRowsInRange.set(rowStartDate, rowOfCounts);
         }
-        results.push([...dailyCounts].map(([key, value]) => `${key},${value}`).join(','));
+        const dateWithCount = [...dailyCountRowsInRange]
+          .flatMap(([rowStartDate, rowOfCounts]) => {
+            return rowOfCounts.map((count, index) => {
+              const date = new Date(rowStartDate);
+              date.setDate(date.getDate() + index); // Add index to the date
+              if (date.getMonth() !== rowStartDate.getMonth()) {
+                // Handle spanning multiple months
+                date.setMonth(rowStartDate.getMonth());
+                date.setFullYear(rowStartDate.getFullYear() + Math.floor((rowStartDate.getMonth() + index) / 12));
+                date.setMonth((rowStartDate.getMonth() + index) % 12);
+              }
+              return [date, count] as const;
+            });
+          });
+        const filteredAndSortedCounts = dateWithCount
+          .filter(([date]) => date >= filterRangeStartDate && date <= filterRangeEndDate)
+          .sort(([dateA], [dateB]) => dateA.getTime() - dateB.getTime())
+          .map(([, count]) => count)
+          .join(',');
+        results.push(filteredAndSortedCounts);
         break;
       }
-      case LogFileTypes.Date:
+
+      case LogFileTypes.Date: {
+        const dateCounts = new Map<number, number>();
+        items.forEach(dateString => {
+          const date = new Date(Number(dateString));
+          if (date >= filterRangeStartDate && date <= filterRangeEndDate) {
+            const dateKey = new Date(date.toISOString().split('T')[0]).getTime(); // Normalize to YYYY-MM-DD to count same day, then use number for key
+            dateCounts.set(dateKey, (dateCounts.get(dateKey) ?? 0) + 1);
+          }
+        });
+        const sortedCounts = [...dateCounts]
+          .sort(([timeA], [timeB]) => timeA - timeB)
+          .map(([, count]) => count)
+          .join(',');
+        results.push(sortedCounts);
+        break;
+      }
+
       case LogFileTypes.DayInterval: {
-        const dailyCounts = new Map<string, number>();
-        for (let date = dateStart; date.getTime() <= dateEnd.getTime(); date.setDate(date.getDate() + 1)) {
-          dailyCounts.set(date.toISOString(), 0);
-        }
-        for (const [key, value] of items) {
-          const date = new Date(Number(key));
-          if (date.getTime() < dateStart.getTime() || date.getTime() > dateEnd.getTime()) {
-            continue;
-          }
-          dailyCounts.set(date.toISOString(), Number(value));
-        }
-        results.push([...dailyCounts].map(([key, value]) => `${key},${value}`).join(','));
+        const dateCounts = new Map<number, number>();
+        items.forEach((intervalsString, key) => {
+          const lastDateString = key.replace('day-interval', '');
+          const intervals = intervalsString.split(',').map(Number);
+          let currentDate = new Date(Number(lastDateString));
+
+          intervals.reverse().forEach(interval => {
+            // Subtract the interval from the current date to find the event date
+            currentDate = new Date(currentDate.getTime() - interval * 24 * 60 * 60 * 1000); // Subtract interval days
+            if (currentDate >= filterRangeStartDate && currentDate <= filterRangeEndDate) {
+              const dateKey = new Date(currentDate.toISOString().split('T')[0]).getTime(); // Normalize to YYYY-MM-DD to count same day, then use number for key
+              dateCounts.set(dateKey, (dateCounts.get(dateKey) ?? 0) + 1);
+            }
+          });
+        });
+
+        // Convert the dateCounts map to an array, sort by date, extract counts, and join them
+        const sortedCounts = [...dateCounts]
+          .sort(([timeA], [timeB]) => timeA - timeB)
+          .map(([, count]) => count)
+          .join(',');
+
+        results.push(sortedCounts);
         break;
       }
+
       default: {
         results.push('');
       }

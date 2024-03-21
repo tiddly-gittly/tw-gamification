@@ -49,6 +49,7 @@ export enum LogFileTypes {
 export type IDailyCountKey = `${LogFileTypes.DailyCount}${number}`;
 export type IDayIntervalKey = `${LogFileTypes.DayInterval}${number}`;
 export type IDateKey = string;
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 export type IActivityLogKey = IDailyCountKey | IDayIntervalKey | IDateKey;
 /**
  * Each action or generator have a event log file, text is a DictionaryTiddler described in RealityEventLogTypes.

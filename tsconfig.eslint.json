@@ -16,9 +16,10 @@
     "scripts/**/*.mjs",
     "src/**/*.d.ts",
     "public/**/*.d.ts",
+    "wiki/tiddlers/tests",
     "./*.json",
     "./*.js",
     "./*.*.js"
   ],
-  "exclude": ["wiki", "src/scp-foundation-site-director/game/wasm"]
+  "exclude": ["wiki/**/*.json", "src/scp-foundation-site-director/game/wasm"]
 }

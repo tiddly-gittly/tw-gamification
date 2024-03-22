@@ -114,9 +114,9 @@ export const activitydaycounts = ((source, operator): string[] => {
   return results;
 }) satisfies IFilterOperator;
 
-function getRangeAndLogFile(tiddler: Tiddler | undefined, title: string, dateStartString: string, dateEndString: string) {
+function getRangeAndLogFile(tiddler: Tiddler | undefined, title: string, dateStartString: string | undefined, dateEndString: string | undefined) {
   const logTiddlerType = tiddler?.fields['activity-log-file-type'] as LogFileTypes | undefined;
-  if (logTiddlerType === undefined) {
+  if (logTiddlerType === undefined || dateStartString === undefined || dateEndString === undefined) {
     // activity log file should have a type, if it is not defined, we can't do anything.
     return undefined;
   }

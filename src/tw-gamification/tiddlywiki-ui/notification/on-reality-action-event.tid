@@ -1,0 +1,3 @@
+title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event
+
+<$transclude $variable="message" />

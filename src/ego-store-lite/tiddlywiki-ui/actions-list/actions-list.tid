@@ -14,6 +14,12 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsLi
         <$action-sendmessage
           $message="tm-reality-action-event"
           $param=<<currentTiddler>>
+        >
+        </$action-sendmessage>
+        <$action-sendmessage
+          $message="tm-notify"
+          $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
+          message={{!!reality-event-message}}
         />
         <div class="ego-store-lite-game-buttons-list-item-icon"><$transclude $field="icon"/></div>
         <div class="ego-store-lite-game-buttons-list-item-info">

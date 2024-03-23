@@ -1,0 +1,19 @@
+title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/procedure/reality-event-type-display
+
+\procedure lingo-base() $:/plugins/linonetwo/tw-gamification/language/
+\procedure reality-event-type-display()
+  <!-- i18n for type in `BasicRealityEventTypes` -->
+  <% if [{!!reality-event-type}match{{$:/plugins/linonetwo/tw-gamification/reality-event-generator/reality-event-types/Item}}] %>
+    {{$:/plugins/linonetwo/tw-gamification/reality-event-generator/reality-event-types/Item!!caption}}
+  <% elseif [{!!reality-event-type}match{{$:/plugins/linonetwo/tw-gamification/reality-event-generator/reality-event-types/LargePunishment}}] %>
+    {{$:/plugins/linonetwo/tw-gamification/reality-event-generator/reality-event-types/LargePunishment!!caption}}
+  <% elseif [{!!reality-event-type}match{{$:/plugins/linonetwo/tw-gamification/reality-event-generator/reality-event-types/LargeReward}}] %>
+    {{$:/plugins/linonetwo/tw-gamification/reality-event-generator/reality-event-types/LargeReward!!caption}}
+  <% elseif [{!!reality-event-type}match{{$:/plugins/linonetwo/tw-gamification/reality-event-generator/reality-event-types/SmallPunishment}}] %>
+    {{$:/plugins/linonetwo/tw-gamification/reality-event-generator/reality-event-types/SmallPunishment!!caption}}
+  <% elseif [{!!reality-event-type}match{{$:/plugins/linonetwo/tw-gamification/reality-event-generator/reality-event-types/SmallReward}}] %>
+    {{$:/plugins/linonetwo/tw-gamification/reality-event-generator/reality-event-types/SmallReward!!caption}}
+  <% else %>
+    {{!!reality-event-type}}
+  <% endif %>
+\end

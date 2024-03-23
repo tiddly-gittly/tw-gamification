@@ -65,11 +65,6 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
-      - name: TS Type check
-        run: pnpm exec tsc --noEmit
-      - name: TS Lint check
-        run: pnpm exec eslint .
-
       # Build Rust
       - name: Install Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1
@@ -80,6 +75,10 @@ jobs:
       - name: Build example game WASM
         run: pnpm run build:game
 
+      - name: TS Type check
+        run: pnpm exec tsc --noEmit
+      - name: TS Lint check
+        run: pnpm exec eslint .
       - name: Run tests
         run: pnpm run test
       # Build TS

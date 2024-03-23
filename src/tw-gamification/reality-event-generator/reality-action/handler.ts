@@ -37,7 +37,7 @@ exports.startup = function twGamificationActionStartupModule() {
     const originalGeneratorDefinition = $tw.wiki.getTiddler(actionDefinitionTiddlerTitle)?.fields;
     if (!originalGeneratorDefinition) return false;
     // check the definition is a valid action definition
-    if (!originalGeneratorDefinition.tags.includes(tagForGenerators) || !originalGeneratorDefinition['reality-event-type']) return false;
+    if (!originalGeneratorDefinition.tags?.includes?.(tagForGenerators) || !originalGeneratorDefinition['reality-event-type']) return false;
     // allow override the definition on action widget
     const parameterObject = (event.paramObject ?? {}) as unknown as IActionDefinitions & IActionExtraParameterObject;
     const eventGenerator: IActionDefinitions = { ...originalGeneratorDefinition, ...parameterObject };

@@ -1,5 +1,4 @@
 title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/GoToGameLayoutButton
-tags: $:/tags/PageControls
 caption: {{$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/GoToGameLayout}} <<lingo "Name" "$:/plugins/linonetwo/tw-gamification/language/">>
 description: <<lingo "GoToGameLayoutButton/Description" "$:/plugins/linonetwo/tw-gamification/language/">>
 

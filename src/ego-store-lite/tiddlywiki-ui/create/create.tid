@@ -2,7 +2,7 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/create
 tags: $:/tags/ego-store-lite/main-tabs
 caption: {{$:/plugins/linonetwo/tw-gamification/icons/add-action}} <<lingo Create/Title/Caption>>
 
-\define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
+\procedure lingo-base $:/plugins/linonetwo/ego-store-lite/language/
 
 <div class="ego-store-lite-create-container">
   <$button class="ego-store-lite-create-button">

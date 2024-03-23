@@ -1,6 +1,6 @@
 title: language/en-GB/Index
 
-\define lingo-base() language/
+\procedure lingo-base language/
 
 !! Usage
 

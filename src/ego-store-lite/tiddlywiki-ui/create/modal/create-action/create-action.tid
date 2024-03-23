@@ -3,7 +3,7 @@ subtitle: <<lingo CreateAction/Caption>>
 footer: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-action/create-action-footer}}
 
 \import [[$:/core/ui/EditTemplate/tags]]
-\define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
+\procedure lingo-base $:/plugins/linonetwo/ego-store-lite/language/
 
 <div class="ego-store-lite-new-item-container">
   <div class="ego-store-lite-new-item-field">

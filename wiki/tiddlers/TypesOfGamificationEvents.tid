@@ -1,6 +1,6 @@
 tags: Index
 title: TypesOfRealityEvents
 
-\define lingo-base() language/
+\procedure lingo-base language/
 
 <<lingo TypesOfRealityEvents>>

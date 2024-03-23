@@ -1,6 +1,6 @@
 title: language/zh-Hans/TypesOfRealityEvents
 
-\define lingo-base() language/
+\procedure lingo-base language/
 
 !! 待处理事件缓存文件
 

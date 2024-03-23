@@ -1,7 +1,7 @@
 title: $:/plugins/linonetwo/scp-foundation-site-director/tiddlywiki-ui/loading-indicator
 
 \whitespace trim
-\define lingo-base() $:/plugins/linonetwo/scp-foundation-site-director/language/
+\procedure lingo-base $:/plugins/linonetwo/scp-foundation-site-director/language/
 
 <!-- Copy from Tiddlywiki-XP's `$:/xp/splashscreen/layouts/sk-wave` -->
 <style scoped>

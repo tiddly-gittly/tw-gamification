@@ -1,6 +1,6 @@
 title: GameWikiAdaptor
 tags: Index
 
-\define lingo-base() language/
+\procedure lingo-base language/
 
 <<lingo GameWikiAdaptor>>

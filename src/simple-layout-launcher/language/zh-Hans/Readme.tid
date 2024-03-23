@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/simple-layout-launcher/language/zh-Hans/Readme
 
-\define lingo-base() $:/plugins/linonetwo/simple-layout-launcher/language/
+\procedure lingo-base $:/plugins/linonetwo/simple-layout-launcher/language/
 
 ! <<lingo Name>>
 

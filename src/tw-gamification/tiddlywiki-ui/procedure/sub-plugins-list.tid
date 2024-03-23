@@ -1,9 +1,9 @@
 title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/procedure/sub-plugins-list
 
-\define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
+\procedure lingo-base $:/plugins/linonetwo/tw-gamification/language/
 \import [[$:/core/ui/ControlPanel/Modals/AddPlugins]]
 
-\define install-plugin-button()
+\procedure install-plugin-button()
 <!-- // TODO: allow uninstall sub-plugin from here -->
 <$button>
   <$action-navigate $to=<<assetInfo>>/>

@@ -2,7 +2,7 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/store
 tags: $:/tags/ego-store-lite/main-tabs
 caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lingo Store/Title>> {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/store-gold-count}}
 
-\define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
+\procedure lingo-base $:/plugins/linonetwo/ego-store-lite/language/
 
 <div class="ego-store-lite-game-buttons-list">
   <$list filter="[all[shadows+tiddlers]tag[$:/tags/ego-store-lite/goods]]">

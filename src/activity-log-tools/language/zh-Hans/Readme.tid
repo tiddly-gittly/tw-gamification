@@ -71,6 +71,6 @@ const activityLog = getActivityLog(title, logTiddlerType);
 
 计算给定的时间范围内每天的活动次数。（下面的例子里使用了来自 [[visualization dashboard 插件|https://tw-cpl.netlify.app/#Plugin_202403161108223]]的`weekstart` 和 `weekend` 宏）
 
-```tid
+```scss
 [[logFileTitle]activitydaycounts<weekstart>,<weekend>[]]
 ```

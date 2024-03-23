@@ -71,6 +71,6 @@ You can use filters to get summaries of logs for visualization and other scenari
 
 Calculates the number of activities per day for a given time frame. (The following example uses the `weekstart` and `weekend` macros from the [[visualization dashboard plugin|https://tw-cpl.netlify.app/#Plugin_202403161108223]])
 
-```tid
+```scss
 [[logFileTitle]activitydaycounts<weekstart>,<weekend>[]]
 ```

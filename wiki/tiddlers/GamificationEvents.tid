@@ -1,6 +1,6 @@
 tags: Index
 title: RealityEvents
 
-\procedure lingo-base language/
+\procedure lingo-base() language/
 
 <<lingo RealityEvents>>

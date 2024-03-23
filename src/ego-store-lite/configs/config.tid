@@ -3,7 +3,7 @@ tags: $:/tags/ControlPanel/TW-Gamification/SettingsTab
 caption: <<lingo Name $:/plugins/linonetwo/ego-store-lite/language/>>
 
 \import [[$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/procedure/sub-plugins-list]]
-\procedure lingo-base $:/plugins/linonetwo/ego-store-lite/language/
+\procedure lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
 \define plugin-name() $:/plugins/linonetwo/ego-store-lite
 
 <<lingo ConfigDescription>>

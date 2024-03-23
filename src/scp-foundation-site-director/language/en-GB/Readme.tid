@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/scp-foundation-site-director/language/en-GB/Readme
 
-\procedure lingo-base $:/plugins/linonetwo/scp-foundation-site-director/language/
+\procedure lingo-base() $:/plugins/linonetwo/scp-foundation-site-director/language/
 
 ! <<lingo Name>>
 

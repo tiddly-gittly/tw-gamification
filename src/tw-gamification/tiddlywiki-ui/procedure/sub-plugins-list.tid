@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/procedure/sub-plugins-list
 
-\procedure lingo-base $:/plugins/linonetwo/tw-gamification/language/
+\procedure lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 \import [[$:/core/ui/ControlPanel/Modals/AddPlugins]]
 
 \procedure install-plugin-button()

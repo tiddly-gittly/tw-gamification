@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-action/create-action-footer
 
-\procedure lingo-base $:/plugins/linonetwo/ego-store-lite/language/
+\procedure lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
 
 <div class="ego-store-lite-create-modal-buttons">
   <$button message="tm-close-tiddler">

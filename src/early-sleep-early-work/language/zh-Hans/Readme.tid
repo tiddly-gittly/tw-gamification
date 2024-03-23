@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/early-sleep-early-work/language/zh-Hans/Readme
 
-\procedure lingo-base $:/plugins/linonetwo/early-sleep-early-work/language/
+\procedure lingo-base() $:/plugins/linonetwo/early-sleep-early-work/language/
 
 ! <<lingo Name>>
 

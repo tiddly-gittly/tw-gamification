@@ -1,5 +1,5 @@
 title: DevelopSubPlugin
 
-\procedure lingo-base language/
+\procedure lingo-base() language/
 
 <<lingo DevelopSubPlugin>>

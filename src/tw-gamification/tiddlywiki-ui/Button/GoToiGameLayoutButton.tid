@@ -2,7 +2,7 @@ title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/GoToGameLayoutButton
 caption: {{$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/GoToGameLayout}} <<lingo Name $:/plugins/linonetwo/tw-gamification/language/>>
 description: <<lingo GoToGameLayoutButton/Description $:/plugins/linonetwo/tw-gamification/language/>>
 
-\procedure lingo-base $:/plugins/linonetwo/tw-gamification/language/
+\procedure lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 \whitespace trim
 <$wikify name="tooltip" text="""<<lingo GoToGameLayoutButton/Description>>""">
   <$button tooltip=<<tooltip>> aria-label=<<lingo Name>> class=<<tv-config-toolbar-class>>>

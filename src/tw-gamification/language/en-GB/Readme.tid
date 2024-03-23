@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/tw-gamification/language/en-GB/Readme
 
-\procedure lingo-base $:/plugins/linonetwo/tw-gamification/language/
+\procedure lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 
 ! "<<lingo Name>>" framework
 

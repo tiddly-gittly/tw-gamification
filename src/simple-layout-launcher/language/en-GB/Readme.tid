@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/simple-layout-launcher/language/en-GB/Readme
 
-\procedure lingo-base $:/plugins/linonetwo/simple-layout-launcher/language/
+\procedure lingo-base() $:/plugins/linonetwo/simple-layout-launcher/language/
 
 ! <<lingo Name>>
 

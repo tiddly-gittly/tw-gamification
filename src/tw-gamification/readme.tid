@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/tw-gamification/readme
 type: text/vnd.tiddlywiki
 
-\procedure lingo-base $:/plugins/linonetwo/tw-gamification/language/
+\procedure lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 
 <<lingo Readme>>

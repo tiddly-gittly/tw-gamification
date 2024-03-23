@@ -1,6 +1,6 @@
 title: language/zh-Hans/Index
 
-\procedure lingo-base language/
+\procedure lingo-base() language/
 
 !! 使用方法
 

@@ -1,6 +1,6 @@
 tags: Index
 title: GameplayData
 
-\procedure lingo-base language/
+\procedure lingo-base() language/
 
 <<lingo GameplayData>>

@@ -1,6 +1,6 @@
 tags: Index
 title: ExchangeableResources
 
-\procedure lingo-base language/
+\procedure lingo-base() language/
 
 <<lingo ExchangeableResources>>

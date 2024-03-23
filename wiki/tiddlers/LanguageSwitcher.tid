@@ -7,6 +7,6 @@ tags: ExcludeFromEmpty $:/tags/ViewTemplate
 title: LanguageSwitcher
 type: text/vnd.tiddlywiki
 
-\procedure lingo-base $:/plugins/linonetwo/tw-gamification/language/
+\procedure lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 
 <<lingo LanguageSwitcher>>

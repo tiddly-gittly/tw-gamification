@@ -1,6 +1,18 @@
 title: $:/plugins/linonetwo/simple-layout-launcher/simple-layout-launcher.css.variable
 tags: $:/tags/Stylesheet
 
+\import [[$:/themes/tiddlywiki/vanilla/base]]
+
 .linonetwo-simple-layout-launcher-item:hover .linonetwo-simple-layout-launcher-description {
 	background: <<colour tiddler-info-background>>;
+}
+
+/** Desktop, center it and add padding */
+@media (min-width: <<sidebarbreakpoint>>) {
+	.linonetwo-simple-layout-launcher-layout-container {
+		padding: 100px;
+	}
+	.linonetwo-simple-layout-launcher-layout-container .linonetwo-simple-layout-launcher {
+		justify-content: center;
+	}
 }

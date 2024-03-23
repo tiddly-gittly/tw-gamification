@@ -11,7 +11,7 @@ tc-page-container tc-page-view-$(storyviewTitle)$ tc-language-$(languageTitle)$ 
 \end
 
 <div class=<<containerClasses>>>
-	<div class="simple-layout-launcher-layout-container">
+	<div class="linonetwo-simple-layout-launcher-layout-container">
 		<<simple-layout-launcher>>
 	</div>
 </div>

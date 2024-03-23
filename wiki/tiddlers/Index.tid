@@ -6,4 +6,6 @@ title: Index
 
 \define lingo-base() language/
 
-<<lingo "Index">>
+<<simple-layout-launcher>>
+
+<<lingo Index>>

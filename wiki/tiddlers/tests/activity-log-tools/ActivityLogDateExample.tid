@@ -1,0 +1,13 @@
+title: ActivityLogDateExample
+type: application/x-tiddler-dictionary
+activity-log-file-type: date
+hide-body: yes
+
+0: 1609459200000
+1: 1609459200001
+2: 1609459200002
+3: 1609459200003
+10: 1609659200000
+11: 1609659200001
+12: 1609659200002
+13: 1609659200003

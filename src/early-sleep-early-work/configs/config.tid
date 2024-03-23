@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/early-sleep-early-work/config
 tags: $:/tags/ControlPanel/TW-Gamification/SettingsTab
-caption: <<lingo "Name" "$:/plugins/linonetwo/early-sleep-early-work/language/">>
+caption: <<lingo Name $:/plugins/linonetwo/early-sleep-early-work/language/>>
 
 \define lingo-base() $:/plugins/linonetwo/early-sleep-early-work/language/
 \define config-base() $:/plugins/linonetwo/early-sleep-early-work/configs/
@@ -36,7 +36,7 @@ caption: <<lingo "Name" "$:/plugins/linonetwo/early-sleep-early-work/language/">
 </div>
 \end
 
-<<lingo "Configs/Description">>
+<<lingo Configs/Description>>
 
 ---
 

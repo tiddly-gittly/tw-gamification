@@ -4,6 +4,8 @@
   "version": "0.0.2",
   "scripts": {
     "dev": "tiddlywiki-plugin-dev dev",
+    "dev:wiki": "tiddlywiki-plugin-dev dev --write-wiki",
+    "test": "tiddlywiki-plugin-dev test",
     "build": "npm run clean && tiddlywiki-plugin-dev build",
     "build:game": "zx ./scripts/buildGame.mjs",
     "publish": "npm run clean && tiddlywiki-plugin-dev publish",
@@ -32,29 +34,29 @@
     ]
   },
   "devDependencies": {
-    "@modern-js/eslint-config": "^2.46.1",
-    "@modern-js/tsconfig": "^2.46.1",
-    "@types/lodash": "^4.14.202",
-    "@types/node": "^20.11.17",
+    "@modern-js/tsconfig": "^2.48.3",
+    "@types/jasmine": "^5.1.4",
+    "@types/lodash": "^4.17.0",
+    "@types/node": "^20.11.30",
     "dprint": "^0.45.0",
-    "eslint-config-tidgi": "^1.1.5",
+    "eslint-config-tidgi": "^1.2.2",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
-    "postcss": "^8.4.35",
+    "postcss": "^8.4.38",
     "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
-    "tw5-typed": "^0.5.1",
-    "typescript": "^5.3.3",
+    "tw5-typed": "^0.5.5",
+    "typescript": "^5.4.3",
     "zx": "^7.2.3"
   },
   "dependencies": {
     "@wessberg/connection-observer": "^1.0.5",
-    "js-base64": "^3.7.6",
+    "js-base64": "^3.7.7",
     "lodash": "^4.17.21",
-    "npm-check-updates": "^16.14.15",
+    "npm-check-updates": "^16.14.17",
     "tiddlywiki": "^5.3.3",
-    "tiddlywiki-plugin-dev": "^0.0.41",
-    "type-fest": "^4.10.2"
+    "tiddlywiki-plugin-dev": "^0.1.1",
+    "type-fest": "^4.13.1"
   },
   "pnpm": {
     "patchedDependencies": {

@@ -1,0 +1,10 @@
+title: $:/plugins/linonetwo/activity-log-tools/language/zh-Hans/
+
+Name: 活动记录工具
+Description: 用于读写日常活动保存日志条目的筛选器和库，用于游戏化框架和可视化框架等。
+RealityEventLog/Type/DayInterval/Caption: 日间隔
+RealityEventLog/Type/DayInterval/Description: 以日为单位存储，适合以小时为单位，频繁发生的事件。存档较小，可视化计算慢效果好。
+RealityEventLog/Type/Date/Caption: 具体日期
+RealityEventLog/Type/Date/Description: 一行一个存储具体日期，适合一段时间集中发生，此后就很少再做的事件，或发生较无规律的事件。存档较大，可视化计算快效果好。
+RealityEventLog/Type/DailyCount/Caption: 日次数
+RealityEventLog/Type/DailyCount/Description: 以日为单位存储，但只保存每日发生次数，不保存具体发生时间点以节省空间，适合每日发生非常频繁的事件。存档较小，可视化计算慢效果不好。

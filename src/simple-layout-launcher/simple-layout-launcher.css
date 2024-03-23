@@ -1,3 +1,8 @@
+.simple-layout-launcher-layout-container {
+	width: 100%;
+	height: 100%;
+}
+
 .linonetwo-simple-layout-launcher {
 	display: flex;
 	flex-direction: row;
@@ -23,6 +28,7 @@
 	align-items: center;
 	width: 100%;
 	font-size: 1.2em;
+  height: 2.4em;
 }
 .linonetwo-simple-layout-launcher-icon {
 	width: 70%;
@@ -33,14 +39,17 @@
 	height: 100%;
 }
 .linonetwo-simple-layout-launcher-description {
-	display: none;
-}
-.linonetwo-simple-layout-launcher-item:hover .linonetwo-simple-layout-launcher-description {
-	display: block;
+	visibility: hidden; /* Initially hidden */
+	opacity: 0; /* Start with 0 opacity */
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 150px;
+	transition: visibility 0s, opacity 0.3s linear; /* Transition effect */
+}
+.linonetwo-simple-layout-launcher-item:hover .linonetwo-simple-layout-launcher-description {
+	visibility: visible; /* Make it visible on hover */
+	opacity: 1; /* Fade to full opacity */
 }
 .linonetwo-simple-layout-launcher-item a {
 	text-decoration: none;

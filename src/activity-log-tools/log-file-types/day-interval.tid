@@ -1,0 +1,6 @@
+title: $:/plugins/linonetwo/activity-log-tools/log-file-types/day-interval
+caption: <<lingo RealityEventLog/Type/DayInterval/Caption $:/plugins/linonetwo/activity-log-tools/language/>>
+description: <<lingo RealityEventLog/Type/DayInterval/Description $:/plugins/linonetwo/activity-log-tools/language/>>
+tags: $:/Tags/LogFileTypes
+
+day-interval

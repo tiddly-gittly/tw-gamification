@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
+import { IActivityLogFile, LogFileTypes } from 'src/activity-log-tools/log-file-types/LogFileTypes';
 import { IRealityEventCacheCacheItem } from 'src/tw-gamification/reality-event-cache/RealityEventCacheTypes';
 import type { formatDuplicationFields } from '../deduplication/formatDuplicationFields';
-import { IRealityEventLogFile, RealityEventLogTypes } from './RealityEventLogTypes';
 
 export function checkEventLogDebounceDuplication(
   newEventCacheItem: IRealityEventCacheCacheItem,
-  eventLog: IRealityEventLogFile | undefined,
+  eventLog: IActivityLogFile | undefined,
   configs: ReturnType<typeof formatDuplicationFields>,
 ): boolean {
   const checkGeneratorTitle = configs['debounce-generator-title'] === 'yes';
@@ -21,7 +21,7 @@ export function checkEventLogDebounceDuplication(
   let hasDuplicate = false;
   const debounceDuration = configs['debounce-duration'];
   switch (realityEventLogTypes) {
-    case RealityEventLogTypes.Date: {
+    case LogFileTypes.Date: {
       const latestItemValue = [...items.values()].sort().pop();
       if (latestItemValue === undefined) {
         hasDuplicate = false;
@@ -31,33 +31,26 @@ export function checkEventLogDebounceDuplication(
       hasDuplicate = (today - latestItemDate.getTime()) < debounceDuration;
       break;
     }
-    case RealityEventLogTypes.DailyCount: {
-      const latestItemKey = (Object.keys(items)).filter(key => key.startsWith(RealityEventLogTypes.DailyCount)).sort().pop();
+    case LogFileTypes.DailyCount: {
+      const latestItemKey = (Object.keys(items)).filter(key => key.startsWith(LogFileTypes.DailyCount)).sort().pop();
       if (latestItemKey === undefined) {
         hasDuplicate = false;
         break;
       }
-      const latestItemDate = new Date(Number(latestItemKey.replace(RealityEventLogTypes.DailyCount, '')));
+      const latestItemDate = new Date(Number(latestItemKey.replace(LogFileTypes.DailyCount, '')));
       hasDuplicate = (today - latestItemDate.getTime()) < debounceDuration;
       break;
     }
-    case RealityEventLogTypes.DayInterval: {
-      const latestItemKey = (Object.keys(items)).filter(key => key.startsWith(RealityEventLogTypes.DayInterval)).sort().pop();
+    case LogFileTypes.DayInterval: {
+      const latestItemKey = (Object.keys(items)).filter(key => key.startsWith(LogFileTypes.DayInterval)).sort().pop();
       if (latestItemKey === undefined) {
         hasDuplicate = false;
         break;
       }
-      const latestItemDate = new Date(Number(latestItemKey.replace(RealityEventLogTypes.DayInterval, '')));
+      const latestItemDate = new Date(Number(latestItemKey.replace(LogFileTypes.DayInterval, '')));
       hasDuplicate = (today - latestItemDate.getTime()) < debounceDuration;
       break;
     }
   }
   return hasDuplicate;
-}
-
-export function isValidLogData(data: ReturnType<typeof $tw.wiki.getTiddlerData>): data is Record<string, string> {
-  if (!data || Array.isArray(data)) {
-    return false;
-  }
-  return true;
 }

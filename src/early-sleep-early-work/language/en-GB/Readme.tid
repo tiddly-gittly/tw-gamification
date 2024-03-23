@@ -2,9 +2,9 @@ title: $:/plugins/linonetwo/early-sleep-early-work/language/en-GB/Readme
 
 \define lingo-base() $:/plugins/linonetwo/early-sleep-early-work/language/
 
-! <<lingo "Name">>
+! <<lingo Name>>
 
-<<lingo "Description">>
+<<lingo Description>>
 
 !! Design Purpose
 

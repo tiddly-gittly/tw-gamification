@@ -85,8 +85,8 @@ title: $:/plugins/linonetwo/scp-foundation-site-director/tiddlywiki-ui/loading-i
   </style>
   <div class="line-wrapper">
   <div class="tc-splash-title"></div>
-  <div class="tc-splash-title"><<lingo "Name">></div>
-  <div class="tc-splash-subtitle"><<lingo "GameLoading">></div>
+  <div class="tc-splash-title"><<lingo Name>></div>
+  <div class="tc-splash-subtitle"><<lingo GameLoading>></div>
   <div class="sk-wave">
     <div class="sk-wave-rect"></div>
     <div class="sk-wave-rect"></div>

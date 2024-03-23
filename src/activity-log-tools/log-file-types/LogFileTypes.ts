@@ -1,3 +1,5 @@
+import { ITiddlerFields } from 'tiddlywiki';
+
 /**
  * We save event log in text of tiddler with tag `$:/Tags/Gamification/RealityEventLog`, and use data tiddler with fields ends with a UTC time number (`DailyCount123time` `DayInterval`).
  * Actions can use `reality-event-log` field to point to the log file containing the data described below.
@@ -7,7 +9,7 @@
  * type: application/x-tiddler-dictionary
  * title:
  */
-export enum RealityEventLogTypes {
+export enum LogFileTypes {
   /**
    * Use bloom filter or counter like
    *
@@ -44,27 +46,33 @@ export enum RealityEventLogTypes {
   DayInterval = 'day-interval',
 }
 
-export type IDailyCountKey = `${RealityEventLogTypes.DailyCount}${number}`;
-export type IDayIntervalKey = `${RealityEventLogTypes.DayInterval}${number}`;
+export type IDailyCountKey = `${LogFileTypes.DailyCount}${number}`;
+export type IDayIntervalKey = `${LogFileTypes.DayInterval}${number}`;
 export type IDateKey = string;
-export type IRealityEventLogKey = IDailyCountKey | IDayIntervalKey | IDateKey;
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+export type IActivityLogKey = IDailyCountKey | IDayIntervalKey | IDateKey;
 /**
  * Each action or generator have a event log file, text is a DictionaryTiddler described in RealityEventLogTypes.
  * We left the value of each row as string, you need to find the key you want to use, and parse the value as number or date.
  */
-export type IRealityEventLogFile = {
+export type IActivityLogFile = {
   exists: boolean;
   items: Map<IDailyCountKey, string>;
   title: string;
-  type: RealityEventLogTypes.DailyCount;
+  type: LogFileTypes.DailyCount;
 } | {
   exists: boolean;
   items: Map<IDayIntervalKey, string>;
   title: string;
-  type: RealityEventLogTypes.DayInterval;
+  type: LogFileTypes.DayInterval;
 } | {
   exists: boolean;
   items: Map<IDateKey, string>;
   title: string;
-  type: RealityEventLogTypes.Date;
+  type: LogFileTypes.Date;
 };
+
+export interface IActivityLogTiddlerFields extends ITiddlerFields {
+  'activity-log-file-type': LogFileTypes;
+  type: 'application/x-tiddler-dictionary';
+}

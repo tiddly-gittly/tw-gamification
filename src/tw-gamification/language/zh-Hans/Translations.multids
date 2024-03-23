@@ -32,12 +32,6 @@ RealityEventCache/DocsLink: 详见[[框架文档|https://tiddly-gittly.github.io
 RealityEventLog/Caption: 现实事件记录
 RealityEventLog/Description: 记录事件生成器上发生过的事件的时间，用于生成可视化图表等。类型为 `application/x-tiddler-dictionary`。
 RealityEventLog/DocsLink: 详见[[框架文档|https://tiddly-gittly.github.io/tw-gamification/]]上的[[开发文档|RealityEvents]]。
-RealityEventLog/Type/DayInterval/Caption: 日间隔
-RealityEventLog/Type/DayInterval/Description: 以日为单位存储，适合以小时为单位，频繁发生的事件。存档较小，可视化计算慢效果好。
-RealityEventLog/Type/Date/Caption: 具体日期
-RealityEventLog/Type/Date/Description: 一行一个存储具体日期，适合一段时间集中发生，此后就很少再做的事件，或发生较无规律的事件。存档较大，可视化计算快效果好。
-RealityEventLog/Type/DailyCount/Caption: 日次数
-RealityEventLog/Type/DailyCount/Description: 以日为单位存储，但只保存每日发生次数，不保存具体发生时间点以节省空间，适合每日发生非常频繁的事件。存档较小，可视化计算慢效果不好。
 RealityAction/Caption: 现实动作
 RealityAction/Description: 描述了现实世界中有意义的行动，一般被展示为按钮，点击按钮就表示用户打卡了一次，这样就会记录相应的现实事件。
 RealityAction/DocsLink: 详见[[框架文档|https://tiddly-gittly.github.io/tw-gamification/]]上的[[开发文档|DevelopSubPlugin]]。

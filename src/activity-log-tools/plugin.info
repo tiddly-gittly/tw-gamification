@@ -1,0 +1,9 @@
+{
+  "title": "$:/plugins/linonetwo/activity-log-tools",
+  "name": "activity-log-tools",
+  "author": "linonetwo",
+  "description": "Filter and library to read and write to daily activity save log tiddlers.",
+  "plugin-type": "plugin",
+  "version": "0.0.1",
+  "list": "readme"
+}

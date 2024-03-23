@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/tw-gamification/config
 tags: $:/tags/ControlPanel/SettingsTab
-caption: <<lingo "Name" "$:/plugins/linonetwo/tw-gamification/language/">>
+caption: <<lingo Name $:/plugins/linonetwo/tw-gamification/language/>>
 
 \define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 
@@ -10,7 +10,7 @@ caption: <<lingo "Name" "$:/plugins/linonetwo/tw-gamification/language/">>
 
 !! <<lingo PluginConfigs>>
 
-;<<lingo "Configs/DefaultGame/Description">>
+;<<lingo Configs/DefaultGame/Description>>
 :<$select tiddler='$:/plugins/linonetwo/tw-gamification/configs/DefaultGame'>
 	<$list filter='[all[tiddlers+shadows]tag[$:/tags/linonetwo/tw-gamification/Game]]'>
 		<option value={{!!text}}>{{!!caption}}</option>

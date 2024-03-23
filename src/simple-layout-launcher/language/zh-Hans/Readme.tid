@@ -2,9 +2,9 @@ title: $:/plugins/linonetwo/simple-layout-launcher/language/zh-Hans/Readme
 
 \define lingo-base() $:/plugins/linonetwo/simple-layout-launcher/language/
 
-! <<lingo "Name">>
+! <<lingo Name>>
 
-<<lingo "Description">>
+<<lingo Description>>
 
 !! 过程
 

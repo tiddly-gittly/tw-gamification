@@ -3,4 +3,4 @@ tags: Index
 
 \define lingo-base() language/
 
-<<lingo "GameWikiAdaptor">>
+<<lingo GameWikiAdaptor>>

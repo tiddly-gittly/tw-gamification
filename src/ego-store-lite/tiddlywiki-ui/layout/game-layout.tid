@@ -1,0 +1,15 @@
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/layout/game-layout
+name: <<lingo Name $:/plugins/linonetwo/ego-store-lite/language/>>
+icon: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store
+description: <<lingo Description $:/plugins/linonetwo/ego-store-lite/language/>>
+tags: $:/tags/Layout
+
+\whitespace trim
+\import [subfilter{$:/core/config/GlobalImportFilter}]
+\define containerClasses()
+tc-page-container tc-page-view-$(storyviewTitle)$ tc-language-$(languageTitle)$ tw-gamification-container
+\end
+
+<div class=<<containerClasses>>>
+	<<EgoStoreLite>>
+</div>

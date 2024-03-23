@@ -1,0 +1,76 @@
+title: $:/plugins/linonetwo/activity-log-tools/language/en-GB/Readme
+
+\define lingo-base() $:/plugins/linonetwo/activity-log-tools/language/
+
+! <<lingo Name>>
+
+<<lingo Description>>
+
+The following is a description of the development tools provided with this plug-in.
+
+!! Creating Log Files
+
+!!! JS Library
+
+!!!! createActivityLog
+
+Creates a log file, if it already exists it will be overwritten depending on the options.
+
+``ts
+function createActivityLog(logTiddlerType: LogFileTypes, fields: Partial<ITiddlerFields> & Pick<ITiddlerFields, 'title'>, options?: {
+    overwrite?: boolean;
+}): void
+```
+
+Usage
+
+``ts
+import { createActivityLog } from '$:/plugins/linonetwo/activity-log-tools/log-file-tools/createActivityLog';
+createActivityLog(activityLog.type, { title: activityLog.title });
+``
+
+!!!! addActivityToLog
+
+Adds an activity log to the log file, if it doesn't exist it will be created for you.
+
+```ts
+function addActivityToLog(activityLog: IActivityLogFile | undefined, newActivityTimestamp: number): void
+```
+
+Usage
+
+```ts
+import { addActivityToLog } from '$:/plugins/linonetwo/activity-log-tools/log-file-tools/addActivityToLog';
+addActivityToLog(eventLog, event.timestamp)
+```
+
+!! Read the log file
+
+!!! JS Library
+
+!!!! getActivityLog
+
+Gets a log file based on the provided header, see the `IActivityLogFile` type, and the contents of the log will be stored in an ES6 `Map`, depending on the specific type of the file. The second parameter provided is not actually used, but just added directly to the returned object. If the tiddler doesn't exist, an empty `Map` is returned, which you can use as usual to add new stuff to, and then create the corresponding tiddler when storing it.
+
+```ts
+function getActivityLog(logTiddlerTitle: string, logTiddlerType: LogFileTypes): IActivityLogFile | undefined
+```
+
+Usage
+
+```ts
+import { getActivityLog } from '$:/plugins/linonetwo/activity-log-tools/log-file-tools/getActivityLog';
+const activityLog = getActivityLog(title, logTiddlerType);
+```
+
+!!! Filters
+
+You can use filters to get summaries of logs for visualization and other scenarios.
+
+!!!! activitydaycounts
+
+Calculates the number of activities per day for a given time frame. (The following example uses the `weekstart` and `weekend` macros from the [[visualization dashboard plugin|https://tw-cpl.netlify.app/#Plugin_202403161108223]])
+
+```scss
+[[logFileTitle]activitydaycounts<weekstart>,<weekend>[]]
+```

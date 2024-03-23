@@ -1,0 +1,6 @@
+title: $:/plugins/linonetwo/activity-log-tools/log-file-types/daily-count
+caption: <<lingo RealityEventLog/Type/DailyCount/Caption $:/plugins/linonetwo/activity-log-tools/language/>>
+description: <<lingo RealityEventLog/Type/DailyCount/Description $:/plugins/linonetwo/activity-log-tools/language/>>
+tags: $:/Tags/LogFileTypes
+
+daily-count

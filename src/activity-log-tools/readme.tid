@@ -1,0 +1,6 @@
+title: $:/plugins/linonetwo/activity-log-tools/readme
+type: text/vnd.tiddlywiki
+
+\define lingo-base() $:/plugins/linonetwo/activity-log-tools/language/
+
+<<lingo Readme>>

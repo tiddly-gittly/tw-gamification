@@ -1,4 +1,4 @@
 title: $:/SiteSubtitle
 type: text/vnd.tiddlywiki
 
-<<lingo "Description" "$:/plugins/linonetwo/tw-gamification/language/">>
+<<lingo Description $:/plugins/linonetwo/tw-gamification/language/>>

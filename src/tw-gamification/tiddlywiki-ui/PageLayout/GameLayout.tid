@@ -21,7 +21,7 @@ tc-page-container tc-language-$(languageTitle)$ tw-gamification-container
 
 		<$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
 
-			{{$:/plugins/linonetwo/tw-gamification/PageLayout/GameStory}}
+			{{$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/PageLayout/GameStory}}
 
 		</$navigator>
 

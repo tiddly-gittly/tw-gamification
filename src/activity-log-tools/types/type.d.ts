@@ -1,5 +1,5 @@
 declare module '$:/plugins/linonetwo/activity-log-tools/log-file-tools/addActivityToLog' {
-  import type { IActivityLogFile } from '../log-file-types/LogFileTypes';
+  import { IActivityLogFile } from 'src/activity-log-tools/log-file-types/LogFileTypes';
   export declare function addActivityToLog(activityLog: IActivityLogFile | undefined, newActivityTimestamp: number): void;
 }
 

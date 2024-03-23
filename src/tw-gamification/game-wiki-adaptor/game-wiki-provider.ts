@@ -71,9 +71,9 @@ class GameWikiProvider extends Widget {
     return true;
   }
 
-  private saveGameData(data: string) {
+  private saveGameData(_data: string) {
     // Handle the serialized data
-    console.log('saveGameData Received game data:', data);
+    // console.log('saveGameData Received game data:', data);
   }
 }
 

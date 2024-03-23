@@ -96,7 +96,7 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
     }
   }
 
-  public setRealityEvents(gamificationEventsJSON: IRealityEvent[]) {
+  public setRealityEvents(_gamificationEventsJSON: IRealityEvent[]) {
     if (!this.gameInitialized) {
       // TODO: store gamification events in a tiddler, and push them to game when game is initialized
       throw new Error('Game is not initialized yet!');

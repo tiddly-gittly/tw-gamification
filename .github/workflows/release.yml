@@ -65,8 +65,10 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
-      - name: Type check
+      - name: TS Type check
         run: pnpm exec tsc --noEmit
+      - name: TS Lint check
+        run: pnpm exec eslint .
 
       # Build Rust
       - name: Install Rust

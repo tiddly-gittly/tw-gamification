@@ -30,13 +30,14 @@ describe('activitydaycounts filter', function() {
   });
 
   describe('DayInterval log file', function() {
-    const startDateString = $tw.utils.formatDateString(new Date(1_609_459_200_000), '[UTC]YYYY0MM0DD0hh0mm0ss0XXX');
+    // started at 1607616000000 (December 11, 2020) (calculated by chatGPT)
+    const startDateString = $tw.utils.formatDateString(new Date(1_607_616_000_000), '[UTC]YYYY0MM0DD0hh0mm0ss0XXX');
     // the example ends with 1610496000000 (13th), but we count till 1610236800000 (10th) to test if filter works
     const endDateString = $tw.utils.formatDateString(new Date(1_609_659_200_002), '[UTC]YYYY0MM0DD0hh0mm0ss0XXX');
 
     it('should parse daily count log tiddler', function() {
       expect($tw.wiki.filterTiddlers(`[[ActivityLogDayIntervalExample]] +[activitydaycounts[${startDateString}],[${endDateString}]]`).join(',')).toBe(
-        '1',
+        '0,2,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,2,0,1,0,1,0,2,0,2,0,2,0,1,0,0,0,1,0,0',
       );
     });
   });

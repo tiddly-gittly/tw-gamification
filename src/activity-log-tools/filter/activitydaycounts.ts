@@ -71,11 +71,7 @@ export const activitydaycounts = ((source, operator): string[] => {
             dateCounts.set(dateKey, (dateCounts.get(dateKey) ?? 0) + 1);
           }
         });
-        const sortedCounts = [...dateCounts]
-          .sort(([timeA], [timeB]) => timeA - timeB)
-          .map(([, count]) => count)
-          .join(',');
-        results.push(sortedCounts);
+        results.push(getSortedCount(filterRangeStartDate, filterRangeEndDate, dateCounts));
         break;
       }
 
@@ -96,13 +92,7 @@ export const activitydaycounts = ((source, operator): string[] => {
           });
         });
 
-        // Convert the dateCounts map to an array, sort by date, extract counts, and join them
-        const sortedCounts = [...dateCounts]
-          .sort(([timeA], [timeB]) => timeA - timeB)
-          .map(([, count]) => count)
-          .join(',');
-
-        results.push(sortedCounts);
+        results.push(getSortedCount(filterRangeStartDate, filterRangeEndDate, dateCounts));
         break;
       }
 
@@ -138,4 +128,19 @@ function getRangeAndLogFile(tiddler: Tiddler | undefined, title: string, dateSta
     dateEnd = temporary;
   }
   return [dateStart, dateEnd, activityLog] as const;
+}
+
+function getSortedCount(filterRangeStartDate: Date, filterRangeEndDate: Date, dateCounts: Map<number, number>) {
+  // Ensure every date in the range is accounted for in dateCounts
+  for (let day = filterRangeStartDate.getTime(); day <= filterRangeEndDate.getTime(); day += 86_400_000) { // Add one day in milliseconds
+    if (!dateCounts.has(day)) {
+      dateCounts.set(day, 0);
+    }
+  }
+  // Convert the dateCounts map to an array, sort by date, extract counts, and join them
+  const sortedCounts = [...dateCounts]
+    .sort(([timeA], [timeB]) => timeA - timeB)
+    .map(([, count]) => count)
+    .join(',');
+  return sortedCounts;
 }

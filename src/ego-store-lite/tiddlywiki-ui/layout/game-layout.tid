@@ -10,6 +10,8 @@ tags: $:/tags/Layout
 tc-page-container tc-language-$(languageTitle)$ tw-gamification-container
 \end
 
-<div class=<<containerClasses>>>
-	<<EgoStoreLite>>
-</div>
+<$GameWikiProvider>
+	<div class=<<containerClasses>>>
+		<<EgoStoreLite>>
+	</div>
+</$GameWikiProvider>

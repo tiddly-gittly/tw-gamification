@@ -3,4 +3,4 @@ title: RealityEvents
 
 \define lingo-base() language/
 
-<<lingo "RealityEvents">>
+<<lingo RealityEvents>>

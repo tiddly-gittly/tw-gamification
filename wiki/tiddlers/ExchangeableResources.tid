@@ -3,4 +3,4 @@ title: ExchangeableResources
 
 \define lingo-base() language/
 
-<<lingo "ExchangeableResources">>
+<<lingo ExchangeableResources>>

@@ -2,9 +2,9 @@ title: $:/plugins/linonetwo/simple-layout-launcher/language/en-GB/Readme
 
 \define lingo-base() $:/plugins/linonetwo/simple-layout-launcher/language/
 
-! <<lingo "Name">>
+! <<lingo Name>>
 
-<<lingo "Description">>
+<<lingo Description>>
 
 !! Procedure
 

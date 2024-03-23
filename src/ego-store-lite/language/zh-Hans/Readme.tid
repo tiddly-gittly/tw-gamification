@@ -2,9 +2,9 @@ title: $:/plugins/linonetwo/ego-store-lite/language/zh-Hans/Readme
 
 \define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
 
-! <<lingo "Name">>
+! <<lingo Name>>
 
-<<lingo "Description">>
+<<lingo Description>>
 
 !! 事件源
 

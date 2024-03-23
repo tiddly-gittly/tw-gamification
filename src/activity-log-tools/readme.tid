@@ -3,4 +3,4 @@ type: text/vnd.tiddlywiki
 
 \define lingo-base() $:/plugins/linonetwo/activity-log-tools/language/
 
-<<lingo "Readme">>
+<<lingo Readme>>

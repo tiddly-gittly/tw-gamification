@@ -6,3 +6,71 @@ title: $:/plugins/linonetwo/activity-log-tools/language/zh-Hans/Readme
 
 <<lingo Description>>
 
+以下是本插件提供的开发工具的介绍。
+
+!! 创建记录文件
+
+!!! JS 库
+
+!!!! createActivityLog
+
+创建一个记录文件，如果文件已存在，会根据选项决定是否覆盖。
+
+```ts
+function createActivityLog(logTiddlerType: LogFileTypes, fields: Partial<ITiddlerFields> & Pick<ITiddlerFields, 'title'>, options?: {
+    overwrite?: boolean;
+}): void
+```
+
+用法
+
+```ts
+import { createActivityLog } from '$:/plugins/linonetwo/activity-log-tools/log-file-tools/createActivityLog';
+createActivityLog(activityLog.type, { title: activityLog.title });
+```
+
+!!!! addActivityToLog
+
+向记录文件添加一条活动记录，如果不存在会帮你创建。
+
+```ts
+function addActivityToLog(activityLog: IActivityLogFile | undefined, newActivityTimestamp: number): void
+```
+
+用法
+
+```ts
+import { addActivityToLog } from '$:/plugins/linonetwo/activity-log-tools/log-file-tools/addActivityToLog';
+addActivityToLog(eventLog, event.timestamp)
+```
+
+!! 读取记录文件
+
+!!! JS 库
+
+!!!! getActivityLog
+
+根据提供的标题获取一个记录文件，详见 `IActivityLogFile` 类型，记录内容将存放在一个 ES6 `Map` 里，内容根据文件的具体类型而定。提供的第二个参数其实并没有用上，而只是直接加到了返回的对象里。如果条目不存在，会返回空的 `Map`，你可以照常使用它往里面添加新的东西，然后在存储时再创建相应条目。
+
+```ts
+function getActivityLog(logTiddlerTitle: string, logTiddlerType: LogFileTypes): IActivityLogFile | undefined
+```
+
+用法
+
+```ts
+import { getActivityLog } from '$:/plugins/linonetwo/activity-log-tools/log-file-tools/getActivityLog';
+const activityLog = getActivityLog(title, logTiddlerType);
+```
+
+!!! 筛选器
+
+你可以用筛选器获取记录的摘要，用于可视化等场景。
+
+!!!! activitydaycounts
+
+计算给定的时间范围内每天的活动次数。（下面的例子里使用了来自 [[visualization dashboard 插件|https://tw-cpl.netlify.app/#Plugin_202403161108223]]的`weekstart` 和 `weekend` 宏）
+
+```tid
+[[logFileTitle]activitydaycounts<weekstart>,<weekend>[]]
+```

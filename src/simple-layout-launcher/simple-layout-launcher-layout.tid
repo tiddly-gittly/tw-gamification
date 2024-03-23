@@ -1,0 +1,17 @@
+title: $:/plugins/linonetwo/simple-layout-launcher/simple-layout-launcher-layout
+name: <<lingo Name $:/plugins/linonetwo/simple-layout-launcher/language/>>
+icon: $:/plugins/linonetwo/simple-layout-launcher/simple-layout-launcher-layout-image
+description: <<lingo Description $:/plugins/linonetwo/simple-layout-launcher/language/>>
+tags: $:/tags/Layout
+
+\whitespace trim
+\import [subfilter{$:/core/config/GlobalImportFilter}]
+\define containerClasses()
+tc-page-container tc-page-view-$(storyviewTitle)$ tc-language-$(languageTitle)$ tw-gamification-container
+\end
+
+<div class=<<containerClasses>>>
+	<div class="simple-layout-launcher-layout-container">
+		<<simple-layout-launcher>>
+	</div>
+</div>

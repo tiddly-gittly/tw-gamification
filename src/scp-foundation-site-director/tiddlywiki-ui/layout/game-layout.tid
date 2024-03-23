@@ -1,0 +1,15 @@
+title: $:/plugins/linonetwo/scp-foundation-site-director/tiddlywiki-ui/layout/ego-store-lite-layout
+name: <<lingo Name $:/plugins/linonetwo/scp-foundation-site-director/language/>>
+icon: $:/plugins/linonetwo/scp-foundation-site-director/tiddlywiki-ui/icons/icon
+description: <<lingo Description $:/plugins/linonetwo/scp-foundation-site-director/language/>>
+tags: $:/tags/Layout
+
+\whitespace trim
+\import [subfilter{$:/core/config/GlobalImportFilter}]
+\define containerClasses()
+tc-page-container tc-page-view-$(storyviewTitle)$ tc-language-$(languageTitle)$ tw-gamification-container
+\end
+
+<div class=<<containerClasses>>>
+	<<ScpFoundationSiteDirector>>
+</div>

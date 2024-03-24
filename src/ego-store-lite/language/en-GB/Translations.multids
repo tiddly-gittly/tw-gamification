@@ -41,6 +41,7 @@ CreateAction/Enabled/Caption: Enabled
 CreateAction/Enabled/Description: Toggle to enable or disable the action.
 EditAction/Caption: Edit Action
 VisualizeAction/Caption: Visual Analysis
+OpenTiddler: Open Tiddler
 ActionsList/ReceiveRewardWithCount: Click to receive <<count-reality-events>> rewards.
 Store/Title: Store
 CreateGoods/Caption: Create Goods

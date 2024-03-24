@@ -6,12 +6,12 @@ footer: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/edit-ac
 \procedure lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
 
 <div class="ego-store-lite-new-item-container">
+
   <div class="ego-store-lite-new-item-field">
     <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/Title/Caption>></span>
     <$edit-text tag=input disabled="yes" tiddler="$:/state/ego-store-lite/editAction" field="draft.title" class="ego-store-lite-new-item-field-input"/>
     <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/Title/Description>></span>
   </div>
-
   <div class="ego-store-lite-new-item-field">
     <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/Caption/Caption>></span>
     <$edit-text tag=input tiddler="$:/state/ego-store-lite/editAction" field="caption" class="ego-store-lite-new-item-field-input" placeholder={{$:/state/ego-store-lite/editAction!!draft.title}}/>

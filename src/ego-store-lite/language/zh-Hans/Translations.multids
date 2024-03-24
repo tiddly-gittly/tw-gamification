@@ -41,6 +41,7 @@ CreateAction/Enabled/Caption: 启用
 CreateAction/Enabled/Description: 切换以启用或禁用行动。
 EditAction/Caption: 编辑行动
 VisualizeAction/Caption: 可视化分析
+OpenTiddler: 打开条目
 ActionsList/ReceiveRewardWithCount: 点击接收 <<count-reality-events>> 份奖励
 Store/Title: 商店
 CreateGoods/Caption: 创建商品

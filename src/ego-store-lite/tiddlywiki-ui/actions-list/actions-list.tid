@@ -12,14 +12,22 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsLi
     $basetitle="$:/state/ego-store-lite/editAction"
     $overwrite="yes"
     $template=<<currentTiddler>>
-    title="$:/state/ego-store-lite/editAction"
     draft.title={{!!title}}
-    draft.of={{!!title}}
+    draft.of=""
   >
     <$action-sendmessage $message="tm-modal" $param="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/edit-action/edit-action"/>
   </$action-createtiddler>
 <% elseif [<drop-down-menu-select-state>get[text]match[visual]] %>
   <$action-sendmessage $message="tm-modal" $param="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/modal/action"/>
+<% elseif [<drop-down-menu-select-state>get[text]match[open]] %>
+  <$action-createtiddler $basetitle="$:/layout" text="" $overwrite="yes">
+    <$action-navigate $to=<<currentTiddler>> />
+    <$action-sendmessage
+      $message="tm-notify"
+      $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
+      message=<<currentTiddler>>
+    />
+  </$action-createtiddler>
 <% endif %>
 <$action-deletetiddler $tiddler=<<drop-down-menu-select-state>>/>
 \end
@@ -33,6 +41,7 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsLi
         <$select tiddler=<<drop-down-menu-select-state>> actions=<<on-drop-down-menu-select>>>
           <option value="edit"><<lingo EditAction/Caption>></option>
           <option value="visual"><<lingo VisualizeAction/Caption>></option>
+          <option value="open"><<lingo OpenTiddler>></option>
         </$select>
         …
       </div>

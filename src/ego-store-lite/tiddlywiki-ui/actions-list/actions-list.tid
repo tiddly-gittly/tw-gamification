@@ -4,12 +4,39 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsLi
 
 \import [[$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/procedure/reality-event-type-display]]
 
+\procedure lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
+\procedure drop-down-menu-select-state() $:/state/ego-store-lite/actions-list/menu-selected
+\procedure on-drop-down-menu-select()
+<% if [<drop-down-menu-select-state>get[text]match[edit]] %>
+  <$action-createtiddler
+    $basetitle="$:/state/ego-store-lite/editAction"
+    $overwrite="yes"
+    $template=<<currentTiddler>>
+    title="$:/state/ego-store-lite/editAction"
+    draft.title={{!!title}}
+    draft.of={{!!title}}
+  >
+    <$action-sendmessage $message="tm-modal" $param="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/edit-action/edit-action"/>
+  </$action-createtiddler>
+<% elseif [<drop-down-menu-select-state>get[text]match[visual]] %>
+  <$action-sendmessage $message="tm-modal" $param="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/modal/action"/>
+<% endif %>
+<$action-deletetiddler $tiddler=<<drop-down-menu-select-state>>/>
+\end
+
 {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/receive-reward}}
 
 <div class="ego-store-lite-game-buttons-list">
   <$list filter="[all[shadows+tiddlers]tag[$:/Tags/Gamification/RealityAction]!is[draft]]">
     <div class="ego-store-lite-game-buttons-list-item" data-title=<<currentTiddler>>>
-      <div class="ego-store-lite-game-buttons-list-item-edit">…</div>
+      <div class="ego-store-lite-game-buttons-list-item-edit">
+        <$select tiddler=<<drop-down-menu-select-state>> actions=<<on-drop-down-menu-select>>>
+          <option value="edit"><<lingo EditAction/Caption>></option>
+          <option value="visual"><<lingo VisualizeAction/Caption>></option>
+        </$select>
+        …
+      </div>
+
       <$button>
         <$action-sendmessage
           $message="tm-reality-action-event"

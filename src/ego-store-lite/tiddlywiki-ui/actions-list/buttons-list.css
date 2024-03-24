@@ -64,6 +64,7 @@
   position: absolute;
   top: 0.5em;
   right: 0.5em;
+  overflow: hidden;
 }
 .ego-store-lite-game-buttons-list-item-edit:hover {
   opacity: 1;
@@ -71,7 +72,14 @@
 .ego-store-lite-game-buttons-list-item-edit:active {
   opacity: 0.7;
 }
+.ego-store-lite-game-buttons-list-item-edit select {
+  width: 300px;
+  position: absolute;
+  opacity: 0;
+}
 
 .ego-store-lite-game-buttons-list-description {
   user-select: none;
+  overflow: auto;
+  max-height: 110px;
 }

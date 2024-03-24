@@ -39,6 +39,8 @@ CreateAction/Description/Caption: Description
 CreateAction/Description/Description: Describe the action in detail.
 CreateAction/Enabled/Caption: Enabled
 CreateAction/Enabled/Description: Toggle to enable or disable the action.
+EditAction/Caption: Edit Action
+VisualizeAction/Caption: Visual Analysis
 ActionsList/ReceiveRewardWithCount: Click to receive <<count-reality-events>> rewards.
 Store/Title: Store
 CreateGoods/Caption: Create Goods

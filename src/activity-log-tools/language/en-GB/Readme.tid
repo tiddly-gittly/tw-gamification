@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/activity-log-tools/language/en-GB/Readme
 
-\define lingo-base() $:/plugins/linonetwo/activity-log-tools/language/
+\procedure lingo-base() $:/plugins/linonetwo/activity-log-tools/language/
 
 ! <<lingo Name>>
 

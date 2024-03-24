@@ -73,6 +73,9 @@ export type IActivityLogFile = {
 };
 
 export interface IActivityLogTiddlerFields extends ITiddlerFields {
+  /**
+   * Indicate the format of event log file. Default to `date`.
+   */
   'activity-log-file-type': LogFileTypes;
   type: 'application/x-tiddler-dictionary';
 }

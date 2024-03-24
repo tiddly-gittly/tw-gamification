@@ -1,0 +1,6 @@
+title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-event-debounced
+
+\whitespace trim
+\procedure lingo-base() $:/plugins/linonetwo/tw-gamification/language/
+
+<$transclude $variable="eventName" /> <<lingo RealityAction/OnCoolDown>>

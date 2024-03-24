@@ -1,3 +1,3 @@
 title: language/en-GB/TypesOfRealityEvents
 
-\define lingo-base() language/
+\procedure lingo-base() language/

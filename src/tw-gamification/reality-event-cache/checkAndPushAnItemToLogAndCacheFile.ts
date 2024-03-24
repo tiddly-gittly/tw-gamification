@@ -6,6 +6,21 @@ import { getEventLog } from '../reality-event-generator/reality-event-log/getEve
 import { checkEventCacheDebounceDuplication } from './checkEventCache';
 import { IRealityEventCacheCacheFile, IRealityEventCacheCacheItem } from './RealityEventCacheTypes';
 
+function onItemDuplicateAndCanceled(newEventCacheItem: IRealityEventCacheCacheItem) {
+  let eventName: string | undefined;
+  if (newEventCacheItem.meta.generator !== undefined) {
+    const generator = $tw.wiki.getTiddler(newEventCacheItem.meta.generator);
+    eventName = generator?.fields?.caption as string | undefined;
+    if (eventName !== undefined) {
+      eventName = $tw.wiki.renderText('text/plain', 'text/vnd.tiddlywiki', eventName);
+    }
+  }
+  $tw.rootWidget.dispatchEvent({
+    type: 'tm-notify',
+    param: '$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-event-debounced',
+    paramObject: { eventName },
+  });
+}
 export function checkAndPushAnItemToLogAndCacheFile(
   newEventCacheItem: IRealityEventCacheCacheItem,
   configs: ReturnType<typeof formatDuplicationFields>,
@@ -39,7 +54,10 @@ export function checkAndPushAnItemToLogAndCacheFile(
     // default to ignore
     case undefined:
     case IGeneratorOnDuplicateStrategy.ignore: {
-      if (hasDuplicate) break;
+      if (hasDuplicate) {
+        onItemDuplicateAndCanceled(newEventCacheItem);
+        break;
+      }
       eventCache.push(newEventCacheItem);
       hasModification = true;
       break;

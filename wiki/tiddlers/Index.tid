@@ -4,7 +4,7 @@ modified: 20240125093426629
 modifier: 林一二
 title: Index
 
-\define lingo-base() language/
+\procedure lingo-base() language/
 
 <<simple-layout-launcher>>
 

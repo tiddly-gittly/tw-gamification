@@ -143,8 +143,9 @@ wiki/tiddlers/$__temp_*
 wiki/tiddlers/$__view.tid
 wiki/tiddlers/$__config_Navigation_openLinkFromInsideRiver.tid
 wiki/tiddlers/$__config_Navigation_openLinkFromOutsideRiver.tid
-**/game/target/
-**/game/wasm/
+src/**/game/target/
+src/**/game/wasm/
+!src/**/game/wasm/*.d.ts
 wiki/tiddlers/$__plugins_linonetwo_tw-gamification_configs_DefaultEventGeneratorTagsForTask.tid
 wiki/tiddlers/$__plugins_linonetwo_tw-gamification_event-queue_cache-file_desktop.tid
 wiki/tiddlers/$__plugins_linonetwo_tw-gamification_event-queue_cache-file_mobile.tid

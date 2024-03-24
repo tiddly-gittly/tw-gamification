@@ -35,6 +35,7 @@ RealityEventLog/DocsLink: 详见[[框架文档|https://tiddly-gittly.github.io/t
 RealityAction/Caption: 现实动作
 RealityAction/Description: 描述了现实世界中有意义的行动，一般被展示为按钮，点击按钮就表示用户打卡了一次，这样就会记录相应的现实事件。
 RealityAction/DocsLink: 详见[[框架文档|https://tiddly-gittly.github.io/tw-gamification/]]上的[[开发文档|DevelopSubPlugin]]。
+RealityAction/OnCoolDown: 触发失败，行动尚在冷却。
 ChangeFilter/Caption: 知识库变更筛选器
 ChangeFilter/Description: 自动将知识库内的变化转换为现实事件，自动打卡。
 ChangeFilter/DocsLink: 详见[[框架文档|https://tiddly-gittly.github.io/tw-gamification/]]上的[[开发文档|GameWikiAdaptor]]。

@@ -1,9 +1,9 @@
+import { IActivityLogTiddlerFields } from 'src/activity-log-tools/log-file-types/LogFileTypes';
 import { ITiddlerFields } from 'tiddlywiki';
 import { IDuplicationStrategy, IFindDuplicateParameters } from './deduplication/DuplicationHandlerTypes';
-import { RealityEventLogTypes } from './reality-event-log/RealityEventLogTypes';
 import { BasicRealityEventTypes } from './reality-event-types/RealityEventTypes';
 
-export interface EventGeneratorDefinitions extends ITiddlerFields, IDuplicationStrategy, IFindDuplicateParameters {
+export interface EventGeneratorDefinitions extends Pick<IActivityLogTiddlerFields, 'activity-log-file-type'>, ITiddlerFields, IDuplicationStrategy, IFindDuplicateParameters {
   /**
    * The amount of the reward, default to 1. `IRealityEvent['amount']`
    */
@@ -16,10 +16,6 @@ export interface EventGeneratorDefinitions extends ITiddlerFields, IDuplicationS
    * Title of a tiddler with tag `$:/Tags/Gamification/RealityEventLog`. See `RealityEventLogTypes` for details.
    */
   ['reality-event-log']: string;
-  /**
-   * Indicate the format of event log file. Default to `date`.
-   */
-  ['activity-log-file-type']?: RealityEventLogTypes;
   ['reality-event-message']?: string;
   /**
    * The type of the event.

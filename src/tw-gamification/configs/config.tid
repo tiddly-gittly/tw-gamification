@@ -2,7 +2,7 @@ title: $:/plugins/linonetwo/tw-gamification/config
 tags: $:/tags/ControlPanel/SettingsTab
 caption: <<lingo Name $:/plugins/linonetwo/tw-gamification/language/>>
 
-\define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
+\procedure lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 
 <<lingo ConfigDescription>>
 

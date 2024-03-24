@@ -30,6 +30,7 @@ RealityEventLog/DocsLink: See [[Dev Docs|RealityEvents]] on [[framework doc site
 RealityAction/Caption: Reality Action
 RealityAction/Description: describes a real-world meaningful action, typically displayed as a button, where clicking the button indicates that the user has clocked in once, so that the corresponding reality event will be recorded.
 RealityAction/DocsLink: See [[Dev Docs|DevelopSubPlugin]] on [[framework doc site|https://tiddly-gittly.github.io/tw-gamification/#]] for details.
+RealityAction/OnCoolDown: Failed to trigger, Action On Cool Down.
 ChangeFilter/Caption: Wiki Change Filter
 ChangeFilter/Description: Automatically converts changes within the wiki to reality events, automatically clocking in.
 ChangeFilter/DocsLink: See [[Dev Docs|GameWikiAdaptor]] on [[framework doc site|https://tiddly-gittly.github.io/tw-gamification/#]] for details.

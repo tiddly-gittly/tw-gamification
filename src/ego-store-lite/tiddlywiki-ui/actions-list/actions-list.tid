@@ -2,6 +2,8 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/actions-li
 tags: $:/tags/ego-store-lite/main-tabs
 caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsList/Title>>
 
+\import [[$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/procedure/reality-event-type-display]]
+
 {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/receive-reward}}
 
 <div class="ego-store-lite-game-buttons-list">
@@ -12,6 +14,12 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsLi
         <$action-sendmessage
           $message="tm-reality-action-event"
           $param=<<currentTiddler>>
+        >
+        </$action-sendmessage>
+        <$action-sendmessage
+          $message="tm-notify"
+          $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
+          message={{!!reality-event-message}}
         />
         <div class="ego-store-lite-game-buttons-list-item-icon"><$transclude $field="icon"/></div>
         <div class="ego-store-lite-game-buttons-list-item-info">
@@ -22,7 +30,7 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsLi
               </$fill>
             </$transclude>
           </h2>
-          <p class="ego-store-lite-game-buttons-list-item-reward"><$transclude $field="reality-event-amount"/> <$transclude $field="reality-event-type"/></p>
+          <p class="ego-store-lite-game-buttons-list-item-reward"><$transclude $field="reality-event-amount"/> <$transclude $variable="reality-event-type-display"/></p>
         </div>
         <div class="ego-store-lite-game-buttons-list-description"><$transclude $field="description"/></div>
       </$button>

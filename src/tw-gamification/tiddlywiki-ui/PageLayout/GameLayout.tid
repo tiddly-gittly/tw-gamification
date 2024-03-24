@@ -1,4 +1,4 @@
-title: $:/plugins/linonetwo/tw-gamification/PageLayout/GameLayout
+title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/PageLayout/GameLayout
 name: <<lingo Name $:/plugins/linonetwo/tw-gamification/language/>>
 icon: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/GameLayoutImage
 description: <<lingo Description $:/plugins/linonetwo/tw-gamification/language/>>
@@ -7,7 +7,7 @@ tags: $:/tags/Layout
 \whitespace trim
 \import [subfilter{$:/core/config/GlobalImportFilter}]
 \define containerClasses()
-tc-page-container tc-page-view-$(storyviewTitle)$ tc-language-$(languageTitle)$ tw-gamification-container
+tc-page-container tc-language-$(languageTitle)$ tw-gamification-container
 \end
 
 <$vars
@@ -21,7 +21,7 @@ tc-page-container tc-page-view-$(storyviewTitle)$ tc-language-$(languageTitle)$ 
 
 		<$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
 
-			{{$:/plugins/linonetwo/tw-gamification/PageLayout/GameStory}}
+			{{$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/PageLayout/GameStory}}
 
 		</$navigator>
 

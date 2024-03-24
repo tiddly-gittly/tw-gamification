@@ -1,7 +1,7 @@
 title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/pages/EventGeneratorList
 caption: {{$:/plugins/linonetwo/tw-gamification/icons/reality-event-generator}} <<lingo Configs/EventGenerators/Caption>>
 
-\define lingo-base() $:/plugins/linonetwo/tw-gamification/language/
+\procedure lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 \define event-generator-list-item()
   \define checkactions()
     <$action-deletetiddler $tiddler=<<currentTiddler>>/>

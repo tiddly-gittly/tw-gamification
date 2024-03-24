@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/ego-store-lite/language/zh-Hans/Readme
 
-\define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
+\procedure lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
 
 ! <<lingo Name>>
 

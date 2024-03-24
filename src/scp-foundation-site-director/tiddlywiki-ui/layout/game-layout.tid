@@ -7,9 +7,11 @@ tags: $:/tags/Layout
 \whitespace trim
 \import [subfilter{$:/core/config/GlobalImportFilter}]
 \define containerClasses()
-tc-page-container tc-page-view-$(storyviewTitle)$ tc-language-$(languageTitle)$ tw-gamification-container
+tc-page-container tc-language-$(languageTitle)$ tw-gamification-container
 \end
 
-<div class=<<containerClasses>>>
-	<<ScpFoundationSiteDirector>>
-</div>
+<$GameWikiProvider>
+	<div class=<<containerClasses>>>
+		<<ScpFoundationSiteDirector>>
+	</div>
+</$GameWikiProvider>

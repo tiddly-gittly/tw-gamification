@@ -1,6 +1,6 @@
 title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/receive-reward
 
-\define lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
+\procedure lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
 
 <div class="ego-store-lite-action-receive-reward">
   <$button class="receive-reward-button">

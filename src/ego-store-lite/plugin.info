@@ -6,7 +6,7 @@
   "parent-plugin": "$:/plugins/linonetwo/tw-gamification",
   "plugin-type": "plugin",
   "version": "0.1.0",
-  "dependents": "$:/plugins/linonetwo/simple-layout-launcher $:/plugins/linonetwo/tw-gamification",
+  "dependents": "$:/plugins/linonetwo/simple-layout-launcher $:/plugins/linonetwo/tw-gamification $:/plugins/Gk0Wk/echarts",
   "readme": "<<lingo Readme $:/plugins/linonetwo/ego-store-lite/language/>>",
   "list": "Readme config tree"
 }

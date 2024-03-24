@@ -16,8 +16,11 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-act
       $template="$:/state/ego-store-lite/newAction"
       tags={{{ [{$:/state/ego-store-lite/newAction}get[tags]enlist-input[]] [[$:/Tags/Gamification/RealityAction]] }}}
     >
+      <!-- delete temp tiddler and temp fields  -->
       <$action-deletetiddler $tiddler="$:/state/ego-store-lite/newAction"/>
       <$action-deletefield $tiddler=<<createTiddler-title>> draft.title draft.of/>
+      <!-- go back to actions tab -->
+      <$action-setfield $tiddler="$:/state/tabs/ego-store-lite/1" text="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/actions-list"/>
     </$action-createtiddler>
     <<lingo Create/OK>>
   </$button>

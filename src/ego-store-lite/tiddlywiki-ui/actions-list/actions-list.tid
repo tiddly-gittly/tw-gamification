@@ -43,7 +43,7 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsLi
           <option value="visual"><<lingo VisualizeAction/Caption>></option>
           <option value="open"><<lingo OpenTiddler>></option>
         </$select>
-        …
+        <div>…</div>
       </div>
 
       <$button>

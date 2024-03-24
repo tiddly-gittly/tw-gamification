@@ -69,8 +69,6 @@ jobs:
         run: pnpm exec tsc --noEmit
       - name: TS Lint check
         run: pnpm exec eslint .
-      - name: Run tests
-        run: pnpm run test
 
       # Build Rust
       - name: Install Rust
@@ -82,6 +80,8 @@ jobs:
       - name: Build example game WASM
         run: pnpm run build:game
 
+      - name: Run tests
+        run: pnpm run test
       # Build TS
       - name: Build Plugins
         run: pnpm run build

@@ -1,8 +1,8 @@
 title: language/en-GB/RealityEvents
 
-!!! Reality Event Cache
+!! Reality Event Cache
 
-Reality Event cache Tiddlers are tiddlers tagged with {{$:/plugins/linonetwo/tw-gamification/tags/reality-event-cache-meta-tag}}, they store Event data of type [[TypesOfRealityEvents]] as JSON lists.
+Reality Event cache Tiddlers are tiddlers tagged with {{$:/plugins/linonetwo/tw-gamification/tags/reality-event-cache-meta-tag}}, they store Event data of type [[TypesOfRealityEvents]] as JSON lists. These files are used to store reality events waiting to be converted by the game into in-game rewards.
 
 For example,
 
@@ -37,3 +37,13 @@ The TypeScript types are detailed in `src/tw-gamification/reality-event-generato
   }
 ]
 ```
+
+!! Reality Action
+
+Tiddlers with <$macrocall $name="tag" tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> tags and satisfying the `EventGeneratorDefinitions` type tiddlers are recognized as `Reality Actions`, which means actions completed in real life.
+
+!!! Realistic Action Log
+
+Realistic actions can be represented as buttons, like in [[$:/plugins/linonetwo/ego-store-lite]]. In this plugin, for buttons that are clicked, activity are logged in to a tiddler, making it possible to visualize the number of times each action is completed each week.
+
+The format of the reality action log needs to fulfill the description in the [[$:/plugins/linonetwo/activity-log-tools]] plugin.

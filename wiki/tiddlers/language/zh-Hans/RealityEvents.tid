@@ -2,7 +2,7 @@ title: language/zh-Hans/RealityEvents
 
 !! 现实事件数据缓存
 
-「现实事件数据条目」即加了 {{$:/plugins/linonetwo/tw-gamification/tags/reality-event-cache-meta-tag}} 标签的条目，在里面用 JSON 列表的形式保存了类型为[[现实事件的类型|TypesOfRealityEvents]]的事件数据。
+「现实事件数据缓存条目」即加了 {{$:/plugins/linonetwo/tw-gamification/tags/reality-event-cache-meta-tag}} 标签的条目，在里面用 JSON 列表的形式保存了类型为[[现实事件的类型|TypesOfRealityEvents]]的事件数据。这些文件用于存储等待被游戏转换为游戏内奖励的现实事件。
 
 例如：
 
@@ -37,3 +37,13 @@ title: language/zh-Hans/RealityEvents
   }
 ]
 ```
+
+!! 现实行动
+
+带有 <$macrocall $name="tag" tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> 标签并满足 `EventGeneratorDefinitions` 类型的条目会被识别为「现实行动」，即现实生活中完成的行动。
+
+!!! 现实行动记录
+
+现实行动可以表示为按钮，参考 [[$:/plugins/linonetwo/ego-store-lite]]。在这个插件中，被点击的按钮会记录「现实行动记录」条目，从而可以可视化每周完成每个行动的次数。
+
+现实行动记录的格式需要满足 [[$:/plugins/linonetwo/activity-log-tools]] 插件中的描述。

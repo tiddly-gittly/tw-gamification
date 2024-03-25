@@ -1,4 +1,10 @@
 describe('activitydaycounts filter', function() {
+  /**
+   * Tests here are timezone sensitive. We test them in +8 timezone. You can uncomment the line below to see the result in UTC.
+   */
+  // process.env.TZ = 'UTC';
+  process.env.TZ = 'Asia/Shanghai';
+
   // Test filter parsing
   it('should return empty string if no date range given', function() {
     expect($tw.wiki.filterTiddlers('[[ActivityLogDailyCountExample]] +[activitydaycounts[]]')).toEqual(['']);

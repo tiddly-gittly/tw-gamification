@@ -1,7 +1,7 @@
-title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/edit-action/edit-action-footer
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/edit-goods/edit-goods-footer
 
 \procedure lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
-\procedure temp-tiddler() $:/state/ego-store-lite/editAction
+\procedure temp-tiddler() $:/state/ego-store-lite/editGoods
 \function temp-tiddler-draft-title() [<temp-tiddler>get[draft.title]]
 
 <div class="ego-store-lite-create-modal-buttons">
@@ -17,7 +17,7 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/edit-actio
       $basetitle=<<temp-tiddler-draft-title>>
       $template=<<temp-tiddler>>
       $overwrite="yes"
-      tags={{{ [<temp-tiddler>get[tags]enlist-input[]] [[$:/Tags/Gamification/RealityAction]] +[join[ ]] }}}
+      tags={{{ [<temp-tiddler>get[tags]enlist-input[]] [[$:/tags/ego-store-lite/goods]] +[join[ ]] }}}
     >
       <$action-deletetiddler $tiddler=<<temp-tiddler>>/>
       <$action-deletefield $tiddler=<<createTiddler-title>> draft.title draft.of/>

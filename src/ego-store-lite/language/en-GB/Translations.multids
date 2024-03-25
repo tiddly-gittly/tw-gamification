@@ -40,6 +40,7 @@ CreateAction/Description/Description: Describe the action in detail.
 CreateAction/Enabled/Caption: Enabled
 CreateAction/Enabled/Description: Toggle to enable or disable the action.
 EditAction/Caption: Edit Action
+EditGoods/Caption: Edit Goods
 VisualizeAction/Caption: Visual Analysis
 OpenTiddler: Open Tiddler
 ActionsList/ReceiveRewardWithCount: Click to receive <<count-reality-events>> rewards.

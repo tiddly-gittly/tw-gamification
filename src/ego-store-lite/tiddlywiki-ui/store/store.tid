@@ -3,11 +3,44 @@ tags: $:/tags/ego-store-lite/main-tabs
 caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lingo Store/Title>> {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/store-gold-count}}
 
 \procedure lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
+\procedure drop-down-menu-select-state() $:/state/ego-store-lite/actions-list/menu-selected
+\procedure on-drop-down-menu-select()
+<% if [<drop-down-menu-select-state>get[text]match[edit]] %>
+  <$action-createtiddler
+    $basetitle="$:/state/ego-store-lite/editGoods"
+    $overwrite="yes"
+    $template=<<currentTiddler>>
+    draft.title={{!!title}}
+    draft.of=""
+  >
+    <$action-sendmessage
+      $message="tm-modal"
+      $param="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/edit-goods/edit-goods"
+    />
+  </$action-createtiddler>
+<% elseif [<drop-down-menu-select-state>get[text]match[open]] %>
+  <$action-createtiddler $basetitle="$:/layout" text="" $overwrite="yes">
+    <$action-navigate $to=<<currentTiddler>> />
+    <$action-sendmessage
+      $message="tm-notify"
+      $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
+      message=<<currentTiddler>>
+    />
+  </$action-createtiddler>
+<% endif %>
+<$action-deletetiddler $tiddler=<<drop-down-menu-select-state>>/>
+\end
 
 <div class="ego-store-lite-game-buttons-list">
-  <$list filter="[all[shadows+tiddlers]tag[$:/tags/ego-store-lite/goods]]">
+  <$list filter="[all[shadows+tiddlers]tag[$:/tags/ego-store-lite/goods]!is[draft]]">
     <div class="ego-store-lite-game-buttons-list-item" data-title=<<currentTiddler>>>
-      <div class="ego-store-lite-game-buttons-list-item-edit">…</div>
+      <div class="ego-store-lite-game-buttons-list-item-edit">
+        <$select tiddler=<<drop-down-menu-select-state>> actions=<<on-drop-down-menu-select>>>
+          <option value="edit"><<lingo EditGoods/Caption>></option>
+          <option value="open"><<lingo OpenTiddler>></option>
+        </$select>
+        <div>…</div>
+      </div>
       <$button>
         <$action-consume-value-tiddler
           $tiddler="$:/plugins/linonetwo/ego-store-lite/configs/Golds"

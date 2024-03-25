@@ -1,0 +1,4 @@
+title: $:/plugins/linonetwo/ego-store-lite/language/en-GB/
+
+Gauges/LineCountsWeeks/Caption: Daily counts line chart 4 weeks
+Gauges/LineCountsWeeks/Description: Calculates the total number of daily counts, based on clock in logs, and draws a weekly line chart showing the last four weeks in total.

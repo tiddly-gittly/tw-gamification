@@ -15,10 +15,17 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsLi
     draft.title={{!!title}}
     draft.of=""
   >
-    <$action-sendmessage $message="tm-modal" $param="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/edit-action/edit-action"/>
+    <$action-sendmessage
+      $message="tm-modal"
+      $param="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/edit-action/edit-action
+    />
   </$action-createtiddler>
 <% elseif [<drop-down-menu-select-state>get[text]match[visual]] %>
-  <$action-sendmessage $message="tm-modal" $param="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/modal/action"/>
+  <$action-sendmessage
+    $message="tm-modal"
+    $param="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/modal/action"
+    targetTiddler=<<currentTiddler>>
+  />
 <% elseif [<drop-down-menu-select-state>get[text]match[open]] %>
   <$action-createtiddler $basetitle="$:/layout" text="" $overwrite="yes">
     <$action-navigate $to=<<currentTiddler>> />

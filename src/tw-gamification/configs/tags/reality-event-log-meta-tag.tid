@@ -1,6 +1,6 @@
-title: $:/plugins/linonetwo/tw-gamification/tags/reality-event-log-meta-tag
+title: $:/plugins/linonetwo/tw-gamification/tags/activity-log-meta-tag
 tags: $:/Tags/Gamification/Tags
 description: <<lingo RealityEventLog/Description $:/plugins/linonetwo/tw-gamification/language/>>
 caption: <<lingo RealityEventLog/Caption $:/plugins/linonetwo/tw-gamification/language/>> <<lingo RealityEventLog/DocsLink $:/plugins/linonetwo/tw-gamification/language/>>
 
-$:/Tags/Gamification/RealityEventLog
+$:/Tags/ActivityLog

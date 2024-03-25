@@ -81,7 +81,7 @@ footer: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/edit-ac
     <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/RealityEventLogType/Caption>></span>
     <$select
       tiddler="$:/state/ego-store-lite/editAction"
-      field="activity-log-file-type"
+      field="activity-log-type"
       class="ego-store-lite-new-item-field-input"
     >
       <$list filter='[all[shadows]tag[$:/Tags/LogFileTypes]]'>
@@ -91,7 +91,7 @@ footer: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/edit-ac
     <span class="ego-store-lite-new-item-field-description">
       <<lingo CreateAction/RealityEventLogType/Description>>
       <$transclude
-        $tiddler={{{[[$:/state/ego-store-lite/editAction]get[activity-log-file-type]addprefix[$:/plugins/linonetwo/activity-log-tools/log-file-types/]]}}}
+        $tiddler={{{[[$:/state/ego-store-lite/editAction]get[activity-log-type]addprefix[$:/plugins/linonetwo/activity-log-tools/log-file-types/]]}}}
         $field='description'
       />
     </span>

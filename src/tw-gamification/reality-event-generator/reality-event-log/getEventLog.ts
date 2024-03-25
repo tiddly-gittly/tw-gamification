@@ -18,6 +18,6 @@ export function getEventLog(eventGeneratorTitle: string | undefined): IActivityL
     return undefined;
   }
   const logTiddlerTitle = eventGeneratorTiddler.fields['activity-log'] || getDefaultEventLogTitle(eventGeneratorTitle);
-  const logTiddlerType: LogFileTypes = (eventGeneratorTiddler.fields['activity-log-file-type'] || LogFileTypes.Date) as LogFileTypes;
+  const logTiddlerType: LogFileTypes = (eventGeneratorTiddler.fields['activity-log-type'] || LogFileTypes.Date) as LogFileTypes;
   return getActivityLog(logTiddlerTitle, logTiddlerType);
 }

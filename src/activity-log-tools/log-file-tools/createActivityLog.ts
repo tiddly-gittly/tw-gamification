@@ -18,7 +18,7 @@ export function createActivityLog(logTiddlerType: LogFileTypes, fields: Partial<
         type: 'application/x-tiddler-dictionary',
         text: '',
         'hide-body': 'yes',
-        'activity-log-file-type': logTiddlerType,
+        'activity-log-type': logTiddlerType,
         tags: [...fields?.tags ?? [], '$:/Tags/ActivityLog'],
       } satisfies IActivityLogTiddlerFields,
     );

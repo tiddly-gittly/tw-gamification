@@ -3,7 +3,7 @@ import { ITiddlerFields } from 'tiddlywiki';
 import { IDuplicationStrategy, IFindDuplicateParameters } from './deduplication/DuplicationHandlerTypes';
 import { BasicRealityEventTypes } from './reality-event-types/RealityEventTypes';
 
-export interface EventGeneratorDefinitions extends Pick<IActivityLogTiddlerFields, 'activity-log-file-type'>, ITiddlerFields, IDuplicationStrategy, IFindDuplicateParameters {
+export interface EventGeneratorDefinitions extends Pick<IActivityLogTiddlerFields, 'activity-log-type'>, ITiddlerFields, IDuplicationStrategy, IFindDuplicateParameters {
   /**
    * Title of a tiddler with tag `$:/Tags/ActivityLog`. See `RealityEventLogTypes` for details.
    */

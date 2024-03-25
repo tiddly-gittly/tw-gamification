@@ -1,6 +1,6 @@
 title: ActivityLogDateExample
 type: application/x-tiddler-dictionary
-activity-log-file-type: date
+activity-log-type: date
 hide-body: yes
 
 0: 1609459200000

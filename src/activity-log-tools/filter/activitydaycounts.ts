@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { getActivityLog } from '$:/plugins/linonetwo/activity-log-tools/log-file-tools/getActivityLog';
 import { IFilterOperator, Tiddler } from 'tiddlywiki';
-import { LogFileTypes } from '../log-file-types/LogFileTypes';
+import { DAY_INTERVAL, LogFileTypes } from '../log-file-types/LogFileTypes';
 
 /**
  * Output comma separated numbers like the one in `LogFileTypes.DailyCount`.
@@ -65,9 +65,10 @@ export const activitydaycounts = ((source, operator): string[] => {
       case LogFileTypes.Date: {
         const dateCounts = new Map<number, number>();
         items.forEach(dateString => {
-          const date = new Date(Number(dateString));
-          if (date >= filterRangeStartDate && date <= filterRangeEndDate) {
-            const dateKey = new Date(date.toISOString().split('T')[0]).getTime(); // Normalize to YYYY-MM-DD to count same day, then use number for key
+          const currentDate = new Date(Number(dateString));
+          if (currentDate >= filterRangeStartDate && currentDate <= filterRangeEndDate) {
+            // Normalize to YYYY-MM-DD to count same day, then use number for key
+            const dateKey = getLocaleDateKey(currentDate);
             dateCounts.set(dateKey, (dateCounts.get(dateKey) ?? 0) + 1);
           }
         });
@@ -84,9 +85,11 @@ export const activitydaycounts = ((source, operator): string[] => {
 
           intervals.reverse().forEach(interval => {
             // Subtract the interval from the current date to find the event date
-            currentDate = new Date(currentDate.getTime() - interval * 24 * 60 * 60 * 1000); // Subtract interval days
+            currentDate = new Date(currentDate.getTime() - interval * DAY_INTERVAL); // Subtract interval days
             if (currentDate >= filterRangeStartDate && currentDate <= filterRangeEndDate) {
-              const dateKey = new Date(currentDate.toISOString().split('T')[0]).getTime(); // Normalize to YYYY-MM-DD to count same day, then use number for key
+              // count activities by day, use locale date.
+              // Normalize to YYYY-MM-DD to count same day, then use number for key
+              const dateKey = getLocaleDateKey(currentDate);
               dateCounts.set(dateKey, (dateCounts.get(dateKey) ?? 0) + 1);
             }
           });
@@ -143,4 +146,14 @@ function getSortedCount(filterRangeStartDate: Date, filterRangeEndDate: Date, da
     .map(([, count]) => count)
     .join(',');
   return sortedCounts;
+}
+
+function getLocaleDateKey(date: Date): number {
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1; // getMonth() is zero-indexed
+  const day = date.getDate();
+  // Create a new Date object with the local date components at midnight
+  const localDate = new Date(year, month - 1, day);
+  // Return the timestamp (in milliseconds) of the local date at midnight
+  return localDate.getTime();
 }

@@ -46,6 +46,7 @@ export enum LogFileTypes {
   DayInterval = 'day-interval',
 }
 
+export const DAY_INTERVAL = 24 * 60 * 60 * 1000;
 export type IDailyCountKey = `${LogFileTypes.DailyCount}${number}`;
 export type IDayIntervalKey = `${LogFileTypes.DayInterval}${number}`;
 export type IDateKey = string;

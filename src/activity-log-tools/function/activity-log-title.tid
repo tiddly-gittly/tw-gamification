@@ -1,0 +1,5 @@
+title: $:/plugins/linonetwo/activity-log-tools/function/activity-log-title
+tags: $:/tags/Global
+
+\function fallback-activity-log-title() [addsuffix[-Log]]
+\function activity-log-title(sourceTitle) [<sourceTitle>get[activity-log]] ~[<sourceTitle>function[fallback-activity-log-title]]

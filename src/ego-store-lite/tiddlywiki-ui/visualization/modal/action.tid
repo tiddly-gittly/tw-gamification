@@ -1,0 +1,9 @@
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/modal/action
+subtitle: <<lingo VisualizeAction/Caption>>
+mask-closable: yes
+
+<$transclude
+  $tiddler="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/gauge/LineCountsWeeks"
+  field="text"
+  mode="block"
+/>

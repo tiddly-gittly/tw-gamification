@@ -1,6 +1,6 @@
 title: ActivityLogDailyCountExample
 type: application/x-tiddler-dictionary
-activity-log-file-type: daily-count
+activity-log-type: daily-count
 hide-body: yes
 
 daily-count1609459200000: 1,0,0,0,3,0,0

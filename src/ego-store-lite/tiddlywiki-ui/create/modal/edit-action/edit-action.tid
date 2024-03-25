@@ -1,0 +1,8 @@
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/edit-action/edit-action
+subtitle: <<lingo EditAction/Caption>>
+footer: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/edit-action/edit-action-footer}}
+
+\procedure temp-tiddler() $:/state/ego-store-lite/editAction
+\procedure is-edit() yes
+
+{{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-action/action-fields}}

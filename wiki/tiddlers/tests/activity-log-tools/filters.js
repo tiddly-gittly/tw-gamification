@@ -1,4 +1,10 @@
 describe('activitydaycounts filter', function() {
+  /**
+   * Tests here are timezone sensitive. We test them in +8 timezone. You can uncomment the line below to see the result in UTC.
+   */
+  // process.env.TZ = 'UTC';
+  process.env.TZ = 'Asia/Shanghai';
+
   // Test filter parsing
   it('should return empty string if no date range given', function() {
     expect($tw.wiki.filterTiddlers('[[ActivityLogDailyCountExample]] +[activitydaycounts[]]')).toEqual(['']);
@@ -24,7 +30,7 @@ describe('activitydaycounts filter', function() {
 
     it('should parse daily count log tiddler', function() {
       expect($tw.wiki.filterTiddlers(`[[ActivityLogDateExample]] +[activitydaycounts[${startDateString}],[${endDateString}]]`).join(',')).toBe(
-        '4,0,3',
+        '4,0,0,3,0',
       );
     });
   });
@@ -37,7 +43,7 @@ describe('activitydaycounts filter', function() {
 
     it('should parse daily count log tiddler', function() {
       expect($tw.wiki.filterTiddlers(`[[ActivityLogDayIntervalExample]] +[activitydaycounts[${startDateString}],[${endDateString}]]`).join(',')).toBe(
-        '0,2,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,2,0,1,0,1,0,2,0,2,0,2,0,1,0,0,0,1,0,0',
+        '1,2,0,0,1,0,0,0,0,1,0,0,1,2,1,1,3,0,2,1,0,1,0,0',
       );
     });
   });

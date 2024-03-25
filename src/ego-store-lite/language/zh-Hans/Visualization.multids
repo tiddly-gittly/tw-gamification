@@ -1,0 +1,4 @@
+title: $:/plugins/linonetwo/ego-store-lite/language/zh-Hans/
+
+Gauges/LineCountsWeeks/Caption: 近四周每日次数折线图
+Gauges/LineCountsWeeks/Description: 根据打卡记录，计算每日总次数，画出每周的折线图，总共展示最近四周的情况。

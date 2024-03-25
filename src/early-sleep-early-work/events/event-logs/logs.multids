@@ -1,7 +1,8 @@
 title: $:/plugins/linonetwo/early-sleep-early-work/events/logs/
-tags: $:/Tags/Gamification/RealityEventLog
+tags: $:/Tags/ActivityLog
 hide-body: yes
 type: application/x-tiddler-dictionary
+activity-log-type: day-interval
 
 actions/early-sleep: 
 generators/pre-early-sleep: 

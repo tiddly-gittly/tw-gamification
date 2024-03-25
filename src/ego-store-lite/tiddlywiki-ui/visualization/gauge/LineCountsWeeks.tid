@@ -2,9 +2,9 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/gauge/Lin
 caption: <<lingo Gauges/LineCountsWeeks/Caption $:/plugins/linonetwo/ego-store-lite/language/>>
 description: <<lingo Gauges/LineCountsWeeks/Description $:/plugins/linonetwo/ego-store-lite/language/>>
 
-\function weekStartDate() [daystart<weekIndex>,1]
-\function weekEndDate() [dayend<weekIndex>,7]
-\function countsThisWeek() [<targetTiddler>activitydaycounts<weekStartDate>,<weekEndDate>]
+\function weekStartDate() [daystart<weekIndex>,[1]]
+\function weekEndDate() [dayend<weekIndex>,[7]]
+\function countsThisWeek() [function[activity-log-title],<targetTiddler>activitydaycounts<weekStartDate>,<weekEndDate>]
 
 \procedure series()
 <$list filter="[range[0],[3]]" variable="weekIndex">

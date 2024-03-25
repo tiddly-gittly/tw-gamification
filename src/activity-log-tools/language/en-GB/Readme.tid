@@ -6,6 +6,8 @@ title: $:/plugins/linonetwo/activity-log-tools/language/en-GB/Readme
 
 <<lingo Description>>
 
+This is a low-level JS library for developing plugins that will generate activity logs.
+
 The following is a description of the development tools provided with this plug-in.
 
 !! Creating Log Files
@@ -16,7 +18,7 @@ The following is a description of the development tools provided with this plug-
 
 Creates a log file, if it already exists it will be overwritten depending on the options.
 
-``ts
+```ts
 function createActivityLog(logTiddlerType: LogFileTypes, fields: Partial<ITiddlerFields> & Pick<ITiddlerFields, 'title'>, options?: {
     overwrite?: boolean;
 }): void
@@ -24,10 +26,10 @@ function createActivityLog(logTiddlerType: LogFileTypes, fields: Partial<ITiddle
 
 Usage
 
-``ts
+```ts
 import { createActivityLog } from '$:/plugins/linonetwo/activity-log-tools/log-file-tools/createActivityLog';
 createActivityLog(activityLog.type, { title: activityLog.title });
-``
+```
 
 !!!! addActivityToLog
 

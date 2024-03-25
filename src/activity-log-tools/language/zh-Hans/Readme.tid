@@ -6,6 +6,8 @@ title: $:/plugins/linonetwo/activity-log-tools/language/zh-Hans/Readme
 
 <<lingo Description>>
 
+这是一个底层的 JS 库，用于插件开发者开发可生成活动记录的其它插件。
+
 以下是本插件提供的开发工具的介绍。
 
 !! 创建记录文件

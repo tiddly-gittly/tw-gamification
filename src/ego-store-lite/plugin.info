@@ -5,7 +5,7 @@
   "description": "Default game for tw-gamification, a simple store to buy bonus for yourself, and you are the store keeper.",
   "parent-plugin": "$:/plugins/linonetwo/tw-gamification",
   "plugin-type": "plugin",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "dependents": "$:/plugins/linonetwo/simple-layout-launcher $:/plugins/linonetwo/tw-gamification $:/plugins/linonetwo/visualization-dashboard",
   "readme": "<<lingo Readme $:/plugins/linonetwo/ego-store-lite/language/>>",
   "list": "Readme config tree"

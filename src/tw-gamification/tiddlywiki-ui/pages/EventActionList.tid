@@ -1,5 +1,5 @@
 title: $:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/pages/EventActionList
-caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo Configs/EventActions/Caption>>
+caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo Configs/EventActions/Caption $:/plugins/linonetwo/tw-gamification/language/>>
 
 \procedure lingo-base() $:/plugins/linonetwo/tw-gamification/language/
 \import [[$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/pages/EventGeneratorList]]

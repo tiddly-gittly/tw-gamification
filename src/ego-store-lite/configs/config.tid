@@ -23,3 +23,12 @@ caption: <<lingo Name $:/plugins/linonetwo/ego-store-lite/language/>>
 !! <<lingo SubPluginsList $:/plugins/linonetwo/tw-gamification/language/>>
 
 {{$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/procedure/sub-plugins-list}}
+
+!! <<lingo Toggles>>
+
+<$macrocall
+	$name="tabs"
+	tabsList="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/pages/EventActionList $:/plugins/linonetwo/early-sleep-early-work/config/ToggleGoodsList"
+	default="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/pages/EventActionList"
+	explicitState="$:/state/tabs/ego-store-lite/config-1"
+/>

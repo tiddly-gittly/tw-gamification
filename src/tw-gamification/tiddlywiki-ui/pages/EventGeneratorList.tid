@@ -16,7 +16,12 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/reality-event-generator}} 
       checkactions=<<checkactions>>
     >
       <span class="item-title">
-        <$transclude $field="icon" mode="inline" />
+        <!-- if icon field is a tiddler title, transclude it, if it is an emoji, display it -->
+        <$transclude $tiddler={{!!icon}}>
+          <$fill $name="ts-missing">
+            <$transclude $field="icon"/>
+          </$fill>
+        </$transclude>
         <$transclude $field="caption" mode="inline" />
       </span>
       <span class="item-description">

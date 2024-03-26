@@ -28,6 +28,6 @@ Sleep: Sleep
 Task: Task
 Configs/CompleteTaskEventGenerator/Caption: "Complete Task" Event Generator Configs
 Configs/CompleteTaskEventGenerator/Enable/Caption: Enable "Complete Task" Event Generator
-Configs/CompleteTaskEventGenerator/Enable/Description: Toggled to enable, rewards are triggered when a task is completed, or progress is recorded on the calendar.
+Configs/CompleteTaskEventGenerator/Enable/Description: Toggled to enable, rewards are triggered when a task is completed, or planing is recorded on the calendar.
 Configs/CompleteTaskEventGenerator/TagsForTask/Caption: Set Tags For Task
 Configs/CompleteTaskEventGenerator/TagsForTask/Description: A tagged tiddler with this tag will be considered a task (the tag of the tag, i.e., filled in here is A, so the actual task C is related to A as, A - B - C, and the tag on the task is B). and will be rewarded when the status of the [["Super Tag"|https://tiddly-gittly.github.io/super-tag/]] based task status is set to complete. (Currently only `TMO`-based supertags are supported, e.g. [[ITKG Life Management System|https://itkg.netlify.app/]] work out-of-the-box, just set `$:/TraitTag/TMO/Task` here.)

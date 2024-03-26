@@ -1,0 +1,13 @@
+title: $:/plugins/linonetwo/early-sleep-early-work/config/ToggleGoodsList
+caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lingo Goods/Caption>>
+
+\procedure lingo-base() $:/plugins/linonetwo/early-sleep-early-work/language/
+\import [[$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/pages/EventGeneratorList]]
+
+<<lingo Configs/EventActions/Description>>
+
+<div class="tw-gamification-event-generator-list">
+  <$list filter="[all[tiddlers+shadows]tag[$:/tags/ego-store-lite/goods]!is[draft]]">
+    <<event-generator-list-item>>
+  </$list>
+</div>

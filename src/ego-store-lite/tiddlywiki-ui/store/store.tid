@@ -31,6 +31,8 @@ caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lin
 <$action-deletetiddler $tiddler=<<drop-down-menu-select-state>>/>
 \end
 
+<$wikify name="NotifyAmountFailed" text="<<lingo ConsumeGoods/NotifyAmountFailed>>">
+<$wikify name="NotifyConditionFailed" text="<<lingo ConsumeGoods/NotifyConditionFailed>>">
 <div class="ego-store-lite-game-buttons-list">
   <$list filter="[all[shadows+tiddlers]tag[$:/tags/ego-store-lite/goods]!is[draft]]">
     <div class="ego-store-lite-game-buttons-list-item" data-title=<<currentTiddler>>>
@@ -45,8 +47,8 @@ caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lin
         <$action-consume-value-tiddler
           $tiddler="$:/plugins/linonetwo/ego-store-lite/configs/Golds"
           $amount={{!!gold-amount}}
-          $notify-amount-failed="You do not have enough experience points."
-          $notify-condition-failed="You do not have enough unconsumed game events."
+          $notify-amount-failed=<<NotifyAmountFailed>>
+          $notify-condition-failed=<<NotifyConditionFailed>>
         >
           <$action-sendmessage
             $message="tm-notify"
@@ -56,11 +58,19 @@ caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lin
         </$action-consume-value-tiddler>
         <div class="ego-store-lite-game-buttons-list-item-icon"><$transclude $field="icon"/></div>
         <div class="ego-store-lite-game-buttons-list-item-info">
-          <h2 class="ego-store-lite-game-buttons-list-item-title"><$transclude $field="caption"/></h2>
-          <p class="ego-store-lite-game-buttons-list-item-reward"><$transclude $field="reality-event-amount"/> <$transclude $field="reality-event-type"/></p>
+          <h2 class="ego-store-lite-game-buttons-list-item-title">
+            <$transclude $field="caption">
+              <$fill $name="ts-missing">
+                <$transclude $field="title"/>
+              </$fill>
+            </$transclude>
+          </h2>
+          <p class="ego-store-lite-game-buttons-list-item-reward"><$transclude $field="gold-amount"/> <$transclude $variable="reality-event-type-display"/></p>
         </div>
         <div class="ego-store-lite-game-buttons-list-description"><$transclude $field="description"/></div>
       </$button>
     </div>
   </$list>
 </div>
+</$wikify>
+</$wikify>

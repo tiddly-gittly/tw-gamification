@@ -7,7 +7,7 @@ reality-event-message: <<lingo Event/EarlySleep/Message $:/plugins/linonetwo/ear
 reality-event-type: SmallReward
 activity-log-type: day-interval
 activity-log: $:/plugins/linonetwo/early-sleep-early-work/events/logs/actions/early-sleep
-icon: {{$:/plugins/linonetwo/early-sleep-early-work/icons/early-sleep}}
+icon: $:/plugins/linonetwo/early-sleep-early-work/icons/early-sleep
 caption: <<lingo Event/EarlySleep/Caption $:/plugins/linonetwo/early-sleep-early-work/language/>>
 description: <<lingo Event/EarlySleep/Description $:/plugins/linonetwo/early-sleep-early-work/language/>>
 enabled: yes

@@ -70,3 +70,6 @@ caption: <<lingo Name $:/plugins/linonetwo/early-sleep-early-work/language/>>
 <<single-text-tag-editor TraitTagsForTask>>
 
 <<lingo Configs/CompleteTaskEventGenerator/TagsForTask/Description>>
+
+;<<lingo Configs/CompleteTaskPlan/Enable/Caption>>
+:<$checkbox tiddler=<<config-title CompleteTaskPlanEnable>> field="text" checked="yes" unchecked="no"> <<lingo Configs/CompleteTaskPlan/Enable/Description>></$checkbox>

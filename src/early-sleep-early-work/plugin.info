@@ -5,7 +5,7 @@
   "description": "Focus on going to bed early and waking up early to solve the problem of waking up inefficiently and struggling to get into shape.",
   "plugin-type": "plugin",
   "parent-plugin": "$:/plugins/linonetwo/ego-store-lite",
-  "dependents": "$:/plugins/linonetwo/tw-gamification",
+  "dependents": "$:/plugins/linonetwo/tw-gamification $:/plugins/linonetwo/in-tagtree-of",
   "readme": "<<lingo Readme $:/plugins/linonetwo/early-sleep-early-work/language/>>",
   "version": "0.1.1",
   "list": "readme config tree"

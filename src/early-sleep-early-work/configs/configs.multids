@@ -4,3 +4,4 @@ PeriodToPrepareSleep/Start: 22
 PeriodToPrepareSleep/End: 24
 AllowedPreSleepEventTypes: 
 TraitTagsForTask: $:/TraitTag/TMO/Task
+CompleteTaskPlanEnable: yes

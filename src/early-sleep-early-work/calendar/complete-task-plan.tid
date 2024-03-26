@@ -1,0 +1,37 @@
+title: $:/plugins/linonetwo/early-sleep-early-work/calendar/complete-task-plan
+tags: $:/tw-calendar/EventPreviewMiniViewTemplate $:/Tags/Gamification/RealityAction
+find-duplicate: debounce
+debounce-duration: 600
+reality-event-amount: 1
+reality-event-message: <<lingo Event/CompleteTaskPlan/Message $:/plugins/linonetwo/early-sleep-early-work/language/>>
+reality-event-type: SmallReward
+activity-log-type: daily-count
+activity-log: $:/plugins/linonetwo/early-sleep-early-work/events/logs/actions/complete-task-plan
+icon: $:/plugins/linonetwo/early-sleep-early-work/icons/complete-task-plan
+caption: <<lingo Event/CompleteTaskPlan/Caption $:/plugins/linonetwo/early-sleep-early-work/language/>>
+description: <<lingo Event/CompleteTaskPlan/Description $:/plugins/linonetwo/early-sleep-early-work/language/>>
+enabled: yes
+
+\procedure lingo-base() $:/plugins/linonetwo/early-sleep-early-work/language/
+
+<% if [[$:/plugins/linonetwo/early-sleep-early-work/configs/CompleteTaskPlanEnable]get[text]match[yes]] %>
+  <% if [all[current]in-tagtree-of{$:/plugins/linonetwo/early-sleep-early-work/configs/TraitTagsForTask}] %>
+    <$wikify name="description" text="<<lingo Event/CompleteTaskPlan/Description>>">
+      <$button tooltip=<<description>> aria-label=<<description>>>
+        {{$:/plugins/linonetwo/early-sleep-early-work/icons/complete-task-plan}} <<lingo Event/CompleteTaskPlan/Caption>>
+        <$action-sendmessage
+          $message="tm-reality-action-event"
+          $param="$:/plugins/linonetwo/early-sleep-early-work/calendar/complete-task-plan"
+        >
+        </$action-sendmessage>
+        <$wikify name="message" text="<<lingo Event/CompleteTaskPlan/Message>>">
+          <$action-sendmessage
+            $message="tm-notify"
+            $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
+            message=<<message>>
+          />
+        </$wikify>
+      </$button>
+    </$wikify>
+  <% endif %>
+<% endif %>

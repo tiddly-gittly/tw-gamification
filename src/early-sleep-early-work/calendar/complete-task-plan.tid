@@ -15,10 +15,12 @@ enabled: yes
 \procedure lingo-base() $:/plugins/linonetwo/early-sleep-early-work/language/
 
 <% if [[$:/plugins/linonetwo/early-sleep-early-work/configs/CompleteTaskPlanEnable]get[text]match[yes]] %>
+  <!-- currentTiddler variable is the calendar event tidder, not this system tiddler. -->
   <% if [all[current]in-tagtree-of{$:/plugins/linonetwo/early-sleep-early-work/configs/TraitTagsForTask}] %>
     <$wikify name="description" text="<<lingo Event/CompleteTaskPlan/Description>>">
       <$button tooltip=<<description>> aria-label=<<description>>>
         {{$:/plugins/linonetwo/early-sleep-early-work/icons/complete-task-plan}} <<lingo Event/CompleteTaskPlan/Caption>>
+        <!-- Use this system tiddler as action definition tiddler, send to action handler -->
         <$action-sendmessage
           $message="tm-reality-action-event"
           $param="$:/plugins/linonetwo/early-sleep-early-work/calendar/complete-task-plan"

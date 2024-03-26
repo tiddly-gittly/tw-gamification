@@ -5,3 +5,32 @@ title: $:/plugins/linonetwo/ego-store-lite/language/en-GB/Readme
 ! <<lingo Name>>
 
 <<lingo Description>>
+
+!! Reality Action
+
+In the "TW Gamification" framework, Reality Actions are things you accomplish in the real world. In this plugin, reality actions will be displayed as punch buttons.
+
+This plugin does not contain reality actions, only the game interface part. You need to install some Reality Actions plugin to have pre-built punch buttons. For example, [[$:/plugins/linonetwo/early-sleep-early-work]].
+
+Of course you can also create your own reality actions using the form provided in the "Create" tag, similar to other gamified to-do apps on the market.
+
+The reality actions created by this plugin are compliant with the Gaming Tiddlywiki framework and can be used by other games under the Gaming Tiddlywiki framework. Since Tiddlywiki's ecosystem is interoperable, assets acquired within the game can be transferred to other games in the future.
+
+!! Commodities
+
+Similar to "Reality Action", this plugin also provides forms to display various purchasable goods. You can install merchandise designed by others by installing the plugin, or you can create your own merchandise using the forms provided in the "Create" tag, similar to other gamified to-do applications on the market.
+
+Created items are unique to this game and will not affect other games.
+
+!! Gameplay
+
+The gamification gameplay provided by this plugin is very simple, it simply provides the ability to record gold and experience values, and to purchase merchandise with gold. Merchandise can be created by yourself, or you can use the default ones that come with the game, or you can install a merchandise plugin from the plugin source that is adapted to this plugin.
+
+!! Share your punch cards and merchandise!
+
+You can package your tiddlers as plugins using the [[Gatha|https://tw-cpl.netlify.app/#kookma%2Fgatha]] plugin (see the international forum thread [[
+Why Gatha is a Game Changer?|https://talk.tiddlywiki.org/t/why-gatha-is-a-game-changer/2397]]). Once packaged [[Submit to CPL|https://tw-cpl.netlify.app/#RegisterNewPlugins]], others can download the realistic actions and merchandise you've shared via CPL.
+
+If you're a web developer, you can also use the [[Modern.TiddlyDev|https://tiddly-gittly.github.io/Modern.TiddlyDev/]] framework.
+
+No matter what framework you use to develop your plugin, be careful to add `"parent-plugin":"$:/plugins/linonetwo/tw-gamification",` to the plugin information, i.e. add this plugin as a parent plugin, so that your plugin is more likely to be searched for by users of this plugin in the plugin source!

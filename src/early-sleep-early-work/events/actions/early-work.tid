@@ -1,0 +1,13 @@
+title: $:/plugins/linonetwo/early-sleep-early-work/events/actions/early-work
+tags: $:/Tags/Gamification/RealityAction
+find-duplicate: debounce
+debounce-duration: 43200
+reality-event-amount: 3
+reality-event-message: <<lingo Event/EarlyWork/Message $:/plugins/linonetwo/early-sleep-early-work/language/>>
+reality-event-type: SmallReward
+activity-log-type: day-interval
+activity-log: $:/plugins/linonetwo/early-sleep-early-work/events/logs/actions/early-work
+icon: {{$:/plugins/linonetwo/early-sleep-early-work/icons/early-work}}
+caption: <<lingo Event/EarlyWork/Caption $:/plugins/linonetwo/early-sleep-early-work/language/>>
+description: <<lingo Event/EarlyWork/Description $:/plugins/linonetwo/early-sleep-early-work/language/>>
+enabled: yes

@@ -5,4 +5,5 @@ type: application/x-tiddler-dictionary
 activity-log-type: day-interval
 
 actions/early-sleep: 
+actions/early-work: 
 generators/pre-early-sleep: 

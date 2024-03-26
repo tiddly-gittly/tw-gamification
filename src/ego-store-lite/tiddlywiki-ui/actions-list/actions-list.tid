@@ -64,7 +64,14 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsLi
           $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
           message={{!!reality-event-message}}
         />
-        <div class="ego-store-lite-game-buttons-list-item-icon"><$transclude $field="icon"/></div>
+        <div class="ego-store-lite-game-buttons-list-item-icon">
+          <!-- if icon field is a tiddler title, transclude it, if it is an emoji, display it -->
+          <$transclude $tiddler={{!!icon}}>
+            <$fill $name="ts-missing">
+              <$transclude $field="icon"/>
+            </$fill>
+          </$transclude>
+        </div>
         <div class="ego-store-lite-game-buttons-list-item-info">
           <h2 class="ego-store-lite-game-buttons-list-item-title">
             <$transclude $field="caption">

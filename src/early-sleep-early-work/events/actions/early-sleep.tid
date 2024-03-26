@@ -2,7 +2,7 @@ title: $:/plugins/linonetwo/early-sleep-early-work/events/actions/early-sleep
 tags: $:/Tags/Gamification/RealityAction
 find-duplicate: debounce
 debounce-duration: 43200
-reality-event-amount: 1
+reality-event-amount: 2
 reality-event-message: <<lingo Event/EarlySleep/Message $:/plugins/linonetwo/early-sleep-early-work/language/>>
 reality-event-type: SmallReward
 activity-log-type: day-interval

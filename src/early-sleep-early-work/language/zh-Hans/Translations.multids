@@ -6,6 +6,15 @@ Configs/Description: 通过这些设置，您可以自定义「早睡早起」�
 Event/EarlySleep/Message: 早睡快乐！
 Event/EarlySleep/Caption: 打卡早睡
 Event/EarlySleep/Description: 早于设定的时间入睡，将获得奖励。最好提前开始上床准备入睡。稍微超出时间也没事，重要的是放下其他事情来睡觉的决心。
+Event/EarlyWork/Message: 祝你今天取得更好的成果！
+Event/EarlyWork/Caption: 打卡早班
+Event/EarlyWork/Description: 稍微早于工作时间开始工作，早开工早下班，日出而作日入而息，适合没有实际上班打卡时间或使用弹性工作制的工作者。
+Goods/WatchVideo/Message: 看视频咯
+Goods/WatchVideo/Caption: 看一小时视频
+Goods/WatchVideo/Description: 看短视频、看视频网站，打开电脑打开手机就能看，简单愉快的享受，快餐时代的电子鸦片。
+Goods/PlayGame/Message: 玩游戏咯
+Goods/PlayGame/Caption: 玩一小时游戏
+Goods/PlayGame/Description: 你要去玩别的游戏了？那么游戏时间到，点击开启你的虚拟快乐时光。
 Configs/PrepareSleep/Enable/Caption: 启用「准备早睡」事件生成器
 Configs/PrepareSleep/Enable/Description: 勾选启用后，当在所选时段内往日历上记录带所选标签的事件时会触发奖励
 Configs/PrepareSleep/Start: 开始

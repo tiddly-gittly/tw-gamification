@@ -1,0 +1,8 @@
+title: $:/plugins/linonetwo/early-sleep-early-work/goods/play-game
+tags: $:/tags/ego-store-lite/goods
+gold-amount: 1
+enabled: yes
+purchase-message: <<lingo Goods/PlayGame/Message $:/plugins/linonetwo/early-sleep-early-work/language/>>
+caption: <<lingo Goods/PlayGame/Caption $:/plugins/linonetwo/early-sleep-early-work/language/>>
+description: <<lingo Goods/PlayGame/Description $:/plugins/linonetwo/early-sleep-early-work/language/>>
+icon: $:/plugins/linonetwo/early-sleep-early-work/icons/play-game

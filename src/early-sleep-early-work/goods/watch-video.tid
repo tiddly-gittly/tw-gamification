@@ -1,0 +1,8 @@
+title: $:/plugins/linonetwo/early-sleep-early-work/goods/watch-video
+tags: $:/tags/ego-store-lite/goods
+gold-amount: 1
+enabled: yes
+purchase-message: <<lingo Goods/WatchVideo/Message $:/plugins/linonetwo/early-sleep-early-work/language/>>
+caption: <<lingo Goods/WatchVideo/Caption $:/plugins/linonetwo/early-sleep-early-work/language/>>
+description: <<lingo Goods/WatchVideo/Description $:/plugins/linonetwo/early-sleep-early-work/language/>>
+icon: $:/plugins/linonetwo/early-sleep-early-work/icons/watch-video

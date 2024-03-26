@@ -56,7 +56,14 @@ caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lin
             message={{!!purchase-message}}
           />
         </$action-consume-value-tiddler>
-        <div class="ego-store-lite-game-buttons-list-item-icon"><$transclude $field="icon"/></div>
+        <div class="ego-store-lite-game-buttons-list-item-icon">
+          <!-- if icon field is a tiddler title, transclude it, if it is an emoji, display it -->
+          <$transclude $tiddler={{!!icon}}>
+            <$fill $name="ts-missing">
+              <$transclude $field="icon"/>
+            </$fill>
+          </$transclude>
+        </div>
         <div class="ego-store-lite-game-buttons-list-item-info">
           <h2 class="ego-store-lite-game-buttons-list-item-title">
             <$transclude $field="caption">
@@ -65,7 +72,7 @@ caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lin
               </$fill>
             </$transclude>
           </h2>
-          <p class="ego-store-lite-game-buttons-list-item-reward"><$transclude $field="gold-amount"/> <$transclude $variable="reality-event-type-display"/></p>
+          <p class="ego-store-lite-game-buttons-list-item-reward"><$transclude $field="gold-amount"/> <<lingo Golds/Caption>></p>
         </div>
         <div class="ego-store-lite-game-buttons-list-description"><$transclude $field="description"/></div>
       </$button>

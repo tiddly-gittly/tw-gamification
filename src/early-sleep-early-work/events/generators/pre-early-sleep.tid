@@ -8,7 +8,7 @@ activity-log-type: day-interval
 activity-log: $:/plugins/linonetwo/early-sleep-early-work/events/logs/generators/pre-early-sleep
 find-duplicate: debounce
 debounce-duration: 43200
-reality-event-amount: 1
+reality-event-amount: 3
 reality-event-message: <<lingo Event/EarlySleep/Message $:/plugins/linonetwo/early-sleep-early-work/language/>>
 reality-event-type: SmallReward
 enabled: yes

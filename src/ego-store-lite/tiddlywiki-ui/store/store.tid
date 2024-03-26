@@ -34,7 +34,7 @@ caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lin
 <$wikify name="NotifyAmountFailed" text="<<lingo ConsumeGoods/NotifyAmountFailed>>">
 <$wikify name="NotifyConditionFailed" text="<<lingo ConsumeGoods/NotifyConditionFailed>>">
 <div class="ego-store-lite-game-buttons-list">
-  <$list filter="[all[shadows+tiddlers]tag[$:/tags/ego-store-lite/goods]!is[draft]]">
+  <$list filter="[all[shadows+tiddlers]tag[$:/tags/ego-store-lite/goods]!is[draft]field:enabled[yes]]">
     <div class="ego-store-lite-game-buttons-list-item" data-title=<<currentTiddler>>>
       <div class="ego-store-lite-game-buttons-list-item-edit">
         <$select tiddler=<<drop-down-menu-select-state>> actions=<<on-drop-down-menu-select>>>

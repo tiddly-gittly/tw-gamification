@@ -42,7 +42,7 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsLi
 {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/receive-reward}}
 
 <div class="ego-store-lite-game-buttons-list">
-  <$list filter="[all[shadows+tiddlers]tag[$:/Tags/Gamification/RealityAction]!is[draft]]">
+  <$list filter="[all[shadows+tiddlers]tag[$:/Tags/Gamification/RealityAction]!is[draft]field:enabled[yes]]">
     <div class="ego-store-lite-game-buttons-list-item" data-title=<<currentTiddler>>>
       <div class="ego-store-lite-game-buttons-list-item-edit">
         <$select tiddler=<<drop-down-menu-select-state>> actions=<<on-drop-down-menu-select>>>

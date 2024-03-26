@@ -3,7 +3,8 @@ import { IChangedTiddlers } from 'tiddlywiki';
 
 import './index.css';
 import { GameWidget } from 'src/tw-gamification/game-wiki-adaptor/GameWidgetType';
-import { BasicRealityEventTypes, IRealityEvent } from 'src/tw-gamification/reality-event-generator/reality-event-types/RealityEventTypes';
+import { IRealityEventCacheCacheFile } from 'src/tw-gamification/reality-event-cache/RealityEventCacheTypes';
+import { BasicRealityEventTypes } from 'src/tw-gamification/reality-event-generator/reality-event-types/RealityEventTypes';
 import { loadGameModuleFromJSString, loadWasmModuleFromBase64 } from './loadModules';
 import { IGameContext } from './types';
 
@@ -75,10 +76,12 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
     }
     console.timeEnd('load game');
     this.setRealityEvents([{
-      type: BasicRealityEventTypes.LargeReward,
-      timestamp: Date.now(),
-      amount: 3,
-      message: 'testtest',
+      event: {
+        type: BasicRealityEventTypes.LargeReward,
+        timestamp: Date.now(),
+        amount: 3,
+        message: 'testtest',
+      },
     }]);
   }
 
@@ -96,7 +99,7 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
     }
   }
 
-  public setRealityEvents(_gamificationEventsJSON: IRealityEvent[]) {
+  public setRealityEvents(_gamificationEventsJSON: IRealityEventCacheCacheFile) {
     if (!this.gameInitialized) {
       // TODO: store gamification events in a tiddler, and push them to game when game is initialized
       throw new Error('Game is not initialized yet!');

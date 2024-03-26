@@ -1,7 +1,8 @@
 /* eslint-disable unicorn/no-null */
 import { IChangedTiddlers, IWidgetEvent, Widget } from 'tiddlywiki';
 
-import { BasicRealityEventTypes, IRealityEvent } from '../../reality-event-generator/reality-event-types/RealityEventTypes';
+import { IRealityEventCacheCacheFile } from 'src/tw-gamification/reality-event-cache/RealityEventCacheTypes';
+import { BasicRealityEventTypes } from '../../reality-event-generator/reality-event-types/RealityEventTypes';
 import { GameWidget } from '../GameWidgetType';
 
 /**
@@ -40,7 +41,7 @@ class ActionConvertRealityEvent extends GameWidget {
     return false;
   }
 
-  public setRealityEvents(gamificationEventsJSON: IRealityEvent[]) {
+  public setRealityEvents(gamificationEventsJSON: IRealityEventCacheCacheFile) {
     // this method is called by provider when events are popped, and only events type that is in `eventTypes` will be sent here.
     this.setVariable('realityEvents', JSON.stringify(gamificationEventsJSON));
     // this can only trigger direct descendants, so anything needs to calculate or filtered need to be done in inline filter expression in transclusion. (But can create custom filter operators to simplify this.)

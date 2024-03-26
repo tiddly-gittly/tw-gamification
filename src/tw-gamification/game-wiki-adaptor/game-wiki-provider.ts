@@ -1,6 +1,7 @@
 import { widget as Widget } from '$:/core/modules/widgets/widget.js';
 import { IParseTreeNode, IWidgetEvent, IWidgetInitialiseOptions, Tiddler } from 'tiddlywiki';
-import { BasicRealityEventTypes, IRealityEvent } from '../reality-event-generator/reality-event-types/RealityEventTypes';
+import { IRealityEventCacheCacheFile } from '../reality-event-cache/RealityEventCacheTypes';
+import { BasicRealityEventTypes } from '../reality-event-generator/reality-event-types/RealityEventTypes';
 import { isGameWidget } from './GameWidgetType';
 
 declare global {
@@ -44,27 +45,28 @@ class GameWikiProvider extends Widget {
       .filter((tiddler): tiddler is Tiddler => tiddler !== undefined)
       .map(tiddler => {
         try {
-          return { fields: tiddler.fields, list: JSON.parse(tiddler.fields.text) as IRealityEvent[] };
+          return { fields: tiddler.fields, list: JSON.parse(tiddler.fields.text) as IRealityEventCacheCacheFile };
         } catch {
-          return { fields: tiddler.fields, list: [] as IRealityEvent[] };
+          return { fields: tiddler.fields, list: [] as IRealityEventCacheCacheFile };
         }
       });
-    const gamificationEventsJSON = gamificationEventsJSONs.flatMap(({ list }) => list).filter(item => eventTypes.includes(item.type ?? BasicRealityEventTypes.SmallReward));
+    const gamificationEventsJSONToUse = gamificationEventsJSONs.flatMap(({ list }) => list).filter(item => {
+      return eventTypes.includes(item?.event?.type ?? BasicRealityEventTypes.SmallReward);
+    });
     // send data to the game
-    let handledPromise = event.widget.setRealityEvents(gamificationEventsJSON);
+    let handledPromise = event.widget.setRealityEvents(gamificationEventsJSONToUse);
     handledPromise = handledPromise instanceof Promise ? handledPromise : Promise.resolve(handledPromise);
     void handledPromise.then(handled => {
       if (handled) {
         // Get rid used event from event queue
         const unusedRealityEventsJSONs = gamificationEventsJSONs.map(({ fields, list }) => {
-          return { fields, list: list.filter(item => !eventTypes.includes(item.type ?? BasicRealityEventTypes.SmallReward)) };
+          return { fields, list: list.filter(item => !eventTypes.includes(item?.event?.type ?? BasicRealityEventTypes.SmallReward)) };
         });
         unusedRealityEventsJSONs.forEach(({ fields, list }) => {
           // also in `src/tw-gamification/reality-event-cache/handle-reality-event-cache.ts`
           const newText = JSON.stringify(list);
           if (newText === fields.text) return;
           $tw.wiki.addTiddler({ ...fields, text: newText });
-          // TODO: save log archive JSON by generator, so we can easily create statistic chart for each event
         });
       }
     });

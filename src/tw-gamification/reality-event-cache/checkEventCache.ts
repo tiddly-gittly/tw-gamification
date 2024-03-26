@@ -23,8 +23,8 @@ export function checkEventCacheDebounceDuplication(
     //   }
     // }
     const isDebounced = (now - log.event.timestamp) < debounceDuration;
-    const sameTiddlerTitle = checkTiddlerTitle && log.meta.tiddlerTitle === meta.tiddlerTitle;
-    const sameGeneratorTitle = checkGeneratorTitle && log.meta.generator === meta.generator;
+    const sameTiddlerTitle = checkTiddlerTitle && log.meta?.tiddlerTitle === meta?.tiddlerTitle;
+    const sameGeneratorTitle = checkGeneratorTitle && log.meta?.generator === meta?.generator;
     if (checkTiddlerTitle && checkGeneratorTitle) {
       if (conditionIsAnd) {
         return sameTiddlerTitle && sameGeneratorTitle && isDebounced;

@@ -8,8 +8,8 @@ import { IRealityEventCacheCacheFile, IRealityEventCacheCacheItem } from './Real
 
 function onItemDuplicateAndCanceled(newEventCacheItem: IRealityEventCacheCacheItem) {
   let eventName: string | undefined;
-  if (newEventCacheItem.meta.generator !== undefined) {
-    const generator = $tw.wiki.getTiddler(newEventCacheItem.meta.generator);
+  if (newEventCacheItem.meta?.generator !== undefined) {
+    const generator = $tw.wiki.getTiddler(newEventCacheItem.meta?.generator);
     eventName = generator?.fields?.caption as string | undefined;
     if (eventName !== undefined) {
       eventName = $tw.wiki.renderText('text/plain', 'text/vnd.tiddlywiki', eventName);
@@ -28,7 +28,7 @@ export function checkAndPushAnItemToLogAndCacheFile(
 ): boolean {
   // TODO: also check the archive log (the events already used by the game, which clean up in a few days.)
   const eventCache = sources.eventCache;
-  const eventLog = getEventLog(newEventCacheItem.meta.generator);
+  const eventLog = getEventLog(newEventCacheItem.meta?.generator);
   let sameEventIndexInEventCache = -1;
   let hasDuplicate = false;
   switch (configs['find-duplicate']) {

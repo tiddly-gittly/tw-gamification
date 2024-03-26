@@ -3,7 +3,7 @@ tags: $:/tags/ego-store-lite/main-tabs
 caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lingo Store/Title>> {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/store-gold-count}}
 
 \procedure lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
-\procedure drop-down-menu-select-state() $:/state/ego-store-lite/actions-list/menu-selected
+\procedure drop-down-menu-select-state() $:/state/ego-store-lite/goods-list/menu-selected
 \procedure on-drop-down-menu-select()
 <% if [<drop-down-menu-select-state>get[text]match[edit]] %>
   <$action-createtiddler

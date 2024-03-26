@@ -17,7 +17,7 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsLi
   >
     <$action-sendmessage
       $message="tm-modal"
-      $param="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/edit-action/edit-action
+      $param="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/edit-action/edit-action"
     />
   </$action-createtiddler>
 <% elseif [<drop-down-menu-select-state>get[text]match[visual]] %>

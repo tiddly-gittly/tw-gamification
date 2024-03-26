@@ -1,21 +1,13 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import { pick } from 'lodash';
+import { filterNecessaryConfig } from '../../reality-event-cache/buildRealityEventCacheItem';
 import { IAddRealityEventParameterObjectFromActionWidget, IAddRealityEventParameterObjectFromJSEventItem } from '../../reality-event-cache/RealityEventCacheTypes';
 import { IDuplicationStrategy, IFindDuplicateParameters } from './DuplicationHandlerTypes';
 
 export function formatDuplicationFields(
   input: IAddRealityEventParameterObjectFromActionWidget | IAddRealityEventParameterObjectFromJSEventItem,
 ): IDuplicationStrategy & IFindDuplicateParameters & Required<Pick<IFindDuplicateParameters, 'debounce-duration'>> {
-  const configs = pick(input.configs, [
-    'on-duplicate',
-    'find-duplicate',
-    'debounce-duration',
-    'debounce-generator-title',
-    'debounce-tiddler-condition',
-    'debounce-tiddler-title',
-    'find-duplicate-filter',
-  ]);
+  const configs = filterNecessaryConfig(input.configs);
   configs['debounce-tiddler-title'] = configs['debounce-tiddler-title'] || 'no';
   configs['debounce-generator-title'] = configs['debounce-generator-title'] || 'yes';
   configs['debounce-tiddler-condition'] = configs['debounce-tiddler-condition'] || 'and';

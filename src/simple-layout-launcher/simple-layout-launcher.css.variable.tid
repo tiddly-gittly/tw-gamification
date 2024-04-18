@@ -16,3 +16,10 @@ tags: $:/tags/Stylesheet
 		justify-content: center;
 	}
 }
+
+.simple-layout-launcher-sidebar a {
+	fill: <<colour sidebar-tiddler-link-foreground>>;
+}
+.simple-layout-launcher-sidebar a:hover {
+	fill: <<colour sidebar-tiddler-link-foreground-hover>>;
+}

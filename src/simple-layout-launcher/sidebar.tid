@@ -1,0 +1,11 @@
+title: $:/plugins/linonetwo/simple-layout-launcher/sidebar
+tags: $:/tags/SideBar
+caption: <<lingo ShortName $:/plugins/linonetwo/simple-layout-launcher/language/>>
+
+\procedure lingo-base() $:/plugins/linonetwo/simple-layout-launcher/language/
+
+!! <<lingo Name>>
+
+<div class="simple-layout-launcher-sidebar">
+  <<simple-layout-launcher>>
+</div>

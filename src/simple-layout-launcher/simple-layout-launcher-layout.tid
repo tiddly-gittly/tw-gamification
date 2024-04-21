@@ -7,7 +7,7 @@ tags: $:/tags/Layout
 \whitespace trim
 \import [subfilter{$:/core/config/GlobalImportFilter}]
 \define containerClasses()
-tc-page-container tc-language-$(languageTitle)$ tw-gamification-container
+tc-page-container tc-language-$(languageTitle)$ simple-layout-launcher-container
 \end
 
 <div class=<<containerClasses>>>

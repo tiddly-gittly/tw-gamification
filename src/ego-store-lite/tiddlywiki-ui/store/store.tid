@@ -19,13 +19,8 @@ caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lin
     />
   </$action-createtiddler>
 <% elseif [<drop-down-menu-select-state>get[text]match[open]] %>
-  <$action-createtiddler $basetitle="$:/layout" text="" $overwrite="yes">
+  <$action-createtiddler $basetitle="$:/layout" text="" $overwrite="yes" $timestamp="no">
     <$action-navigate $to=<<currentTiddler>> />
-    <$action-sendmessage
-      $message="tm-notify"
-      $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
-      message=<<currentTiddler>>
-    />
   </$action-createtiddler>
 <% endif %>
 <$action-deletetiddler $tiddler=<<drop-down-menu-select-state>>/>

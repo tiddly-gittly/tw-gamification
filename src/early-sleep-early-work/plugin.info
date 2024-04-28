@@ -7,6 +7,6 @@
   "parent-plugin": "$:/plugins/linonetwo/ego-store-lite",
   "dependents": "$:/plugins/linonetwo/tw-gamification $:/plugins/linonetwo/in-tagtree-of",
   "readme": "<<lingo Readme $:/plugins/linonetwo/early-sleep-early-work/language/>>",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "list": "readme config tree"
 }

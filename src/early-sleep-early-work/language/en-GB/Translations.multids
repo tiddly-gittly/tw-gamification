@@ -36,3 +36,6 @@ Configs/CompleteTaskPlan/Enable/Description: Add a button to the event details p
 Event/CompleteTaskPlan/Message: One more step towards the end of the task, hard work!
 Event/CompleteTaskPlan/Caption: Complete Task Plan
 Event/CompleteTaskPlan/Description: Provided by [[Early Sleep Early Work|$:/plugins/linonetwo/early-sleep-early-work]] plugin, see its Readme and Configs for details. Clicking on the completion of pre-planned tasks, encouraging planned work, forewarned is forearmed.
+Event/DailyCheckIn/Message: Clocking in is the first step in starting a micro-habit!
+Event/DailyCheckIn/Caption: Daily CheckIn
+Event/DailyCheckIn/Description: Get small rewards, but gradually build huge habit inertia! Use this punch card as a starting point each day and allow yourself to navigate through other options you can earn rewards for, kick-starting the self-discipline mode in your thinking.

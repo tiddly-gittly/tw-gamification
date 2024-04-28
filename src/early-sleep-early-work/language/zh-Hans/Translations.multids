@@ -36,3 +36,6 @@ Configs/CompleteTaskPlan/Enable/Description: 在[[日历插件|$:/plugins/linone
 Event/CompleteTaskPlan/Message: 朝着任务终点又进一步，辛苦了！
 Event/CompleteTaskPlan/Caption: 完成任务计划
 Event/CompleteTaskPlan/Description: 由[[早睡早起|$:/plugins/linonetwo/early-sleep-early-work]]插件提供，详见其自述文件和设置。在完成事先计划的任务时点击，鼓励有计划的工作，预则立不预则废。
+Event/DailyCheckIn/Message: 打卡是开始养成微习惯的第一步！
+Event/DailyCheckIn/Caption: 每日打卡
+Event/DailyCheckIn/Description: 获得微小奖励，但逐步构建巨大的习惯惯性！每天以这个打卡为起点，让自己浏览可以获得奖励的其它选项，启动思维中的自律模式。

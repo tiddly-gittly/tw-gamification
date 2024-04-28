@@ -1,0 +1,13 @@
+title: $:/plugins/linonetwo/early-sleep-early-work/events/actions/daily-check-in
+tags: $:/Tags/Gamification/RealityAction
+find-duplicate: debounce
+debounce-duration: 43200
+reality-event-amount: 0.1
+reality-event-message: <<lingo Event/DailyCheckIn/Message $:/plugins/linonetwo/early-sleep-early-work/language/>>
+reality-event-type: LargeReward
+activity-log-type: day-interval
+activity-log: $:/plugins/linonetwo/early-sleep-early-work/events/logs/actions/daily-check-in
+icon: $:/plugins/linonetwo/early-sleep-early-work/icons/daily-check-in
+caption: <<lingo Event/DailyCheckIn/Caption $:/plugins/linonetwo/early-sleep-early-work/language/>>
+description: <<lingo Event/DailyCheckIn/Description $:/plugins/linonetwo/early-sleep-early-work/language/>>
+enabled: yes

@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { buildRealityEventCacheItem } from '../../reality-event-cache/buildRealityEventCacheItem';
-import { IRealityEventCacheCacheItem } from '../../reality-event-cache/RealityEventCacheTypes';
+import { IAddRealityEventParameterObject, IAddRealityEventParameterObjectFromJSEventItem } from '../../reality-event-cache/RealityEventCacheTypes';
 import { IActionDefinitions, IActionExtraParameterObject } from './types';
 
 // eslint-disable-next-line no-var
@@ -25,7 +25,7 @@ if ($tw.browser) {
 }
 exports.synchronous = true;
 
-let eventsToSend: IRealityEventCacheCacheItem[] = [];
+let eventsToSend: IAddRealityEventParameterObjectFromJSEventItem[] = [];
 
 exports.startup = function twGamificationActionStartupModule() {
   const tagForGenerators = $tw.wiki.getTiddlerText('$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag');
@@ -39,7 +39,11 @@ exports.startup = function twGamificationActionStartupModule() {
     // check the definition is a valid action definition
     if (!originalGeneratorDefinition.tags?.includes?.(tagForGenerators) || !originalGeneratorDefinition['reality-event-type']) return false;
     // allow override the definition on action widget
-    const parameterObject = (event.paramObject ?? {}) as unknown as IActionDefinitions & IActionExtraParameterObject;
+    const parameterObject = event.paramObject as unknown as (IActionDefinitions & IActionExtraParameterObject) | undefined;
+    if (parameterObject === undefined) {
+      console.error('tm-reality-action-event No parameter object found for the action widget.', event);
+      throw new Error('tm-reality-action-event No parameter object found for the action widget.');
+    }
     const eventGenerator: IActionDefinitions = { ...originalGeneratorDefinition, ...parameterObject };
     eventsToSend.push(buildRealityEventCacheItem(eventGenerator, parameterObject.from ?? event.tiddlerTitle));
     // debounce the sending of events
@@ -54,7 +58,7 @@ function dispatchAddRealityEventBatch() {
     type: 'tm-add-reality-event',
     paramObject: {
       events: eventsToSend,
-    },
+    } satisfies IAddRealityEventParameterObject,
   });
   eventsToSend = [];
 }

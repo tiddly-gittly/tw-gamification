@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { SourceIterator } from 'tiddlywiki';
 import { buildRealityEventCacheItem } from '../../reality-event-cache/buildRealityEventCacheItem';
-import { IRealityEventCacheCacheItem } from '../../reality-event-cache/RealityEventCacheTypes';
+import { IAddRealityEventParameterObject, IAddRealityEventParameterObjectFromJSEventItem, IRealityEventCacheCacheItem } from '../../reality-event-cache/RealityEventCacheTypes';
 import { IFilterEventGeneratorDefinitions } from './types';
 
 // eslint-disable-next-line no-var
@@ -47,7 +47,7 @@ exports.startup = function twGamificationFilterEventGeneratorStartupModule() {
   $tw.wiki.addEventListener('change', function(changes) {
     // TODO: debounce and batch process the events
     // TODO: mark frequently changed and not qualified tiddlers, so that we can skip them to save execution time.
-    const events: IRealityEventCacheCacheItem[] = [];
+    const events: IAddRealityEventParameterObjectFromJSEventItem[] = [];
     generatorWithFilterFunctions.forEach(eventGenerator => {
       // Filter the changes so that we only count changes to tiddlers that we care about
       const tiddlerTitleTriggerTheEvent = eventGenerator.filter((iterator: SourceIterator) => {
@@ -58,14 +58,14 @@ exports.startup = function twGamificationFilterEventGeneratorStartupModule() {
         });
       });
       if (generatorWithFilterFunctions.length === 0) return;
-      events.push(...tiddlerTitleTriggerTheEvent.map((tiddlerTitle): IRealityEventCacheCacheItem => buildRealityEventCacheItem(eventGenerator, tiddlerTitle)));
+      events.push(...tiddlerTitleTriggerTheEvent.map((tiddlerTitle): IAddRealityEventParameterObjectFromJSEventItem => buildRealityEventCacheItem(eventGenerator, tiddlerTitle)));
     });
     if (events.length === 0) return;
     $tw.rootWidget.dispatchEvent({
       type: 'tm-add-reality-event',
       paramObject: {
         events,
-      },
+      } satisfies IAddRealityEventParameterObject,
     });
   });
 };

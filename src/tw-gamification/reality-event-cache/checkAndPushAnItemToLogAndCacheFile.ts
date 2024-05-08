@@ -24,10 +24,10 @@ function onItemDuplicateAndCanceled(newEventCacheItem: IRealityEventCacheCacheIt
 export function checkAndPushAnItemToLogAndCacheFile(
   newEventCacheItem: IRealityEventCacheCacheItem,
   configs: ReturnType<typeof formatDuplicationFields>,
-  sources: { eventCache: IRealityEventCacheCacheFile },
+  sources: { eventCache: IRealityEventCacheCacheFile | undefined } | undefined,
 ): boolean {
   // TODO: also check the archive log (the events already used by the game, which clean up in a few days.)
-  const eventCache = sources.eventCache;
+  const eventCache = sources?.eventCache ?? [];
   const eventLog = getEventLog(newEventCacheItem.meta?.generator);
   let sameEventIndexInEventCache = -1;
   let hasDuplicate = false;

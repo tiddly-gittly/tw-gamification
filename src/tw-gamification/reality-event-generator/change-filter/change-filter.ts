@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { SourceIterator } from 'tiddlywiki';
 import { buildRealityEventCacheItem } from '../../reality-event-cache/buildRealityEventCacheItem';
-import { IAddRealityEventParameterObject, IAddRealityEventParameterObjectFromJSEventItem, IRealityEventCacheCacheItem } from '../../reality-event-cache/RealityEventCacheTypes';
+import { IAddRealityEventParameterObject, IAddRealityEventParameterObjectFromJSEventItem } from '../../reality-event-cache/RealityEventCacheTypes';
 import { IFilterEventGeneratorDefinitions } from './types';
 
 // eslint-disable-next-line no-var

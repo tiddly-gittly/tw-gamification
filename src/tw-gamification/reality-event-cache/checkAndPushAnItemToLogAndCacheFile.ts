@@ -27,7 +27,7 @@ export function checkAndPushAnItemToLogAndCacheFile(
   sources: { eventCache: IRealityEventCacheCacheFile | undefined } | undefined,
 ): boolean {
   // TODO: also check the archive log (the events already used by the game, which clean up in a few days.)
-  const eventCache = sources?.eventCache ?? [];
+  const eventCache = Array.isArray(sources?.eventCache) ? sources.eventCache : [];
   const eventLog = getEventLog(newEventCacheItem.meta?.generator);
   let sameEventIndexInEventCache = -1;
   let hasDuplicate = false;

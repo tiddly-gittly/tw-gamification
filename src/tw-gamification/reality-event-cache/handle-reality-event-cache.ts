@@ -36,7 +36,7 @@ exports.startup = function twGamificationHandleEventCacheQueueStartupModule() {
     const parameterObject = (event.paramObject ?? {}) as unknown as IAddRealityEventParameterObject;
     const eventCacheFile = $tw.wiki.getTiddler(eventCacheTitle);
     const eventCacheFileContent = eventCacheFile?.fields.text;
-    const eventCache: IRealityEventCacheCacheFile = eventCacheFileContent ? $tw.utils.parseJSONSafe(eventCacheFileContent) : [];
+    const eventCache: IRealityEventCacheCacheFile = eventCacheFileContent ? $tw.utils.parseJSONSafe(eventCacheFileContent, () => []) : [];
     let hasModification = false;
     if ('events' in parameterObject) {
       // Add many events at once

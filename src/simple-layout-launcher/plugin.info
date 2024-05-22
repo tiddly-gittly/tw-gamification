@@ -4,6 +4,6 @@
   "author": "linonetwo",
   "description": "Vanilla style launcher, with Metro style square button and large icon.",
   "plugin-type": "plugin",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "list": "readme tree"
 }

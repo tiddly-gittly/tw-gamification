@@ -16,15 +16,10 @@ tc-page-container tc-language-$(languageTitle)$ tw-gamification-container
 	isDefaultEventGeneratorEnabled={{{ [{$:/plugins/linonetwo/tw-gamification/configs/EnableDefaultEventGenerator}match[yes]] }}}
 	isDefaultEventGeneratorLackConfig={{{ [{$:/plugins/linonetwo/tw-gamification/configs/DefaultEventGeneratorTagsForTask}match[]] :then[[yes]] }}}
 >
-
 	<div class=<<containerClasses>>>
-
 		<$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
-
+			{{$:/core/ui/CommandPaletteTemplate}}
 			{{$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/PageLayout/GameStory}}
-
 		</$navigator>
-
 	</div>
-
 </$vars>

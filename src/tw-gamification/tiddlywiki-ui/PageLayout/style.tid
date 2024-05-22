@@ -17,7 +17,7 @@ type: text/vnd.tiddlywiki
 } 
 
 .tw-gamification-container {
-  height: 100vh;
+  height: 100%;
 }
 .tw-gamification-container > p {
   margin: 0;

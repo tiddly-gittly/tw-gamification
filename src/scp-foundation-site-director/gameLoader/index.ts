@@ -1,4 +1,4 @@
-import { ConnectionObserver } from '@wessberg/connection-observer';
+import { observe, unobserve } from '@seznam/visibility-observer';
 import { IChangedTiddlers } from 'tiddlywiki';
 
 import './index.css';
@@ -11,14 +11,16 @@ import { IGameContext } from './types';
 class ScpFoundationSiteDirectorGameWidget extends GameWidget {
   wasmContext: typeof IGameContext | undefined;
   gameInitialized = false;
-  connectionObserver = new ConnectionObserver(entries => {
-    for (const { connected } of entries) {
-      if (!connected && this.gameInitialized) {
-        this.destroy();
-        this.connectionObserver?.disconnect?.();
-      }
+  onVisibilityChange(
+    visibilityEntry: IntersectionObserverEntry & {
+      target: HTMLElement;
+    },
+  ) {
+    if (!visibilityEntry.isIntersecting && this.gameInitialized) {
+      this.destroy();
+      unobserve(visibilityEntry.target, this.onVisibilityChange.bind(this));
     }
-  });
+  }
 
   refresh(_changedTiddlers: IChangedTiddlers) {
     // noting should trigger game refresh (reloading), because it is self-contained. Game state change is triggered by calling method on wasm.
@@ -35,7 +37,7 @@ class ScpFoundationSiteDirectorGameWidget extends GameWidget {
       class: 'tw-gamification-bevy-container',
       children: [canvasElement],
     });
-    this.connectionObserver.observe(canvasElement);
+    observe(canvasElement, this.onVisibilityChange.bind(this));
     nextSibling === null ? parent.append(containerElement) : nextSibling.before(containerElement);
     this.domNodes.push(containerElement);
     // TODO: load assets from asset sub-plugin, and push list and item to game by call rust function

@@ -50,7 +50,7 @@
     "zx": "^7.2.3"
   },
   "dependencies": {
-    "@wessberg/connection-observer": "^1.0.5",
+    "@seznam/visibility-observer": "^1.1.0",
     "js-base64": "^3.7.7",
     "lodash": "^4.17.21",
     "npm-check-updates": "^16.14.17",

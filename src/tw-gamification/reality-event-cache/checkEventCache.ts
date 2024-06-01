@@ -1,5 +1,5 @@
 import type { formatDuplicationFields } from '../reality-event-generator/deduplication/formatDuplicationFields';
-import { IRealityEventCacheCacheFile, IRealityEventCacheCacheItem } from './RealityEventCacheTypes';
+import { IRealityEventCacheCacheFile, IRealityEventCacheCacheItem } from '../types/RealityEventCacheTypes';
 
 export function checkEventCacheDebounceDuplication(
   newEventCacheItem: IRealityEventCacheCacheItem,

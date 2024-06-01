@@ -1,6 +1,6 @@
 import { addActivityToLog } from '$:/plugins/linonetwo/activity-log-tools/log-file-tools/addActivityToLog';
 import type { IActivityLogFile } from 'src/activity-log-tools/log-file-types/LogFileTypes';
-import { IRealityEventCacheCacheItem } from 'src/tw-gamification/reality-event-cache/RealityEventCacheTypes';
+import { IRealityEventCacheCacheItem } from 'src/tw-gamification/types/RealityEventCacheTypes';
 
 export function addEventLog(eventLog: IActivityLogFile | undefined, newEventCacheItem: IRealityEventCacheCacheItem) {
   if (eventLog === undefined) return;

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { IFilterOperator } from 'tiddlywiki';
-import { IRealityEventCacheCacheFile } from '../reality-event-cache/RealityEventCacheTypes';
-import { BasicRealityEventTypes } from '../reality-event-generator/reality-event-types/RealityEventTypes';
+import { IRealityEventCacheCacheFile } from '../types/RealityEventCacheTypes';
+import { BasicRealityEventTypes } from '../types/RealityEventTypes';
 
 export const enlistJsonFilterTypeGetEvents = ((source, operator): string[] => {
   const [typeOfEventToFilter, titleOfGeneratorToFilter] = operator.operands;

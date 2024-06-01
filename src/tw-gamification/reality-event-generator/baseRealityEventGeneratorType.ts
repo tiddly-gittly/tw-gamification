@@ -1,7 +1,7 @@
 import { IActivityLogTiddlerFields } from 'src/activity-log-tools/log-file-types/LogFileTypes';
 import { ITiddlerFields } from 'tiddlywiki';
-import { IDuplicationStrategy, IFindDuplicateParameters } from './deduplication/DuplicationHandlerTypes';
-import { BasicRealityEventTypes } from './reality-event-types/RealityEventTypes';
+import { IDuplicationStrategy, IFindDuplicateParameters } from '../types/DuplicationHandlerTypes';
+import { BasicRealityEventTypes } from '../types/RealityEventTypes';
 
 export interface EventGeneratorDefinitions extends Pick<IActivityLogTiddlerFields, 'activity-log-type'>, ITiddlerFields, IDuplicationStrategy, IFindDuplicateParameters {
   /**

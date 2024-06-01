@@ -11,7 +11,7 @@ import {
   IAddRealityEventParameterObjectFromActionWidget,
   IRealityEventCacheCacheFile,
   IRealityEventCacheCacheItem,
-} from './RealityEventCacheTypes';
+} from '../types/RealityEventCacheTypes';
 
 // eslint-disable-next-line no-var
 declare var exports: {

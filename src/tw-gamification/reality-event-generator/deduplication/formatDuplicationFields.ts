@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { filterNecessaryConfig } from '../../reality-event-cache/buildRealityEventCacheItem';
-import { IAddRealityEventParameterObjectFromActionWidget, IAddRealityEventParameterObjectFromJSEventItem } from '../../reality-event-cache/RealityEventCacheTypes';
-import { IDuplicationStrategy, IFindDuplicateParameters } from './DuplicationHandlerTypes';
+import { IAddRealityEventParameterObjectFromActionWidget, IAddRealityEventParameterObjectFromJSEventItem } from '../../types/RealityEventCacheTypes';
+import { IDuplicationStrategy, IFindDuplicateParameters } from '../../types/DuplicationHandlerTypes';
 
 export function formatDuplicationFields(
   input: IAddRealityEventParameterObjectFromActionWidget | IAddRealityEventParameterObjectFromJSEventItem,

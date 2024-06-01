@@ -1,10 +1,10 @@
-import { IGeneratorFindDuplicateStrategy, IGeneratorOnDuplicateStrategy } from '../reality-event-generator/deduplication/DuplicationHandlerTypes';
+import { IGeneratorFindDuplicateStrategy, IGeneratorOnDuplicateStrategy } from '../types/DuplicationHandlerTypes';
 import type { formatDuplicationFields } from '../reality-event-generator/deduplication/formatDuplicationFields';
 import { addEventLog } from '../reality-event-generator/reality-event-log/addEventLog';
 import { checkEventLogDebounceDuplication } from '../reality-event-generator/reality-event-log/checkEventLog';
 import { getEventLog } from '../reality-event-generator/reality-event-log/getEventLog';
 import { checkEventCacheDebounceDuplication } from './checkEventCache';
-import { IRealityEventCacheCacheFile, IRealityEventCacheCacheItem } from './RealityEventCacheTypes';
+import { IRealityEventCacheCacheFile, IRealityEventCacheCacheItem } from '../types/RealityEventCacheTypes';
 
 function onItemDuplicateAndCanceled(newEventCacheItem: IRealityEventCacheCacheItem) {
   let eventName: string | undefined;

@@ -1,9 +1,9 @@
 /* eslint-disable unicorn/no-null */
 import { IChangedTiddlers, IWidgetEvent, Widget } from 'tiddlywiki';
 
-import { IRealityEventCacheCacheFile } from 'src/tw-gamification/reality-event-cache/RealityEventCacheTypes';
-import { BasicRealityEventTypes } from '../../reality-event-generator/reality-event-types/RealityEventTypes';
-import { GameWidget } from '../GameWidgetType';
+import { IRealityEventCacheCacheFile } from 'src/tw-gamification/types/RealityEventCacheTypes';
+import { BasicRealityEventTypes } from '../../types/RealityEventTypes';
+import { GameWidget } from '../../types/GameWidgetType';
 
 /**
  * A default reality event converter for WikiText based games. Can be used as action widget.

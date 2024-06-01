@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { buildRealityEventCacheItem } from '../../reality-event-cache/buildRealityEventCacheItem';
-import { IAddRealityEventParameterObject, IAddRealityEventParameterObjectFromJSEventItem } from '../../reality-event-cache/RealityEventCacheTypes';
+import { IAddRealityEventParameterObject, IAddRealityEventParameterObjectFromJSEventItem } from '../../types/RealityEventCacheTypes';
 import { IActionDefinitions, IActionExtraParameterObject } from './types';
 
 // eslint-disable-next-line no-var

@@ -1,2 +1,0 @@
-# see https://github.com/rust-lang/rust-clippy
-doc-valid-idents = ["GilRs", "glTF", "sRGB", "VSync", "WebGL2", "WebGPU", ".."]

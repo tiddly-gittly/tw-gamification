@@ -9,12 +9,19 @@ tags: $:/tags/Layout
 \define containerClasses()
 tc-page-container tc-language-$(languageTitle)$ ego-store-lite-container
 \end
+\procedure redirected-navigate-actions()
+  <$action-setfield $tiddler="$:/layout" text="" $timestamp="no">
+    <$action-navigate $to=<<event-navigateTo>> $scroll="yes" />
+  </$action-setfield>
+\end
 
 <$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
-	{{$:/core/ui/CommandPaletteTemplate}}
-	<$GameWikiProvider>
-		<div class=<<containerClasses>>>
-			<<EgoStoreLite>>
-		</div>
-	</$GameWikiProvider>
+	<$messagecatcher $tm-navigate=<<redirected-navigate-actions>>>
+		{{$:/core/ui/CommandPaletteTemplate}}
+		<$GameWikiProvider>
+			<div class=<<containerClasses>>>
+				<<EgoStoreLite>>
+			</div>
+		</$GameWikiProvider>
+	</$messagecatcher>
 </$navigator>

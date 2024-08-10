@@ -1,3 +1,5 @@
 title: $:/snippets/LayoutSwitcher
+tags: $:/tags/ControlPanel/Appearance
+caption: {{$:/language/ControlPanel/LayoutSwitcher/Caption}}
 
 <<simple-layout-launcher>>

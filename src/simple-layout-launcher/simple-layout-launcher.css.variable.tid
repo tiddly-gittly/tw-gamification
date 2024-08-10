@@ -23,3 +23,10 @@ tags: $:/tags/Stylesheet
 .simple-layout-launcher-sidebar a:hover {
 	fill: <<colour sidebar-tiddler-link-foreground-hover>>;
 }
+
+/** Mobile layout switcher, model is small can't change, so make item width 100% */
+@media (max-width: <<sidebarbreakpoint>>) {
+	.tc-modal:has(.tc-modal-body):has(div):has(p):has(.linonetwo-simple-layout-launcher) {
+		width: 90%;
+	}
+}

@@ -21,6 +21,21 @@
 	padding: 5px;
 	margin: 5px;
 }
+/* Mobile */
+@media (max-width: 450px) {
+	.tc-modal-body:has(.linonetwo-simple-layout-launcher) {
+		padding: 0;
+	}
+	.linonetwo-simple-layout-launcher-item {
+		height: 100px;
+	}
+}
+@media (max-width: 275px) {
+	.linonetwo-simple-layout-launcher-item {
+		height: 80px;
+	}
+}
+
 .linonetwo-simple-layout-launcher-title {
 	display: flex;
 	flex-direction: row;

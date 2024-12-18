@@ -9,7 +9,7 @@
     "build": "npm run clean && tiddlywiki-plugin-dev build",
     "publish": "npm run clean && tiddlywiki-plugin-dev publish",
     "reset": "rimraf ./**/node_modules",
-    "clean": "rimraf dist",
+  "clean": "rimraf dist",
     "prepare": "husky install",
     "update": "npm-check-updates -u && dprint config update",
     "new": "tiddlywiki-plugin-dev new",
@@ -47,7 +47,6 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "@pixi/react": "8.0.0-beta.14",
     "lodash": "^4.17.21",
     "npm-check-updates": "^17.1.11",
     "pixi.js": "^8.6.6",

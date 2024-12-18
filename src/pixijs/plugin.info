@@ -4,6 +4,8 @@
   "author": "linonetwo",
   "description": "Pixi is a 2D game rendering engine.",
   "plugin-type": "plugin",
+  "stability": "STABILITY_1_EXPERIMENTAL",
   "version": "0.0.1",
+  "Modern.TiddlyDev#ExternalModules": "react react-dom",
   "list": "readme"
 }

@@ -1,3 +1,1 @@
-import * as pixi from 'pixi.js';
-
-export default pixi;
+export  * from 'pixi.js';

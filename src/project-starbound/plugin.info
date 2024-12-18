@@ -1,0 +1,11 @@
+{
+  "title": "$:/plugins/linonetwo/project-starbound",
+  "name": "project-starbound",
+  "author": "linonetwo",
+  "description": "",
+  "plugin-type": "plugin",
+  "stability": "STABILITY_1_EXPERIMENTAL",
+  "version": "0.0.1",
+  "Modern.TiddlyDev#ExternalModules": "react react-dom pixi.js",
+  "list": "readme"
+}

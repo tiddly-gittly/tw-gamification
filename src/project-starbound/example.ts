@@ -49,6 +49,6 @@ class ExampleWidget extends Widget {
 }
 
 declare let exports: {
-  ['project-starbound']: typeof ExampleWidget;
+  ['pixijs-example']: typeof ExampleWidget;
 };
-exports['project-starbound'] = ExampleWidget;
+exports['pixijs-example'] = ExampleWidget;

@@ -1,6 +1,15 @@
 title: $:/plugins/linonetwo/pixijs/readme
-type: text/vnd.tiddlywiki
 
 ! pixijs
 
 Pixi is a 2D game rendering engine.
+
+Example:
+
+<$pixijs-example />
+
+[[$:/plugins/linonetwo/pixijs/example.js]]
+
+!! What about @pixi/react?
+
+Wait until v8 is released. Currently it doesn't work with React 19.

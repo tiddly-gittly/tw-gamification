@@ -1,1 +1,1 @@
-export  * from 'pixi.js';
+export * from 'pixi.js';

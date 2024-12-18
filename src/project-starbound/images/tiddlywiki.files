@@ -1,0 +1,23 @@
+{
+  "directories": [
+    {
+      "path": "./characters",
+      "filesRegExp": "^.*\\.png",
+      "isTiddlerFile": false,
+      "searchSubdirectories": true,
+      "fields": {
+        "title": {
+          "source": "filepath",
+          "prefix": "$:/plugins/linonetwo/project-starbound/images/characters/"
+        },
+        "created": {
+          "source": "created"
+        },
+        "modified": {
+          "source": "modified"
+        },
+        "type": "image/png"
+      }
+    }
+  ]
+}

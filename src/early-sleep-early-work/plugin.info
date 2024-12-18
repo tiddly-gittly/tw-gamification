@@ -8,5 +8,6 @@
   "dependents": "$:/plugins/linonetwo/tw-gamification $:/plugins/linonetwo/in-tagtree-of",
   "readme": "<<lingo Readme $:/plugins/linonetwo/early-sleep-early-work/language/>>",
   "version": "0.2.1",
+  "stability": "STABILITY_2_STABLE",
   "list": "readme config tree"
 }

@@ -6,6 +6,7 @@
   "parent-plugin": "$:/plugins/linonetwo/tw-gamification",
   "plugin-type": "plugin",
   "version": "1.4.0",
+  "stability": "STABILITY_2_STABLE",
   "dependents": "$:/plugins/linonetwo/simple-layout-launcher $:/plugins/linonetwo/tw-gamification $:/plugins/linonetwo/visualization-dashboard",
   "readme": "<<lingo Readme $:/plugins/linonetwo/ego-store-lite/language/>>",
   "list": "Readme config tree"

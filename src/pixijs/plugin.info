@@ -1,0 +1,9 @@
+{
+  "title": "$:/plugins/linonetwo/pixijs",
+  "name": "pixijs",
+  "author": "linonetwo",
+  "description": "Pixi is a 2D game rendering engine.",
+  "plugin-type": "plugin",
+  "version": "0.0.1",
+  "list": "readme"
+}

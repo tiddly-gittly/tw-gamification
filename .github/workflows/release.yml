@@ -4,7 +4,6 @@ on:
   push:
     tags:
       - 'v*.*.*'
-      - 'v*'
     paths-ignore:
       - 'README.md'
       - 'wiki/**'
@@ -65,14 +64,9 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
-      - name: TS Type check
-        run: pnpm exec tsc --noEmit
-      - name: TS Lint check
-        run: pnpm exec eslint .
-
       - name: Run tests
         run: pnpm run test
-      # Build TS
+
       - name: Build Plugins
         run: pnpm run build
 

@@ -6,7 +6,9 @@ on:
       - master
       - main
     paths-ignore:
+      # Readme.md should not trigger wiki deploy
       - '*.md'
+
 jobs:
   deploy:
     permissions:
@@ -30,7 +32,7 @@ jobs:
           run_install: false
 
       - name: Cache dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             **/node_modules
@@ -44,15 +46,14 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
-      # Build TS
       - name: Build Library and static website
         run: pnpm run publish
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
           path: ./dist
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4

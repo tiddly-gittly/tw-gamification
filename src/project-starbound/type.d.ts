@@ -33,3 +33,7 @@ declare module '$:/plugins/linonetwo/tw-react/index.js' {
   export * from 'tw-react/dist/lib/hooks';
   export * from 'tw-react/dist/lib/widget-type';
 }
+
+declare module '$:/plugins/linonetwo/pixijs/pixi.js' {
+  export * from 'pixi.js';
+}

@@ -1,5 +1,5 @@
 import { widget as Widget } from '$:/core/modules/widgets/widget.js';
-import { Application, Assets, TilingSprite } from 'pixi.js';
+import { Application, Assets, TilingSprite } from '$:/plugins/linonetwo/pixijs/pixi.js';
 import { IChangedTiddlers } from 'tiddlywiki';
 import './style.css';
 

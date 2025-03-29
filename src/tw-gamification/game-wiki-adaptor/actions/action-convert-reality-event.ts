@@ -2,8 +2,8 @@
 import { IChangedTiddlers, IWidgetEvent, Widget } from 'tiddlywiki';
 
 import { IRealityEventCacheCacheFile } from 'src/tw-gamification/types/RealityEventCacheTypes';
-import { BasicRealityEventTypes } from '../../types/RealityEventTypes';
 import { GameWidget } from '../../types/GameWidgetType';
+import { BasicRealityEventTypes } from '../../types/RealityEventTypes';
 
 /**
  * A default reality event converter for WikiText based games. Can be used as action widget.

@@ -4,14 +4,14 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import pick from 'lodash/pick';
 import { formatDuplicationFields } from '../reality-event-generator/deduplication/formatDuplicationFields';
-import { getRealityEventCacheTitle } from './cache-files/getTitle';
-import { checkAndPushAnItemToLogAndCacheFile } from './checkAndPushAnItemToLogAndCacheFile';
 import {
   IAddRealityEventParameterObject,
   IAddRealityEventParameterObjectFromActionWidget,
   IRealityEventCacheCacheFile,
   IRealityEventCacheCacheItem,
 } from '../types/RealityEventCacheTypes';
+import { getRealityEventCacheTitle } from './cache-files/getTitle';
+import { checkAndPushAnItemToLogAndCacheFile } from './checkAndPushAnItemToLogAndCacheFile';
 
 // eslint-disable-next-line no-var
 declare var exports: {

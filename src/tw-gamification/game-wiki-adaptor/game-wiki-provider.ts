@@ -1,8 +1,8 @@
 import { widget as Widget } from '$:/core/modules/widgets/widget.js';
 import { IParseTreeNode, IWidgetEvent, IWidgetInitialiseOptions, Tiddler } from 'tiddlywiki';
+import { isGameWidget } from '../types/GameWidgetType';
 import { IRealityEventCacheCacheFile } from '../types/RealityEventCacheTypes';
 import { BasicRealityEventTypes } from '../types/RealityEventTypes';
-import { isGameWidget } from '../types/GameWidgetType';
 
 declare global {
   interface Window {

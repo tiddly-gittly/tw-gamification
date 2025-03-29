@@ -2,8 +2,8 @@ import pick from 'lodash/pick';
 
 import { EventGeneratorDefinitions } from '../reality-event-generator/baseRealityEventGeneratorType';
 import { processAmount, processMessage } from '../reality-event-generator/processFields';
-import { BasicRealityEventTypes, IRealityEvent } from '../types/RealityEventTypes';
 import { IAddRealityEventParameterObjectFromJSEventItem } from '../types/RealityEventCacheTypes';
+import { BasicRealityEventTypes, IRealityEvent } from '../types/RealityEventTypes';
 
 export function buildRealityEventCacheItem(eventGenerator: EventGeneratorDefinitions, tiddlerTitle?: string): IAddRealityEventParameterObjectFromJSEventItem {
   const {

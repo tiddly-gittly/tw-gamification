@@ -1,0 +1,11 @@
+title: $:/plugins/linonetwo/phaser/readme
+
+! phaser
+
+Phaser is a 2D game creation engine.
+
+Example:
+
+<$phaser-example />
+
+[[$:/plugins/linonetwo/phaser/example.js]]

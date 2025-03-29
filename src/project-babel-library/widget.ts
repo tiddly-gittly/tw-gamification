@@ -13,7 +13,7 @@ class ExampleWidget extends Widget {
     this.computeAttributes();
     this.execute();
     const containerElement = $tw.utils.domMaker('p', {
-      class: 'project-starbound-container',
+      class: 'project-babel-library-container',
     });
     parent.insertBefore(containerElement, nextSibling);
     this.domNodes.push(containerElement);
@@ -76,6 +76,6 @@ class ExampleWidget extends Widget {
 }
 
 declare let exports: {
-  ['project-starbound']: typeof ExampleWidget;
+  ['project-babel-library']: typeof ExampleWidget;
 };
-exports['project-starbound'] = ExampleWidget;
+exports['project-babel-library'] = ExampleWidget;

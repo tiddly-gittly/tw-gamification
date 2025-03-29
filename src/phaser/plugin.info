@@ -1,0 +1,11 @@
+{
+  "title": "$:/plugins/linonetwo/phaser",
+  "name": "phaser",
+  "author": "linonetwo",
+  "description": "Phaser is a 2D game creation engine.",
+  "plugin-type": "plugin",
+  "stability": "STABILITY_1_EXPERIMENTAL",
+  "version": "0.0.1",
+  "Modern.TiddlyDev#ExternalModules": "react react-dom",
+  "list": "readme tree"
+}

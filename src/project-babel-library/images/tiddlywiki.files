@@ -8,7 +8,7 @@
       "fields": {
         "title": {
           "source": "filepath",
-          "prefix": "$:/plugins/linonetwo/project-starbound/images/characters/"
+          "prefix": "$:/plugins/linonetwo/project-babel-library/images/characters/"
         },
         "created": {
           "source": "created"

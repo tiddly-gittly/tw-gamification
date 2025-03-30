@@ -1,8 +1,6 @@
 import { widget as Widget } from '$:/core/modules/widgets/widget.js';
 import { IChangedTiddlers } from 'tiddlywiki';
 import './style.css';
-import { create } from './game/create';
-import { preload } from './game/preload';
 
 class ExampleWidget extends Widget {
   refresh(_changedTiddlers: IChangedTiddlers) {
@@ -23,11 +21,18 @@ class ExampleWidget extends Widget {
 
     const width = this.getAttribute('width') || 800;
     const height = this.getAttribute('height') || 600;
+    if (!$tw.browser) {
+      // If not in a browser, return early
+      return;
+    }
 
     // Asynchronous IIFE
     void (async () => {
       // Wait for Phaser to be loaded to window.Phaser
       await new Promise(resolve => setTimeout(resolve, 10));
+      // async import preload and create to prevent `ReferenceError: Phaser is not defined` caused by `class XXX extends Phaser.GameObjects.Container`
+      const { preload } = await import('./game/preload');
+      const { create } = await import('./game/create');
 
       const config = {
         type: Phaser.AUTO,

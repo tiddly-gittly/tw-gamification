@@ -49,6 +49,9 @@ class ExampleWidget extends Widget {
 
       const game = new Phaser.Game(config);
       this.game = game;
+      setTimeout(() => {
+        containerElement.focus();
+      }, 100);
     })();
   }
 }

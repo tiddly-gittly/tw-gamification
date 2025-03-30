@@ -20,6 +20,8 @@ export default [
   {
     rules: {
       'no-var': 'off',
+      '@typescript-eslint/no-unnecessary-condition': 'off',
+      '@typescript-eslint/restrict-template-expressions': ['warn', { allowNumber: true }],
     },
   },
 ];

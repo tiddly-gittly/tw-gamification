@@ -40,7 +40,7 @@ class ExampleWidget extends Widget {
           preload,
           create,
         },
-      };
+      } satisfies Phaser.Types.Core.GameConfig;
 
       const game = new Phaser.Game(config);
       this.game = game;

@@ -13,7 +13,8 @@ export function create(this: Phaser.Scene) {
     [39, 39, 39, 39, 39, 39, 39, 39, 39, 39, 39],
   ];
 
-  const map = this.make.tilemap({ data: level, tileWidth: 16, tileHeight: 16 });
-  const tiles = map.addTilesetImage('tiles')!;
+  // this.add.image(100, 100, 'body-female');
+  const map = this.make.tilemap({ data: level, tileWidth: 43, tileHeight: 43 });
+  const tiles = map.addTilesetImage('human/body-female.png')!;
   map.createLayer(0, tiles, 0, 0);
 }

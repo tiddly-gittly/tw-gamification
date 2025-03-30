@@ -6,6 +6,8 @@ class ExampleWidget extends Widget {
     return false;
   }
 
+  game: Phaser.Game | null = null;
+
   render(parent: Element, nextSibling: Element) {
     this.parentDomNode = parent;
     this.computeAttributes();
@@ -39,6 +41,7 @@ class ExampleWidget extends Widget {
       };
 
       const game = new Phaser.Game(config);
+      this.game = game;
 
       function preload(this: Phaser.Scene) {
         this.load.image('tiles', 'https://mikewesthad.github.io/phaser-3-tilemap-blog-posts/post-1/assets/tilesets/super-mario-tiles.png');
@@ -63,7 +66,7 @@ class ExampleWidget extends Widget {
         // When loading from an array, make sure to specify the tileWidth and tileHeight
         const map = this.make.tilemap({ data: level, tileWidth: 16, tileHeight: 16 });
         const tiles = map.addTilesetImage('tiles')!;
-        const layer = map.createLayer(0, tiles, 0, 0);
+        map.createLayer(0, tiles, 0, 0);
       }
     })();
   }

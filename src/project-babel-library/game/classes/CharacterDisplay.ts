@@ -113,7 +113,6 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
 
   // #region Animation
   public setAnimation(animationType: AnimationType) {
-    if (this.#currentAnimation === animationType) return;
     console.log('Setting animation:', animationType);
 
     // 先停止所有当前播放的动画
@@ -135,6 +134,22 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
     }
   }
 
+  public changeDefaultIdlePose(index: number) {
+    if (index < 1 || index > 5) {
+      console.warn('Idle pose index must be between 1 and 5');
+      return;
+    }
+    this.#config.defaultIdleIndex = index;
+    if (this.#currentAnimation === AnimationType.IDLE) {
+      this.setAnimation(AnimationType.IDLE);
+    }
+  }
+
+  public changeToRandomIdlePose() {
+    const randomIndex = Math.floor(Math.random() * 5) + 1;
+    this.changeDefaultIdlePose(randomIndex);
+  }
+
   private setStaticPose(animationType: AnimationType) {
     const poseName = animationType === AnimationType.IDLE
       ? `idle-${this.#config.defaultIdleIndex}`
@@ -146,13 +161,12 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
       return;
     }
 
-    this.#currentAnimation = animationType;
     this.updateFrames(pose);
     this.updateLayerPositions(pose);
   }
 
   private playAnimationSequence(animationType: AnimationType, config: typeof characterData.animations[AnimationType]) {
-    // 播放动画序列而不是设置静态帧
+    // 播放动画序列
     this.#bodySprite?.play(`body-${animationType}`);
     this.#frontArmSprite?.play(`frontArm-${animationType}`);
     this.#backArmSprite?.play(`backArm-${animationType}`);
@@ -164,14 +178,20 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
       this.#armorPantsSprite?.play(`armor-pants-${animationType}`);
     }
 
-    // 只在动画的第一帧更新一次位置
-    const firstPose = characterData.poses.find(p => p.name === config.frames[0]);
-    if (firstPose) {
-      this.updateLayerPositions(firstPose);
-    }
+    // 在身体播放动画时，重新定位头部和衣服的位置，以防运动贴图的动作幅度过大，让身体和这些部位的相对位置发生不一致
+    this.#bodySprite?.on('animationupdate', () => {
+      const currentFrame = this.#bodySprite?.anims.currentFrame;
+      const frameIndex = currentFrame?.index ?? 0;
+      const poseName = config.frames[frameIndex];
+      const pose = characterData.poses.find(p => p.name === poseName);
+      if (pose) {
+        this.updateLayerPositions(pose);
+      }
+    });
 
-    // 触发动画完成事件
+    // 触发动画完成事件，并清理事件处理器
     this.#bodySprite?.once('animationcomplete', () => {
+      this.#bodySprite?.off('animationupdate');
       this.emit('animationcomplete', { animation: animationType });
     });
   }
@@ -219,11 +239,15 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
       }
     });
 
-    // 头发位置调整
+    // 头发和头部位置调整（使用相同的偏移值）
     const [hairNudgeX, hairNudgeY] = pose.hairNudge;
     if (this.#hairSprite) {
       this.#hairSprite.x = hairNudgeX;
       this.#hairSprite.y = hairNudgeY;
+    }
+    if (this.#headSprite) {
+      this.#headSprite.x = hairNudgeX;
+      this.#headSprite.y = hairNudgeY;
     }
 
     // 胸甲位置调整
@@ -312,22 +336,6 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
       key: `${this.#species}/armor-${armorName}-frontSleeve.png`,
     });
     this.add(this.#armorFrontSleeveSprite);
-  }
-
-  public setIdlePose(index: number) {
-    if (index < 1 || index > 5) {
-      console.warn('Idle pose index must be between 1 and 5');
-      return;
-    }
-    this.#config.defaultIdleIndex = index;
-    if (this.#currentAnimation === AnimationType.IDLE) {
-      this.setAnimation(AnimationType.IDLE);
-    }
-  }
-
-  public setRandomIdlePose() {
-    const randomIndex = Math.floor(Math.random() * 5) + 1;
-    this.setIdlePose(randomIndex);
   }
 
   public setAppearance(config: Partial<CharacterConfig>) {

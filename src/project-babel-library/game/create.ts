@@ -15,15 +15,15 @@ export function create(this: Phaser.Scene) {
     gender: 'female',
     config: {
       skinColor: 0,
-      armor: 'workout',
-      hairOption: 0,
+      armor: 'cool',
+      hairOption: 4,
       headOption: 0,
       shirtOption: 0,
       shirtColor: 2,
       pantsOption: 0,
       pantsColor: 3,
       helmetOption: 0,
-      defaultIdleIndex: 1,
+      defaultIdleIndex: 2,
     },
   });
 
@@ -48,7 +48,7 @@ export function create(this: Phaser.Scene) {
       case 'Digit4':
       case 'Digit5': {
         const poseNumber = parseInt(event.code.replace('Digit', ''));
-        character.setIdlePose(poseNumber);
+        character.changeDefaultIdlePose(poseNumber);
         break;
       }
       case 'KeyH': {
@@ -57,7 +57,7 @@ export function create(this: Phaser.Scene) {
         break;
       }
       case 'KeyR':
-        character.setRandomIdlePose();
+        character.changeToRandomIdlePose();
         break;
     }
   });

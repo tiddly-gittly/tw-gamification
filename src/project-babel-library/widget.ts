@@ -19,8 +19,8 @@ class ExampleWidget extends Widget {
     parent.insertBefore(containerElement, nextSibling);
     this.domNodes.push(containerElement);
 
-    const width = this.getAttribute('width') || 800;
-    const height = this.getAttribute('height') || 600;
+    const width = this.getAttribute('width') || 300;
+    const height = this.getAttribute('height') || 300;
     if (!$tw.browser) {
       // If not in a browser, return early
       return;
@@ -38,7 +38,7 @@ class ExampleWidget extends Widget {
         type: Phaser.AUTO,
         width,
         height,
-        zoom: 1,
+        zoom: 3,
         pixelArt: true, // Force the game to scale images up crisply
         parent: containerElement,
         scene: {

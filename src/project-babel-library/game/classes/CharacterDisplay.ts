@@ -86,12 +86,14 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
       ? `${this.#species}/body-${this.#gender}.png`
       : `${this.#species}/body-${type}.png`;
     const sprite = this.scene.make.sprite({ key });
+    sprite.name = `character-${type}`; // 添加名字
     return sprite;
   }
 
   private createHeadSprite(): Phaser.GameObjects.Sprite {
     const key = `${this.#species}/head-${this.#gender}.png`;
     const sprite = this.scene.make.sprite({ key });
+    sprite.name = 'character-head'; // 添加名字
     return sprite;
   }
 
@@ -161,7 +163,7 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
       return;
     }
 
-    this.updateFrames(pose);
+    this.updateStaticFrames(pose);
     this.updateLayerPositions(pose);
   }
 
@@ -196,30 +198,33 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
     });
   }
 
-  private updateFrames(pose: typeof characterData.poses[0]) {
+  /** 计算精灵表中的帧索引 */
+  private calculateFrameIndex(position: [number, number], columnCount: number): number {
+    const [x, y] = position;
+    return y * columnCount + x;
+  }
+
+  private updateStaticFrames(pose: typeof characterData.poses[0]) {
     if (!this.#bodySprite || !this.#frontArmSprite || !this.#backArmSprite) return;
 
     // 根据 pose 索引设置正确的帧
-    const bodyFrame = pose.bodyIndex[1] * SPRITE_SHEET.COLUMNS.BODY + pose.bodyIndex[0];
-    const armFrame = pose.sleeveIndex[1] * SPRITE_SHEET.COLUMNS.BODY + pose.sleeveIndex[0];
+    const bodyFrame = this.calculateFrameIndex(pose.bodyIndex, SPRITE_SHEET.COLUMNS.BODY);
+    const armFrame = this.calculateFrameIndex(pose.sleeveIndex, SPRITE_SHEET.COLUMNS.BODY);
 
     this.#bodySprite.setFrame(bodyFrame);
     this.#frontArmSprite.setFrame(armFrame);
     this.#backArmSprite.setFrame(armFrame);
 
     if (this.#armorChestSprite) {
-      const chestFrame = pose.chestIndex[1] * SPRITE_SHEET.COLUMNS.ARMOR.CHEST + pose.chestIndex[0];
-      const sleeveFrame = pose.sleeveIndex[1] * SPRITE_SHEET.COLUMNS.ARMOR.SLEEVE + pose.sleeveIndex[0];
-      const pantsFrame = pose.bodyIndex[1] * SPRITE_SHEET.COLUMNS.ARMOR.PANTS + pose.bodyIndex[0];
+      const chestFrame = this.calculateFrameIndex(pose.chestIndex, SPRITE_SHEET.COLUMNS.ARMOR.CHEST);
+      const sleeveFrame = this.calculateFrameIndex(pose.sleeveIndex, SPRITE_SHEET.COLUMNS.ARMOR.SLEEVE);
+      const pantsFrame = this.calculateFrameIndex(pose.bodyIndex, SPRITE_SHEET.COLUMNS.ARMOR.PANTS);
 
       this.#armorChestSprite.setFrame(chestFrame);
       this.#armorFrontSleeveSprite?.setFrame(sleeveFrame);
       this.#armorBackSleeveSprite?.setFrame(sleeveFrame);
       this.#armorPantsSprite?.setFrame(pantsFrame);
     }
-
-    // 应用位置偏移
-    this.updateLayerPositions(pose);
   }
 
   private updateLayerPositions(pose: typeof characterData.poses[0]) {
@@ -267,7 +272,14 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
       this.#armorFrontSleeveSprite,
       this.#armorBackSleeveSprite,
       this.#armorPantsSprite,
-    ].forEach(sprite => sprite?.stop());
+    ].forEach(sprite => {
+      // 清理动画更新事件监听器
+      sprite?.off('animationupdate');
+      // 清理动画完成事件监听器
+      sprite?.off('animationcomplete');
+      // 停止动画
+      sprite?.stop();
+    });
   }
 
   // #endregion
@@ -280,8 +292,7 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
       console.warn(`Hair index ${hairIndex} exceeds maximum count ${genderConfig.count} for ${this.#gender}`);
       return;
     }
-    // 使用 offsetY 计算基础行偏移，每行有 COLUMNS.ACCESSORIES 个帧
-    const frame = (genderConfig.offsetY * SPRITE_SHEET.COLUMNS.ACCESSORIES) + hairIndex;
+    const frame = this.calculateFrameIndex([hairIndex, genderConfig.offsetY], SPRITE_SHEET.COLUMNS.ACCESSORIES);
     this.#hairSprite?.setFrame(frame);
     this.#config.hairOption = hairIndex;
   }
@@ -302,6 +313,8 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
       this.#armorBackSleeveSprite,
       this.#armorPantsSprite,
     ].forEach(sprite => sprite?.destroy());
+    // DEBUG: console armorName
+    console.log(`setArmor armorName`, armorName);
 
     this.#armorChestSprite = null;
     this.#armorFrontSleeveSprite = null;
@@ -315,26 +328,31 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
 
   private createArmorSprites(armorName: string) {
     const genderSuffix = this.#gender === 'male' ? 'Male' : 'Female';
-
-    // 按照层级顺序创建装备精灵
+    // DEBUG: console armorName
+    console.log(`createArmorSprites armorName`, armorName);
+    // 按照层级顺序创建装备精灵，并添加名字
     this.#armorBackSleeveSprite = this.scene.make.sprite({
       key: `${this.#species}/armor-${armorName}-backSleeve.png`,
     });
+    this.#armorBackSleeveSprite.name = `character-armor-backSleeve-${armorName}`;
     this.add(this.#armorBackSleeveSprite);
 
     this.#armorPantsSprite = this.scene.make.sprite({
       key: `${this.#species}/armor-${armorName}-pants${genderSuffix}.png`,
     });
+    this.#armorPantsSprite.name = `character-armor-pants-${armorName}`;
     this.add(this.#armorPantsSprite);
 
     this.#armorChestSprite = this.scene.make.sprite({
       key: `${this.#species}/armor-${armorName}-chest${genderSuffix}.png`,
     });
+    this.#armorChestSprite.name = `character-armor-chest-${armorName}`;
     this.add(this.#armorChestSprite);
 
     this.#armorFrontSleeveSprite = this.scene.make.sprite({
       key: `${this.#species}/armor-${armorName}-frontSleeve.png`,
     });
+    this.#armorFrontSleeveSprite.name = `character-armor-frontSleeve-${armorName}`;
     this.add(this.#armorFrontSleeveSprite);
   }
 

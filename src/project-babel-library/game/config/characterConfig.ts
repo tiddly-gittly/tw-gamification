@@ -33,14 +33,10 @@ export interface PoseConfig {
   hairNudge: [number, number];
 }
 
+// TODO: 这个可能还需要保留，但是改名为 clothingTypes
 export const armorData = {
   names: ['concept', 'cool', 'sweatervest', 'workout', null],
   parts: ['chest', 'frontSleeve', 'backSleeve', 'pants'],
-  // 每种装甲都包含的部件及其对应的文件名模式
-  //   chest: 'armor-{armorName}-chest{gender}',
-  //   frontSleeve: 'armor-{armorName}-frontSleeve',
-  //   backSleeve: 'armor-{armorName}-backSleeve',
-  //   pants: 'armor-{armorName}-pants{gender}',
 };
 
 export const armTypes = {
@@ -61,14 +57,12 @@ export interface CharacterConfig {
   skinColor: number;
   hairOption: number;
   headOption: number;
-  armor: string | null;
-  armorColor?: number;
-  shirtOption: number;
+  shirtOption: string | null;
   shirtColor: number;
-  pantsOption: number;
+  pantsOption: string | null;
   pantsColor: number;
   helmetOption: number;
-  defaultIdleIndex: number; // 新增：默认静态姿势编号
+  defaultIdleIndex: number;
 }
 
 export interface AnimationFrameConfig {

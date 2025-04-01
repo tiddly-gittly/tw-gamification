@@ -1,12 +1,9 @@
-import { CharacterAnimationInitializer } from './classes/CharacterAnimationInitializer';
 import { CharacterDisplay } from './classes/CharacterDisplay';
 import { AnimationType, characterData } from './config/characterConfig';
 
 export function create(this: Phaser.Scene) {
   this.cameras.main.setBackgroundColor('#ffffff');
 
-  const characterAnimationInitializer = new CharacterAnimationInitializer(this);
-  characterAnimationInitializer.createCharacterAnimations('human', 'female', 'workout');
   const character = new CharacterDisplay({
     scene: this,
     x: this.cameras.main.centerX, // 改为屏幕中心
@@ -15,13 +12,12 @@ export function create(this: Phaser.Scene) {
     gender: 'female',
     config: {
       skinColor: 0,
-      armor: 'cool',
+      shirtOption: 'workout',
+      shirtColor: 2,
+      pantsOption: 'cool',
+      pantsColor: 3,
       hairOption: 4,
       headOption: 0,
-      shirtOption: 0,
-      shirtColor: 2,
-      pantsOption: 0,
-      pantsColor: 3,
       helmetOption: 0,
       defaultIdleIndex: 2,
     },

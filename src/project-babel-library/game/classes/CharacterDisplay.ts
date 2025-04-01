@@ -1,4 +1,4 @@
-import { AnimationType, armorData, CharacterConfig, characterData, SPRITE_SHEET } from '../config/characterConfig';
+import { AnimationFrameConfig, AnimationType, CharacterConfig, characterData, SPRITE_SHEET } from '../config/characterConfig';
 import { Species } from '../types/Species';
 
 interface ICharacterDisplayOptions {
@@ -15,17 +15,24 @@ interface ICharacterDisplayOptions {
  * 负责角色的视觉展示,包括精灵创建、动画播放和外观管理
  */
 export class CharacterDisplay extends Phaser.GameObjects.Container {
-  // #region Sprites
-  #bodySprite: Phaser.GameObjects.Sprite | null = null;
-  #hairSprite: Phaser.GameObjects.Sprite | null = null;
-  #headSprite: Phaser.GameObjects.Sprite | null = null;
-  #frontArmSprite: Phaser.GameObjects.Sprite | null = null;
-  #backArmSprite: Phaser.GameObjects.Sprite | null = null;
-  #armorChestSprite: Phaser.GameObjects.Sprite | null = null;
-  #armorFrontSleeveSprite: Phaser.GameObjects.Sprite | null = null;
-  #armorBackSleeveSprite: Phaser.GameObjects.Sprite | null = null;
-  #armorPantsSprite: Phaser.GameObjects.Sprite | null = null;
-  // #endregion
+  // 将精灵分组为前中后三层，便于管理层级
+  private readonly spriteGroups = {
+    back: {
+      backArm: null as Phaser.GameObjects.Sprite | null,
+      backSleeve: null as Phaser.GameObjects.Sprite | null,
+    },
+    middle: {
+      body: null as Phaser.GameObjects.Sprite | null,
+      chest: null as Phaser.GameObjects.Sprite | null,
+      pants: null as Phaser.GameObjects.Sprite | null,
+    },
+    front: {
+      head: null as Phaser.GameObjects.Sprite | null,
+      frontArm: null as Phaser.GameObjects.Sprite | null,
+      frontSleeve: null as Phaser.GameObjects.Sprite | null,
+      hair: null as Phaser.GameObjects.Sprite | null,
+    },
+  };
 
   // #region State
   #currentAnimation: AnimationType | null = null;
@@ -48,37 +55,139 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
     this.#config = config || this.getDefaultConfig();
     this.#config.defaultIdleIndex = idlePoseIndex;
 
-    // 初始化精灵层级
+    // 初始化精灵层级和基础动画
     this.initializeSprites();
+    this.initializeBaseAnimations();
 
     // 设置初始状态
-    this.setArmor(config?.armor || null);
+    this.updateEquipment(config?.shirtOption || null, config?.pantsOption || null);
     this.setAnimation(AnimationType.IDLE);
   }
 
+  private initializeBaseAnimations() {
+    (Object.entries(characterData.animations) as [AnimationType, AnimationFrameConfig][]).forEach(([animationType, config]) => {
+      // 身体动画
+      this.createAnimationHelper({
+        key: `body-${animationType}`,
+        textureKey: `${this.#species}/body-${this.#gender}.png`,
+        frames: config.frames,
+        frameRate: config.frameRate,
+        repeat: config.repeat,
+        getFrameIndex: (pose) => this.calculateFrameIndex(pose.bodyIndex, SPRITE_SHEET.COLUMNS.BODY),
+      });
+
+      // 手臂动画
+      ['frontArm', 'backArm'].forEach(armType => {
+        this.createAnimationHelper({
+          key: `${armType}-${animationType}`,
+          textureKey: `${this.#species}/body-${armType}.png`,
+          frames: config.frames,
+          frameRate: config.frameRate,
+          repeat: config.repeat,
+          getFrameIndex: (pose) => this.calculateFrameIndex(pose.sleeveIndex, SPRITE_SHEET.COLUMNS.BODY),
+        });
+      });
+    });
+  }
+
+  private createAnimationHelper(config: {
+    key: string;
+    textureKey: string;
+    frames: string[];
+    frameRate: number;
+    repeat: number;
+    getFrameIndex: (pose: typeof characterData.poses[0]) => number;
+  }) {
+    // 检查动画是否已存在
+    if (this.scene.anims.exists(config.key)) {
+      return;
+    }
+
+    this.scene.anims.create({
+      key: config.key,
+      frames: config.frames.map(frameName => {
+        const pose = characterData.poses.find(p => p.name === frameName)!;
+        return {
+          key: config.textureKey,
+          frame: config.getFrameIndex(pose),
+        };
+      }),
+      frameRate: config.frameRate,
+      repeat: config.repeat,
+    });
+  }
+
+  private createClothingAnimations(clothingName: string, clothingType: 'chest' | 'pants') {
+    const genderSuffix = this.#gender === 'male' ? 'Male' : 'Female';
+    const parts = clothingType === 'chest'
+      ? ['chest', 'frontSleeve', 'backSleeve']
+      : ['pants'];
+
+    (Object.entries(characterData.animations) as [AnimationType, AnimationFrameConfig][]).forEach(([animationType, config]) => {
+      parts.forEach(part => {
+        const needsGender = ['chest', 'pants'].includes(part);
+        const key = `armor-${part}-${animationType}`;
+        const textureKey = `${this.#species}/armor-${clothingName}-${part}${needsGender ? genderSuffix : ''}.png`;
+
+        this.createAnimationHelper({
+          key,
+          textureKey,
+          frames: config.frames,
+          frameRate: config.frameRate,
+          repeat: config.repeat,
+          getFrameIndex: (pose) => {
+            switch (part) {
+              case 'chest':
+                return pose.chestIndex[1] * SPRITE_SHEET.COLUMNS.ARMOR.CHEST + pose.chestIndex[0];
+              case 'frontSleeve':
+              case 'backSleeve':
+                return pose.sleeveIndex[1] * SPRITE_SHEET.COLUMNS.ARMOR.SLEEVE + pose.sleeveIndex[0];
+              case 'pants':
+                return pose.bodyIndex[1] * SPRITE_SHEET.COLUMNS.ARMOR.PANTS + pose.bodyIndex[0];
+              default:
+                return 0;
+            }
+          },
+        });
+      });
+    });
+  }
+
   private initializeSprites() {
-    // 创建基础精灵
-    this.#backArmSprite = this.createBodySprite('backArm');
-    this.#bodySprite = this.createBodySprite('body');
-    this.#frontArmSprite = this.createBodySprite('frontArm');
-    this.#hairSprite = this.createBodySprite('accessories');
-    this.#headSprite = this.createHeadSprite();
+    // 按照层级顺序创建和添加精灵
+    this.createAndAddSprites();
 
-    // 按层级顺序添加精灵 (头部应该在身体之上，头发之下)
-    this.add(this.#backArmSprite);
-    this.add(this.#bodySprite);
-    this.add(this.#headSprite);
-    this.add(this.#frontArmSprite);
-    this.add(this.#hairSprite);
-
-    // 使用统一的头发设置方法
+    // 设置初始外观
     this.setHairStyle(this.#config.hairOption);
     this.setHeadOption(this.#config.headOption);
 
     // 确保所有精灵居中对齐
-    [this.#bodySprite, this.#hairSprite, this.#headSprite, this.#frontArmSprite, this.#backArmSprite].forEach(sprite => {
-      sprite.setOrigin(0.5, 0.5);
+    Object.values(this.spriteGroups).forEach(group => {
+      Object.values(group).forEach(sprite => {
+        sprite?.setOrigin(0.5, 0.5);
+      });
     });
+  }
+
+  private createAndAddSprites() {
+    // 后层
+    this.spriteGroups.back.backArm = this.createBodySprite('backArm');
+    this.add(this.spriteGroups.back.backArm);
+
+    // 中层
+    this.spriteGroups.middle.body = this.createBodySprite('body');
+    this.add(this.spriteGroups.middle.body);
+
+    // 前层
+    this.spriteGroups.front.head = this.createHeadSprite();
+    this.spriteGroups.front.frontArm = this.createBodySprite('frontArm');
+    this.spriteGroups.front.hair = this.createBodySprite('accessories');
+
+    this.add([
+      this.spriteGroups.front.head,
+      this.spriteGroups.front.frontArm,
+      this.spriteGroups.front.hair,
+    ]);
   }
 
   private createBodySprite(type: 'body' | 'backArm' | 'frontArm' | 'accessories'): Phaser.GameObjects.Sprite {
@@ -99,15 +208,15 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
 
   public destroy() {
     const sprites = [
-      this.#bodySprite,
-      this.#hairSprite,
-      this.#headSprite,
-      this.#frontArmSprite,
-      this.#backArmSprite,
-      this.#armorChestSprite,
-      this.#armorFrontSleeveSprite,
-      this.#armorBackSleeveSprite,
-      this.#armorPantsSprite,
+      this.spriteGroups.middle.body,
+      this.spriteGroups.front.hair,
+      this.spriteGroups.front.head,
+      this.spriteGroups.front.frontArm,
+      this.spriteGroups.back.backArm,
+      this.spriteGroups.middle.chest,
+      this.spriteGroups.front.frontSleeve,
+      this.spriteGroups.back.backSleeve,
+      this.spriteGroups.middle.pants,
     ];
     sprites.forEach(sprite => sprite?.destroy());
     super.destroy();
@@ -168,21 +277,22 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
   }
 
   private playAnimationSequence(animationType: AnimationType, config: typeof characterData.animations[AnimationType]) {
-    // 播放动画序列
-    this.#bodySprite?.play(`body-${animationType}`);
-    this.#frontArmSprite?.play(`frontArm-${animationType}`);
-    this.#backArmSprite?.play(`backArm-${animationType}`);
+    // 播放基础动画
+    this.spriteGroups.middle.body?.play(`body-${animationType}`);
+    this.spriteGroups.front.frontArm?.play(`frontArm-${animationType}`);
+    this.spriteGroups.back.backArm?.play(`backArm-${animationType}`);
 
-    if (this.#armorChestSprite) {
-      this.#armorChestSprite.play(`armor-chest-${animationType}`);
-      this.#armorFrontSleeveSprite?.play(`armor-frontSleeve-${animationType}`);
-      this.#armorBackSleeveSprite?.play(`armor-backSleeve-${animationType}`);
-      this.#armorPantsSprite?.play(`armor-pants-${animationType}`);
+    // 播放装备动画
+    if (this.spriteGroups.middle.chest) {
+      this.spriteGroups.middle.chest.play(`armor-chest-${animationType}`);
+      this.spriteGroups.front.frontSleeve?.play(`armor-frontSleeve-${animationType}`);
+      this.spriteGroups.back.backSleeve?.play(`armor-backSleeve-${animationType}`);
+      this.spriteGroups.middle.pants?.play(`armor-pants-${animationType}`);
     }
 
     // 在身体播放动画时，重新定位头部和衣服的位置，以防运动贴图的动作幅度过大，让身体和这些部位的相对位置发生不一致
-    this.#bodySprite?.on('animationupdate', () => {
-      const currentFrame = this.#bodySprite?.anims.currentFrame;
+    this.spriteGroups.middle.body?.on('animationupdate', () => {
+      const currentFrame = this.spriteGroups.middle.body?.anims.currentFrame;
       const frameIndex = currentFrame?.index ?? 0;
       const poseName = config.frames[frameIndex];
       const pose = characterData.poses.find(p => p.name === poseName);
@@ -192,8 +302,8 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
     });
 
     // 触发动画完成事件，并清理事件处理器
-    this.#bodySprite?.once('animationcomplete', () => {
-      this.#bodySprite?.off('animationupdate');
+    this.spriteGroups.middle.body?.once('animationcomplete', () => {
+      this.spriteGroups.middle.body?.off('animationupdate');
       this.emit('animationcomplete', { animation: animationType });
     });
   }
@@ -205,25 +315,25 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
   }
 
   private updateStaticFrames(pose: typeof characterData.poses[0]) {
-    if (!this.#bodySprite || !this.#frontArmSprite || !this.#backArmSprite) return;
+    if (!this.spriteGroups.middle.body || !this.spriteGroups.front.frontArm || !this.spriteGroups.back.backArm) return;
 
     // 根据 pose 索引设置正确的帧
     const bodyFrame = this.calculateFrameIndex(pose.bodyIndex, SPRITE_SHEET.COLUMNS.BODY);
     const armFrame = this.calculateFrameIndex(pose.sleeveIndex, SPRITE_SHEET.COLUMNS.BODY);
 
-    this.#bodySprite.setFrame(bodyFrame);
-    this.#frontArmSprite.setFrame(armFrame);
-    this.#backArmSprite.setFrame(armFrame);
+    this.spriteGroups.middle.body.setFrame(bodyFrame);
+    this.spriteGroups.front.frontArm.setFrame(armFrame);
+    this.spriteGroups.back.backArm.setFrame(armFrame);
 
-    if (this.#armorChestSprite) {
+    if (this.spriteGroups.middle.chest) {
       const chestFrame = this.calculateFrameIndex(pose.chestIndex, SPRITE_SHEET.COLUMNS.ARMOR.CHEST);
       const sleeveFrame = this.calculateFrameIndex(pose.sleeveIndex, SPRITE_SHEET.COLUMNS.ARMOR.SLEEVE);
       const pantsFrame = this.calculateFrameIndex(pose.bodyIndex, SPRITE_SHEET.COLUMNS.ARMOR.PANTS);
 
-      this.#armorChestSprite.setFrame(chestFrame);
-      this.#armorFrontSleeveSprite?.setFrame(sleeveFrame);
-      this.#armorBackSleeveSprite?.setFrame(sleeveFrame);
-      this.#armorPantsSprite?.setFrame(pantsFrame);
+      this.spriteGroups.middle.chest.setFrame(chestFrame);
+      this.spriteGroups.front.frontSleeve?.setFrame(sleeveFrame);
+      this.spriteGroups.back.backSleeve?.setFrame(sleeveFrame);
+      this.spriteGroups.middle.pants?.setFrame(pantsFrame);
     }
   }
 
@@ -233,10 +343,10 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
 
     // 手臂位置调整
     [
-      this.#frontArmSprite,
-      this.#backArmSprite,
-      this.#armorFrontSleeveSprite,
-      this.#armorBackSleeveSprite,
+      this.spriteGroups.front.frontArm,
+      this.spriteGroups.back.backArm,
+      this.spriteGroups.front.frontSleeve,
+      this.spriteGroups.back.backSleeve,
     ].forEach(sprite => {
       if (sprite) {
         sprite.x = armNudgeX;
@@ -246,32 +356,32 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
 
     // 头发和头部位置调整（使用相同的偏移值）
     const [hairNudgeX, hairNudgeY] = pose.hairNudge;
-    if (this.#hairSprite) {
-      this.#hairSprite.x = hairNudgeX;
-      this.#hairSprite.y = hairNudgeY;
+    if (this.spriteGroups.front.hair) {
+      this.spriteGroups.front.hair.x = hairNudgeX;
+      this.spriteGroups.front.hair.y = hairNudgeY;
     }
-    if (this.#headSprite) {
-      this.#headSprite.x = hairNudgeX;
-      this.#headSprite.y = hairNudgeY;
+    if (this.spriteGroups.front.head) {
+      this.spriteGroups.front.head.x = hairNudgeX;
+      this.spriteGroups.front.head.y = hairNudgeY;
     }
 
     // 胸甲位置调整
-    if (this.#armorChestSprite) {
+    if (this.spriteGroups.middle.chest) {
       const [chestNudgeX, chestNudgeY] = pose.chestNudge;
-      this.#armorChestSprite.x = chestNudgeX;
-      this.#armorChestSprite.y = chestNudgeY;
+      this.spriteGroups.middle.chest.x = chestNudgeX;
+      this.spriteGroups.middle.chest.y = chestNudgeY;
     }
   }
 
   public stopAnimation() {
     [
-      this.#bodySprite,
-      this.#frontArmSprite,
-      this.#backArmSprite,
-      this.#armorChestSprite,
-      this.#armorFrontSleeveSprite,
-      this.#armorBackSleeveSprite,
-      this.#armorPantsSprite,
+      this.spriteGroups.middle.body,
+      this.spriteGroups.front.frontArm,
+      this.spriteGroups.back.backArm,
+      this.spriteGroups.middle.chest,
+      this.spriteGroups.front.frontSleeve,
+      this.spriteGroups.back.backSleeve,
+      this.spriteGroups.middle.pants,
     ].forEach(sprite => {
       // 清理动画更新事件监听器
       sprite?.off('animationupdate');
@@ -293,7 +403,7 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
       return;
     }
     const frame = this.calculateFrameIndex([hairIndex, genderConfig.offsetY], SPRITE_SHEET.COLUMNS.ACCESSORIES);
-    this.#hairSprite?.setFrame(frame);
+    this.spriteGroups.front.hair?.setFrame(frame);
     this.#config.hairOption = hairIndex;
   }
 
@@ -301,63 +411,110 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
   public setHeadOption(headIndex: number) {
     // 使用第一行第二列的头部贴图
     const frame = 1; // 固定使用第二列（索引1）
-    this.#headSprite?.setFrame(frame);
+    this.spriteGroups.front.head?.setFrame(frame);
     this.#config.headOption = headIndex;
   }
 
-  public setArmor(armorName: string | null) {
-    // 清理现有装备
-    [
-      this.#armorChestSprite,
-      this.#armorFrontSleeveSprite,
-      this.#armorBackSleeveSprite,
-      this.#armorPantsSprite,
-    ].forEach(sprite => sprite?.destroy());
-    // DEBUG: console armorName
-    console.log(`setArmor armorName`, armorName);
+  private updateEquipment(shirtOption: string | null, pantsOption: string | null) {
+    // 清理现有装备精灵
+    this.clearArmorSprites();
 
-    this.#armorChestSprite = null;
-    this.#armorFrontSleeveSprite = null;
-    this.#armorBackSleeveSprite = null;
-    this.#armorPantsSprite = null;
-
-    if (armorName && armorData.names.includes(armorName)) {
-      this.createArmorSprites(armorName);
+    // 分别创建上衣和裤子的动画和精灵
+    if (shirtOption) {
+      this.createClothingAnimations(shirtOption, 'chest');
+      this.createShirtSprites(shirtOption);
     }
+    if (pantsOption) {
+      this.createClothingAnimations(pantsOption, 'pants');
+      this.createPantsSprites(pantsOption);
+    }
+
+    // 重新排序所有精灵以确保正确的层级
+    this.sortSpriteLayers();
   }
 
-  private createArmorSprites(armorName: string) {
+  private sortSpriteLayers() {
+    // 移除所有精灵
+    this.removeAll();
+
+    // 定义类型保护函数
+    const isSprite = (sprite: Phaser.GameObjects.Sprite | null): sprite is Phaser.GameObjects.Sprite => {
+      return sprite !== null;
+    };
+
+    // 按照正确的层级顺序重新添加
+    // 1. 背部层
+    this.add([
+      this.spriteGroups.back.backArm,
+      this.spriteGroups.back.backSleeve,
+    ].filter(isSprite));
+
+    // 2. 中间层
+    this.add([
+      this.spriteGroups.middle.body,
+      this.spriteGroups.middle.chest,
+      this.spriteGroups.middle.pants,
+    ].filter(isSprite));
+
+    // 3. 前部层
+    this.add([
+      this.spriteGroups.front.head,
+      this.spriteGroups.front.frontArm,
+      this.spriteGroups.front.frontSleeve,
+      this.spriteGroups.front.hair,
+    ].filter(isSprite));
+  }
+
+  private createShirtSprites(shirtName: string) {
     const genderSuffix = this.#gender === 'male' ? 'Male' : 'Female';
-    // DEBUG: console armorName
-    console.log(`createArmorSprites armorName`, armorName);
-    // 按照层级顺序创建装备精灵，并添加名字
-    this.#armorBackSleeveSprite = this.scene.make.sprite({
-      key: `${this.#species}/armor-${armorName}-backSleeve.png`,
-    });
-    this.#armorBackSleeveSprite.name = `character-armor-backSleeve-${armorName}`;
-    this.add(this.#armorBackSleeveSprite);
 
-    this.#armorPantsSprite = this.scene.make.sprite({
-      key: `${this.#species}/armor-${armorName}-pants${genderSuffix}.png`,
+    this.spriteGroups.back.backSleeve = this.scene.make.sprite({
+      key: `${this.#species}/armor-${shirtName}-backSleeve.png`,
     });
-    this.#armorPantsSprite.name = `character-armor-pants-${armorName}`;
-    this.add(this.#armorPantsSprite);
+    this.spriteGroups.middle.chest = this.scene.make.sprite({
+      key: `${this.#species}/armor-${shirtName}-chest${genderSuffix}.png`,
+    });
+    this.spriteGroups.front.frontSleeve = this.scene.make.sprite({
+      key: `${this.#species}/armor-${shirtName}-frontSleeve.png`,
+    });
 
-    this.#armorChestSprite = this.scene.make.sprite({
-      key: `${this.#species}/armor-${armorName}-chest${genderSuffix}.png`,
-    });
-    this.#armorChestSprite.name = `character-armor-chest-${armorName}`;
-    this.add(this.#armorChestSprite);
+    this.sortSpriteLayers();
+  }
 
-    this.#armorFrontSleeveSprite = this.scene.make.sprite({
-      key: `${this.#species}/armor-${armorName}-frontSleeve.png`,
+  private createPantsSprites(pantsName: string) {
+    const genderSuffix = this.#gender === 'male' ? 'Male' : 'Female';
+
+    this.spriteGroups.middle.pants = this.scene.make.sprite({
+      key: `${this.#species}/armor-${pantsName}-pants${genderSuffix}.png`,
     });
-    this.#armorFrontSleeveSprite.name = `character-armor-frontSleeve-${armorName}`;
-    this.add(this.#armorFrontSleeveSprite);
+
+    this.sortSpriteLayers();
+  }
+
+  private clearArmorSprites() {
+    // 清理装备精灵
+    this.spriteGroups.back.backSleeve?.destroy();
+    this.spriteGroups.middle.chest?.destroy();
+    this.spriteGroups.front.frontSleeve?.destroy();
+    this.spriteGroups.middle.pants?.destroy();
+
+    this.spriteGroups.back.backSleeve = null;
+    this.spriteGroups.middle.chest = null;
+    this.spriteGroups.front.frontSleeve = null;
+    this.spriteGroups.middle.pants = null;
   }
 
   public setAppearance(config: Partial<CharacterConfig>) {
+    // 更新基础配置
+    const oldConfig = this.#config;
     this.#config = { ...this.#config, ...config };
+
+    // 检查是否需要更新装备
+    if (oldConfig.shirtOption !== config.shirtOption || oldConfig.pantsOption !== config.pantsOption) {
+      this.updateEquipment(config.shirtOption ?? oldConfig.shirtOption, config.pantsOption ?? oldConfig.pantsOption);
+    }
+
+    // 更新其他外观
     this.setHairStyle(this.#config.hairOption);
     this.setHeadOption(this.#config.headOption);
   }
@@ -367,12 +524,11 @@ export class CharacterDisplay extends Phaser.GameObjects.Container {
   private getDefaultConfig(): CharacterConfig {
     return {
       skinColor: 0,
-      armor: 'workout',
       hairOption: 0,
       headOption: 0,
-      shirtOption: 0,
+      shirtOption: null,
       shirtColor: 0,
-      pantsOption: 0,
+      pantsOption: null,
       pantsColor: 0,
       helmetOption: 0,
       defaultIdleIndex: 1,

@@ -1,0 +1,523 @@
+{
+	"textures": [
+		{
+			"image": "texture",
+			"format": "RGBA8888",
+			"size": {
+				"w": 206,
+				"h": 106
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "wooddoor",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 240,
+						"h": 40
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 0,
+						"w": 206,
+						"h": 40
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 206,
+						"h": 40
+					}
+				},
+				{
+					"filename": "woodenbookcase",
+					"rotated": true,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 40
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 40
+					},
+					"frame": {
+						"x": 0,
+						"y": 40,
+						"w": 32,
+						"h": 40
+					}
+				},
+				{
+					"filename": "woodencabinet2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 32
+					},
+					"frame": {
+						"x": 40,
+						"y": 40,
+						"w": 32,
+						"h": 32
+					}
+				},
+				{
+					"filename": "woodenbed",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 8,
+						"w": 48,
+						"h": 16
+					},
+					"frame": {
+						"x": 72,
+						"y": 40,
+						"w": 48,
+						"h": 16
+					}
+				},
+				{
+					"filename": "woodenbed2",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 8,
+						"w": 48,
+						"h": 16
+					},
+					"frame": {
+						"x": 72,
+						"y": 56,
+						"w": 48,
+						"h": 16
+					}
+				},
+				{
+					"filename": "woodensink",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 24
+					},
+					"frame": {
+						"x": 120,
+						"y": 40,
+						"w": 32,
+						"h": 24
+					}
+				},
+				{
+					"filename": "woodenchest",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 48,
+						"h": 14
+					},
+					"frame": {
+						"x": 152,
+						"y": 40,
+						"w": 48,
+						"h": 14
+					}
+				},
+				{
+					"filename": "woodencouch1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 18
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 18
+					},
+					"frame": {
+						"x": 152,
+						"y": 54,
+						"w": 32,
+						"h": 18
+					}
+				},
+				{
+					"filename": "woodenceilingcabinet1",
+					"rotated": true,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 16
+					},
+					"frame": {
+						"x": 184,
+						"y": 54,
+						"w": 32,
+						"h": 16
+					}
+				},
+				{
+					"filename": "woodenceilingbookcase1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 16
+					},
+					"frame": {
+						"x": 120,
+						"y": 64,
+						"w": 32,
+						"h": 16
+					}
+				},
+				{
+					"filename": "woodencabinet1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 16
+					},
+					"frame": {
+						"x": 152,
+						"y": 72,
+						"w": 32,
+						"h": 16
+					}
+				},
+				{
+					"filename": "woodtable",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 16
+					},
+					"frame": {
+						"x": 0,
+						"y": 72,
+						"w": 32,
+						"h": 16
+					}
+				},
+				{
+					"filename": "woodencabinet3",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 16
+					},
+					"frame": {
+						"x": 32,
+						"y": 72,
+						"w": 32,
+						"h": 16
+					}
+				},
+				{
+					"filename": "woodenarmchair2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 28,
+						"h": 18
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 28,
+						"h": 18
+					},
+					"frame": {
+						"x": 64,
+						"y": 72,
+						"w": 28,
+						"h": 18
+					}
+				},
+				{
+					"filename": "woodenbedcover",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 5,
+						"w": 36,
+						"h": 13
+					},
+					"frame": {
+						"x": 0,
+						"y": 88,
+						"w": 36,
+						"h": 13
+					}
+				},
+				{
+					"filename": "woodenbed2cover",
+					"rotated": true,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 5,
+						"w": 34,
+						"h": 13
+					},
+					"frame": {
+						"x": 92,
+						"y": 72,
+						"w": 34,
+						"h": 13
+					}
+				},
+				{
+					"filename": "woodenarmchair1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 18
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 18
+					},
+					"frame": {
+						"x": 36,
+						"y": 88,
+						"w": 24,
+						"h": 18
+					}
+				},
+				{
+					"filename": "woodenceilingcabinet2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 60,
+						"y": 90,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "woodenchair",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 20
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 15,
+						"h": 20
+					},
+					"frame": {
+						"x": 184,
+						"y": 86,
+						"w": 15,
+						"h": 20
+					}
+				},
+				{
+					"filename": "woodchair",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 4,
+						"w": 13,
+						"h": 20
+					},
+					"frame": {
+						"x": 105,
+						"y": 72,
+						"w": 13,
+						"h": 20
+					}
+				},
+				{
+					"filename": "woodtoilet",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 1,
+						"w": 13,
+						"h": 15
+					},
+					"frame": {
+						"x": 118,
+						"y": 80,
+						"w": 13,
+						"h": 15
+					}
+				},
+				{
+					"filename": "woodenarmchair2cover",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 28,
+						"h": 18
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 5,
+						"w": 12,
+						"h": 13
+					},
+					"frame": {
+						"x": 105,
+						"y": 92,
+						"w": 12,
+						"h": 13
+					}
+				},
+				{
+					"filename": "woodencouch1cover",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 18
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 13,
+						"h": 11
+					},
+					"frame": {
+						"x": 131,
+						"y": 80,
+						"w": 13,
+						"h": 11
+					}
+				},
+				{
+					"filename": "woodenarmchair1cover",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 24,
+						"h": 18
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 13,
+						"h": 11
+					},
+					"frame": {
+						"x": 144,
+						"y": 88,
+						"w": 13,
+						"h": 11
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://free-tex-packer.com",
+		"version": "0.6.7"
+	}
+}

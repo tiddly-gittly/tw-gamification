@@ -12,4 +12,10 @@ export function preload(this: Phaser.Scene) {
       });
     }
   });
+
+  const furnitureImageBase64 = $tw.wiki.getTiddlerText('$:/plugins/linonetwo/project-babel-library/images/furniture/texture.png');
+  const furnitureTextureAtlas = $tw.wiki.getTiddlerText('$:/plugins/linonetwo/project-babel-library/images/furniture/texture.json');
+  if (furnitureImageBase64 && furnitureTextureAtlas) {
+    this.load.atlas('furniture', `data:image/png;base64,${furnitureImageBase64}`, JSON.parse(furnitureTextureAtlas));
+  }
 }

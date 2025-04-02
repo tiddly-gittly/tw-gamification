@@ -2,10 +2,10 @@
   "meta": {
     "version": "0.6.7"
   },
-  "savePath": "C:\\Users\\linonetwo\\Documents\\repo-c\\tw-gamification\\src\\project-babel-library\\images\\furniture\\generated-atlas",
+  "savePath": "C:\\Users\\linonetwo\\Documents\\repo-c\\tw-gamification\\src\\project-babel-library\\images\\objects\\generated-atlas",
   "images": [],
   "folders": [
-    "C:/Users/linonetwo/Documents/repo-c/tw-gamification/src/project-babel-library/images/furniture/raw"
+    "C:/Users/linonetwo/Documents/repo-c/tw-gamification/src/project-babel-library/images/objects/raw"
   ],
   "packOptions": {
     "textureName": "texture",
@@ -19,7 +19,7 @@
     "filter": "none",
     "exporter": "Phaser 3",
     "fileName": "pack-result",
-    "savePath": "C:\\Users\\linonetwo\\Documents\\repo-c\\tw-gamification\\src\\project-babel-library\\images\\furniture\\generated-atlas",
+    "savePath": "C:\\Users\\linonetwo\\Documents\\repo-c\\tw-gamification\\src\\project-babel-library\\images\\objects\\generated-atlas",
     "width": 2048,
     "height": 2048,
     "fixedSize": false,

@@ -36,6 +36,24 @@
           "source": "modified"
         }
       }
+    },
+    {
+      "path": "./furniture/definition",
+      "filesRegExp": "^texture\\..+$",
+      "isTiddlerFile": false,
+      "searchSubdirectories": false,
+      "fields": {
+        "title": {
+          "source": "filepath",
+          "prefix": "$:/plugins/linonetwo/project-babel-library/images/furniture/"
+        },
+        "created": {
+          "source": "created"
+        },
+        "modified": {
+          "source": "modified"
+        }
+      }
     }
   ]
 }

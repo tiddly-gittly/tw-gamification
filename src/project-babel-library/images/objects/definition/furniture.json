@@ -1,0 +1,227 @@
+[
+  {
+    "objectName" : "woodchair",
+    "colonyTags" : ["misc"],
+    "rarity" : "Common",
+    "description" : "A basic wooden chair.",
+    "shortdescription" : "Wooden Padded Chair",
+    "race" : "generic",
+    "category" : "furniture",
+    "price" : 75
+  },
+  {
+    "objectName" : "wooddoor",
+    "colonyTags" : ["door"],
+    "rarity" : "Common",
+  
+    "category" : "door",
+    "price" : 95,
+    "description" : "A manufactured paneled door.",
+    "shortdescription" : "Paneled Door",
+    "race" : "generic"
+  },
+  {
+    "objectName" : "woodenarmchair1",
+    "colonyTags" : ["avian","avianvillage"],
+    "rarity" : "Common",
+    "description" : "A comfy wooden armchair.",
+    "shortdescription" : "Wooden Armchair",
+    "race" : "generic",
+    "category" : "furniture",
+    "price" : 85
+  },
+  {
+    "objectName" : "woodenarmchair2",
+    "colonyTags" : ["misc"],
+    "rarity" : "Common",
+    "description" : "A luxurious armchair.",
+    "shortdescription" : "Soft Armchair",
+    "race" : "generic",
+    "category" : "furniture",
+    "price" : 85
+  },
+  {
+    "objectName" : "woodenbed",
+    "colonyTags" : ["misc"],
+    "printable" : false,
+    "rarity" : "Common",
+    "description" : "A comfy wooden bed.",
+    "shortdescription" : "Wooden Bed",
+    "race" : "generic",
+    "category" : "furniture",
+    "price" : 45
+  },
+  {
+    "objectName" : "woodenbed2",
+    "colonyTags" : ["misc"],
+    "rarity" : "Common",
+    "description" : "A comfy wooden bed with a headboard.",
+    "shortdescription" : "Wooden Bed",
+    "race" : "generic",
+    "category" : "furniture",
+    "price" : 75
+  },
+  {
+    "objectName" : "woodenbookcase",
+    "colonyTags" : ["knowledge","storage"],
+    "rarity" : "Common",
+    "objectType" : "container",
+    "tooltipKind" : "container",
+    "category" : "storage",
+    "description" : "A tall wooden bookcase full of books.",
+    "shortdescription" : "Wooden Bookcase",
+    "race" : "generic",
+    "price" : 160,
+    "health" : 1.5
+  },
+  {
+    "objectName" : "woodencabinet1",
+    "colonyTags" : ["storage"],
+    "rarity" : "Common",
+    "objectType" : "container",
+    "tooltipKind" : "container",
+    "description" : "A sturdy wooden cabinet.",
+    "shortdescription" : "Double Wooden Cabinet",
+    "race" : "generic",
+    "category" : "storage",
+    "price" : 110,
+    "health" : 1.5
+  },
+  {
+    "objectName" : "woodencabinet2",
+    "colonyTags" : ["storage"],
+    "rarity" : "Common",
+    "objectType" : "container",
+    "tooltipKind" : "container",
+    "description" : "A sturdy wooden cabinet.",
+    "shortdescription" : "Tall Wooden Cabinet",
+    "race" : "generic",
+    "category" : "storage",
+    "price" : 160,
+    "health" : 1.5
+  },
+  {
+    "objectName" : "woodencabinet3",
+    "colonyTags" : ["storage"],
+    "rarity" : "Common",
+    "objectType" : "container",
+    "tooltipKind" : "container",
+    "description" : "A sturdy wooden cabinet.",
+    "shortdescription" : "Wide Wooden Cabinet",
+    "race" : "generic",
+    "category" : "storage",
+    "price" : 110,
+    "health" : 1.5
+  },
+  {
+    "objectName" : "woodenceilingbookcase1",
+    "colonyTags" : ["knowledge","storage"],
+    "rarity" : "Common",
+    "objectType" : "container",
+    "tooltipKind" : "container",
+    "category" : "storage",
+    "description" : "A sturdy suspended bookshelf.",
+    "shortdescription" : "Wall Bookshelf",
+    "race" : "generic",
+    "price" : 75,
+    "health" : 1.5
+  },
+  {
+    "objectName" : "woodenceilingcabinet1",
+    "colonyTags" : ["storage"],
+    "rarity" : "Common",
+    "objectType" : "container",
+    "tooltipKind" : "container",
+    "category" : "storage",
+    "price" : 85,
+  
+    "description" : "A sturdy suspended cabinet.",
+    "shortdescription" : "Double Wall Cabinet",
+    "race" : "generic",
+    "health" : 1.5
+  },
+  {
+    "objectName" : "woodenceilingcabinet2",
+    "colonyTags" : ["storage"],
+    "rarity" : "Common",
+    "objectType" : "container",
+    "tooltipKind" : "container",
+    "category" : "storage",
+    "price" : 65,
+  
+    "description" : "A sturdy suspended cabinet.",
+    "shortdescription" : "Single Wall Cabinet",
+    "race" : "generic",
+    "health" : 1.5
+  },
+  {
+    "objectName" : "woodenchair",
+    "colonyTags" : ["misc"],
+    "printable" : false,
+    "rarity" : "Common",
+    "description" : "An uncomfortable-looking wooden chair.",
+    "shortdescription" : "Wooden Chair",
+    "race" : "generic",
+    "category" : "furniture",
+    "price" : 10
+  },
+  {
+    "objectName" : "woodenchest",
+    "colonyTags" : ["storage"],
+    "rarity" : "Common",
+    "objectType" : "container",
+    "tooltipKind" : "container",
+  
+    "category" : "storage",
+    "price" : 70,
+    "description" : "A basic wooden chest.",
+    "shortdescription" : "Wooden Chest",
+    "race" : "generic",
+    "health" : 1.5
+  },
+  {
+    "objectName" : "woodencouch1",
+    "colonyTags" : ["avian","avianvillage"],
+    "rarity" : "Common",
+    "description" : "A comfy wooden couch, the stripes help it go faster.",
+    "shortdescription" : "Wooden Couch",
+    "race" : "generic",
+    "category" : "furniture",
+    "price" : 125
+  },
+  {
+    "objectName" : "woodensink",
+    "colonyTags" : ["storage"],
+    "rarity" : "Common",
+    "objectType" : "container",
+    "tooltipKind" : "container",
+    "category" : "decorative",
+    "price" : 85,
+  
+    "description" : "A wooden cabinet with a sink installed.",
+    "shortdescription" : "Wooden Sink",
+    "race" : "generic",
+    "health" : 1.5
+  },
+  {
+    "objectName" : "woodtable",
+    "colonyTags" : ["commerce"],
+    "printable" : false,
+    "rarity" : "Common",
+    "description" : "A basic wooden table.",
+    "shortdescription" : "Wooden Table",
+    "race" : "generic",
+    "category" : "furniture",
+    "price" : 15
+  },
+  {
+    "objectName" : "woodtoilet",
+    "colonyTags" : ["misc"],
+    "rarity" : "Common",
+    "description" : "A wooden toilet. ",
+    "shortdescription" : "Wooden Toilet",
+    "race" : "generic",
+    "category" : "furniture",
+    "price" : 35
+  }
+]

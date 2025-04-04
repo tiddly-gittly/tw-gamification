@@ -1,3 +1,5 @@
+import { Definitions } from './types/GameData';
+
 export function preload(this: Phaser.Scene) {
   const characterImagesFolder = '$:/plugins/linonetwo/project-babel-library/images/characters/';
   const characterImageTiddlerTitles = $tw.wiki.filterTiddlers(`[all[shadows]prefix[${characterImagesFolder}]]`);
@@ -13,9 +15,14 @@ export function preload(this: Phaser.Scene) {
     }
   });
 
-  const furnitureImageBase64 = $tw.wiki.getTiddlerText('$:/plugins/linonetwo/project-babel-library/images/furniture/texture.png');
-  const furnitureTextureAtlas = $tw.wiki.getTiddlerText('$:/plugins/linonetwo/project-babel-library/images/furniture/texture.json');
-  if (furnitureImageBase64 && furnitureTextureAtlas) {
-    this.load.atlas('furniture', `data:image/png;base64,${furnitureImageBase64}`, JSON.parse(furnitureTextureAtlas));
+  const objectsImageBase64 = $tw.wiki.getTiddlerText('$:/plugins/linonetwo/project-babel-library/images/objects/texture.png');
+  const objectsTextureAtlas = $tw.wiki.getTiddlerText('$:/plugins/linonetwo/project-babel-library/images/objects/texture.json');
+  if (objectsImageBase64 && objectsTextureAtlas) {
+    this.load.atlas('objects', `data:image/png;base64,${objectsImageBase64}`, JSON.parse(objectsTextureAtlas) as object);
   }
+  const furnitureDefinitions = $tw.wiki.getTiddlerData('$:/plugins/linonetwo/project-babel-library/definition/objects/furniture.json');
+  // 使用 DataManager 存储数据
+  this.registry.set('definitions', {
+    furniture: furnitureDefinitions,
+  } as Definitions);
 }

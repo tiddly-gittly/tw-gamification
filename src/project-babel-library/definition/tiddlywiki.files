@@ -1,0 +1,23 @@
+{
+  "directories": [
+    {
+      "path": "./",
+      "filesRegExp": "^.+\\.json$",
+      "isTiddlerFile": false,
+      "searchSubdirectories": true,
+      "fields": {
+        "title": {
+          "source": "filepath",
+          "prefix": "$:/plugins/linonetwo/project-babel-library/definition/"
+        },
+        "created": {
+          "source": "created"
+        },
+        "modified": {
+          "source": "modified"
+        },
+        "type": "application/json"
+      }
+    }
+  ]
+}

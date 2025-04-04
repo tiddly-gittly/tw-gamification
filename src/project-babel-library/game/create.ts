@@ -1,8 +1,13 @@
 import { CharacterDisplay } from './classes/CharacterDisplay';
+import { FurnitureManager } from './classes/FurnitureManager';
 import { AnimationType, characterData } from './config/characterConfig';
 
 export function create(this: Phaser.Scene) {
-  this.cameras.main.setBackgroundColor('#ffffff');
+  const isDarkMode = $tw.wiki.getTiddler($tw.wiki.getTiddlerText('$:/palette') ?? '')?.fields?.['color-scheme'] === 'dark';
+  if (!isDarkMode) {
+    // 如果不是深色模式，设置背景颜色为白色
+    this.cameras.main.setBackgroundColor('#ffffff');
+  }
 
   const character = new CharacterDisplay({
     scene: this,
@@ -21,6 +26,21 @@ export function create(this: Phaser.Scene) {
       helmetOption: 0,
       defaultIdleIndex: 2,
     },
+  });
+
+  const furnitureManager = new FurnitureManager(this);
+  // 添加鼠标点击处理
+  this.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
+    if (pointer.rightButtonDown()) {
+      // 右键点击删除家具
+      const furniture = furnitureManager.getFurnitureAt(pointer.x, pointer.y);
+      if (furniture) {
+        furnitureManager.removeFurniture(furniture);
+      }
+    } else {
+      // 左键点击放置家具（这里以放置木椅为例）
+      furnitureManager.placeFurniture('woodchair', pointer.x, pointer.y);
+    }
   });
 
   // 创建按键控制

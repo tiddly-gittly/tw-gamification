@@ -1,0 +1,153 @@
+{
+  "woodchair": {
+    "colonyTags": ["misc"],
+    "rarity": "Common",
+    "description": "A basic wooden chair.",
+    "shortdescription": "Wooden Padded Chair",
+    "category": "furniture"
+  },
+  "wooddoor": {
+    "colonyTags": ["door"],
+    "rarity": "Common",
+    "category": "door",
+    "description": "A manufactured paneled door.",
+    "shortdescription": "Paneled Door"
+  },
+  "woodenarmchair1": {
+    "colonyTags": ["chair"],
+    "rarity": "Common",
+    "description": "A comfy wooden armchair.",
+    "shortdescription": "Wooden Armchair",
+    "category": "furniture"
+  },
+  "woodenarmchair2": {
+    "colonyTags": ["chair"],
+    "rarity": "Common",
+    "description": "A luxurious armchair.",
+    "shortdescription": "Soft Armchair",
+    "category": "furniture"
+  },
+  "woodenbed": {
+    "colonyTags": ["bed"],
+    "rarity": "Common",
+    "description": "A comfy wooden bed.",
+    "shortdescription": "Wooden Bed",
+    "category": "furniture"
+  },
+  "woodenbed2": {
+    "colonyTags": ["bed"],
+    "rarity": "Common",
+    "description": "A comfy wooden bed with a headboard.",
+    "shortdescription": "Wooden Bed",
+    "category": "furniture"
+  },
+  "woodenbookcase": {
+    "colonyTags": ["knowledge","storage"],
+    "rarity": "Common",
+    "objectType": "container",
+    "tooltipKind": "container",
+    "category": "storage",
+    "description": "A tall wooden bookcase full of books.",
+    "shortdescription": "Wooden Bookcase"
+  },
+  "woodencabinet1": {
+    "colonyTags": ["storage"],
+    "rarity": "Common",
+    "objectType": "container",
+    "tooltipKind": "container",
+    "description": "A sturdy wooden cabinet.",
+    "shortdescription": "Double Wooden Cabinet",
+    "category": "storage"
+  },
+  "woodencabinet2": {
+    "colonyTags": ["storage"],
+    "rarity": "Common",
+    "objectType": "container",
+    "tooltipKind": "container",
+    "description": "A sturdy wooden cabinet.",
+    "shortdescription": "Tall Wooden Cabinet",
+    "category": "storage"
+  },
+  "woodencabinet3": {
+    "colonyTags": ["storage"],
+    "rarity": "Common",
+    "objectType": "container",
+    "tooltipKind": "container",
+    "description": "A sturdy wooden cabinet.",
+    "shortdescription": "Wide Wooden Cabinet",
+    "category": "storage"
+  },
+  "woodenceilingbookcase1": {
+    "colonyTags": ["knowledge","storage"],
+    "rarity": "Common",
+    "objectType": "container",
+    "tooltipKind": "container",
+    "category": "storage",
+    "description": "A sturdy suspended bookshelf.",
+    "shortdescription": "Wall Bookshelf"
+  },
+  "woodenceilingcabinet1": {
+    "colonyTags": ["storage"],
+    "rarity": "Common",
+    "objectType": "container",
+    "tooltipKind": "container",
+    "category": "storage",
+    "description": "A sturdy suspended cabinet.",
+    "shortdescription": "Double Wall Cabinet"
+  },
+  "woodenceilingcabinet2": {
+    "colonyTags": ["storage"],
+    "rarity": "Common",
+    "objectType": "container",
+    "tooltipKind": "container",
+    "category": "storage",
+    "description": "A sturdy suspended cabinet.",
+    "shortdescription": "Single Wall Cabinet"
+  },
+  "woodenchair": {
+    "colonyTags": ["chair"],
+    "rarity": "Common",
+    "description": "An uncomfortable-looking wooden chair.",
+    "shortdescription": "Wooden Chair",
+    "category": "furniture"
+  },
+  "woodenchest": {
+    "colonyTags": ["storage"],
+    "rarity": "Common",
+    "objectType": "container",
+    "tooltipKind": "container",
+    "category": "storage",
+    "description": "A basic wooden chest.",
+    "shortdescription": "Wooden Chest"
+  },
+  "woodencouch1": {
+    "colonyTags": ["chair"],
+    "rarity": "Common",
+    "description": "A comfy wooden couch, the stripes help it go faster.",
+    "shortdescription": "Wooden Couch",
+    "category": "furniture"
+  },
+  "woodensink": {
+    "colonyTags": ["storage"],
+    "rarity": "Common",
+    "objectType": "container",
+    "tooltipKind": "container",
+    "category": "decorative",
+    "description": "A wooden cabinet with a sink installed.",
+    "shortdescription": "Wooden Sink"
+  },
+  "woodtable": {
+    "colonyTags": ["commerce"],
+    "rarity": "Common",
+    "description": "A basic wooden table.",
+    "shortdescription": "Wooden Table",
+    "category": "furniture"
+  },
+  "woodtoilet": {
+    "colonyTags": ["excrete"],
+    "rarity": "Common",
+    "description": "A wooden toilet. ",
+    "shortdescription": "Wooden Toilet",
+    "category": "furniture"
+  }
+}

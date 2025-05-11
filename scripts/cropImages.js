@@ -4,7 +4,7 @@ const path = require('path');
 
 // 获取项目根目录
 const rootDir = path.join(__dirname, '..');
-const inputDir = path.join(rootDir, 'src', 'project-babel-library', 'images', 'furniture', 'raw', 'variants');
+const inputDir = path.join(rootDir, 'src', 'project-babel-library', 'images', 'objects', 'raw', 'variants');
 const outputDir = path.join(inputDir, 'cropped');
 
 async function processImage(filePath) {

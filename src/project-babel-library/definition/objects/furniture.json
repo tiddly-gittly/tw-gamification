@@ -6,6 +6,20 @@
     "shortdescription": "Wooden Padded Chair",
     "category": "furniture"
   },
+  "woodsupport": {
+    "colonyTags": ["misc"],
+    "rarity": "Common",
+    "description": "A basic wooden support.",
+    "shortdescription": "Wooden Support",
+    "category": "furniture"
+  },
+  "woodbar": {
+    "colonyTags": ["commerce"],
+    "rarity": "Common",
+    "description": "A basic wooden bar.",
+    "shortdescription": "Wooden Bar",
+    "category": "furniture"
+  },
   "wooddoor": {
     "colonyTags": ["door"],
     "rarity": "Common",

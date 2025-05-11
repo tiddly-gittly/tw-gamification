@@ -39,7 +39,7 @@ export function create(this: Phaser.Scene) {
       }
     } else {
       // 左键点击放置家具（这里以放置木椅为例）
-      furnitureManager.placeFurniture('woodchair', pointer.x, pointer.y);
+      furnitureManager.placeFurniture('woodbar', pointer.x, pointer.y);
     }
   });
 

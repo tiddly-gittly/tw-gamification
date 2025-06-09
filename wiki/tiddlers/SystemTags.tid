@@ -5,7 +5,7 @@ tags: Index
 
 <$list filter="[all[shadows+tiddlers]tag[$:/Tags/Gamification/Tags]]">
 
-!!! <$macrocall $name="tag" tag={{!!title}} />
+!!! <$macrocall $name="tag" tag={{!!text}} /> <small>(<$link to={{!!title}}>{{!!title}}</$link>)</small>
 
 {{!!caption}}
 

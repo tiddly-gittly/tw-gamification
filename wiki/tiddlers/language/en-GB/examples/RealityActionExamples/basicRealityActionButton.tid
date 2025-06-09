@@ -1,0 +1,21 @@
+title: language/en-GB/examples/basicRealityActionButton
+
+<$button style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; padding: 12px 24px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); margin: 5px;">
+  <$action-sendmessage
+    $message="tm-reality-action-event"
+    $param="$:/plugins/linonetwo/early-sleep-early-work/events/actions/early-sleep"
+  />
+  🌙 Early Sleep Check-in
+</$button>
+
+<$button style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; padding: 12px 24px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); margin: 5px;">
+  <$action-sendmessage
+    $message="tm-reality-action-event"
+    reality-event-type="SmallReward"
+    reality-event-amount="2"
+    reality-event-message="Congratulations on completing reading! You gained knowledge points"
+    caption="Complete Reading"
+    title="reading-session"
+  />
+  📚 Complete Reading
+</$button>

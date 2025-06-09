@@ -2,11 +2,63 @@ title: language/zh-Hans/RealityAction
 
 ! 现实动作标签使用指南
 
+[[现实动作按钮示例|RealityActionExamples]]
+
 !! 什么是现实动作？
 
 现实动作是游戏化框架中的核心概念，它将你在现实世界中有意义的行为转换为游戏内的奖励事件。通过给条目添加 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> 标签，你可以创建打卡按钮，点击按钮就相当于完成了一次现实世界的有益行动。
 
 这个标签可以在设置里调整，不过一般默认为 `$:/Tags/Gamification/RealityAction`。
+
+!! 触发现实动作的两种方式
+
+!!! 方式一：使用预定义的动作条目（推荐）
+
+这是传统的方式，适合重复性的日常习惯：
+
+```
+<$button>
+  <$action-sendmessage
+    $message="tm-reality-action-event"
+    $param="动作条目标题"
+  />
+  按钮文字
+</$button>
+```
+
+「动作条目标题」是你创建的条目标题，必须带有 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> 标签，且包含所有必要的字段。
+
+!!! 方式二：直接传递动作参数（适合一次性活动）
+
+这种方式无需创建专门的条目，适合临时活动或一次性事件。''必须提供所有必填字段：''
+
+```
+<$button>
+  <$action-sendmessage
+    $message="tm-reality-action-event"
+    reality-event-type="SmallReward"
+    reality-event-amount="3"
+    reality-event-message="完成了特殊任务！"
+    title="unique-action-id"
+  />
+  参加特殊活动
+</$button>
+```
+
+!!! 参数覆盖
+
+如果同时提供 `$param` 和其他参数，其他参数会覆盖条目中的对应字段：
+
+```
+<$button>
+  <$action-sendmessage
+    $message="tm-reality-action-event"
+    $param="基础动作条目"
+    reality-event-amount="10"
+  />
+  获得双倍奖励的特殊版本
+</$button>
+```
 
 !! 如何创建现实动作？
 
@@ -22,6 +74,8 @@ title: language/zh-Hans/RealityAction
 |`reality-event-type` |事件类型，决定奖励大小 |`SmallReward`、`LargeReward`、`SmallPunishment`、`LargePunishment` |
 |`reality-event-amount` |奖励数量 |`1`、`0.2`、`5` 等数字 |
 |`caption` |按钮显示的文字 |`早睡打卡`、`晨练完成` |
+
+''注意：'' 对于方式二（直接传递参数），这些字段都必须在消息微件中提供。对于方式一（预定义条目），这些字段必须在条目中定义，也可以在消息微件中覆盖。
 
 !!! 可选字段
 

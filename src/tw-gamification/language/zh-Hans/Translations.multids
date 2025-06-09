@@ -33,8 +33,8 @@ RealityEventLog/Caption: 现实事件记录
 RealityEventLog/Description: 记录事件生成器上发生过的事件的时间，用于生成可视化图表等。类型为 `application/x-tiddler-dictionary`。
 RealityEventLog/DocsLink: 详见[[框架文档|https://tiddly-gittly.github.io/tw-gamification/#RealityEvents]]上的[[开发文档|RealityEvents]]。
 RealityAction/Caption: 现实动作
-RealityAction/Description: 描述了现实世界中有意义的行动，一般被展示为按钮，点击按钮就表示用户打卡了一次，这样就会记录相应的现实事件。
-RealityAction/DocsLink: 详见[[框架文档|https://tiddly-gittly.github.io/tw-gamification/#RealityAction]]上的[[开发文档|RealityAction]]。
+RealityAction/Description: 描述了现实世界中有意义的行动，一般被展示为按钮，点击按钮就表示用户打卡了一次，这样就会记录相应的现实事件。支持两种使用方式：1）创建带有此标签的条目作为预定义动作；2）直接在消息微件中传递动作参数，适合一次性活动。
+RealityAction/DocsLink: 详见[[框架文档|https://tiddly-gittly.github.io/tw-gamification/#RealityAction]]上的[[开发文档|RealityAction]]。同时可以参考[[现实动作按钮示例|RealityActionExamples]]。
 RealityAction/OnCoolDown: 触发失败，行动尚在冷却。
 ChangeFilter/Caption: 知识库变更筛选器
 ChangeFilter/Description: 自动将知识库内的变化转换为现实事件，自动打卡。

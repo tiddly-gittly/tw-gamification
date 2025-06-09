@@ -12,10 +12,15 @@ GoToGameLayoutButton/Description: Enter Game Layout
 Configs/DefaultGame/Description: Default Game
 Configs/Events/Caption: Events Configs
 Configs/EventGenerators/Caption: Event Generators
-ConfigDescription/EnableDefaultEventGenerator/Description: The event generator will convert some wiki actions into events for game to use. The installed event generators will be listed here and you can enable and disable them with checkboxes. Be aware that too many event generators can make the wiki editing lag, you can disable some of the lesser used event generators and instead use the clock in button to trigger bonus events.
+Configs/EventGenerators/Description: The event generator will convert some wiki actions into events for game to use. The installed event generators will be listed here and you can enable and disable them with checkboxes. Be aware that too many event generators can make the wiki editing lag, you can disable some of the lesser used event generators and instead use the check-in button to trigger bonus events.
 Configs/EventActions/Caption: Event Actions
-Configs/EventActions/Description: Event actions are also known as clock in buttons, and they actually define the functionality of the clock in button. Since events are generally only triggered when the button is clicked, event actions here don't cause problems such as lagging, more is better.
-Exchangeable/Caption: Exchangeable resources
+Configs/EventActions/Description: Event actions are also known as check-in buttons, and they actually define the functionality of the check-in button. Since events are generally only triggered when the button is clicked, event actions here don't cause problems such as lagging, more is better.
+EventType/SmallReward/Caption: Small Reward
+EventType/LargeReward/Caption: Large Reward
+EventType/SmallPunishment/Caption: Small Punishment
+EventType/LargePunishment/Caption: Large Punishment
+EventType/Item/Caption: Item
+Exchangeable/Caption: Exchangeable Resources
 Exchangeable/Description: Resources that can be exchanged across planes, according to the exchange ratio filled in by the developer, they can be exchanged in different game sub-plugins.
 Exchangeable/DocsLink: See the [[Dev Docs|ExchangeableResources]] on [[framework doc site|https://tiddly-gittly.github.io/tw-gamification/#ExchangeableResources]] for details.
 RealityEventType/Caption: Reality Event Type
@@ -28,9 +33,9 @@ RealityEventLog/Caption: Reality Event Log
 RealityEventLog/Description: Records the time of events that have occurred on the event generator for use in visualization, etc. Type is `application/x-tiddler-dictionary`.
 RealityEventLog/DocsLink: See [[Dev Docs|RealityEvents]] on [[framework doc site|https://tiddly-gittly.github.io/tw-gamification/#RealityEvents]] for details.
 RealityAction/Caption: Reality Action
-RealityAction/Description: describes a real-world meaningful action, typically displayed as a button, where clicking the button indicates that the user has clocked in once, so that the corresponding reality event will be recorded.
-RealityAction/DocsLink: See [[Dev Docs|RealityAction]] on [[framework doc site|https://tiddly-gittly.github.io/tw-gamification/#RealityAction]] for details.
-RealityAction/OnCoolDown: Failed to trigger, Action On Cool Down.
+RealityAction/Description: Describes meaningful actions in the real world, generally displayed as buttons. Clicking the button indicates that the user has checked in once, which will record the corresponding reality event. Supports two usage methods: 1) Create tiddlers with this tag as predefined actions; 2) Directly pass action parameters in message widgets, suitable for one-time activities.
+RealityAction/DocsLink: See [[development documentation|RealityAction]] on the [[framework documentation|https://tiddly-gittly.github.io/tw-gamification/#RealityAction]]. Also refer to [[Reality Action Button Examples|RealityActionExamples]].
+RealityAction/OnCoolDown: Trigger failed, action is still on cooldown.
 ChangeFilter/Caption: Wiki Change Filter
-ChangeFilter/Description: Automatically converts changes within the wiki to reality events, automatically clocking in.
+ChangeFilter/Description: Automatically convert changes in the wiki into reality events, automatic check-in.
 ChangeFilter/DocsLink: See [[Dev Docs|GameWikiAdaptor]] on [[framework doc site|https://tiddly-gittly.github.io/tw-gamification/#GameWikiAdaptor]] for details.

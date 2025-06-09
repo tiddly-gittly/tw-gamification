@@ -5,5 +5,17 @@ title: language/zh-Hans/examples/generateEventsByAction
     $message="tm-reality-action-event"
     $param="$:/plugins/linonetwo/early-sleep-early-work/events/actions/early-sleep"
   />
-  破铜烂铁，点击就送
+  早睡打卡（使用预定义条目）
+</$button>
+
+<$button>
+  <$action-sendmessage
+    $message="tm-reality-action-event"
+    reality-event-type="SmallReward"
+    reality-event-amount="3"
+    reality-event-message="恭喜完成番茄工作法！专注工作25分钟并休息5分钟"
+    caption="使用番茄工作法工作和休息一次"
+    title="pomodoro-one-time-action"
+  />
+  🍅 使用番茄工作法工作和休息一次（直接传递动作参数（一次性活动））
 </$button>

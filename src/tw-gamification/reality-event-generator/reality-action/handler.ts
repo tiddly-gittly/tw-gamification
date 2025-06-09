@@ -1,10 +1,7 @@
-/* eslint-disable array-callback-return */
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { buildRealityEventCacheItem } from '../../reality-event-cache/buildRealityEventCacheItem';
 import { IAddRealityEventParameterObject, IAddRealityEventParameterObjectFromJSEventItem } from '../../types/RealityEventCacheTypes';
 import { IActionDefinitions, IActionExtraParameterObject } from './types';
 
-// eslint-disable-next-line no-var
 declare var exports: {
   after: string[];
   name: string;
@@ -33,19 +30,56 @@ exports.startup = function twGamificationActionStartupModule() {
 
   $tw.rootWidget.addEventListener('tm-reality-action-event', function onRealityEventAction(event) {
     const actionDefinitionTiddlerTitle = event.param;
-    if (!actionDefinitionTiddlerTitle) return false;
-    const originalGeneratorDefinition = $tw.wiki.getTiddler(actionDefinitionTiddlerTitle)?.fields;
-    if (!originalGeneratorDefinition) return false;
-    // check the definition is a valid action definition
-    if (!originalGeneratorDefinition.tags?.includes?.(tagForGenerators) || !originalGeneratorDefinition['reality-event-type']) return false;
-    // allow override the definition on action widget
-    const parameterObject = event.paramObject as unknown as (IActionDefinitions & IActionExtraParameterObject) | undefined;
-    if (parameterObject === undefined) {
-      console.error('tm-reality-action-event No parameter object found for the action widget.', event);
-      throw new Error('tm-reality-action-event No parameter object found for the action widget.');
+    const parameterObject = event.paramObject as unknown as Partial<IActionDefinitions & IActionExtraParameterObject> | undefined;
+
+    let eventGenerator: IActionDefinitions;
+    let fromTiddlerTitle: string | undefined;
+
+    if (actionDefinitionTiddlerTitle) {
+      // Traditional mode: use the tiddler pointed by $param as the base definition
+      const originalGeneratorDefinition = $tw.wiki.getTiddler(actionDefinitionTiddlerTitle)?.fields;
+      if (!originalGeneratorDefinition) return false;
+
+      // Check required fields for predefined action
+      if (
+        !originalGeneratorDefinition.tags?.includes(tagForGenerators) ||
+        !originalGeneratorDefinition['reality-event-type'] ||
+        !originalGeneratorDefinition['caption']
+      ) {
+        console.error('tm-reality-action-event Invalid action definition tiddler. Missing required fields: tags, reality-event-type, or caption.', actionDefinitionTiddlerTitle);
+        return false;
+      }
+
+      if (parameterObject === undefined) {
+        console.error('tm-reality-action-event No parameter object found for the action widget.', event);
+        throw new Error('tm-reality-action-event No parameter object found for the action widget.');
+      }
+
+      // Merge and validate required fields
+      const mergedDefinition = { ...originalGeneratorDefinition, ...parameterObject };
+      if (!mergedDefinition['reality-event-type'] || !mergedDefinition['caption']) {
+        console.error('tm-reality-action-event Missing required fields after merging parameters.', mergedDefinition);
+        return false;
+      }
+
+      eventGenerator = mergedDefinition as IActionDefinitions;
+      fromTiddlerTitle = parameterObject.from ?? event.tiddlerTitle;
+    } else {
+      // New mode: use the parameter object directly as the event definition
+      if (
+        !parameterObject ||
+        !parameterObject['reality-event-type'] ||
+        !parameterObject['caption']
+      ) {
+        console.error('tm-reality-action-event No valid event definition found. Missing required fields: reality-event-type or caption.', parameterObject);
+        return false;
+      }
+
+      eventGenerator = parameterObject as IActionDefinitions;
+      fromTiddlerTitle = parameterObject.from ?? event.tiddlerTitle;
     }
-    const eventGenerator: IActionDefinitions = { ...originalGeneratorDefinition, ...parameterObject };
-    eventsToSend.push(buildRealityEventCacheItem(eventGenerator, parameterObject.from ?? event.tiddlerTitle));
+
+    eventsToSend.push(buildRealityEventCacheItem(eventGenerator, fromTiddlerTitle));
     // debounce the sending of events
     setTimeout(dispatchAddRealityEventBatch, 1);
     return false;

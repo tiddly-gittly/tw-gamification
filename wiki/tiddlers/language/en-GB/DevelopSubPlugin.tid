@@ -2,7 +2,7 @@ title: language/en-GB/DevelopSubPlugin
 
 \import [[language/en-GB/examples/show-example]]
 
-! Developing sub-plugins
+! Developing Sub-plugins
 
 !! Event Package
 
@@ -14,61 +14,71 @@ Tiddlers with the <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamif
 
 Some games will use the information from these tiddlers to generate a list of buttons. When the button is clicked, the corresponding action widget will be triggered. See the `IActionDefinitions` type in this repository for specific fields.
 
-After it's created, you can trigger it via the Message Widget. Note the change in [[event cache (cache-file/desktop)|$:/plugins/linonetwo/tw-gamification/reality-event-cache/cache-files/desktop]].
+After creating them, you can trigger them via the message widget. Note the changes in [[event cache (cache-file/desktop)|$:/plugins/linonetwo/tw-gamification/reality-event-cache/cache-files/desktop]].
 
 <<show-example generateEventsByAction>>
 
-The [[$:/plugins/linonetwo/early-sleep-early-work/events/actions/early-sleep]] tiddler above is tagged with <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> and has a series of parameters related to rewards. See the introduction to this tag in [[SystemTags]].
+The example above demonstrates two ways to trigger reality actions:
 
-!!! Change Filter
+# ''Using Predefined Tiddlers'': The [[$:/plugins/linonetwo/early-sleep-early-work/events/actions/early-sleep]] tiddler has the <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> tag and reward parameters
+# ''Direct Parameter Passing'': Suitable for one-time activities, no need to create dedicated tiddlers, directly define all necessary parameters in the button
+
+This flexibility allows you to choose the appropriate method based on your needs:
+
+* Repetitive daily habits are recommended to use predefined tiddlers
+* Temporary activities, special events, or testing purposes can directly pass parameters
+
+See the introduction to reality action tags in [[SystemTags]] and the [[Reality Action Usage Guide|RealityAction]]. Check the changes in [[event cache (desktop)|$:/plugins/linonetwo/tw-gamification/reality-event-cache/cache-files/desktop]] to confirm that events have been correctly recorded.
+
+!!! Change Filter (Advanced Usage)
 
 Tiddlers with the <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/change-filter-meta-tag}} /> tag are recognized as "Change Filter Event Generators".
 
-Whenever a change is made to the knowledge base, the `reality-event-trigger-filter` field on the entry is used as a filter to determine if the tiddler where the change occurred matches the conditions. If the conditions are met, an event is generated. See the `IFilterEventGeneratorDefinitions` type in this repository for specific fields.
+Whenever a change is made to the knowledge base, the `reality-event-trigger-filter` field on the tiddler is used as a filter to determine if the tiddler where the change occurred matches the conditions. If the conditions are met, an event is generated. See the `IFilterEventGeneratorDefinitions` type in this repository for specific fields.
 
-!! Simple game in plain wikitext
+!! Simple Games in Plain Wikitext
 
 Refer to the [[$:/plugins/linonetwo/ego-store-lite]] plugin to create simple games in plain text or the [[$:/plugins/linonetwo/scp-foundation-site-director]] plugin to create small to medium sized games based on the Rust language.
 
-Here we will only introduce the development of text-only simple games, because the development of Rust language games online already have a lot of professional materials to learn.
+Here we will only introduce the development of text-only simple games, because there are already many professional materials available online for developing Rust language games.
 
-!!! Handling reward events to convert to in-game rewards
+!!! Handling Reward Events to Convert to In-game Rewards
 
-First, trigger the `<$action-convert-reality-event/>` Widget with a button that declares which events you want to handle, and then within it, use the filters to select the type of event you want to handle to convert the reward event to an in-game reward. Note that if you just declare what you want to handle, but don't do the conversion correctly, then the player's reward event will be flat out lost.
+First, trigger the `<$action-convert-reality-event/>` widget with a button that declares which events you want to handle, and then within it, use filters to select the type of event you want to handle to convert the reward event to an in-game reward. Note that if you just declare what you want to handle, but don't do the conversion correctly, then the player's reward event will be lost.
 
 <$GameWikiProvider>
   <<show-example convertEvents>>
 </$GameWikiProvider>
 
-The framework already surrounds your game content with `<$GameWikiProvider></$GameWikiProvider>` Widgets, which will accept `pop-reality-events` events triggered by the `<$action-convert-reality-event/>` Widgets and pass the pending reward events back to the `<$action-convert-reality-event/>` Widget. After that it's up to the other action Widgets within it to generate the in-game reward you specified, as in the example.
+The framework already surrounds your game content with `<$GameWikiProvider></$GameWikiProvider>` widgets, which will accept `pop-reality-events` events triggered by the `<$action-convert-reality-event/>` widgets and pass the pending reward events back to the `<$action-convert-reality-event/>` widget. After that, it's up to the other action widgets within it to generate the in-game reward you specified, as in the example.
 
-!!! Designing in-game rewards
+!!! Designing In-game Rewards
 
 Refer to [[Exchangeable Resources|ExchangeableResources]] to design resources that will attract players from other planes.
 
-!!! Consume in-game rewards, convert to other in-game rewards
+!!! Consume In-game Rewards, Convert to Other In-game Rewards
 
-Triggers the `<$action-consume-value-tiddler/>` widget with a button, declaring which tiddler the value you want to consume exists in and how much to consume. If consumed successfully, it will further trigger other internal action widgets to generate the in-game reward you specified.
+Trigger the `<$action-consume-value-tiddler/>` widget with a button, declaring which tiddler the value you want to consume exists in and how much to consume. If consumed successfully, it will further trigger other internal action widgets to generate the in-game reward you specified.
 
-# The value stored in the tiddler is greater than the value to be consumed before it will be consumed.
+# The value stored in the tiddler must be greater than the value to be consumed before it will be consumed
 # The condition field is a filter that determines if the consumption condition is met, and will only be consumed if its return is not null
 
 This widget assumes:
 
-# you store the value in the `text` field of the tiddler (the body part)
+# You store the value in the `text` field of the tiddler (the body part)
 # A number is stored
 # The tiddler is only used to store one type of value (e.g. only for experience values)
 
 <<show-example consumeRewards>>
 
-!! Developer's Toolkit
+!! Developer Toolkit
 
-!!! SystemTags
+!!! System Tags
 
-[[SystemTags]] are used to define the type of tiddler, and the system will use them for the game.
+[[System Tags|SystemTags]] describe some tags that the framework will use.
 
-!!! Macros, methods, procedures
+!!! Macros, Methods, Procedures
 
-!!!! Count unused reward events
+!!!! Count Unused Reward Events
 
 <<show-example countEvents>>

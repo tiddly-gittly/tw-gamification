@@ -5,5 +5,17 @@ title: language/en-GB/examples/generateEventsByAction
     $message="tm-reality-action-event"
     $param="$:/plugins/linonetwo/early-sleep-early-work/events/actions/early-sleep"
   />
-  Broken brass, click and give.
+  Early Sleep Check-in (Using Predefined Tiddler)
+</$button>
+
+<$button>
+  <$action-sendmessage
+    $message="tm-reality-action-event"
+    reality-event-type="SmallReward"
+    reality-event-amount="3"
+    reality-event-message="Congratulations on completing the Pomodoro Technique! Focused work for 25 minutes and rested for 5 minutes"
+    caption="Use Pomodoro Technique to work and rest once"
+    title="pomodoro-one-time-action"
+  />
+  🍅 Use Pomodoro Technique to work and rest once (Direct Parameter Passing for One-time Activity)
 </$button>

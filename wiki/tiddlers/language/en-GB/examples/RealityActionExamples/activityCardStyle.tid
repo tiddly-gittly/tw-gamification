@@ -1,0 +1,155 @@
+title: language/en-GB/examples/activityCardStyle
+
+\rules except bold
+
+<style>
+.examples-activityCardStyle .mobile-card {
+  position: relative;
+  min-height: 200px;
+  max-height: 250px;
+  background: url('files/pomodoro-activity1.png') center/cover no-repeat;
+  border-radius: 6px;
+  overflow: hidden;
+  font-family: "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  margin: 10px 0;
+}
+.examples-activityCardStyle .mobile-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 25%, transparent 45%, transparent 55%, rgba(30, 41, 59, 0.7) 75%, rgba(51, 65, 85, 0.9) 100%);
+}
+.examples-activityCardStyle .mobile-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  min-height: 200px;
+  max-height: 250px;
+}
+.examples-activityCardStyle .mobile-left {
+  width: 55%;
+  padding: 16px 14px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.examples-activityCardStyle .mobile-right {
+  width: 35%;
+  padding: 16px 20px 16px 10px;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.examples-activityCardStyle .mobile-btn {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 8px;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  margin-bottom: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.examples-activityCardStyle .mobile-btn:hover {
+  border-color: rgba(59, 130, 246, 0.6);
+  background: rgba(59, 130, 246, 0.1);
+}
+@media (max-width: 480px) {
+  .examples-activityCardStyle .mobile-card { min-height: 160px; max-height: 200px; }
+  .examples-activityCardStyle .mobile-content { min-height: 160px; max-height: 200px; }
+  .examples-activityCardStyle .mobile-left { padding: 12px 10px 12px 16px; }
+  .examples-activityCardStyle .mobile-right { padding: 12px 16px 12px 8px; }
+}
+</style>
+
+<div class="examples-activityCardStyle">
+  <div class="mobile-card">
+    <div class="mobile-overlay"></div>
+    
+    <div class="mobile-content">
+      <div class="mobile-left">
+        <div>
+          <h1 style="font-size: 18px; font-weight: 300; color: #ffffff; margin: 0 0 6px 0; letter-spacing: 1.5px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);">
+            Lifestyle Transformation
+          </h1>
+          <div style="font-size: 8px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; font-weight: 400;">
+            LIFESTYLE TRANSFORMATION
+          </div>
+          
+          <div style="display: inline-block; color: #22c55e; padding: 2px 6px; border-radius: 3px; font-size: 8px; font-weight: 500; letter-spacing: 0.5px; margin-bottom: 8px;">
+            <span style="background: rgba(0, 0, 0, 0.8); color: #94a3b8; font-size: 6px; padding: 1px 4px; border-radius: 2px; margin-right: 4px; letter-spacing: 0.5px;">Event Period</span>
+            <span style="color: #ffffff; font-size: 10px; font-weight: 600; letter-spacing: 1px;">06/09 → 06/16</span>
+          </div>
+          
+          <div style="position: relative; padding: 8px; margin: 6px 0;">
+            <p style="color: #e2e8f0; font-size: 9px; line-height: 1.3; margin: 0; font-weight: 300; position: relative; z-index: 2;">
+              Transform your lifestyle by establishing healthy daily habits. Every completed healthy behavior earns you reward points.
+            </p>
+          </div>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px;">
+          <div style="position: relative; padding: 6px;">
+            <div style="font-size: 6px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px;">Current Goal</div>
+            <div style="font-size: 9px; color: #ffffff; font-weight: 500;">Build Healthy Habits</div>
+          </div>
+          <div style="position: relative; padding: 6px;">
+            <div style="font-size: 6px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px;">Difficulty Level</div>
+            <div style="font-size: 9px; color: #ffffff; font-weight: 500;">★★☆☆☆</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mobile-right">
+        <h3 style="font-size: 12px; color: #ffffff; margin: 0 0 8px 0; font-weight: 400; letter-spacing: 0.8px;">Available Actions</h3>
+        
+        <$button class="mobile-btn">
+          <$action-sendmessage
+            $message="tm-reality-action-event"
+            $param="$:/plugins/linonetwo/early-sleep-early-work/events/actions/early-sleep"
+          />
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div style="font-size: 14px; width: 18px; text-align: center;">🌙</div>
+              <div>
+                <h4 style="font-size: 10px; font-weight: 500; margin: 0 0 2px 0; color: #ffffff;">Early Sleep Check-in</h4>
+                <p style="font-size: 8px; color: #94a3b8; margin: 0;">Sleep before 22:00</p>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 6px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px;">Reward</div>
+              <div style="font-size: 10px; color: #fbbf24; font-weight: 600;">+2</div>
+            </div>
+          </div>
+        </$button>
+        
+        <$button class="mobile-btn">
+          <$action-sendmessage
+            $message="tm-reality-action-event"
+            reality-event-type="SmallReward"
+            reality-event-amount="3"
+            reality-event-message="Congratulations on completing the Pomodoro Technique! Focused work for 25 minutes and rested for 5 minutes"
+            caption="Pomodoro Technique"
+            title="pomodoro-one-time-action"
+          />
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div style="font-size: 14px; width: 18px; text-align: center;">🍅</div>
+              <div>
+                <h4 style="font-size: 10px; font-weight: 500; margin: 0 0 2px 0; color: #ffffff;">Pomodoro Session</h4>
+                <p style="font-size: 8px; color: #94a3b8; margin: 0;">25min work + 5min break</p>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 6px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px;">Reward</div>
+              <div style="font-size: 10px; color: #fbbf24; font-weight: 600;">+3</div>
+            </div>
+          </div>
+        </$button>
+      </div>
+    </div>
+  </div>
+</div>

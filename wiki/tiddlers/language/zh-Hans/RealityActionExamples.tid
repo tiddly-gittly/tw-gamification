@@ -1,0 +1,34 @@
+title: language/zh-Hans/RealityActionExamples
+
+\import [[language/zh-Hans/examples/show-example]]
+
+! 现实动作按钮示例
+
+这里展示了几种不同风格的现实动作打卡按钮，你可以参考这些样式来美化你的游戏界面。
+
+!! 触发方式说明
+
+现实动作支持两种触发方式：
+
+# 使用预定义条目
+#* 通过 `$param` 参数指向一个带有现实动作标签的条目，适合重复性的日常习惯。
+# 直接传递参数  
+#* 无需创建专门条目，直接在消息微件中传递所有必要参数，适合一次性活动或临时事件。
+
+!! 基础打卡按钮
+
+最简单的打卡按钮样式，展示了两种触发方式：
+
+<<show-example basicRealityActionButton>>
+
+!! 手游风格按钮
+
+仿手游的精美按钮样式：
+
+<<show-example gameStyleButtons>>
+
+!! 活动界面风格
+
+类似手游活动界面的卡片式布局：
+
+<<show-example activityCardStyle>>

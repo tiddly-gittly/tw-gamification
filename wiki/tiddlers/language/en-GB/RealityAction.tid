@@ -2,9 +2,64 @@ title: language/en-GB/RealityAction
 
 ! Reality Action Tag Usage Guide
 
+[[Reality Action Button Examples|RealityActionExamples]].
+
 !! What is Reality Action?
 
-Reality Action is a core concept in the gamification framework that converts meaningful behaviors in your real world into rewarding events in the game. By adding the <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> tag to a tiddler, you can create check-in buttons. Clicking the button is equivalent to completing a beneficial action in the real world.
+Reality Action is a core concept in the gamification framework that converts meaningful behaviors in the real world into reward events in the game. By adding the <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> tag to tiddlers, you can create check-in buttons. Clicking the button is equivalent to completing a beneficial action in the real world.
+
+This tag can be adjusted in the settings, but it is generally set to `$:/Tags/Gamification/RealityAction` by default.
+
+!! Two Ways to Trigger Reality Actions
+
+!!! Method 1: Using Predefined Action Tiddlers (Recommended)
+
+This is the traditional approach, suitable for repetitive daily habits:
+
+```
+<$button>
+  <$action-sendmessage
+    $message="tm-reality-action-event"
+    $param="action-tiddler-title"
+  />
+  Button Text
+</$button>
+```
+
+The "action-tiddler-title" is the title of a tiddler you created that must have the <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> tag and contain all necessary fields.
+
+!!! Method 2: Direct Parameter Passing (Suitable for One-time Activities)
+
+This approach does not require creating dedicated tiddlers and is suitable for temporary activities or one-time events. ''All required fields must be provided:''
+
+```
+<$button>
+  <$action-sendmessage
+    $message="tm-reality-action-event"
+    reality-event-type="SmallReward"
+    reality-event-amount="3"
+    caption="Join Special Event"
+    reality-event-message="Completed special task!"
+    title="unique-action-id"
+  />
+  Join Special Event
+</$button>
+```
+
+!!! Parameter Override
+
+If both `$param` and other parameters are provided, the other parameters will override the corresponding fields in the tiddler:
+
+```
+<$button>
+  <$action-sendmessage
+    $message="tm-reality-action-event"
+    $param="base-action-tiddler"
+    reality-event-amount="10"
+  />
+  Double Reward Special Version
+</$button>
+```
 
 !! How to Create Reality Actions?
 
@@ -18,30 +73,32 @@ Reality Action is a core concept in the gamification framework that converts mea
 
 |!Field Name |!Description |!Example Values |
 |`reality-event-type` |Event type, determines reward size |`SmallReward`, `LargeReward`, `SmallPunishment`, `LargePunishment` |
-|`reality-event-amount` |Reward amount |`1`, `2`, `5` etc. |
-|`caption` |Text displayed on button |`Early Sleep Check-in`, `Morning Exercise Complete` |
+|`reality-event-amount` |Reward amount |`1`, `0.2`, `5` and other numbers |
+|`caption` |Text displayed on the button |`Early Sleep Check-in`, `Morning Exercise Complete` |
+
+''Note:'' For Method 2 (direct parameter passing), all these fields must be provided in the message widget. For Method 1 (predefined tiddlers), these fields must be defined in the tiddler and can also be overridden in the message widget.
 
 !!! Optional Fields
 
 |!Field Name |!Description |!Example Values |
-|`reality-event-message` |Message displayed when action is completed |`Congratulations on your early sleep!` |
-|`description` |Detailed description of the action |`Going to bed before 10 PM helps with physical health` |
-|`icon` |Icon displayed on button |Tiddler title, like `$:/core/images/sleep` |
-|`enabled` |Whether this action is enabled |`yes` or `no` |
+|`reality-event-message` |Message displayed when completing the action |`Congratulations on going to bed early!` |
+|`description` |Detailed description of the action, encouraging players to complete tasks |`Going to bed before 10 PM is good for your health because... (30 characters omitted)` |
+|`icon` |Icon displayed on the button |Image tiddler title, such as `$:/core/images/sleep`, preferably SVG images |
+|`enabled` |Whether to enable this action, allowing players to turn off tasks they don't want to see |`yes` or `no` |
 
-!!! Anti-Duplication Fields
+!!! Anti-duplicate Fields
 
-To prevent repeated clicks in a short time to gain rewards, you can set the following fields:
+To prevent getting rewards from repeated clicks in a short time, you can set the following fields:
 
 |!Field Name |!Description |!Example Values |
-|`find-duplicate` |Anti-duplication method |`debounce` (debouncing) |
+|`find-duplicate` |Anti-duplicate method |`debounce` (debouncing) |
 |`debounce-duration` |Cooldown time (seconds) |`43200` (12 hours), `86400` (24 hours) |
 
-!!! Record Fields
+!!! Recording Fields
 
 |!Field Name |!Description |!Example Values |
-|`activity-log-type` |Record type |`day-interval` (daily records) |
-|`activity-log` |Record storage location |Tiddler title, used to store check-in records |
+|`activity-log-type` |Recording type |`day-interval` (daily recording) |
+|`activity-log` |Recording storage location |Tiddler title for storing check-in records |
 
 !! Complete Examples
 
@@ -53,13 +110,12 @@ tags: $:/Tags/Gamification/RealityAction
 reality-event-type: SmallReward
 reality-event-amount: 2
 caption: Early Sleep Check-in
-description: Going to bed before 10 PM to develop good sleep habits
-reality-event-message: Congratulations on your early sleep! You earned 2 small reward points
+description: Go to bed before 10 PM to develop good sleeping habits
+reality-event-message: Congratulations on going to bed early! You earned 2 small rewards
 find-duplicate: debounce
 debounce-duration: 43200
 activity-log-type: day-interval
 activity-log: Early Sleep Check-in Records
-enabled: yes
 ```
 
 !!! Exercise Check-in
@@ -70,13 +126,11 @@ tags: $:/Tags/Gamification/RealityAction
 reality-event-type: LargeReward
 reality-event-amount: 5
 caption: Complete Exercise
-description: Engage in 30+ minutes of aerobic exercise
-reality-event-message: Excellent! You completed today's exercise goal!
+description: Perform more than 30 minutes of aerobic exercise
+reality-event-message: Great! You completed today's exercise goal!
 find-duplicate: debounce
-debounce-duration: 21600
 activity-log-type: day-interval
 activity-log: Exercise Check-in Records
-enabled: yes
 ```
 
 !!! Study Check-in
@@ -86,24 +140,23 @@ title: My Study Check-in
 tags: $:/Tags/Gamification/RealityAction
 reality-event-type: SmallReward
 reality-event-amount: 1
-caption: Study 30 Minutes
+caption: Study for 30 Minutes
 description: Focus on studying or reading for 30 minutes
-reality-event-message: Great! Another study session completed
+reality-event-message: Well done! You completed another study session
 find-duplicate: debounce
 debounce-duration: 3600
-enabled: yes
 ```
 
 !! Usage Tips
 
-!!! Choosing Reward Types
+!!! Reward Type Selection
 
-* `SmallReward`: Suitable for daily small habits, like drinking water, taking notes
-* `LargeReward`: Suitable for important goals, like exercise, study, early sleep
-* `SmallPunishment`: Light negative reminders
+* `SmallReward`: Suitable for daily small habits, such as drinking water, taking notes
+* `LargeReward`: Suitable for important goals, such as exercise, study, early sleep
+* `SmallPunishment`: Mild negative reminders
 * `LargePunishment`: Important warnings
 
-!!! Setting Cooldown Times
+!!! Cooldown Time Settings
 
 * 1 hour = 3600 seconds
 * 6 hours = 21600 seconds  
@@ -112,18 +165,18 @@ enabled: yes
 
 !!! Best Practices
 
-# Start with simple habits, gradually increase difficulty
+# Start with simple habits and gradually increase difficulty
 # Set reasonable cooldown times to avoid point farming
-# Regularly check your check-in records to understand your progress
-# Adjust reward amounts based on actual circumstances
+# Regularly check check-in records to understand your progress
+# Adjust reward amounts according to actual circumstances
 
 !! How to Use?
 
-After creating reality action tiddlers, the game plugin will automatically generate corresponding check-in buttons. You can:
+After creating reality action tiddlers, game plugins will automatically generate corresponding check-in buttons. You can:
 
 # Find the check-in buttons you created in the game interface
-# After completing the corresponding real-world action, click the button to check in
-# The system will automatically record your check-in time and rewards earned
+# After completing the corresponding actions in the real world, click the button to check in
+# The system will automatically record your check-in time and earned rewards
 # These rewards can be used in supported games
 
-Remember: Honest check-ins are the only way to truly help you develop good habits. Gamification is just a motivational tool!
+Remember: Honest check-ins truly help you develop good habits, gamification is just an incentive tool!

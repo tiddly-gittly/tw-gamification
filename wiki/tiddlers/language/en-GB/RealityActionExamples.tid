@@ -1,0 +1,34 @@
+title: language/en-GB/RealityActionExamples
+
+\import [[language/en-GB/examples/show-example]]
+
+! Reality Action Button Examples
+
+Here are several different styles of reality action check-in buttons that you can refer to for beautifying your game interface.
+
+!! Trigger Method Description
+
+Reality actions support two trigger methods:
+
+# Using Predefined Tiddlers
+#* Point to a tiddler with a reality action tag through the `$param` parameter, suitable for repetitive daily habits.
+# Direct Parameter Passing  
+#* No need to create dedicated tiddlers, directly pass all necessary parameters in the message widget, suitable for one-time activities or temporary events.
+
+!! Basic Check-in Buttons
+
+The simplest check-in button style, demonstrating both trigger methods:
+
+<<show-example basicRealityActionButton>>
+
+!! Mobile Game Style Buttons
+
+Exquisite button styles imitating mobile games:
+
+<<show-example gameStyleButtons>>
+
+!! Activity Interface Style
+
+Card-style layout similar to mobile game activity interfaces:
+
+<<show-example activityCardStyle>>

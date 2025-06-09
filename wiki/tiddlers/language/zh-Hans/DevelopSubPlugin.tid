@@ -18,9 +18,19 @@ title: language/zh-Hans/DevelopSubPlugin
 
 <<show-example generateEventsByAction>>
 
-上面的 [[$:/plugins/linonetwo/early-sleep-early-work/events/actions/early-sleep]] 条目就是带上了 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> 标签，而且带上了一系列奖励有关的参数。详见 [[系统标签|SystemTags]] 里对这个标签的介绍。
+上面的例子展示了两种触发现实动作的方式：
 
-!!! 变更筛选器
+# ''使用预定义条目''：[[$:/plugins/linonetwo/early-sleep-early-work/events/actions/early-sleep]] 条目带有 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> 标签和奖励参数
+# ''直接传递参数''：适合一次性活动，无需创建专门的条目，直接在按钮中定义所有必要参数
+
+这种灵活性让你可以根据需要选择合适的方式：
+
+* 重复性的日常习惯建议使用预定义条目
+* 临时活动、特殊事件或测试用途可以直接传递参数
+
+详见 [[系统标签|SystemTags]] 里对现实动作标签的介绍和[[现实动作使用指南|RealityAction]]。查看[[事件缓存（桌面）|$:/plugins/linonetwo/tw-gamification/reality-event-cache/cache-files/desktop]]中的变化来确认事件已被正确记录。
+
+!!! 变更筛选器（高级用法）
 
 带上 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/change-filter-meta-tag}} /> 标签的条目会被识别为「变更筛选器事件生成器」。
 

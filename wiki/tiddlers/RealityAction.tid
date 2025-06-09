@@ -1,0 +1,6 @@
+tags: Index
+title: RealityAction
+
+\procedure lingo-base() language/
+
+<<lingo RealityAction>>

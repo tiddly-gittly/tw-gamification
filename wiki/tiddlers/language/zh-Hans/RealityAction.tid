@@ -1,0 +1,127 @@
+title: language/zh-Hans/RealityAction
+
+! 现实动作标签使用指南
+
+!! 什么是现实动作？
+
+现实动作是游戏化框架中的核心概念，它将你在现实世界中有意义的行为转换为游戏内的奖励事件。通过给条目添加 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> 标签，你可以创建打卡按钮，点击按钮就相当于完成了一次现实世界的有益行动。
+
+这个标签可以在设置里调整，不过一般默认为 `$:/Tags/Gamification/RealityAction`。
+
+!! 如何创建现实动作？
+
+!!! 基本步骤
+
+# 创建一个新条目
+# 添加 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> 标签
+# 填写必要的字段来定义动作的属性
+
+!!! 必填字段
+
+|!字段名 |!说明 |!示例值 |
+|`reality-event-type` |事件类型，决定奖励大小 |`SmallReward`、`LargeReward`、`SmallPunishment`、`LargePunishment` |
+|`reality-event-amount` |奖励数量 |`1`、`0.2`、`5` 等数字 |
+|`caption` |按钮显示的文字 |`早睡打卡`、`晨练完成` |
+
+!!! 可选字段
+
+|!字段名 |!说明 |!示例值 |
+|`reality-event-message` |完成动作时显示的消息 |`恭喜你完成了早睡！` |
+|`description` |动作的详细说明，鼓励玩家完成任务 |`在晚上10点前睡觉，有助于身体健康，因为……（省略30字）` |
+|`icon` |按钮显示的图标 |图片条目标题，如 `$:/core/images/sleep` ，最好使用 SVG 图片 |
+|`enabled` |是否启用这个动作，供玩家关闭不想看到的任务 |`yes` 或 `no` |
+
+!!! 防重复字段
+
+为了防止短时间内重复点击获得奖励，可以设置以下字段：
+
+|!字段名 |!说明 |!示例值 |
+|`find-duplicate` |防重复方式 |`debounce`（防抖动） |
+|`debounce-duration` |冷却时间（秒） |`43200`（12小时）、`86400`（24小时） |
+
+!!! 记录字段
+
+|!字段名 |!说明 |!示例值 |
+|`activity-log-type` |记录类型 |`day-interval`（按天记录） |
+|`activity-log` |记录存储位置 |条目标题，用于存储打卡记录 |
+
+!! 完整示例
+
+!!! 早睡打卡
+
+```
+title: 我的早睡打卡
+tags: $:/Tags/Gamification/RealityAction
+reality-event-type: SmallReward
+reality-event-amount: 2
+caption: 早睡打卡
+description: 在晚上10点前睡觉，养成良好的作息习惯
+reality-event-message: 恭喜你完成了早睡！获得了 2 点小奖励
+find-duplicate: debounce
+debounce-duration: 43200
+activity-log-type: day-interval
+activity-log: 早睡打卡记录
+```
+
+!!! 运动打卡
+
+```
+title: 我的运动打卡
+tags: $:/Tags/Gamification/RealityAction
+reality-event-type: LargeReward
+reality-event-amount: 5
+caption: 完成运动
+description: 进行30分钟以上的有氧运动
+reality-event-message: 太棒了！你完成了今天的运动目标！
+find-duplicate: debounce
+activity-log-type: day-interval
+activity-log: 运动打卡记录
+```
+
+!!! 学习打卡
+
+```
+title: 我的学习打卡
+tags: $:/Tags/Gamification/RealityAction
+reality-event-type: SmallReward
+reality-event-amount: 1
+caption: 学习30分钟
+description: 专注学习或阅读30分钟
+reality-event-message: 很好！又完成了一次学习
+find-duplicate: debounce
+debounce-duration: 3600
+```
+
+!! 使用技巧
+
+!!! 奖励类型选择
+
+* `SmallReward`：适合日常的小习惯，如喝水、做笔记
+* `LargeReward`：适合重要的目标，如运动、学习、早睡
+* `SmallPunishment`：轻微的负面提醒
+* `LargePunishment`：重要的警告
+
+!!! 冷却时间设置
+
+* 1小时 = 3600秒
+* 6小时 = 21600秒  
+* 12小时 = 43200秒
+* 24小时 = 86400秒
+
+!!! 最佳实践
+
+# 从简单的习惯开始，逐步增加难度
+# 设置合理的冷却时间，避免刷分
+# 定期查看打卡记录，了解自己的进度
+# 根据实际情况调整奖励数量
+
+!! 如何使用？
+
+创建好现实动作条目后，游戏插件会自动生成相应的打卡按钮。你可以：
+
+# 在游戏界面中找到你创建的打卡按钮
+# 完成现实世界的对应行动后，点击按钮打卡
+# 系统会自动记录你的打卡时间和获得的奖励
+# 这些奖励可以在支持的游戏中使用
+
+记住：诚实打卡才能真正帮助你养成好习惯，游戏化只是一个激励工具！

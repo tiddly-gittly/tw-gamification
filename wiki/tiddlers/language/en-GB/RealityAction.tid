@@ -1,0 +1,129 @@
+title: language/en-GB/RealityAction
+
+! Reality Action Tag Usage Guide
+
+!! What is Reality Action?
+
+Reality Action is a core concept in the gamification framework that converts meaningful behaviors in your real world into rewarding events in the game. By adding the <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> tag to a tiddler, you can create check-in buttons. Clicking the button is equivalent to completing a beneficial action in the real world.
+
+!! How to Create Reality Actions?
+
+!!! Basic Steps
+
+# Create a new tiddler
+# Add the <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> tag
+# Fill in the necessary fields to define the action's properties
+
+!!! Required Fields
+
+|!Field Name |!Description |!Example Values |
+|`reality-event-type` |Event type, determines reward size |`SmallReward`, `LargeReward`, `SmallPunishment`, `LargePunishment` |
+|`reality-event-amount` |Reward amount |`1`, `2`, `5` etc. |
+|`caption` |Text displayed on button |`Early Sleep Check-in`, `Morning Exercise Complete` |
+
+!!! Optional Fields
+
+|!Field Name |!Description |!Example Values |
+|`reality-event-message` |Message displayed when action is completed |`Congratulations on your early sleep!` |
+|`description` |Detailed description of the action |`Going to bed before 10 PM helps with physical health` |
+|`icon` |Icon displayed on button |Tiddler title, like `$:/core/images/sleep` |
+|`enabled` |Whether this action is enabled |`yes` or `no` |
+
+!!! Anti-Duplication Fields
+
+To prevent repeated clicks in a short time to gain rewards, you can set the following fields:
+
+|!Field Name |!Description |!Example Values |
+|`find-duplicate` |Anti-duplication method |`debounce` (debouncing) |
+|`debounce-duration` |Cooldown time (seconds) |`43200` (12 hours), `86400` (24 hours) |
+
+!!! Record Fields
+
+|!Field Name |!Description |!Example Values |
+|`activity-log-type` |Record type |`day-interval` (daily records) |
+|`activity-log` |Record storage location |Tiddler title, used to store check-in records |
+
+!! Complete Examples
+
+!!! Early Sleep Check-in
+
+```
+title: My Early Sleep Check-in
+tags: $:/Tags/Gamification/RealityAction
+reality-event-type: SmallReward
+reality-event-amount: 2
+caption: Early Sleep Check-in
+description: Going to bed before 10 PM to develop good sleep habits
+reality-event-message: Congratulations on your early sleep! You earned 2 small reward points
+find-duplicate: debounce
+debounce-duration: 43200
+activity-log-type: day-interval
+activity-log: Early Sleep Check-in Records
+enabled: yes
+```
+
+!!! Exercise Check-in
+
+```
+title: My Exercise Check-in
+tags: $:/Tags/Gamification/RealityAction
+reality-event-type: LargeReward
+reality-event-amount: 5
+caption: Complete Exercise
+description: Engage in 30+ minutes of aerobic exercise
+reality-event-message: Excellent! You completed today's exercise goal!
+find-duplicate: debounce
+debounce-duration: 21600
+activity-log-type: day-interval
+activity-log: Exercise Check-in Records
+enabled: yes
+```
+
+!!! Study Check-in
+
+```
+title: My Study Check-in
+tags: $:/Tags/Gamification/RealityAction
+reality-event-type: SmallReward
+reality-event-amount: 1
+caption: Study 30 Minutes
+description: Focus on studying or reading for 30 minutes
+reality-event-message: Great! Another study session completed
+find-duplicate: debounce
+debounce-duration: 3600
+enabled: yes
+```
+
+!! Usage Tips
+
+!!! Choosing Reward Types
+
+* `SmallReward`: Suitable for daily small habits, like drinking water, taking notes
+* `LargeReward`: Suitable for important goals, like exercise, study, early sleep
+* `SmallPunishment`: Light negative reminders
+* `LargePunishment`: Important warnings
+
+!!! Setting Cooldown Times
+
+* 1 hour = 3600 seconds
+* 6 hours = 21600 seconds  
+* 12 hours = 43200 seconds
+* 24 hours = 86400 seconds
+
+!!! Best Practices
+
+# Start with simple habits, gradually increase difficulty
+# Set reasonable cooldown times to avoid point farming
+# Regularly check your check-in records to understand your progress
+# Adjust reward amounts based on actual circumstances
+
+!! How to Use?
+
+After creating reality action tiddlers, the game plugin will automatically generate corresponding check-in buttons. You can:
+
+# Find the check-in buttons you created in the game interface
+# After completing the corresponding real-world action, click the button to check in
+# The system will automatically record your check-in time and rewards earned
+# These rewards can be used in supported games
+
+Remember: Honest check-ins are the only way to truly help you develop good habits. Gamification is just a motivational tool!

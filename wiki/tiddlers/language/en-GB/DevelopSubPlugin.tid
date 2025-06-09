@@ -8,12 +8,6 @@ title: language/en-GB/DevelopSubPlugin
 
 Referring to the [[$:/plugins/linonetwo/early-sleep-early-work]] plugin, you can generate events declaratively with tiddlers with specific tags and fields:
 
-!!! Change Filter
-
-Tiddlers with the <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/change-filter-meta-tag}} /> tag are recognized as "Change Filter Event Generators".
-
-Whenever a change is made to the knowledge base, the `reality-event-trigger-filter` field on the entry is used as a filter to determine if the tiddler where the change occurred matches the conditions. If the conditions are met, an event is generated. See the `IFilterEventGeneratorDefinitions` type in this repository for specific fields.
-
 !!! Action
 
 Tiddlers with the <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> tag will be recognized as "Action Event Generators".
@@ -23,6 +17,14 @@ Some games will use the information from these tiddlers to generate a list of bu
 After it's created, you can trigger it via the Message Widget. Note the change in [[event cache (cache-file/desktop)|$:/plugins/linonetwo/tw-gamification/reality-event-cache/cache-files/desktop]].
 
 <<show-example generateEventsByAction>>
+
+The [[$:/plugins/linonetwo/early-sleep-early-work/events/actions/early-sleep]] tiddler above is tagged with <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> and has a series of parameters related to rewards. See the introduction to this tag in [[SystemTags]].
+
+!!! Change Filter
+
+Tiddlers with the <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/change-filter-meta-tag}} /> tag are recognized as "Change Filter Event Generators".
+
+Whenever a change is made to the knowledge base, the `reality-event-trigger-filter` field on the entry is used as a filter to determine if the tiddler where the change occurred matches the conditions. If the conditions are met, an event is generated. See the `IFilterEventGeneratorDefinitions` type in this repository for specific fields.
 
 !! Simple game in plain wikitext
 

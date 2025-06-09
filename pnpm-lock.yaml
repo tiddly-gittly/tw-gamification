@@ -33,6 +33,9 @@ importers:
       '@types/jasmine':
         specifier: ^5.1.7
         version: 5.1.7
+      '@types/lodash':
+        specifier: ^4.17.17
+        version: 4.17.17
       '@types/node':
         specifier: ^22.13.14
         version: 22.13.14
@@ -592,6 +595,9 @@ packages:
 
   '@types/less@3.0.6':
     resolution: {integrity: sha512-PecSzorDGdabF57OBeQO/xFbAkYWo88g4Xvnsx7LRwqLC17I7OoKtA3bQB9uXkY6UkMWCOsA8HSVpaoitscdXw==}
+
+  '@types/lodash@4.17.17':
+    resolution: {integrity: sha512-RRVJ+J3J+WmyOTqnz3PiBLA501eKwXl2noseKOrNo/6+XEHjTAxO4xHvxQB6QuNm+s4WRbn6rSiap8+EA+ykFQ==}
 
   '@types/node@20.11.30':
     resolution: {integrity: sha512-dHM6ZxwlmuZaRmUPfv1p+KrdD1Dci04FbdEm/9wEMouFqxYoFl5aMkt0VMAUtYRQDyYvD41WJLukhq/ha3YuTw==}
@@ -3777,6 +3783,8 @@ snapshots:
   '@types/json5@0.0.29': {}
 
   '@types/less@3.0.6': {}
+
+  '@types/lodash@4.17.17': {}
 
   '@types/node@20.11.30':
     dependencies:

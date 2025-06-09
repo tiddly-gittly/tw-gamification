@@ -8,12 +8,6 @@ title: language/zh-Hans/DevelopSubPlugin
 
 参考 [[$:/plugins/linonetwo/early-sleep-early-work]] 插件，你可以通过带有特定标签和字段的条目，制作几类事件生成器，声明式地产生事件：
 
-!!! 变更筛选器
-
-带上 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/change-filter-meta-tag}} /> 标签的条目会被识别为「变更筛选器事件生成器」。
-
-每当知识库发生变更时，会用条目上的 `reality-event-trigger-filter` 字段作为筛选器，判断发生变更的条目是否符合条件。如果符合条件，会生成一个事件。具体字段请参考本仓库里的 `IFilterEventGeneratorDefinitions` 类型。
-
 !!! 动作
 
 带上 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> 标签的条目会被识别为「动作事件生成器」。
@@ -23,6 +17,14 @@ title: language/zh-Hans/DevelopSubPlugin
 在创建了之后，你可以通过消息微件触发它。注意看[[事件缓存（cache-file/desktop）|$:/plugins/linonetwo/tw-gamification/reality-event-cache/cache-files/desktop]]里的变化。
 
 <<show-example generateEventsByAction>>
+
+上面的 [[$:/plugins/linonetwo/early-sleep-early-work/events/actions/early-sleep]] 条目就是带上了 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/reality-action-meta-tag}} /> 标签，而且带上了一系列奖励有关的参数。详见 [[系统标签|SystemTags]] 里对这个标签的介绍。
+
+!!! 变更筛选器
+
+带上 <$transclude $variable=tag tag={{$:/plugins/linonetwo/tw-gamification/tags/change-filter-meta-tag}} /> 标签的条目会被识别为「变更筛选器事件生成器」。
+
+每当知识库发生变更时，会用条目上的 `reality-event-trigger-filter` 字段作为筛选器，判断发生变更的条目是否符合条件。如果符合条件，会生成一个事件。具体字段请参考本仓库里的 `IFilterEventGeneratorDefinitions` 类型。
 
 !! 纯文本类的简单游戏
 

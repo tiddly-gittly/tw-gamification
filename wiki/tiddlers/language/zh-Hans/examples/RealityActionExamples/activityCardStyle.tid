@@ -1,7 +1,5 @@
 title: language/zh-Hans/examples/activityCardStyle
 
-\rules except bold
-
 <style>
 .examples-activityCardStyle .mobile-card {
   position: relative;

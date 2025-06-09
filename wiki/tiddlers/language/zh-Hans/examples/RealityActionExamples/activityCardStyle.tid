@@ -109,6 +109,11 @@ title: language/zh-Hans/examples/activityCardStyle
             $message="tm-reality-action-event"
             $param="$:/plugins/linonetwo/early-sleep-early-work/events/actions/early-sleep"
           />
+          <$action-sendmessage
+            $message="tm-notify"
+            $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
+            message="恭喜你完成了早睡！获得了 2 点小奖励"
+          />
           <div style="display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center; gap: 8px;">
               <div style="font-size: 14px; width: 18px; text-align: center;">🌙</div>
@@ -132,6 +137,11 @@ title: language/zh-Hans/examples/activityCardStyle
             reality-event-message="恭喜完成番茄工作法！专注工作25分钟并休息5分钟"
             caption="番茄工作法"
             title="pomodoro-one-time-action"
+          />
+          <$action-sendmessage
+            $message="tm-notify"
+            $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
+            message="恭喜完成番茄工作法！专注工作25分钟并休息5分钟"
           />
           <div style="display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center; gap: 8px;">

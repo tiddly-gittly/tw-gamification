@@ -86,6 +86,29 @@ If both `$param` and other parameters are provided, the other parameters will ov
 |`icon` |Icon displayed on the button |Image tiddler title, such as `$:/core/images/sleep`, preferably SVG images |
 |`enabled` |Whether to enable this action, allowing players to turn off tasks they don't want to see |`yes` or `no` |
 
+!!!! About the reality-event-message field:
+
+This field defines the message content that should be displayed to users when completing an action, but it ''will not be automatically displayed''. The specific usage depends on the game implementation:
+
+* Game Integration：Some game sub-plugins may read this field and automatically display notifications
+* Manual Invocation：If you want to display notifications directly in buttons, you need to add an additional notification action widget:
+
+```
+<$button>
+  <$action-sendmessage
+    $message="tm-reality-action-event"
+    $param="action-tiddler-title"
+  />
+  Button Text
+</$button>
+
+<$action-sendmessage
+  $message="tm-notify"
+  $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
+  message="Congratulations on completing the action!"
+/>
+```
+
 !!! Anti-duplicate Fields
 
 To prevent getting rewards from repeated clicks in a short time, you can set the following fields:

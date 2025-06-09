@@ -8,6 +8,11 @@ title: language/zh-Hans/examples/gameStyleButtons
       $message="tm-reality-action-event"
       $param="$:/plugins/linonetwo/early-sleep-early-work/events/actions/early-sleep"
     />
+    <$action-sendmessage
+      $message="tm-notify"
+      $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
+      message="恭喜你完成了早睡！获得了 2 点小奖励"
+    />
     <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: white; font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
       <div style="font-size: 24px; margin-bottom: 4px;">🌙</div>
       <div style="font-size: 14px;">早睡</div>
@@ -22,6 +27,11 @@ title: language/zh-Hans/examples/gameStyleButtons
       reality-event-message="太棒了！你完成了今天的运动目标！"
       caption="完成运动"
       title="exercise-one-time-action"
+    />
+    <$action-sendmessage
+      $message="tm-notify"
+      $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
+      message="太棒了！你完成了今天的运动目标！"
     />
     <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: white; font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
       <div style="font-size: 24px; margin-bottom: 4px;">🏃‍♂️</div>
@@ -38,6 +48,11 @@ title: language/zh-Hans/examples/gameStyleButtons
       caption="学习30分钟"
       title="study-one-time-action"
     />
+    <$action-sendmessage
+      $message="tm-notify"
+      $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
+      message="很好！又完成了一次学习"
+    />
     <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: white; font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
       <div style="font-size: 24px; margin-bottom: 4px;">📚</div>
       <div style="font-size: 14px;">学习</div>
@@ -52,6 +67,11 @@ title: language/zh-Hans/examples/gameStyleButtons
       reality-event-message="内心平静！你完成了冥想练习"
       caption="冥想练习"
       title="meditation-one-time-action"
+    />
+    <$action-sendmessage
+      $message="tm-notify"
+      $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
+      message="内心平静！你完成了冥想练习"
     />
     <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: white; font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
       <div style="font-size: 24px; margin-bottom: 4px;">🧘‍♀️</div>

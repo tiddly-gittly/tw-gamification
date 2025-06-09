@@ -109,6 +109,11 @@ title: language/en-GB/examples/activityCardStyle
             $message="tm-reality-action-event"
             $param="$:/plugins/linonetwo/early-sleep-early-work/events/actions/early-sleep"
           />
+          <$action-sendmessage
+            $message="tm-notify"
+            $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
+            message="Congratulations on going to bed early! You earned 2 small rewards"
+          />
           <div style="display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center; gap: 8px;">
               <div style="font-size: 14px; width: 18px; text-align: center;">🌙</div>
@@ -132,6 +137,11 @@ title: language/en-GB/examples/activityCardStyle
             reality-event-message="Congratulations on completing the Pomodoro Technique! Focused work for 25 minutes and rested for 5 minutes"
             caption="Pomodoro Technique"
             title="pomodoro-one-time-action"
+          />
+          <$action-sendmessage
+            $message="tm-notify"
+            $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
+            message="Congratulations on completing the Pomodoro Technique! Focused work for 25 minutes and rested for 5 minutes"
           />
           <div style="display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center; gap: 8px;">

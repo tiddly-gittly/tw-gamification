@@ -5,6 +5,11 @@ title: language/en-GB/examples/basicRealityActionButton
     $message="tm-reality-action-event"
     $param="$:/plugins/linonetwo/early-sleep-early-work/events/actions/early-sleep"
   />
+  <$action-sendmessage
+    $message="tm-notify"
+    $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
+    message="Congratulations on going to bed early! You earned 2 small rewards"
+  />
   🌙 Early Sleep Check-in
 </$button>
 
@@ -16,6 +21,11 @@ title: language/en-GB/examples/basicRealityActionButton
     reality-event-message="Congratulations on completing reading! You gained knowledge points"
     caption="Complete Reading"
     title="reading-session"
+  />
+  <$action-sendmessage
+    $message="tm-notify"
+    $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
+    message="Congratulations on completing reading! You gained knowledge points"
   />
   📚 Complete Reading
 </$button>

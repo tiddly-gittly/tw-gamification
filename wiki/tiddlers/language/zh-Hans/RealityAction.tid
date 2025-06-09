@@ -85,6 +85,28 @@ title: language/zh-Hans/RealityAction
 |`icon` |按钮显示的图标 |图片条目标题，如 `$:/core/images/sleep` ，最好使用 SVG 图片 |
 |`enabled` |是否启用这个动作，供玩家关闭不想看到的任务 |`yes` 或 `no` |
 
+!!!! 关于 reality-event-message 字段的说明：
+
+这个字段定义了完成动作时应该显示给用户的消息内容，但它''不会自动显示''。具体的使用方式取决于游戏实现：
+
+* 游戏适配：某些游戏子插件可能会读取这个字段并自动显示通知
+* 手动调用：如果你想在按钮中直接显示通知，需要额外添加一个通知动作微件：
+
+```
+<$button>
+  <$action-sendmessage
+    $message="tm-reality-action-event"
+    $param="条目标题"
+  />
+  <$action-sendmessage
+    $message="tm-notify"
+    $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
+    $message="恭喜你完成了早睡！"
+  />
+  早睡打卡
+</$button>
+```
+
 !!! 防重复字段
 
 为了防止短时间内重复点击获得奖励，可以设置以下字段：

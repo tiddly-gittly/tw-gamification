@@ -5,6 +5,6 @@
   "description": "Vanilla style launcher, with Metro style square button and large icon.",
   "plugin-type": "plugin",
   "stability": "STABILITY_2_STABLE",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "list": "readme tree"
 }

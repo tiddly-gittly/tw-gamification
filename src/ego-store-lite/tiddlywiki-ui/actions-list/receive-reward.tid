@@ -3,7 +3,7 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/receive-re
 \procedure lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
 
 <div class="ego-store-lite-action-receive-reward">
-  <$button class="receive-reward-button">
+  <$button class={{{ [<count-reality-events>compare:number:gt[0]then[receive-reward-button has-rewards]else[receive-reward-button no-rewards]] }}}>
     <<lingo ActionsList/ReceiveRewardWithCount>>
 
     <$let goldSaveFile="$:/plugins/linonetwo/ego-store-lite/configs/Golds">

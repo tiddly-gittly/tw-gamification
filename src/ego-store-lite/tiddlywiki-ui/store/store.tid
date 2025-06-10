@@ -4,6 +4,21 @@ caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lin
 
 \procedure lingo-base() $:/plugins/linonetwo/ego-store-lite/language/
 \procedure drop-down-menu-select-state() $:/state/ego-store-lite/goods-list/menu-selected
+
+\procedure set-color-variable()
+<% if [<currentTiddler>get[color]!is[blank]] %>
+  <style>
+    .ego-store-lite-game-buttons-list-item[data-title="<<currentTiddler>>"] {
+      background: linear-gradient(135deg, 
+        {{!!color}}cc 0%, 
+        {{!!color}}99 30%,
+        {{!!color}}66 60%,
+        transparent 100%) !important;
+    }
+  </style>
+<% endif %>
+\end
+
 \procedure on-drop-down-menu-select()
 <% if [<drop-down-menu-select-state>get[text]match[edit]] %>
   <$action-createtiddler
@@ -30,7 +45,8 @@ caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lin
 <$wikify name="NotifyConditionFailed" text="<<lingo ConsumeGoods/NotifyConditionFailed>>">
 <div class="ego-store-lite-game-buttons-list">
   <$list filter="[all[shadows+tiddlers]tag[$:/tags/ego-store-lite/goods]!is[draft]field:enabled[yes]]">
-    <div class="ego-store-lite-game-buttons-list-item" data-title=<<currentTiddler>>>
+    <<set-color-variable>>
+    <div class="ego-store-lite-game-buttons-list-item" data-title=<<currentTiddler>> data-color={{!!color}}>
       <div class="ego-store-lite-game-buttons-list-item-edit">
         <$select tiddler=<<drop-down-menu-select-state>> actions=<<on-drop-down-menu-select>>>
           <option value="edit"><<lingo EditGoods/Caption>></option>

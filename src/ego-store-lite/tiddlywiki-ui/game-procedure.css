@@ -5,9 +5,83 @@
   flex-direction: column;
   overflow-y: scroll;
   padding: 0.5em;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
 }
 
+/* 美化标签按钮 */
 .ego-store-lite-container .tc-tab-buttons {
   font-size: 2.5em;
   padding-top: 0;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+/* 单个标签按钮美化 */
+.ego-store-lite-container .tc-tab-buttons button {
+  border-radius: 12px;
+  padding: 12px 16px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 标签按钮悬浮效果 */
+.ego-store-lite-container .tc-tab-buttons button:hover {
+  transform: translateY(-2px);
+}
+
+/* 活跃标签按钮 - 颜色在variable.tid文件中定义 */
+
+/* 标签按钮内的图标 */
+.ego-store-lite-container .tc-tab-buttons button img {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  transition: all 0.3s ease;
+}
+
+.ego-store-lite-container .tc-tab-buttons button:hover img {
+  transform: scale(1.1);
+}
+
+/* 标签内容区域美化 */
+.ego-store-lite-container .tc-tab-content {
+  border-radius: 8px;
+  padding: 15px;
+  backdrop-filter: blur(5px);
+}
+
+/* 响应式标签按钮 */
+@media (max-width: 768px) {
+  .ego-store-lite-container .tc-tab-buttons {
+    font-size: 2em;
+    gap: 6px;
+    margin-bottom: 15px;
+  }
+  
+  .ego-store-lite-container .tc-tab-buttons button {
+    padding: 8px 12px;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ego-store-lite-container .tc-tab-buttons {
+    font-size: 1.5em;
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .ego-store-lite-container .tc-tab-buttons button {
+    padding: 6px 10px;
+    border-radius: 6px;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .ego-store-lite-container {
+    padding: 0.3em;
+  }
 }

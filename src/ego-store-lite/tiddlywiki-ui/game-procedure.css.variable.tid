@@ -1,0 +1,66 @@
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/game-procedure.css.variable
+tags: $:/tags/Stylesheet
+type: text/css
+
+/* 游戏界面容器主题适配 */
+.ego-store-lite-container {
+  background: linear-gradient(135deg, 
+    <<colour background>>0D 0%, 
+    <<colour background>>05 100%);
+  border: 1px solid <<colour sidebar-border>>;
+}
+
+/* 标签按钮主题适配 */
+.ego-store-lite-container .tc-tab-buttons button {
+  background: linear-gradient(135deg, 
+    <<colour background>>1A 0%, 
+    <<colour background>>0D 100%);
+  border: 1px solid <<colour sidebar-border>>;
+  color: <<colour foreground>>;
+  box-shadow: 0 4px 15px <<colour sidebar-foreground-shadow>>;
+}
+
+/* 标签按钮悬浮效果 */
+.ego-store-lite-container .tc-tab-buttons button:hover {
+  background: linear-gradient(135deg, 
+    <<colour background>>26 0%, 
+    <<colour background>>14 100%);
+  box-shadow: 0 8px 25px <<colour sidebar-foreground-shadow>>;
+}
+
+/* 活跃标签按钮 */
+.ego-store-lite-container .tc-tab-buttons button.tc-tab-selected {
+  background: linear-gradient(135deg, 
+    <<colour primary>>CC 0%, 
+    <<colour secondary>>99 100%);
+  color: <<colour background>>;
+  box-shadow: 0 6px 20px <<colour primary>>4D;
+  border-color: <<colour primary>>;
+}
+
+/* 标签内容区域 */
+.ego-store-lite-container .tc-tab-content {
+  background: <<colour background>>05;
+  border: 1px solid <<colour sidebar-border>>;
+}
+
+/* 深色模式适配 */
+@media (prefers-color-scheme: dark) {
+  .ego-store-lite-container {
+    background: linear-gradient(135deg, 
+      <<colour background>>1A 0%, 
+      <<colour background>>0D 100%);
+  }
+  
+  .ego-store-lite-container .tc-tab-buttons button {
+    background: linear-gradient(135deg, 
+      <<colour background>>33 0%, 
+      <<colour background>>1A 100%);
+  }
+  
+  .ego-store-lite-container .tc-tab-buttons button:hover {
+    background: linear-gradient(135deg, 
+      <<colour background>>4D 0%, 
+      <<colour background>>26 100%);
+  }
+}

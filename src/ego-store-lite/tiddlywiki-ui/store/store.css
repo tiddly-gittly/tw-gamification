@@ -1,10 +1,38 @@
 .store-gold-count {
   text-decoration: underline;
   text-decoration-color: gold;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 179, 71, 0.1) 100%);
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  backdrop-filter: blur(5px);
 }
 .store-gold-count-number {
   font-size: 1.1em;
   color: gold;
   margin: 0;
   user-select: none;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  font-weight: 600;
+}
+
+/* 商店特有的金币价格样式 */
+.ego-store-lite-game-buttons-list-item-reward {
+  background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  font-weight: 700;
+}
+
+/* 商店购买成功动画 */
+@keyframes purchase-success {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.ego-store-lite-game-buttons-list-item:active {
+  animation: purchase-success 0.3s ease;
 }

@@ -2,6 +2,146 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/actions-li
 tags: $:/tags/Stylesheet
 type: text/css
 
+/* 使用 TiddlyWiki palette 变量来适配不同主题 */
 .ego-store-lite-game-buttons-list-item {
-  box-shadow: <<colour sidebar-foreground-shadow>>; 
+  box-shadow: 0 10px 30px <<colour sidebar-foreground-shadow>>;
+  border: 1px solid <<colour sidebar-border>>;
+  background: linear-gradient(135deg, <<colour primary>>cc 0%, <<colour background>>99 100%);
+}
+
+/* 动态颜色支持 - 根据data-color属性生成渐变 */
+.ego-store-lite-game-buttons-list-item[data-color]:not([data-color=""]) {
+  --item-gradient: linear-gradient(135deg, 
+    var(--item-color, <<colour primary>>) 0%, 
+    var(--item-color, <<colour primary>>)cc 30%,
+    var(--item-color, <<colour primary>>)99 60%,
+    <<colour background>>e6 100%);
+}
+
+/* 为常见颜色提供CSS变量支持 */
+.ego-store-lite-game-buttons-list-item[data-color="red"] {
+  --item-color: <<colour alert-background>>;
+}
+
+.ego-store-lite-game-buttons-list-item[data-color="blue"] {
+  --item-color: <<colour primary>>;
+}
+
+.ego-store-lite-game-buttons-list-item[data-color="green"] {
+  --item-color: <<colour selection-background>>;
+}
+
+.ego-store-lite-game-buttons-list-item[data-color="yellow"] {
+  --item-color: <<colour dirty-indicator>>;
+}
+
+.ego-store-lite-game-buttons-list-item[data-color="purple"] {
+  --item-color: <<colour secondary>>;
+}
+
+.ego-store-lite-game-buttons-list-item[data-color="pink"] {
+  --item-color: <<colour alert-highlight>>;
+}
+
+.ego-store-lite-game-buttons-list-item[data-color="orange"] {
+  --item-color: <<colour dirty-indicator>>;
+}
+
+.ego-store-lite-game-buttons-list-item[data-color="teal"] {
+  --item-color: <<colour tab-background-selected>>;
+}
+
+.ego-store-lite-game-buttons-list-item[data-color="cyan"] {
+  --item-color: <<colour tab-background>>;
+}
+
+.ego-store-lite-game-buttons-list-item[data-color="indigo"] {
+  --item-color: <<colour primary>>;
+}
+
+.ego-store-lite-game-buttons-list-item-info {
+  background: transparent !important;
+  color: <<colour foreground>>;
+}
+
+.ego-store-lite-game-buttons-list-item-title {
+  color: <<colour foreground>>;
+  background: <<colour background>>99 !important;
+}
+
+.ego-store-lite-game-buttons-list-item-description {
+  background: transparent !important;
+  color: <<colour muted-foreground>>;
+}
+
+.ego-store-lite-game-buttons-list-item-edit {
+  background: <<colour background>>e6;
+  color: <<colour foreground>>;
+  border: 1px solid <<colour sidebar-border>>;
+}
+
+.ego-store-lite-game-buttons-list-item-edit:hover {
+  background: <<colour background>>;
+  border-color: <<colour primary>>;
+}
+
+/* 奖励文字颜色适配主题 */
+.ego-store-lite-game-buttons-list-item-reward {
+  background: linear-gradient(135deg, <<colour primary>> 0%, <<colour alert-background>> 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 接收奖励按钮适配主题 */
+
+/* 有奖励可接收时 - 高亮状态 */
+.ego-store-lite-action-receive-reward > button.receive-reward-button.has-rewards {
+  background: linear-gradient(135deg, <<colour primary>> 0%, <<colour secondary>> 100%);
+  color: <<colour background>>;
+  box-shadow: 0 8px 25px <<colour primary>>4D;
+  border: 2px solid <<colour primary>>;
+}
+
+.ego-store-lite-action-receive-reward > button.receive-reward-button.has-rewards:hover {
+  box-shadow: 0 12px 35px <<colour primary>>66;
+  background: linear-gradient(135deg, <<colour primary>>E6 0%, <<colour secondary>>E6 100%);
+}
+
+/* 无奖励可接收时 - 低调状态 */
+.ego-store-lite-action-receive-reward > button.receive-reward-button.no-rewards {
+  background: <<colour muted-foreground>>33;
+  color: <<colour muted-foreground>>;
+  box-shadow: 0 4px 15px <<colour muted-foreground>>1A;
+  border: 1px solid <<colour muted-foreground>>4D;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.ego-store-lite-action-receive-reward > button.receive-reward-button.no-rewards:hover {
+  box-shadow: 0 6px 20px <<colour muted-foreground>>26;
+  transform: none; /* 禁用悬浮动画 */
+}
+
+/* 兼容旧样式 - 默认状态 */
+.ego-store-lite-action-receive-reward > button.receive-reward-button:not(.has-rewards):not(.no-rewards) {
+  background: linear-gradient(135deg, <<colour primary>> 0%, <<colour secondary>> 100%);
+  color: <<colour background>>;
+  box-shadow: 0 8px 25px <<colour primary>>4D;
+}
+
+/* 荧光笔效果的主题适配 */
+.ego-store-lite-game-buttons-list-item-title {
+  background: <<colour background>>99 !important;
+  color: <<colour foreground>>;
+}
+
+.ego-store-lite-game-buttons-list-item-description {
+  background: transparent !important;
+  color: <<colour muted-foreground>>;
+}
+
+/* 错位背景适配主题 */
+.ego-store-lite-game-buttons-list-description::before {
+  background: <<colour background>>80 !important;
 }

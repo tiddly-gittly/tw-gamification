@@ -44,9 +44,9 @@ exports.startup = function twGamificationActionStartupModule() {
       if (
         !originalGeneratorDefinition.tags?.includes(tagForGenerators) ||
         !originalGeneratorDefinition['reality-event-type'] ||
-        !originalGeneratorDefinition['caption']
+        !(originalGeneratorDefinition['title'])
       ) {
-        console.error('tm-reality-action-event Invalid action definition tiddler. Missing required fields: tags, reality-event-type, or caption.', actionDefinitionTiddlerTitle);
+        console.error('tm-reality-action-event Invalid action definition tiddler. Missing required fields: tags, reality-event-type, or title.', actionDefinitionTiddlerTitle);
         return false;
       }
 
@@ -57,7 +57,7 @@ exports.startup = function twGamificationActionStartupModule() {
 
       // Merge and validate required fields
       const mergedDefinition = { ...originalGeneratorDefinition, ...parameterObject };
-      if (!mergedDefinition['reality-event-type'] || !mergedDefinition['caption']) {
+      if (!mergedDefinition['reality-event-type'] || !mergedDefinition['title']) {
         console.error('tm-reality-action-event Missing required fields after merging parameters.', mergedDefinition);
         return false;
       }
@@ -69,9 +69,10 @@ exports.startup = function twGamificationActionStartupModule() {
       if (
         !parameterObject ||
         !parameterObject['reality-event-type'] ||
-        !parameterObject['caption']
+        // allow one-time activity only use caption.
+        !(parameterObject['title'] ?? parameterObject['caption'])
       ) {
-        console.error('tm-reality-action-event No valid event definition found. Missing required fields: reality-event-type or caption.', parameterObject);
+        console.error('tm-reality-action-event No valid event definition found. Missing required fields: reality-event-type or title.', parameterObject);
         return false;
       }
 

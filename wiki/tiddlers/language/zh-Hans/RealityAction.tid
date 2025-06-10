@@ -73,7 +73,7 @@ title: language/zh-Hans/RealityAction
 |!字段名 |!说明 |!示例值 |
 |`reality-event-type` |事件类型，决定奖励大小 |`SmallReward`、`LargeReward`、`SmallPunishment`、`LargePunishment` |
 |`reality-event-amount` |奖励数量 |`1`、`0.2`、`5` 等数字 |
-|`caption` |按钮显示的文字 |`早睡打卡`、`晨练完成` |
+|`title` |动作条目的唯一标识符 |`我的日常打卡`、`exercise-one-time-action` |
 
 ''注意：'' 对于方式二（直接传递参数），这些字段都必须在消息微件中提供。对于方式一（预定义条目），这些字段必须在条目中定义，也可以在消息微件中覆盖。
 
@@ -84,6 +84,7 @@ title: language/zh-Hans/RealityAction
 |`description` |动作的详细说明，鼓励玩家完成任务 |`在晚上10点前睡觉，有助于身体健康，因为……（省略30字）` |
 |`icon` |按钮显示的图标 |图片条目标题，如 `$:/core/images/sleep` ，最好使用 SVG 图片 |
 |`enabled` |是否启用这个动作，供玩家关闭不想看到的任务 |`yes` 或 `no` |
+|`caption` |按钮显示的文字，没有则显示 `title` |`早睡打卡`、`晨练完成` |
 
 !!!! 关于 reality-event-message 字段的说明：
 

@@ -74,7 +74,7 @@ If both `$param` and other parameters are provided, the other parameters will ov
 |!Field Name |!Description |!Example Values |
 |`reality-event-type` |Event type, determines reward size |`SmallReward`, `LargeReward`, `SmallPunishment`, `LargePunishment` |
 |`reality-event-amount` |Reward amount |`1`, `0.2`, `5` and other numbers |
-|`caption` |Text displayed on the button |`Early Sleep Check-in`, `Morning Exercise Complete` |
+|`title` |Unique identifier for the action tiddler |`My Daily Check-in`, `exercise-one-time-action` |
 
 ''Note:'' For Method 2 (direct parameter passing), all these fields must be provided in the message widget. For Method 1 (predefined tiddlers), these fields must be defined in the tiddler and can also be overridden in the message widget.
 
@@ -85,6 +85,7 @@ If both `$param` and other parameters are provided, the other parameters will ov
 |`description` |Detailed description of the action, encouraging players to complete tasks |`Going to bed before 10 PM is good for your health because... (30 characters omitted)` |
 |`icon` |Icon displayed on the button |Image tiddler title, such as `$:/core/images/sleep`, preferably SVG images |
 |`enabled` |Whether to enable this action, allowing players to turn off tasks they don't want to see |`yes` or `no` |
+|`caption` |Text displayed on the button, fallback to `title` |`Early Sleep Check-in`, `Morning Exercise Complete` |
 
 !!!! About the reality-event-message field:
 

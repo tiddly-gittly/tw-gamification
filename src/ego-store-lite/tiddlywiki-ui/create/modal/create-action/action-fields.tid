@@ -107,4 +107,10 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-act
     />
     <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/Enabled/Description>></span>
   </div>
+
+  <div class="ego-store-lite-new-item-field">
+    <span class="ego-store-lite-new-item-field-label"><<lingo CreateAction/Color/Caption>></span>
+    <$edit-text type="color" tiddler=<<temp-tiddler>> field="color" class="ego-store-lite-new-item-field-input"/>
+    <span class="ego-store-lite-new-item-field-description"><<lingo CreateAction/Color/Description>></span>
+  </div>
 </div>

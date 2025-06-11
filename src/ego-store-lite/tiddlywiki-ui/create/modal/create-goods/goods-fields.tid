@@ -60,4 +60,10 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-goo
     />
     <span class="ego-store-lite-new-item-field-description"><<lingo CreateGoods/Enabled/Description>></span>
   </div>
+
+  <div class="ego-store-lite-new-item-field">
+    <span class="ego-store-lite-new-item-field-label"><<lingo CreateGoods/Color/Caption>></span>
+    <$edit-text type="color" tiddler=<<temp-tiddler>> field="color" class="ego-store-lite-new-item-field-input"/>
+    <span class="ego-store-lite-new-item-field-description"><<lingo CreateGoods/Color/Description>></span>
+  </div>
 </div>

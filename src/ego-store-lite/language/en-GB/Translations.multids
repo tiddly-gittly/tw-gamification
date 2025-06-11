@@ -64,6 +64,10 @@ CreateGoods/Description/Caption: Description
 CreateGoods/Description/Description: Describe the Goods in detail.
 CreateGoods/Enabled/Caption: Enabled
 CreateGoods/Enabled/Description: Toggle to enable or disable the Goods.
+CreateAction/Color/Caption: Color
+CreateAction/Color/Description: Choose a theme color for this action, which will be displayed in the card background.
+CreateGoods/Color/Caption: Color
+CreateGoods/Color/Description: Choose a theme color for this goods, which will be displayed in the card background.
 ConsumeGoods/NotifyAmountFailed: Insufficient gold, unable to buy this product.
 ConsumeGoods/NotifyConditionFailed: The purchase condition is not met.
 ConsumeGoods/Success: The purchase was successful!

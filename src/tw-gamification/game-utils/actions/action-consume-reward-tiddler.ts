@@ -92,7 +92,8 @@ class ActionConsumeRewardTiddler extends Widget {
     if (this.tiddlerTitle === undefined || this.tiddlerTitle === '') {
       return;
     }
-    this.wiki.setText(this.tiddlerTitle, 'text', undefined, newAmount.toString());
+    // Fix floating point precision issues by limiting to 1 decimal place
+    this.wiki.setText(this.tiddlerTitle, 'text', undefined, newAmount.toFixed(1));
   }
 }
 

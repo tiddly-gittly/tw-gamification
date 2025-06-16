@@ -11,7 +11,7 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/receive-re
         <$action-createtiddler
           $basetitle=<<goldSaveFile>>
           $overwrite="yes"
-          text={{{ [<realityEvents>enlistJsonFilterTypeGetEvents[SmallReward]jsonget[amount]sum[]] =[<realityEvents>enlistJsonFilterTypeGetEvents[LargeReward]jsonget[amount]sum[]multiply[10]] =[<goldSaveFile>get[text]else[0]] +[sum[]] }}}
+          text={{{ [<realityEvents>enlistJsonFilterTypeGetEvents[SmallReward]jsonget[amount]sum[]] =[<realityEvents>enlistJsonFilterTypeGetEvents[LargeReward]jsonget[amount]sum[]multiply[10]] =[<goldSaveFile>get[text]else[0]] +[sum[]fixed[1]] }}}
         />
       </$action-convert-reality-event>
     </$let>

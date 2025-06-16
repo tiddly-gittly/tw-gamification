@@ -1,6 +1,5 @@
 title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/actions-list.css.variable
 tags: $:/tags/Stylesheet
-type: text/css
 
 /* 使用 TiddlyWiki palette 变量来适配不同主题 */
 .ego-store-lite-game-buttons-list-item {
@@ -97,8 +96,8 @@ type: text/css
 
 /* 有奖励可接收时 - 高亮状态 */
 .ego-store-lite-action-receive-reward > button.receive-reward-button.has-rewards {
-  background: linear-gradient(135deg, <<colour primary>> 0%, <<colour secondary>> 100%);
-  color: <<colour background>>;
+  background: linear-gradient(135deg, <<colour message-foreground>> 0%, <<colour secondary>> 100%);
+  color: <<colour foreground>>;
   box-shadow: 0 8px 25px <<colour primary>>4D;
   border: 2px solid <<colour primary>>;
 }
@@ -121,13 +120,6 @@ type: text/css
 .ego-store-lite-action-receive-reward > button.receive-reward-button.no-rewards:hover {
   box-shadow: 0 6px 20px <<colour muted-foreground>>26;
   transform: none; /* 禁用悬浮动画 */
-}
-
-/* 兼容旧样式 - 默认状态 */
-.ego-store-lite-action-receive-reward > button.receive-reward-button:not(.has-rewards):not(.no-rewards) {
-  background: linear-gradient(135deg, <<colour primary>> 0%, <<colour secondary>> 100%);
-  color: <<colour background>>;
-  box-shadow: 0 8px 25px <<colour primary>>4D;
 }
 
 /* 荧光笔效果的主题适配 */

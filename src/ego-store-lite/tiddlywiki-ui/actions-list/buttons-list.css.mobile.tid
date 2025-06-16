@@ -1,19 +1,18 @@
 title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/actions-list/actions-list.css.mobile
 tags: $:/tags/Stylesheet
-type: text/css
 
 /* Responsive styles */
 @media (max-width: <<sidebarbreakpoint>>) {
   .ego-store-lite-game-buttons-list-container {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .ego-store-lite-game-buttons-list-item {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .ego-store-lite-game-buttons-list-item-info {
-      align-items: center;
-      text-align: center;
+    align-items: center;
+    text-align: center;
   }
 }

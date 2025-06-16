@@ -7,7 +7,7 @@
   "plugin-type": "plugin",
   "plugin-priority": "10",
   "dependents": "$:/plugins/linonetwo/activity-log-tools",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "stability": "STABILITY_1_EXPERIMENTAL",
   "list": "readme config tree"
 }

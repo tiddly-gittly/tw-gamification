@@ -1,14 +1,5 @@
 title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/game-procedure.css.variable
 tags: $:/tags/Stylesheet
-type: text/css
-
-/* 游戏界面容器主题适配 */
-.ego-store-lite-container {
-  background: linear-gradient(135deg, 
-    <<colour background>>0D 0%, 
-    <<colour background>>05 100%);
-  border: 1px solid <<colour sidebar-border>>;
-}
 
 /* 标签按钮主题适配 */
 .ego-store-lite-container .tc-tab-buttons button {
@@ -33,7 +24,7 @@ type: text/css
   background: linear-gradient(135deg, 
     <<colour primary>>CC 0%, 
     <<colour secondary>>99 100%);
-  color: <<colour background>>;
+  color: <<colour foreground>>;
   box-shadow: 0 6px 20px <<colour primary>>4D;
   border-color: <<colour primary>>;
 }
@@ -41,7 +32,6 @@ type: text/css
 /* 标签内容区域 */
 .ego-store-lite-container .tc-tab-content {
   background: <<colour background>>05;
-  border: 1px solid <<colour sidebar-border>>;
 }
 
 /* 深色模式适配 */

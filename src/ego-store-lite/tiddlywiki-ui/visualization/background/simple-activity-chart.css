@@ -1,0 +1,36 @@
+.ego-store-lite-action-background-chart {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  width: 120px;
+  height: 120px;
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 1;
+  border-radius: 4px;
+  overflow: hidden;
+  background: transparent;
+  border: none;
+}
+
+.ego-store-lite-action-background-chart canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.ego-store-lite-game-buttons-list-item:hover .ego-store-lite-action-background-chart {
+  opacity: 0.9;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+/* 深色主题支持 */
+@media (prefers-color-scheme: dark) {
+  .ego-store-lite-action-background-chart {
+    opacity: 0.5;
+  }
+  
+  .ego-store-lite-game-buttons-list-item:hover .ego-store-lite-action-background-chart {
+    opacity: 0.8;
+  }
+}

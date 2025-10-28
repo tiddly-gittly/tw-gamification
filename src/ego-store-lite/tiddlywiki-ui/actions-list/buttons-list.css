@@ -154,6 +154,15 @@
   -webkit-box-decoration-break: clone;
 }
 
+/* 深色模式下文字颜色调整 */
+@media (prefers-color-scheme: dark) {
+  .ego-store-lite-game-buttons-list-item-title {
+    color: var(--tw-foreground, #e2e8f0);
+    background: rgba(0, 0, 0, 0.4);
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
+  }
+}
+
 .ego-store-lite-game-buttons-list-item-reward {
   font-size: 1em;
   font-weight: 600;
@@ -250,6 +259,13 @@
   -webkit-box-orient: vertical;
   width: 65%;
   max-width: 250px;
+}
+
+/* 深色模式下描述文字颜色调整 */
+@media (prefers-color-scheme: dark) {
+  .ego-store-lite-game-buttons-list-description {
+    color: var(--tw-muted, #cbd5e0);
+  }
 }
 
 /* 错位背景效果 */

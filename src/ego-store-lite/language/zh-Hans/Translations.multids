@@ -43,6 +43,8 @@ CreateAction/Enabled/Caption: 启用
 CreateAction/Enabled/Description: 切换以启用或禁用行动。
 CreateAction/Color/Caption: 颜色
 CreateAction/Color/Description: 选择此行动的主题色，将显示在卡片背景中。
+CreateAction/ShowBackgroundVisualization/Caption: 显示背景可视化
+CreateAction/ShowBackgroundVisualization/Description: 启用此选项将在行动卡片上显示简化的活动图表作为背景，可能会影响性能。
 EditAction/Caption: 编辑行动
 EditGoods/Caption: 编辑商品
 VisualizeAction/Caption: 可视化分析

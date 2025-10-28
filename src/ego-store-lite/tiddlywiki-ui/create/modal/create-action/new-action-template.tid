@@ -2,5 +2,6 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/create/modal/create-act
 reality-event-amount: 1
 reality-event-type: SmallReward
 enabled: yes
+show-background-visualization: no
 draft.title: 
 draft.of: 

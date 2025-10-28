@@ -73,6 +73,34 @@ const activityLog = getActivityLog(title, logTiddlerType);
 
 计算给定的时间范围内每天的活动次数。（下面的例子里使用了来自 [[visualization dashboard 插件|https://tw-cpl.netlify.app/#Plugin_202403161108223]]的`weekstart` 和 `weekend` 宏）
 
-```scss
+```tid
 [[logFileTitle]activitydaycounts<weekstart>,<weekend>[]]
+```
+
+!!!! 输出格式
+
+该筛选器返回一个逗号分隔的数字字符串，每个数字代表指定日期范围内每天的活动次数。
+
+* 格式: `"count1,count2,count3,...,countN"`
+* 顺序: 按日期升序排列（从开始日期到结束日期）
+* 覆盖范围: 涵盖整个日期范围，确保每天都有对应的数值
+* 空值处理: 如果某天没有活动，对应位置为 `0`
+* 错误处理: 如果没有数据或出错，返回空字符串 `""`
+
+!!!! 示例
+
+假设查询 2025年6月10日到2025年6月16日（一周）的数据：
+
+* 有活动的输出: `"2,0,1,3,0,1,2"` （周一2次，周二0次，周三1次，等等）
+* 无活动的输出: `"0,0,0,0,0,0,0"`
+* 数据错误的输出: `""`
+
+!!!! 在代码中的使用
+
+```tid
+\function weeklyData() [<logFile>activitydaycounts<startDate>,<endDate>]
+<!-- 获取逗号分隔的每日计数 -->
+<$let counts={{{ [function[weeklyData]] }}}>
+<!-- 如果有数据，counts 的值类似 "2,0,1,3,0,1,2" -->
+</$let>
 ```

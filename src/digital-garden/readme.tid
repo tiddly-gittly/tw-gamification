@@ -1,0 +1,6 @@
+title: $:/plugins/linonetwo/digital-garden/readme
+type: text/vnd.tiddlywiki
+
+\procedure lingo-base() $:/plugins/linonetwo/digital-garden/language/
+
+<<lingo Readme>>

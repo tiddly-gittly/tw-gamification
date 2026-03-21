@@ -1,0 +1,31 @@
+title: $:/plugins/linonetwo/digital-garden/tiddlywiki-ui/layout/game-layout
+name: <<lingo Name $:/plugins/linonetwo/digital-garden/language/>>
+icon: $:/plugins/linonetwo/digital-garden/tiddlywiki-ui/icons/garden
+description: <<lingo Description $:/plugins/linonetwo/digital-garden/language/>>
+tags: $:/tags/Layout
+
+\whitespace trim
+\import [subfilter{$:/core/config/GlobalImportFilter}]
+\define containerClasses()
+tc-page-container tc-language-$(languageTitle)$ dg-layout
+\end
+\procedure redirected-navigate-actions()
+  <$action-setfield $tiddler="$:/layout" text="" $timestamp="no" />
+  <$action-navigate $to=<<event-navigateTo>> $scroll="yes" />
+\end
+\procedure exit-garden-actions()
+  <$action-setfield $tiddler="$:/layout" text="" $timestamp="no" />
+\end
+
+<$vars languageTitle={{{ [{$:/language}get[name]] }}}>
+<$navigator story="$:/StoryList" history="$:/HistoryList" openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
+  <$messagecatcher $tm-navigate=<<redirected-navigate-actions>>>
+    {{$:/core/ui/CommandPaletteTemplate}}
+    <$GameWikiProvider>
+      <div class=<<containerClasses>>>
+        <<DigitalGarden>>
+      </div>
+    </$GameWikiProvider>
+  </$messagecatcher>
+</$navigator>
+</$vars>

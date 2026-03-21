@@ -1,0 +1,28 @@
+title: $:/plugins/linonetwo/digital-garden/config
+tags: $:/tags/ControlPanel/SettingsTab
+caption: <<lingo Name $:/plugins/linonetwo/digital-garden/language/>>
+
+\procedure lingo-base() $:/plugins/linonetwo/digital-garden/language/
+
+<<lingo ConfigDescription>>
+
+---
+
+!! <<lingo Configs/Economy/Caption>>
+
+;<<lingo Configs/Economy/CopperPerSmallReward/Description>>
+:<$edit-text tiddler="$:/plugins/linonetwo/digital-garden/configs/" field="CopperPerSmallReward" tag="input" type="number" />
+
+;<<lingo Configs/Economy/GoldPerLargeReward/Description>>
+:<$edit-text tiddler="$:/plugins/linonetwo/digital-garden/configs/" field="GoldPerLargeReward" tag="input" type="number" />
+
+;<<lingo Configs/Economy/GoldToSilverRate/Description>>
+:<$edit-text tiddler="$:/plugins/linonetwo/digital-garden/configs/" field="GoldToSilverRate" tag="input" type="number" />
+
+;<<lingo Configs/Economy/SilverToCopperRate/Description>>
+:<$edit-text tiddler="$:/plugins/linonetwo/digital-garden/configs/" field="SilverToCopperRate" tag="input" type="number" />
+
+!! <<lingo Configs/Grid/Caption>>
+
+;<<lingo Configs/Grid/TileSize/Description>>
+:<$edit-text tiddler="$:/plugins/linonetwo/digital-garden/configs/" field="TileSize" tag="input" type="number" />

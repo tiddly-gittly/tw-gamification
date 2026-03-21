@@ -1,0 +1,21 @@
+title: $:/plugins/linonetwo/digital-garden/blueprints/school
+tags: $:/tags/DigitalGarden/Blueprint
+caption: 魔法学校 (Magic School)
+description: 一座充满智慧的小型魔法学院，产生极高的学习满意度。
+icon: 🏰
+category: learning
+building-width: 3
+building-height: 3
+footprint: [{"x":0,"y":0},{"x":1,"y":0},{"x":2,"y":0},{"x":0,"y":1},{"x":1,"y":1},{"x":2,"y":1},{"x":0,"y":2},{"x":1,"y":2},{"x":2,"y":2}]
+atlas-frame: building-school
+copper-cost: 150
+gold-cost: 10
+unlock-required-level: 5
+service-tags: learning magic
+has-interior: no
+roof-group-template: null
+door-node-offsets: [{"x":1,"y":3}]
+maintenance-cost: 5
+content-capable: yes
+content-modes: bookshelf
+enabled: yes

@@ -1,0 +1,9 @@
+title: $:/plugins/linonetwo/digital-garden/configs/
+
+CopperPerSmallReward: 1
+GoldPerLargeReward: 1
+GoldToSilverRate: 1
+SilverToCopperRate: 10
+TileSize: 64
+LordExpPerBlueprint: 10
+GoldExchangeBoostPerLevel: 5

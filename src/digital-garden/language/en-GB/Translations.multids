@@ -1,0 +1,61 @@
+title: $:/plugins/linonetwo/digital-garden/language/en-GB/
+
+Name: Digital Garden
+Readme: ! Digital Garden\n\nA 45-degree isometric city builder game.\n\nConsume rewards from the tw-gamification framework to build your knowledge city — place buildings, attract residents, bind knowledge tiddlers, and explore your city as the lord.
+Description: A 45-degree isometric builder game built on the tw-gamification framework, turning real-world rewards into city-building resources.
+ConfigDescription: Customize the Digital Garden plugin behavior with these settings.
+Configs/Economy/Caption: Economy Settings
+Configs/Economy/CopperPerSmallReward/Description: Copper coins gained per small reward
+Configs/Economy/GoldPerLargeReward/Description: Gold coins gained per large reward
+Configs/Economy/GoldToSilverRate/Description: Gold to silver exchange rate (1 gold = N silver)
+Configs/Economy/SilverToCopperRate/Description: Silver to copper exchange rate (1 silver = N copper)
+Configs/Grid/Caption: Map Settings
+Configs/Grid/TileSize/Description: Tile pixel size (isometric diamond width)
+Currency/Copper: Copper
+Currency/Gold: Gold
+Currency/Silver: Silver
+Lord/Level: Lord Level
+Lord/Exp: Lord EXP
+World/Flat: Flat World
+World/Flat/Description: A flat expanse of land, the starting point for your garden.
+BuildingCategory/Learning: Learning & Reading
+BuildingCategory/Rest: Rest & Recovery
+BuildingCategory/Display: Display & Monument
+BuildingCategory/Social: Social & Entertainment
+BuildingCategory/Decoration: Decoration
+BuildingCategory/Terrain: Terrain
+Blueprint/Bookshelf/Caption: Bookshelf
+Blueprint/Bookshelf/Description: An elegant bookshelf that can hold your knowledge tiddlers for residents to read.
+Blueprint/Bench/Caption: Bench
+Blueprint/Bench/Description: A bench for residents to rest and recover energy.
+Blueprint/Noticeboard/Caption: Noticeboard
+Blueprint/Noticeboard/Description: A noticeboard showing tiddler summaries that attracts browsing residents.
+Placement/Confirm: Place
+Placement/Cancel: Cancel Placement
+Placement/Delete: Delete
+Placement/Rotate: Rotate
+Economy/Unlock/Blueprint: Unlock Blueprint
+Economy/Unlock/World: Unlock World
+Economy/Insufficient/Copper: Not enough copper
+Economy/Insufficient/Gold: Not enough gold
+Economy/Insufficient/Silver: Not enough silver
+Economy/Unlock/LevelRequired: Requires Lord Level {level}
+Building/Operation/Running: Running
+Building/Operation/Paused: Paused
+Building/Operation/Toggle: Toggle Operation
+Resident/Using: Using
+Content/ViewTiddler: View Tiddler
+Content/Summary: Summary
+Toolbar/Exit: Exit Garden
+Toolbar/Move: Move
+Toolbar/Place: Place
+Toolbar/Select: Inspect
+Toolbar/Delete: Delete
+Status/MoveMode: 🚶 Move Mode
+Status/PlaceMode: 🔨 Place Mode
+Status/SelectMode: 🔍 Inspect Mode
+Status/DeleteMode: 🗑️ Delete Mode
+Status/MoveHint: Left-drag to pan · Scroll to zoom · Click tile to move lord
+Status/PlaceHint: Left-click to place · Right-click/Esc to cancel · R to rotate
+Status/SelectHint: Click a building to view details
+Status/DeleteHint: Click a building to delete

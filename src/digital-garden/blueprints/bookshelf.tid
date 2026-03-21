@@ -1,0 +1,21 @@
+title: $:/plugins/linonetwo/digital-garden/blueprints/bookshelf
+tags: $:/tags/DigitalGarden/Blueprint
+caption: <<lingo Blueprint/Bookshelf/Caption $:/plugins/linonetwo/digital-garden/language/>>
+description: <<lingo Blueprint/Bookshelf/Description $:/plugins/linonetwo/digital-garden/language/>>
+icon: 📚
+category: learning
+building-width: 2
+building-height: 2
+footprint: [{"x":0,"y":0},{"x":1,"y":0},{"x":0,"y":1},{"x":1,"y":1}]
+atlas-frame: building-bookshelf
+copper-cost: 20
+gold-cost: 0
+unlock-required-level: 1
+service-tags: learning reading
+has-interior: no
+roof-group-template: null
+door-node-offsets: []
+maintenance-cost: 1
+content-capable: yes
+content-modes: bookshelf noticeboard
+enabled: yes

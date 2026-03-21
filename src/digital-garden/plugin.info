@@ -1,0 +1,12 @@
+{
+  "title": "$:/plugins/linonetwo/digital-garden",
+  "name": "Digital Garden",
+  "author": "LinOnetwo",
+  "description": "A 45-degree isometric digital garden game. Consume rewards from tw-gamification to build your knowledge city with buildings, residents and your lord character.",
+  "parent-plugin": "$:/plugins/linonetwo/tw-gamification",
+  "plugin-type": "plugin",
+  "version": "0.1.0",
+  "stability": "STABILITY_1_EXPERIMENTAL",
+  "dependents": "$:/plugins/linonetwo/tw-gamification $:/plugins/linonetwo/pixijs",
+  "list": "readme config tree"
+}

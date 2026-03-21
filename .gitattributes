@@ -1,1 +1,10 @@
 * text=auto
+# ──────────────────────────────────────────────────────────────────────────────
+# Git LFS — binary assets for Digital Garden plugin
+# Run once to initialise:  git lfs install
+# ──────────────────────────────────────────────────────────────────────────────
+# Digital Garden raw source sprites
+src/digital-garden/assets/raw-images/*.png filter=lfs diff=lfs merge=lfs -text
+
+# Digital Garden raw audio
+src/digital-garden/assets/raw-audio/*.mp3 filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,21 @@
+title: $:/plugins/linonetwo/digital-garden/blueprints/market
+tags: $:/tags/DigitalGarden/Blueprint
+caption: 奇幻集市 (Magic Market)
+description: 提供买卖与交换道具的地方。
+icon: 🏪
+category: trade
+building-width: 2
+building-height: 2
+footprint: [{"x":0,"y":0},{"x":1,"y":0},{"x":0,"y":1},{"x":1,"y":1}]
+atlas-frame: building-market
+copper-cost: 80
+gold-cost: 2
+unlock-required-level: 3
+service-tags: trade social
+has-interior: no
+roof-group-template: null
+door-node-offsets: [{"x":0,"y":2}]
+maintenance-cost: 3
+content-capable: yes
+content-modes: none
+enabled: yes

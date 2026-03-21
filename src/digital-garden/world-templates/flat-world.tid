@@ -1,0 +1,12 @@
+title: $:/plugins/linonetwo/digital-garden/world-templates/flat-world
+tags: $:/tags/DigitalGarden/WorldTemplate
+caption: <<lingo World/Flat $:/plugins/linonetwo/digital-garden/language/>>
+description: <<lingo World/Flat/Description $:/plugins/linonetwo/digital-garden/language/>>
+icon: 🌿
+default-width: 32
+default-height: 32
+silver-cost: 0
+terrain-feature-tags: flat
+spawn-rules: {"initialCopper":50,"starterBlueprintIds":["bookshelf","bench"]}
+ambient-audio-key: ambient-birds
+enabled: yes

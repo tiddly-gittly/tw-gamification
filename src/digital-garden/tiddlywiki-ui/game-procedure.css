@@ -1,0 +1,331 @@
+/* ─── Digital Garden Layout Styles ─── */
+
+.dg-layout {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+.dg-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #e8e0d0;
+}
+
+/* ─── Toolbar ─── */
+.dg-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  min-height: 44px;
+  padding: 0 12px;
+  background: linear-gradient(to bottom, #2a2018, #1e160f);
+  border-bottom: 1px solid #4a3d2e;
+  z-index: 100;
+  user-select: none;
+}
+
+.dg-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dg-toolbar-title {
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dg-hud-coins {
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.dg-coin {
+  white-space: nowrap;
+}
+
+.dg-coin-recharge-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 10px;
+  color: white;
+  transition: background 0.1s;
+}
+
+.dg-coin-recharge-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.dg-toolbar-center {
+  display: flex;
+  gap: 4px;
+}
+
+.dg-tool-btn {
+  width: 36px;
+  height: 32px;
+  border: 1px solid #5a4d3e;
+  border-radius: 4px;
+  background: #3a2e22;
+  color: #e8e0d0;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.dg-tool-btn:hover {
+  background: #4a3e2e;
+  border-color: #8a7d6e;
+}
+
+.dg-tool-btn.dg-tool-active {
+  background: #5a8f3f;
+  border-color: #7abf5f;
+}
+
+.dg-toolbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.dg-exit-btn {
+  height: 30px;
+  padding: 0 12px;
+  border: 1px solid #6a4444;
+  border-radius: 4px;
+  background: #4a2222;
+  color: #f0c8c8;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.dg-exit-btn:hover {
+  background: #6a3333;
+}
+
+/* ─── Blueprint Drawer ─── */
+.dg-blueprint-drawer {
+  display: flex;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #1e1a14;
+  border-bottom: 1px solid #3a3028;
+  z-index: 99;
+  overflow-x: auto;
+  user-select: none;
+}
+
+.dg-bp-item {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  border: 1px solid #4a3d2e;
+  border-radius: 6px;
+  background: #2a2418;
+  cursor: pointer;
+  font-size: 13px;
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.dg-bp-item:hover {
+  background: #3a3028;
+  border-color: #6a5d4e;
+}
+
+.dg-bp-item.dg-bp-active {
+  background: #3a5a2a;
+  border-color: #5a8f3f;
+}
+
+.dg-bp-cost {
+  opacity: 0.7;
+  margin-left: 4px;
+}
+
+/* ─── Canvas Area ─── */
+.dg-canvas-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: #2d5a27;
+  touch-action: none; /* Prevent browser scrolling from stealing drag events */
+}
+
+.dg-canvas-area .digital-garden-container {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+}
+
+/* ─── Status Bar ─── */
+.dg-statusbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 32px;
+  min-height: 32px;
+  padding: 0 12px;
+  background: #1a140e;
+  border-top: 1px solid #3a3028;
+  font-size: 12px;
+  z-index: 100;
+  user-select: none;
+}
+
+.dg-hint {
+  opacity: 0.6;
+}
+
+.dg-feedback {
+  margin-left: auto;
+  color: #f0c060;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 768px) {
+  .dg-toolbar {
+    height: 40px;
+    padding: 0 8px;
+  }
+  .dg-toolbar-title {
+    font-size: 13px;
+  }
+  .dg-hud-coins {
+    font-size: 11px;
+    gap: 6px;
+  }
+  .dg-tool-btn {
+    width: 32px;
+    height: 28px;
+    font-size: 14px;
+  }
+  .dg-exit-btn {
+    padding: 0 8px;
+    font-size: 12px;
+  }
+  .dg-blueprint-drawer {
+    padding: 4px 8px;
+  }
+  .dg-bp-item {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+  .dg-statusbar {
+    height: 28px;
+    font-size: 11px;
+    padding: 0 8px;
+  }
+}
+
+/* ─── 建筑详情面板 ─── */
+.dg-building-panel {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  width: 200px;
+  background: white;
+  color: #333;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.dg-bp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dg-bp-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 4px;
+}
+
+/* ─── Recharge Overlay ─── */
+.dg-overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dg-modal-box {
+  background: #1e1e2e;
+  border: 1px solid #4a4a6a;
+  border-radius: 10px;
+  padding: 16px 20px;
+  min-width: 320px;
+  max-width: 420px;
+  color: #e0e0f0;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+}
+
+.dg-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.dg-modal-close-btn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #e0e0f0;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 2px 8px;
+}
+.dg-modal-close-btn:hover { background: rgba(255,255,255,0.25); }
+
+.dg-modal-content p {
+  font-size: 13px;
+  margin: 0 0 10px;
+  color: #b0b0c8;
+}
+
+.dg-exchange-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.dg-exchange-table th {
+  background: #2a2a3e;
+  padding: 4px 8px;
+  text-align: left;
+  font-weight: 600;
+}
+.dg-exchange-table td {
+  padding: 3px 8px;
+  border-bottom: 1px solid #2a2a3e;
+}
+.dg-exchange-table tr:last-child td { border-bottom: none; }
+

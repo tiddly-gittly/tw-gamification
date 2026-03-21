@@ -1,0 +1,21 @@
+title: $:/plugins/linonetwo/digital-garden/blueprints/noticeboard
+tags: $:/tags/DigitalGarden/Blueprint
+caption: <<lingo Blueprint/Noticeboard/Caption $:/plugins/linonetwo/digital-garden/language/>>
+description: <<lingo Blueprint/Noticeboard/Description $:/plugins/linonetwo/digital-garden/language/>>
+icon: 📋
+category: display
+building-width: 1
+building-height: 1
+footprint: [{"x":0,"y":0}]
+atlas-frame: building-noticeboard
+copper-cost: 15
+gold-cost: 0
+unlock-required-level: 1
+service-tags: display reading
+has-interior: no
+roof-group-template: null
+door-node-offsets: []
+maintenance-cost: 1
+content-capable: yes
+content-modes: noticeboard monument
+enabled: yes

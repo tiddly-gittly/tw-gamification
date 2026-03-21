@@ -1,0 +1,61 @@
+title: $:/plugins/linonetwo/digital-garden/language/zh-Hans/
+
+Name: 数字花园
+Readme: ! 数字花园\n\n一个 45 度等距视图建造游戏。\n\n消费来自「游戏太微」的现实奖励，建设你的知识城市——放置建筑、吸引居民、承载知识条目，并在城市中漫游。
+Description: 基于「游戏太微」框架的 45 度等距建造游戏，将现实奖励转化为建城资源。
+ConfigDescription: 通过以下设置自定义「数字花园」的行为。
+Configs/Economy/Caption: 经济设置
+Configs/Economy/CopperPerSmallReward/Description: 每个小奖励转换为铜币的数量
+Configs/Economy/GoldPerLargeReward/Description: 每个大奖励转换为金币的数量
+Configs/Economy/GoldToSilverRate/Description: 金币兑换银币的比率（1 金币 = N 银币）
+Configs/Economy/SilverToCopperRate/Description: 银币兑换铜币的比率（1 银币 = N 铜币）
+Configs/Grid/Caption: 地图设置
+Configs/Grid/TileSize/Description: 单个地块的像素尺寸（菱形宽度）
+Currency/Copper: 铜币
+Currency/Gold: 金币
+Currency/Silver: 银币
+Lord/Level: 城主等级
+Lord/Exp: 城主经验
+World/Flat: 超平坦世界
+World/Flat/Description: 一片平坦的土地，是你建设花园的起点。
+BuildingCategory/Learning: 学习与阅读
+BuildingCategory/Rest: 休息与恢复
+BuildingCategory/Display: 展示与纪念
+BuildingCategory/Social: 社交与娱乐
+BuildingCategory/Decoration: 装饰
+BuildingCategory/Terrain: 地形
+Blueprint/Bookshelf/Caption: 书架
+Blueprint/Bookshelf/Description: 一座精致的书架，可以承载你的知识条目，让居民前来阅读。
+Blueprint/Bench/Caption: 长椅
+Blueprint/Bench/Description: 供居民休憩的长椅，让他们恢复精力。
+Blueprint/Noticeboard/Caption: 告示板
+Blueprint/Noticeboard/Description: 展示知识条目摘要的告示板，吸引居民驻足浏览。
+Placement/Confirm: 放置
+Placement/Cancel: 取消放置
+Placement/Delete: 删除
+Placement/Rotate: 旋转
+Economy/Unlock/Blueprint: 解锁蓝图
+Economy/Unlock/World: 解锁世界
+Economy/Insufficient/Copper: 铜币不足
+Economy/Insufficient/Gold: 金币不足
+Economy/Insufficient/Silver: 银币不足
+Economy/Unlock/LevelRequired: 需要城主等级 {level}
+Building/Operation/Running: 运营中
+Building/Operation/Paused: 已暂停
+Building/Operation/Toggle: 切换运营状态
+Resident/Using: 正在使用
+Content/ViewTiddler: 查看条目
+Content/Summary: 摘要
+Toolbar/Exit: 退出花园
+Toolbar/Move: 移动
+Toolbar/Place: 放置
+Toolbar/Select: 查看
+Toolbar/Delete: 删除
+Status/MoveMode: 🚶 移动模式
+Status/PlaceMode: 🔨 放置模式
+Status/SelectMode: 🔍 查看模式
+Status/DeleteMode: 🗑️ 删除模式
+Status/MoveHint: 左键拖拽平移 · 滚轮缩放 · 点击空地移动城主
+Status/PlaceHint: 左键放置 · 右键/Esc取消 · R旋转
+Status/SelectHint: 点击建筑查看详情
+Status/DeleteHint: 点击建筑删除

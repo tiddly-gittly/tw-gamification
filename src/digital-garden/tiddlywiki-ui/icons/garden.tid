@@ -1,0 +1,5 @@
+title: $:/plugins/linonetwo/digital-garden/tiddlywiki-ui/icons/garden
+tags: $:/Tags/Image
+
+\parameters (size:"22pt")
+<svg width=<<size>> height=<<size>> class="tc-image-garden tc-image-button" viewBox="0 0 24 24"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M11 21h2v-5.06c3.94-.5 7-3.86 7-7.94C20 5.24 17.76 3 15 3c-1.57 0-3.03.73-4 1.97A5.01 5.01 0 0 0 7 3C4.24 3 2 5.24 2 8c0 4.08 3.06 7.44 7 7.94V21zm2-7.06V12h2v-2h-2V8h-2v2H9v2h2v1.94C8.16 13.44 6 10.96 6 8c0-.55.45-1 1-1 .42 0 .8.27.94.67l.73 2.2 1.42-1.89A1 1 0 0 1 11.89 8c.45 0 .84.3.96.74l.72 2.16 1.44-1.92A1 1 0 0 1 16.89 9c.07.31.11.63.11 1 0 2.96-2.16 5.44-5 5.94z"/></g></svg>

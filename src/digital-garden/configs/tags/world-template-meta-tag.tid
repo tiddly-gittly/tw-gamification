@@ -1,0 +1,5 @@
+title: $:/plugins/linonetwo/digital-garden/configs/tags/world-template-meta-tag
+text: $:/tags/DigitalGarden/WorldTemplate
+
+This is the meta-tag for digital garden world template tiddlers.
+Tiddlers with this tag define a type of world that can be unlocked and instantiated.

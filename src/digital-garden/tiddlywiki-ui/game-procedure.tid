@@ -1,0 +1,100 @@
+title: $:/plugins/linonetwo/digital-garden/tiddlywiki-ui/game-procedure
+tags: $:/tags/Global
+
+\whitespace trim
+\procedure lingo-base() $:/plugins/linonetwo/digital-garden/language/
+
+\procedure DigitalGarden()
+
+<div class="dg-root">
+  <!-- ─── 顶部工具栏 ─── -->
+  <div class="dg-toolbar">
+    <div class="dg-toolbar-left">
+      <span class="dg-toolbar-title">🌿 <<lingo Name $:/plugins/linonetwo/digital-garden/language/>></span>
+      <span class="dg-hud-coins" id="dg-hud-coins">
+        <span class="dg-coin dg-copper" title="<<lingo Currency/Copper $:/plugins/linonetwo/digital-garden/language/>>">🟤 <span id="dg-copper-val">0</span></span>
+        <span class="dg-coin dg-gold" title="<<lingo Currency/Gold $:/plugins/linonetwo/digital-garden/language/>>">🟡 <span id="dg-gold-val">0</span></span>
+        <span class="dg-coin dg-silver" title="<<lingo Currency/Silver $:/plugins/linonetwo/digital-garden/language/>>">⚪ <span id="dg-silver-val">0</span></span>
+      </span>
+      <button class="dg-coin-recharge-btn" id="dg-recharge-open-btn" title="将积攒的人生经验兑换为金币">
+        ➕
+      </button>
+    </div>
+    <div class="dg-toolbar-center">
+      <button class="dg-tool-btn dg-tool-active" data-tool="move" title="移动 (拖拽平移/点击移动城主)">🚶</button>
+      <button class="dg-tool-btn" data-tool="place" title="放置建筑">🔨</button>
+      <button class="dg-tool-btn" data-tool="select" title="查看建筑">🔍</button>
+      <button class="dg-tool-btn" data-tool="delete" title="删除建筑">🗑️</button>
+    </div>
+    <div class="dg-toolbar-right">
+      <$button class="dg-exit-btn" actions=<<exit-garden-actions>> tooltip="返回默认布局（退出游戏）">
+        ✕ <<lingo Toolbar/Exit $:/plugins/linonetwo/digital-garden/language/>>
+      </$button>
+    </div>
+  </div>
+  <!-- ─── 蓝图选择器（放置模式下可见） ─── -->
+  <div class="dg-blueprint-drawer" id="dg-blueprint-drawer" style="display:none;">
+    <div class="dg-bp-item" data-blueprint="bookshelf" title="<<lingo Blueprint/Bookshelf/Description $:/plugins/linonetwo/digital-garden/language/>>">
+      📚 <<lingo Blueprint/Bookshelf/Caption $:/plugins/linonetwo/digital-garden/language/>> <small class="dg-bp-cost">20🟤</small>
+    </div>
+    <div class="dg-bp-item" data-blueprint="bench" title="<<lingo Blueprint/Bench/Description $:/plugins/linonetwo/digital-garden/language/>>">
+      🪑 <<lingo Blueprint/Bench/Caption $:/plugins/linonetwo/digital-garden/language/>> <small class="dg-bp-cost">10🟤</small>
+    </div>
+    <div class="dg-bp-item" data-blueprint="noticeboard" title="<<lingo Blueprint/Noticeboard/Description $:/plugins/linonetwo/digital-garden/language/>>">
+      📋 <<lingo Blueprint/Noticeboard/Caption $:/plugins/linonetwo/digital-garden/language/>> <small class="dg-bp-cost">15🟤</small>
+    </div>
+    <div class="dg-bp-item" data-blueprint="school" title="一座充满智慧的小型魔法学院">
+      🏰 魔法学校 <small class="dg-bp-cost">150🟤 10🟡</small>
+    </div>
+    <div class="dg-bp-item" data-blueprint="market" title="提供买卖与交换道具的地方">
+      🏪 奇幻集市 <small class="dg-bp-cost">80🟤 2🟡</small>
+    </div>
+  </div>
+  <!-- ─── 建筑详情面板 ─── -->
+  <div class="dg-building-panel" id="dg-building-panel" style="display:none;">
+    <div class="dg-bp-header">
+      <h3 id="dg-bp-title" style="margin: 0; font-size: 14px;">建筑名称</h3>
+      <button class="dg-bp-close-btn" id="dg-bp-close-btn">✕</button>
+    </div>
+    <div class="dg-bp-content" style="margin-top: 8px;">
+      <div style="font-size: 12px; margin-bottom: 8px;">状态: <span id="dg-bp-status">运营中</span></div>
+      <button id="dg-bp-toggle-btn" style="width: 100%; padding: 4px;">暂停运营</button>
+      <hr id="dg-bp-knowledge-divider" style="margin: 8px 0; border: none; border-top: 1px solid #444; display: none;" />
+      <div id="dg-bp-knowledge-content" style="font-size: 12px; color: #ccc; max-height: 100px; overflow-y: auto; display: none; margin-top: 8px;"></div>
+    </div>
+  </div>
+  <!-- ─── 游戏画布区 ─── -->
+  <div class="dg-canvas-area">
+    <$digital-garden-widget />
+  </div>
+  <!-- ─── 底部状态栏 ─── -->
+  <div class="dg-statusbar" id="dg-statusbar">
+    <span id="dg-status-tool">🚶 移动模式</span>
+    <span id="dg-status-hint" class="dg-hint">左键拖拽平移 · 滚轮缩放 · 点击空地移动城主</span>
+    <span id="dg-status-feedback" class="dg-feedback"></span>
+  </div>
+  <!-- ─── 充值弹窗 overlay ─── -->
+  <div class="dg-overlay-backdrop" id="dg-recharge-overlay" style="display:none;">
+    <div class="dg-modal-box">
+      <div class="dg-modal-header">
+        <h2 style="margin:0; font-size:16px;">💰 充值金库</h2>
+        <button class="dg-modal-close-btn" id="dg-recharge-close-btn">✕</button>
+      </div>
+      <div class="dg-modal-content">
+        <p>当你在现实中完成一件事，奖励通过 <strong>tw-gamification</strong> 自动流入。</p>
+        <table class="dg-exchange-table">
+          <tr><th>奖励类型</th><th>效果</th></tr>
+          <tr><td>小奖励</td><td>+1 🟤 铜币</td></tr>
+          <tr><td>大奖励</td><td>+1 🟡 金币</td></tr>
+          <tr><td>小惩罚</td><td>-1 🟤 铜币</td></tr>
+          <tr><td>大惩罚</td><td>-1 🟡 金币</td></tr>
+          <tr><td>物品</td><td>解锁蓝图/区域</td></tr>
+        </table>
+        <hr/>
+        <p style="color:#aaa; font-size:12px;">单向兑换（无法逆向）：金币 → 银币 → 铜币</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+\end

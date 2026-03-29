@@ -41,7 +41,7 @@ class ActionConvertRealityEvent extends GameWidget {
     return false;
   }
 
-  public setRealityEvents(gamificationEventsJSON: IRealityEventCacheCacheFile) {
+  public setRealityEvents(gamificationEventsJSON: IRealityEventCacheCacheFile): boolean | Promise<boolean> | IRealityEventCacheCacheFile | Promise<IRealityEventCacheCacheFile> {
     // this method is called by provider when events are popped, and only events type that is in `eventTypes` will be sent here.
     this.setVariable('realityEvents', JSON.stringify(gamificationEventsJSON));
     // this can only trigger direct descendants, so anything needs to calculate or filtered need to be done in inline filter expression in transclusion. (But can create custom filter operators to simplify this.)

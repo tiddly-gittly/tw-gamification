@@ -28,6 +28,8 @@ export interface GardenBlueprintTiddlerFields {
   footprint: string;
   /** Atlas sprite frame key for the main building sprite */
   'atlas-frame': string;
+  /** JSON: {x,y,width,height} crop rectangle inside atlas-frame, or null */
+  'atlas-frame-rect'?: string;
   /** Copper cost to place */
   'copper-cost': string;
   /** Gold cost to unlock blueprint */
@@ -62,6 +64,7 @@ export interface GardenBlueprintDefinition {
   buildingHeight: number;
   footprint: Array<{ x: number; y: number }>;
   atlasFrame: string;
+  atlasFrameRect: { x: number; y: number; width: number; height: number } | null;
   copperCost: number;
   goldCost: number;
   unlockRequiredLevel: number;

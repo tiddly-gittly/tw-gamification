@@ -9,7 +9,7 @@ export abstract class GameWidget extends Widget {
    * You should implement this method, and transform received events to in-game events and send them to the game.
    * @return handled - return true if the event is handled, and we will safely remove handled events from the cache; false if not handled, we will keep the cache untouched for next try.
    */
-  public abstract setRealityEvents(gamificationEventsJSON: IRealityEventCacheCacheFile): boolean | Promise<boolean>;
+  public abstract setRealityEvents(gamificationEventsJSON: IRealityEventCacheCacheFile): boolean | Promise<boolean> | IRealityEventCacheCacheFile | Promise<IRealityEventCacheCacheFile>;
   /**
    * Trigger event dequeue, event tiddlers will be cleared, and events will be sent to game widget by calling `setRealityEvents` method on the game widget that triggers `popRealityEvents`.
    */

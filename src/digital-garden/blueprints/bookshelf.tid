@@ -8,6 +8,7 @@ building-width: 2
 building-height: 2
 footprint: [{"x":0,"y":0},{"x":1,"y":0},{"x":0,"y":1},{"x":1,"y":1}]
 atlas-frame: building-bookshelf
+atlas-frame-rect: {"x":0,"y":48,"width":64,"height":48}
 copper-cost: 20
 gold-cost: 0
 unlock-required-level: 1

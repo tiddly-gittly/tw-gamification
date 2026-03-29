@@ -26,7 +26,7 @@
 | 知识内容 | 通过功能建筑承载（书架、报刊亭、纪念碑等） |
 | 基础建筑分类 | 学习/阅读、休息/恢复、展示/纪念、社交/娱乐四类 |
 | 音频 | 仅音效（建造反馈、经济反馈），不做配音 |
-| 美术 | 油画风 AI 生成原图，打入 atlas |
+| 美术 | 使用 Cainos `Pixel Art Top Down - Basic v1.2.3`，按蓝图裁切为单图并注入 manifest |
 | 最高风险 | roof-layer + interior-zone 同图切层；预设降级方案（独立室内场景） |
 
 ---
@@ -216,10 +216,12 @@ GardenGameWidget          ← TiddlyWiki Widget 入口 + 生命周期
   - [x] 物品解锁蓝图（将特定物品/金币与蓝图解锁进行关联配置）
 - [x] `blueprints/bench.tid`（休息/恢复类）
 - [x] `blueprints/noticeboard.tid`（展示/纪念类）
-- [x] `scripts/build-atlas.mjs`（zx 脚本：原图 → atlas）
-- [x] AI 出图基准包（地块、道路、书架、长椅、城主、居民）← 待人工生成
-- [x] AI 音效生成（建造反馈、经济反馈 8 条）← 待人工生成
+- [x] 接入 Cainos 贴图包：`Pixel Art Top Down - Basic v1.2.3.zip`（仓库内置）
+- [x] 从 Cainos 贴图表裁切并落库：`ground-*` / `building-*`（raw-images）
+- [x] `scripts/buildManifest.js` 改造（raw-images + 可选 raw-audio → manifest）
+- [x] 免费音效包替换（place/buy/delete/rotate/world-unlock 等 8 类，FilmCow 精简抽取）
 - [x] `.gitattributes` 追加 atlas + audio 到 Git LFS
+- [x] 清理未使用素材，仅保留运行时引用的 raw-images / raw-audio
 
 ### Phase 7 — 完整的自动化测试
 
@@ -235,6 +237,7 @@ GardenGameWidget          ← TiddlyWiki Widget 入口 + 生命周期
 - [x] 修复 Assets.cache.has() 预检查，消除 atlas 未加载时的警告噪音
 - [x] 点击地图触发城主寻路（验证：8,8 → 13,7）
 - [x] 放置书架蓝图，验证深度排序（验证：depth 8010 < 9012）
+- [x] 移除旧 AI atlas 流程并切换至 Cainos 素材清单
 
 ---
 
@@ -243,7 +246,7 @@ GardenGameWidget          ← TiddlyWiki Widget 入口 + 生命周期
 1. **RoofVisibilitySystem**：统一大地图切层是最高风险；预留降级为独立室内场景，但 objects schema 不改。
 2. **高频写入**：居民逐帧状态、路径、动画帧只保存在内存；钱包、解锁、放置等高价值状态短 debounce 写回。
 3. **经济平衡**：大奖励折现倍率与蓝图价格需联动调整，不能单独改一项。
-4. **素材一致性**：45 度透视对风格一致性极敏感，必须先锁定基准包再批量扩图。
+4. **素材一致性**：Top-down 素材用于等距视图会有透视偏差，后续需持续校正裁切框与缩放参数。
 5. **多世界切换**：切换前必须 flush SaveScheduler；切换后只重建当前世界 runtime，不重建全局经济和蓝图库。
 
 ---
@@ -255,6 +258,6 @@ GardenGameWidget          ← TiddlyWiki Widget 入口 + 生命周期
 - [x] 障碍对城主与居民均有效；点击寻路结果稳定
 - [x] 进入建筑前只见屋顶、进入后显示内部（或降级版正常工作）
 - [x] 知识建筑点击只弹轻量详情，不展开全文
-- [x] 修改原图后 atlas 脚本可重建，运行时正常加载
+- [x] 修改 raw-images 后 manifest 脚本可重建，运行时正常加载
 - [x] 素材进 Git LFS，不膨胀仓库
-- [x] 油画风素材在 45 度视图下透视协调（Chrome MCP 截图验收）
+- [ ] 免费音效包替换完成并通过回放验收

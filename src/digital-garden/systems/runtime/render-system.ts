@@ -13,7 +13,7 @@
  * PLAN Phase 3 — runtime layer
  */
 
-import { Assets, Container, Graphics, Sprite, Text, TextStyle } from '$:/plugins/linonetwo/pixijs/pixi.js';
+import { Assets, Container, Graphics, Rectangle, Sprite, Text, TextStyle, Texture } from '$:/plugins/linonetwo/pixijs/pixi.js';
 import type { Application } from '$:/plugins/linonetwo/pixijs/pixi.js';
 import type { GardenBlueprintDefinition } from '../../types/building-types';
 import type { ResourceAtlasSystem } from '../infra/resource-atlas-system';
@@ -191,7 +191,7 @@ export class RenderSystem {
     const bw = blueprint?.buildingWidth ?? 1;
     const bh = blueprint?.buildingHeight ?? 1;
 
-    const sprite = this.trySprite(atlasFrame);
+    const sprite = this.trySprite(atlasFrame, blueprint?.atlasFrameRect ?? null);
     const container = new Container();
 
     // Always draw a footprint slab so multi-tile buildings visibly occupy tiles.
@@ -213,13 +213,10 @@ export class RenderSystem {
     container.addChild(footprintBase);
 
     if (sprite) {
-      // Scale sprite to cover the isometric footprint with height.
-      // Isometric footprint width = (bw + bh) * tileSize/2
-      // We add a height multiplier so tall buildings look elevated.
-      const isoW = (bw + bh) * (tileSize / 2) * 1.2;
-      const isoH = (bw + bh) * (tileSize / 4) * 3.6;
-      sprite.width = isoW;
-      sprite.height = isoH;
+      // Scale sprite proportionally based on its target grid footprint.
+      const targetWidth = (bw + bh) * (tileSize / 2) * 1.2; // slight oversize looks good
+      const scale = targetWidth / sprite.texture.width;
+      sprite.scale.set(scale);
       // Anchor at bottom-center of footprint
       sprite.anchor.set(0.5, 1);
       sprite.position.set(0, -halfH * 0.5);
@@ -259,7 +256,7 @@ export class RenderSystem {
     const tileSize = this.getTileSize();
 
     // Lord sprite
-    const lordContainer = this.createCharacterPlaceholder(0x4169e1, '城主', tileSize);
+    const lordContainer = this.createCharacterPlaceholder(0x4169e1, '城主', tileSize, 'character-lord');
     const lorPos = this.app.mapGrid.tileToScreen(this.app.player.tileX, this.app.player.tileY);
     lordContainer.position.set(lorPos.x, lorPos.y);
     (lordContainer as Container & { depthKey: number }).depthKey = this.app.player.tileY * 1000 + this.app.player.tileX + 0.5;
@@ -269,7 +266,7 @@ export class RenderSystem {
     // Residents
     if (!this.app.worldState.isLoaded) return;
     for (const resident of this.app.worldState.objects.residents) {
-      const residentContainer = this.createCharacterPlaceholder(0xe08040, 'NPC', tileSize);
+      const residentContainer = this.createCharacterPlaceholder(0xe08040, 'NPC', tileSize, 'character-npc');
       const residentPos = this.app.mapGrid.tileToScreen(resident.tileX, resident.tileY);
       residentContainer.position.set(residentPos.x, residentPos.y);
       (residentContainer as Container & { depthKey: number }).depthKey = resident.tileY * 1000 + resident.tileX + 0.5;
@@ -278,7 +275,18 @@ export class RenderSystem {
     }
   }
 
-  private createCharacterPlaceholder(color: number, label: string, tileSize: number): Container {
+  private createCharacterPlaceholder(color: number, label: string, tileSize: number, atlasFrame?: string): Container {
+    if (atlasFrame) {
+      const sprite = this.trySprite(atlasFrame);
+      if (sprite) {
+        sprite.anchor.set(0.5, 1);
+        sprite.position.set(0, -tileSize * 0.1); 
+        const c = new Container();
+        c.addChild(sprite);
+        return c;
+      }
+    }
+
     const r = tileSize * 0.18;
     const g = new Graphics();
     g.circle(0, -r * 2, r)
@@ -410,14 +418,13 @@ export class RenderSystem {
     }
 
     // Try to show actual building sprite as ghost
-    const sprite = this.trySprite(blueprint.atlasFrame);
+    const sprite = this.trySprite(blueprint.atlasFrame, blueprint.atlasFrameRect ?? null);
     if (sprite) {
       const bw = blueprint.buildingWidth;
       const bh = blueprint.buildingHeight;
-      const isoW = (bw + bh) * (tileSize / 2);
-      const isoH = (bw + bh) * (tileSize / 4) * 3;
-      sprite.width = isoW;
-      sprite.height = isoH;
+      const targetWidth = (bw + bh) * (tileSize / 2) * 1.2;
+      const scale = targetWidth / sprite.texture.width;
+      sprite.scale.set(scale);
       sprite.anchor.set(0.5, 1);
       container.addChild(sprite);
       return container;
@@ -457,12 +464,20 @@ export class RenderSystem {
     this.lordSprite = undefined;
   }
 
-  private trySprite(frame: string): Sprite | undefined {
-    // Check the PixiJS Assets cache first to avoid noisy "not found" warnings
-    // that flood the console before the atlas is loaded.
-    if (!Assets.cache.has(frame)) return undefined;
+  private trySprite(frame: string, frameRect: { x: number; y: number; width: number; height: number } | null = null): Sprite | undefined {
+    // We try to get the texture. If it's loaded, it works.
     try {
-      const s = Sprite.from(frame);
+      const tex = Assets.get(frame) as Texture | undefined;
+      if (!tex) return undefined;
+
+      const usableTexture = frameRect
+        ? new Texture({
+            source: (tex as Texture & { source: unknown }).source,
+            frame: new Rectangle(frameRect.x, frameRect.y, frameRect.width, frameRect.height),
+          } as never)
+        : tex;
+
+      const s = Sprite.from(usableTexture);
       if (s.texture.width <= 1 && s.texture.height <= 1) return undefined;
       return s;
     } catch {

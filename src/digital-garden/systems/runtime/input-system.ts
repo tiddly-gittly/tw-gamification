@@ -27,6 +27,7 @@ import type { ActiveTool, UiStateSystem } from './ui-state-system';
 const DRAG_THRESHOLD = 5; // pixels — distinguishes click from drag
 
 import type { BuildingOperationSystem } from '../domain/building-operation-system';
+import type { AudioSystem } from './audio-system';
 
 export class InputSystem {
   private isDragging = false;
@@ -57,6 +58,8 @@ export class InputSystem {
     private readonly economy: EconomySystem,
     private readonly buildingOps: BuildingOperationSystem,
     private readonly worldState: WorldStateSystem,
+    private readonly audio: AudioSystem,
+    private readonly requestRecharge: (kind: 'SmallReward' | 'LargeReward', amount: number) => void
   ) {
     this.canvas = this.pixiApp.canvas;
     this.onPointerDownBound = this.onPointerDown.bind(this);
@@ -108,9 +111,49 @@ export class InputSystem {
     const rechargeOpenButton = this.dgRoot.querySelector<HTMLButtonElement>('#dg-recharge-open-btn');
     const rechargeCloseButton = this.dgRoot.querySelector<HTMLButtonElement>('#dg-recharge-close-btn');
     const rechargeModalBox = this.dgRoot.querySelector<HTMLElement>('.dg-modal-box');
+    const rechargeTypeSelect = this.dgRoot.querySelector<HTMLSelectElement>('#dg-recharge-type-select');
+    const rechargeConfirmBtn = this.dgRoot.querySelector<HTMLButtonElement>('#dg-recharge-confirm-btn');
+    const rechargeAmountInput = this.dgRoot.querySelector<HTMLInputElement>('#dg-recharge-amount-input');
+    const rechargeStatus = this.dgRoot.querySelector<HTMLElement>('#dg-recharge-status');
+
+    if (rechargeConfirmBtn && rechargeAmountInput && rechargeTypeSelect && rechargeStatus) {
+      rechargeConfirmBtn.addEventListener('click', () => {
+        const amount = parseInt(rechargeAmountInput.value, 10);
+        const kind = rechargeTypeSelect.value === 'LargeReward' ? 'LargeReward' : 'SmallReward';
+        if (!isNaN(amount) && amount > 0) {
+          rechargeStatus.innerText = '正在充值...';
+          this.requestRecharge(kind, amount);
+          setTimeout(() => {
+            rechargeStatus.innerText = `已请求充值 ${kind === 'LargeReward' ? '大奖励' : '小奖励'} × ${amount}`;
+            this.audio.playBuySuccess();
+          }, 300);
+        }
+      });
+    }
+
     if (rechargeOpenButton && rechargeOverlay) {
       rechargeOpenButton.addEventListener('click', () => {
         rechargeOverlay.style.display = 'flex';
+        // 计算当前可用的大小奖励数量
+        let smallCount = 0;
+        let largeCount = 0;
+        try {
+          const titles = (globalThis as any).$tw.wiki.getTiddlersWithTag('$:/Tags/Gamification/RealityEventCache');
+          for (const title of titles) {
+            const tempTid = (globalThis as any).$tw.wiki.getTiddler(title);
+            if (!tempTid || !tempTid.fields.text) continue;
+            const items = JSON.parse(tempTid.fields.text);
+            for (const item of items) {
+              if (item?.event?.type === 'SmallReward') smallCount += 1;
+              if (item?.event?.type === 'LargeReward') largeCount += 1;
+            }
+          }
+        } catch { /* ignore */ }
+        
+        const infoEl = this.dgRoot?.querySelector<HTMLElement>('#dg-recharge-available-info');
+        if (infoEl) {
+          infoEl.innerHTML = `当前可用：<strong style="color:#d88c42;">${smallCount} 个小奖励</strong>，<strong style="color:#f2c037;">${largeCount} 个大奖励</strong>`;
+        }
       });
     }
     if (rechargeCloseButton && rechargeOverlay) {
@@ -366,10 +409,12 @@ export class InputSystem {
 
       const result = this.placement.placeBuilding(ghost.blueprint, tileX, tileY, ghost.rotation);
       if (result.ok) {
+        this.audio.playPlaceSuccess();
         this.showFeedback(`✓ 已放置 ${ghost.blueprint.caption} (-${ghost.blueprint.copperCost}🟤)`);
         // Stay in placement mode for continuous placement
         this.ui.updateGhostPosition(tileX, tileY, false);
       } else if ('reason' in result) {
+        if (result.reason.includes('insufficient')) this.audio.playInsufficientFunds();
         const reasonMap: Record<string, string> = {
           'insufficient-copper': '铜币不足',
           'insufficient-gold': '金币不足',
@@ -399,6 +444,7 @@ export class InputSystem {
       if (this.ui.activeTool === 'delete') {
         const bp = this.getBlueprintById(building.blueprintId);
         this.placement.removeBuilding(building.id);
+        this.audio.playDelete();
         this.showFeedback(`🗑️ 已拆除 ${bp ? bp.caption : building.blueprintId}`);
         if (this.ui.selectedBuildingId === building.id) this.ui.selectBuilding(undefined);
       } else {

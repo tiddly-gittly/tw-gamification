@@ -81,7 +81,16 @@ tags: $:/tags/Global
         <button class="dg-modal-close-btn" id="dg-recharge-close-btn">✕</button>
       </div>
       <div class="dg-modal-content">
-        <p>当你在现实中完成一件事，奖励通过 <strong>tw-gamification</strong> 自动流入。</p>
+        <p>系统会积累你完成现实任务的限时奖励。在此手动将它们充值到“数字花园”的金库中：</p>          <p id="dg-recharge-available-info" style="font-size: 13px; margin: 4px 0;"></p>        <div style="margin: 10px 0; display: flex; align-items: center; gap: 8px;">
+          <select id="dg-recharge-type-select" style="padding: 4px;">
+            <option value="SmallReward">小奖励</option>
+            <option value="LargeReward">大奖励</option>
+          </select>
+          <input type="number" id="dg-recharge-amount-input" value="5" min="1" max="100" style="width: 60px; padding: 4px;" />
+          <button id="dg-recharge-confirm-btn" style="padding: 4px 12px; background: #2d5a27; color: white; border: none; border-radius: 4px; cursor: pointer;">充值</button>
+        </div>
+        <p id="dg-recharge-status" style="font-size: 12px; color: #aaa;"></p>
+        <hr/>
         <table class="dg-exchange-table">
           <tr><th>奖励类型</th><th>效果</th></tr>
           <tr><td>小奖励</td><td>+1 🟤 铜币</td></tr>

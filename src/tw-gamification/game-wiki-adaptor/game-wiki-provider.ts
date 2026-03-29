@@ -57,10 +57,15 @@ class GameWikiProvider extends Widget {
     let handledPromise = event.widget.setRealityEvents(gamificationEventsJSONToUse);
     handledPromise = handledPromise instanceof Promise ? handledPromise : Promise.resolve(handledPromise);
     void handledPromise.then(handled => {
-      if (handled) {
-        // Get rid used event from event queue
+      if (handled === true || Array.isArray(handled)) {
+        const unusedSet = new Set(Array.isArray(handled) ? handled.map((i: any) => i.meta?.id ?? i.event.timestamp) : []);
+        // Get rid of used event from event queue, keep specific returned unused items
         const unusedRealityEventsJSONs = gamificationEventsJSONs.map(({ fields, list }) => {
-          return { fields, list: list.filter(item => !eventTypes.includes(item?.event?.type ?? BasicRealityEventTypes.SmallReward)) };
+          return { fields, list: list.filter(item => {
+            const isPoppedType = eventTypes.includes(item?.event?.type ?? BasicRealityEventTypes.SmallReward);
+            if (!isPoppedType) return true;
+            return unusedSet.has(item.meta?.id ?? item.event.timestamp);
+          }) };  
         });
         unusedRealityEventsJSONs.forEach(({ fields, list }) => {
           // also in `src/tw-gamification/reality-event-cache/handle-reality-event-cache.ts`

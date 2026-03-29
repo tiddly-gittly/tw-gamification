@@ -85,6 +85,8 @@ export class GardenApp {
   private readonly blueprintCache = new Map<string, GardenBlueprintDefinition>();
   private lastHudSync = 0;
 
+  public onRechargeRequested?: (kind: 'SmallReward' | 'LargeReward', amount: number) => void;
+
   private ticker: Ticker | undefined;
   private destroyed = false;
 
@@ -115,6 +117,7 @@ export class GardenApp {
     this.sorting = new SortingSystem(this.objectLayer, this.characterLayer);
     this.camera = new CameraSystem(this.pixiApp, this.groundLayer, this.objectLayer, this.characterLayer, this.roofLayer, this.uiLayer);
     this.ui = new UiStateSystem();
+    this.audio = new AudioSystem(this.atlas);
     this.input = new InputSystem(
       this.pixiApp,
       this.camera,
@@ -126,8 +129,9 @@ export class GardenApp {
       this.economy,
       this.buildingOps,
       this.worldState,
+      this.audio,
+      (kind: 'SmallReward' | 'LargeReward', amount: number) => this.onRechargeRequested?.(kind, amount)
     );
-    this.audio = new AudioSystem(this.atlas);
   }
 
   async init(): Promise<void> {
@@ -244,6 +248,23 @@ export class GardenApp {
         return fallback;
       }
     };
+    const parseAtlasFrameRect = (value: string | undefined): { x: number; y: number; width: number; height: number } | null => {
+      if (!value) return null;
+      try {
+        const rect = JSON.parse(value) as { x?: number; y?: number; width?: number; height?: number };
+        if (
+          typeof rect.x === 'number' &&
+          typeof rect.y === 'number' &&
+          typeof rect.width === 'number' &&
+          typeof rect.height === 'number'
+        ) {
+          return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+        }
+      } catch {
+        return null;
+      }
+      return null;
+    };
     const parseBool = (value: string | undefined): boolean => {
       const v = (value ?? '').toLowerCase();
       return v === 'yes' || v === 'true';
@@ -294,6 +315,7 @@ export class GardenApp {
       buildingHeight: Number(fields['building-height']) || 1,
       footprint: parseJSON(fields.footprint, [{ x: 0, y: 0 }]),
       atlasFrame: fields['atlas-frame'] ?? id,
+      atlasFrameRect: parseAtlasFrameRect(fields['atlas-frame-rect']),
       copperCost: Number(fields['copper-cost']) || 0,
       goldCost: Number(fields['gold-cost']) || 0,
       unlockRequiredLevel: Number(fields['unlock-required-level']) || 1,

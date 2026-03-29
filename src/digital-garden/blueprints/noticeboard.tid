@@ -8,6 +8,7 @@ building-width: 1
 building-height: 1
 footprint: [{"x":0,"y":0}]
 atlas-frame: building-noticeboard
+atlas-frame-rect: {"x":0,"y":48,"width":64,"height":48}
 copper-cost: 15
 gold-cost: 0
 unlock-required-level: 1

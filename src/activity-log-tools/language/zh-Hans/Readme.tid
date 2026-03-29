@@ -46,6 +46,32 @@ import { addActivityToLog } from '$:/plugins/linonetwo/activity-log-tools/log-fi
 addActivityToLog(eventLog, event.timestamp)
 ```
 
+!!! 动作微件（WikiText）
+
+如果你的插件主要用 WikiText 编写，可以直接使用以下动作微件：
+
+!!!! action-create-activity-log
+
+创建日志条目。
+
+```tid
+<$action-create-activity-log
+    $logTitle=<<logTitle>>
+    $logType="daily-count"
+/>
+```
+
+!!!! action-add-activity-to-log
+
+向日志文件添加一条活动记录。
+
+```tid
+<$action-add-activity-to-log
+    $logTitle=<<logTitle>>
+    $logType="daily-count"
+/>
+```
+
 !! 读取记录文件
 
 !!! JS 库

@@ -46,6 +46,32 @@ import { addActivityToLog } from '$:/plugins/linonetwo/activity-log-tools/log-fi
 addActivityToLog(eventLog, event.timestamp)
 ```
 
+!!! Action Widgets (WikiText)
+
+If your plugin is mostly written in WikiText, you can use these action widgets directly:
+
+!!!! action-create-activity-log
+
+Create a log tiddler.
+
+```tid
+<$action-create-activity-log
+    $logTitle=<<logTitle>>
+    $logType="daily-count"
+/>
+```
+
+!!!! action-add-activity-to-log
+
+Add one activity record into a log file.
+
+```tid
+<$action-add-activity-to-log
+    $logTitle=<<logTitle>>
+    $logType="daily-count"
+/>
+```
+
 !! Read the log file
 
 !!! JS Library

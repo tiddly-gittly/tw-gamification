@@ -118,12 +118,16 @@ function getRangeAndLogFile(tiddler: Tiddler | undefined, title: string, dateSta
     return undefined;
   }
   let [dateStart, dateEnd] = [dateStartString, dateEndString].map(twDateString => {
+    if (/^[+-]?\d+$/.test(twDateString) && twDateString.length < 8) {
+      const d = new Date();
+      d.setHours(0, 0, 0, 0); // start of today
+      d.setDate(d.getDate() + Number(twDateString));
+      return d;
+    }
     const newDate = $tw.utils.parseDate(twDateString);
     return newDate === null || Number.isNaN(newDate.getTime()) ? new Date() : newDate;
   });
-  if (dateStart.getTime() === dateEnd.getTime()) {
-    return undefined;
-  }
+  
   // make sure start is smaller than end
   if (dateStart.getTime() > dateEnd.getTime()) {
     const temporary = dateStart;

@@ -1,0 +1,3 @@
+title: $:/plugins/linonetwo/activity-log-tools/ViewTemplate/ActivityLogValueTemplate
+
+<$text text={{{ [<storyTiddler>getindex<currentRecord>] }}} />

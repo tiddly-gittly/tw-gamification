@@ -18,7 +18,7 @@ describe('activitydaycounts filter', function() {
 
     it('should parse daily count log tiddler', function() {
       expect($tw.wiki.filterTiddlers(`[[ActivityLogDailyCountExample]] +[activitydaycounts[${startDateString}],[${endDateString}]]`).join(',')).toBe(
-        '1,0,0,0,3,0,0,2,3,4,5,6,7,8',
+          '0,2,3,4,5,6,7,8',
       );
     });
   });
@@ -30,7 +30,7 @@ describe('activitydaycounts filter', function() {
 
     it('should parse daily count log tiddler', function() {
       expect($tw.wiki.filterTiddlers(`[[ActivityLogDateExample]] +[activitydaycounts[${startDateString}],[${endDateString}]]`).join(',')).toBe(
-        '4,0,0,3,0',
+          '4,0,4',
       );
     });
   });

@@ -25,31 +25,19 @@ export const activitydaycounts = ((source, operator): string[] => {
     const { items, type: logTypes } = activityLog;
     switch (logTypes) {
       case LogFileTypes.DailyCount: {
-        const dailyCountRowsInRange = new Map<Date, number[]>();
-        for (const [rowStartDateString, rowOfCountsString] of items) {
-          const rowStartDate = new Date(Number(rowStartDateString.replace(LogFileTypes.DailyCount, '')));
-          if (rowStartDate.getTime() < filterRangeStartDate.getTime() || rowStartDate.getTime() > filterRangeEndDate.getTime()) {
-            continue;
-          }
-          // value is comma separated value, each is a count for that day, started at rowStartDateString
-          const rowOfCounts = rowOfCountsString.split(',').map(item => {
-            const count = Number(item);
-            if (Number.isInteger(count)) return count;
-            else return 0;
-          });
-          dailyCountRowsInRange.set(rowStartDate, rowOfCounts);
-        }
-        const dateWithCount = [...dailyCountRowsInRange]
-          .flatMap(([rowStartDate, rowOfCounts]) => {
+        const dateWithCount = [...items]
+          .flatMap(([rowEndDateString, rowOfCountsString]) => {
+            const rowEndDate = new Date(Number(rowEndDateString.replace(LogFileTypes.DailyCount, '')));
+            rowEndDate.setHours(0, 0, 0, 0);
+            const rowOfCounts = rowOfCountsString.split(',').map(item => {
+              const count = Number(item);
+              if (Number.isInteger(count)) return count;
+              return 0;
+            });
             return rowOfCounts.map((count, index) => {
-              const date = new Date(rowStartDate);
-              date.setDate(date.getDate() + index); // Add index to the date
-              if (date.getMonth() !== rowStartDate.getMonth()) {
-                // Handle spanning multiple months
-                date.setMonth(rowStartDate.getMonth());
-                date.setFullYear(rowStartDate.getFullYear() + Math.floor((rowStartDate.getMonth() + index) / 12));
-                date.setMonth((rowStartDate.getMonth() + index) % 12);
-              }
+              const date = new Date(rowEndDate);
+              date.setDate(rowEndDate.getDate() - (rowOfCounts.length - 1 - index));
+              date.setHours(0, 0, 0, 0);
               return [date, count] as const;
             });
           });
@@ -134,6 +122,8 @@ function getRangeAndLogFile(tiddler: Tiddler | undefined, title: string, dateSta
     dateStart = dateEnd;
     dateEnd = temporary;
   }
+  dateStart.setHours(0, 0, 0, 0);
+  dateEnd.setHours(23, 59, 59, 999);
   return [dateStart, dateEnd, activityLog] as const;
 }
 

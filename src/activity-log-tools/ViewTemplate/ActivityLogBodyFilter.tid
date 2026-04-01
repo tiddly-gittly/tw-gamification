@@ -1,4 +1,4 @@
 title: $:/plugins/linonetwo/activity-log-tools/ViewTemplate/ActivityLogBodyFilter
 tags: $:/tags/ViewTemplateBodyFilter
 
-[<currentTiddler>tag[$:/Tags/ActivityLog]then[$:/plugins/linonetwo/activity-log-tools/ViewTemplate/ActivityLogBody]]
+[tag[$:/Tags/ActivityLog]then[$:/plugins/linonetwo/activity-log-tools/ViewTemplate/ActivityLogBody]]

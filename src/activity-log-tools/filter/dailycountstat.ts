@@ -53,12 +53,15 @@ export const dailycountstat = ((source, operator): string[] => {
       const rowTimestamp = Number(key.replace(LogFileTypes.DailyCount, ''));
       if (!Number.isFinite(rowTimestamp)) continue;
 
-      const rowStartDate = new Date(rowTimestamp);
       const rowValues = String(value).split(',');
+      const rowEndDate = new Date(rowTimestamp);
+      rowEndDate.setHours(0, 0, 0, 0);
 
-      // Each element in rowValues represents one day starting from rowStartDate
+      // Each row key stores the latest day in the row.
+      // The last value maps to rowEndDate, and earlier values map backwards by day.
       for (let i = 0; i < rowValues.length; i++) {
-        const dayDate = new Date(rowTimestamp + i * DAY_INTERVAL);
+        const dayDate = new Date(rowEndDate);
+        dayDate.setDate(rowEndDate.getDate() - (rowValues.length - 1 - i));
         if (dayDate.toDateString() === targetDateString) {
           const parsed = Number(rowValues[i]);
           count += Number.isInteger(parsed) ? parsed : 0;

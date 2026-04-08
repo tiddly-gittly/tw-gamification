@@ -33,8 +33,8 @@ class ActionAddActivityToLog extends Widget {
     this.logTitle = this.getAttribute('$logTitle');
     this.logType = toLogFileType(this.getAttribute('$logType'));
 
-    const attrTimestamp = this.getAttribute('$timestamp');
-    const parsedTimestamp = attrTimestamp === undefined ? Number.NaN : Number(attrTimestamp);
+    const attributeTimestamp = this.getAttribute('$timestamp');
+    const parsedTimestamp = attributeTimestamp === undefined ? Number.NaN : Number(attributeTimestamp);
     this.timestamp = Number.isFinite(parsedTimestamp) ? parsedTimestamp : undefined;
     super.execute();
   }

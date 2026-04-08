@@ -37,8 +37,8 @@ class ActionCreateActivityLog extends Widget {
     this.logType = toLogFileType(this.getAttribute('$logType'));
     this.overwrite = this.getAttribute('$overwrite') === 'yes';
     this.addRecord = ['yes', 'true'].includes(this.getAttribute('$addRecord') ?? '');
-    const attrTimestamp = this.getAttribute('$timestamp');
-    const parsed = attrTimestamp === undefined ? Number.NaN : Number(attrTimestamp);
+    const attributeTimestamp = this.getAttribute('$timestamp');
+    const parsed = attributeTimestamp === undefined ? Number.NaN : Number(attributeTimestamp);
     this.timestamp = Number.isFinite(parsed) ? parsed : undefined;
     super.execute();
   }

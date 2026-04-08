@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { IFilterOperator } from 'tiddlywiki';
-import { DAY_INTERVAL, LogFileTypes } from '../log-file-types/LogFileTypes';
+import { LogFileTypes } from '../log-file-types/LogFileTypes';
 
 /**
  * Returns the count for a given day from a DailyCount activity log tiddler.
@@ -59,11 +58,11 @@ export const dailycountstat = ((source, operator): string[] => {
 
       // Each row key stores the latest day in the row.
       // The last value maps to rowEndDate, and earlier values map backwards by day.
-      for (let i = 0; i < rowValues.length; i++) {
+      for (let index = 0; index < rowValues.length; index++) {
         const dayDate = new Date(rowEndDate);
-        dayDate.setDate(rowEndDate.getDate() - (rowValues.length - 1 - i));
+        dayDate.setDate(rowEndDate.getDate() - (rowValues.length - 1 - index));
         if (dayDate.toDateString() === targetDateString) {
-          const parsed = Number(rowValues[i]);
+          const parsed = Number(rowValues[index]);
           count += Number.isInteger(parsed) ? parsed : 0;
         }
       }

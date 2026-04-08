@@ -86,7 +86,7 @@ export function addActivityToLog(activityLog: IActivityLogFile | undefined, newA
  * Minimum interval is `0.00001` days (1 min), but we can store it based on interval, if it is larger than 1 day, then store with `toFixed(1)`, if is between 1 hour and 1 day, then store with `toFixed(2)` for `0.04` (1/24), if is between 1 min and 1 hour, then store with `toFixed(5)` for `0.00001`.
  */
 function formatDayInterval(intervalInMs: number): string {
-  const intervalInDay = intervalInMs / (DAY_INTERVAL);
+  const intervalInDay = intervalInMs / DAY_INTERVAL;
   if (intervalInDay >= 1) {
     return intervalInDay.toFixed(1);
   } else if (intervalInDay >= 1 / 24) {

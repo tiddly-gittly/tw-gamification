@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { ITiddlerFields } from 'tiddlywiki';
 import { IActivityLogTiddlerFields, LogFileTypes } from '../log-file-types/LogFileTypes';
 
@@ -19,7 +16,7 @@ export function createActivityLog(logTiddlerType: LogFileTypes, fields: Partial<
         text: '',
         'hide-body': 'yes',
         'activity-log-type': logTiddlerType,
-        tags: [...fields?.tags ?? [], '$:/Tags/ActivityLog'],
+        tags: [...fields.tags ?? [], '$:/Tags/ActivityLog'],
       } satisfies IActivityLogTiddlerFields,
     );
   }

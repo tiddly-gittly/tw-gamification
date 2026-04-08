@@ -1,5 +1,3 @@
-/* eslint-disable unicorn/no-null */
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { getActivityLog } from '$:/plugins/linonetwo/activity-log-tools/log-file-tools/getActivityLog';
 import { IFilterOperator, Tiddler } from 'tiddlywiki';
 import { DAY_INTERVAL, LogFileTypes } from '../log-file-types/LogFileTypes';
@@ -115,7 +113,7 @@ function getRangeAndLogFile(tiddler: Tiddler | undefined, title: string, dateSta
     const newDate = $tw.utils.parseDate(twDateString);
     return newDate === null || Number.isNaN(newDate.getTime()) ? new Date() : newDate;
   });
-  
+
   // make sure start is smaller than end
   if (dateStart.getTime() > dateEnd.getTime()) {
     const temporary = dateStart;

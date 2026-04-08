@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
-/* eslint-disable unicorn/no-array-callback-reference */
-/* eslint-disable array-callback-return */
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import pick from 'lodash/pick';
 import { formatDuplicationFields } from '../reality-event-generator/deduplication/formatDuplicationFields';
 import {
@@ -13,7 +9,6 @@ import {
 import { getRealityEventCacheTitle } from './cache-files/getTitle';
 import { checkAndPushAnItemToLogAndCacheFile } from './checkAndPushAnItemToLogAndCacheFile';
 
-// eslint-disable-next-line no-var
 declare var exports: {
   after: string[];
   name: string;

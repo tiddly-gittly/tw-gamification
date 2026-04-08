@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { DEFAULT_AMOUNT } from './constants';
 
 export function processAmount(amount: string | number | undefined): number {
@@ -9,7 +8,7 @@ export function processAmount(amount: string | number | undefined): number {
     return Number(amount);
   }
   // try run it as a filter expression, to see if we can get the amount number
-  const amountFilteredResult = $tw.wiki.filterTiddlers(amount)?.[0];
+  const amountFilteredResult = $tw.wiki.filterTiddlers(amount)[0];
   if (!amountFilteredResult) {
     return DEFAULT_AMOUNT;
   }

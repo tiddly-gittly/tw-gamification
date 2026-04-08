@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/no-null */
 import { IChangedTiddlers, IWidgetEvent, Widget } from 'tiddlywiki';
 
 import { IRealityEventCacheCacheFile } from 'src/tw-gamification/types/RealityEventCacheTypes';
@@ -26,7 +25,7 @@ class ActionConvertRealityEvent extends GameWidget {
   }
 
   public execute() {
-    this.eventTypes = this.getAttribute('$eventTypes')?.split?.(' ') as BasicRealityEventTypes[];
+    this.eventTypes = this.getAttribute('$eventTypes')?.split(' ') as BasicRealityEventTypes[];
     super.execute();
   }
 

@@ -9,8 +9,8 @@ import { checkEventCacheDebounceDuplication } from './checkEventCache';
 function onItemDuplicateAndCanceled(newEventCacheItem: IRealityEventCacheCacheItem) {
   let eventName: string | undefined;
   if (newEventCacheItem.meta?.generator !== undefined) {
-    const generator = $tw.wiki.getTiddler(newEventCacheItem.meta?.generator);
-    eventName = generator?.fields?.caption as string | undefined;
+    const generator = $tw.wiki.getTiddler(newEventCacheItem.meta.generator);
+    eventName = generator?.fields.caption as string | undefined;
     if (eventName !== undefined) {
       eventName = $tw.wiki.renderText('text/plain', 'text/vnd.tiddlywiki', eventName);
     }

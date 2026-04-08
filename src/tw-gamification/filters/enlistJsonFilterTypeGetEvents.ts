@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { IFilterOperator } from 'tiddlywiki';
 import { IRealityEventCacheCacheFile } from '../types/RealityEventCacheTypes';
 import { BasicRealityEventTypes } from '../types/RealityEventTypes';

@@ -1,4 +1,3 @@
-
 export interface IDuplicationStrategy {
   /**
    * Strategy to run to find potential duplicates.

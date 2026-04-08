@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/no-null */
 import { widget as Widget } from '$:/core/modules/widgets/widget.js';
 import { IChangedTiddlers, IWidgetEvent } from 'tiddlywiki';
 

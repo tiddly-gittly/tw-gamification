@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { getActivityLog } from '$:/plugins/linonetwo/activity-log-tools/log-file-tools/getActivityLog';
 import { type IActivityLogFile, LogFileTypes } from 'src/activity-log-tools/log-file-types/LogFileTypes';
 import { isEventGenerator } from '../baseRealityEventGeneratorType';
@@ -18,6 +15,6 @@ export function getEventLog(eventGeneratorTitle: string | undefined): IActivityL
     return undefined;
   }
   const logTiddlerTitle = eventGeneratorTiddler.fields['activity-log'] || getDefaultEventLogTitle(eventGeneratorTitle);
-  const logTiddlerType: LogFileTypes = (eventGeneratorTiddler.fields['activity-log-type'] || LogFileTypes.Date) as LogFileTypes;
+  const logTiddlerType: LogFileTypes = eventGeneratorTiddler.fields['activity-log-type'] || LogFileTypes.Date;
   return getActivityLog(logTiddlerTitle, logTiddlerType);
 }

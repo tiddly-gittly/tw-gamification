@@ -55,6 +55,10 @@ caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lin
         <div>…</div>
       </div>
       <$button>
+        <$action-add-activity-to-log 
+          $logTitle={{{ [<currentTiddler>get[activity-log]] ~[<currentTiddler>addsuffix[-Log]] }}} 
+          $logType="daily-count" 
+        />
         <$action-consume-value-tiddler
           $tiddler="$:/plugins/linonetwo/ego-store-lite/configs/Golds"
           $amount={{!!gold-amount}}
@@ -67,6 +71,10 @@ caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lin
             message={{!!purchase-message}}
           />
         </$action-consume-value-tiddler>
+        
+        <!-- Background visualization chart -->
+        <$transclude $tiddler="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/background/simple-activity-chart"/>
+        
         <div class="ego-store-lite-game-buttons-list-item-icon">
           <!-- if icon field is a tiddler title, transclude it, if it is an emoji, display it -->
           <$transclude $tiddler={{!!icon}}>

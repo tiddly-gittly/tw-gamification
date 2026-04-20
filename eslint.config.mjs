@@ -11,15 +11,10 @@ export default [
     languageOptions: {
       parserOptions: {
         projectService: {
-          allowDefaultProject: ['./*.js', './*.mjs'],
+          allowDefaultProject: ['./*.js', './*.mjs', './wiki/tiddlers/tests/playwright/*.ts'],
         },
         tsconfigRootDir: __dirname,
       },
-    },
-  },
-  {
-    rules: {
-      'no-var': 'off',
     },
   },
 ];

@@ -1,5 +1,5 @@
 import { getActivityLog } from '$:/plugins/linonetwo/activity-log-tools/log-file-tools/getActivityLog';
-import { type IActivityLogFile, LogFileTypes } from 'src/activity-log-tools/log-file-types/LogFileTypes';
+import { type IActivityLogFile, LogFileTypes } from '../../../activity-log-tools/log-file-types/LogFileTypes';
 import { isEventGenerator } from '../baseRealityEventGeneratorType';
 import { getDefaultEventLogTitle } from './defaultEventLogTitle';
 

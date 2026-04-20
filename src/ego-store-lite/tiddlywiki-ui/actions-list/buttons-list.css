@@ -29,57 +29,17 @@
 
 .ego-store-lite-game-buttons-list-item {
   position: relative;
-  border-radius: 20px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  backdrop-filter: blur(10px);
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.6) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  height: 320px;
-}
-
-/* 高光效果 - 从左下到右上的斜向高光 */
-.ego-store-lite-game-buttons-list-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.3) 0%, 
-    rgba(255, 255, 255, 0.1) 30%,
-    transparent 50%,
-    transparent 70%,
-    rgba(0, 0, 0, 0.1) 100%);
-  pointer-events: none;
-  opacity: 0.8;
-  z-index: 0;
-  border-radius: 20px;
-}
-
-/* 阴影塑造高光效果 */
-.ego-store-lite-game-buttons-list-item::after {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.2) 0%, 
-    transparent 30%,
-    transparent 70%,
-    rgba(0, 0, 0, 0.2) 100%);
-  border-radius: 22px;
-  pointer-events: none;
-  z-index: -1;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(127, 127, 127, 0.3);
+  background: transparent;
+  height: 280px;
 }
 
 .ego-store-lite-game-buttons-list-item:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .ego-store-lite-game-buttons-list-item > button { 
@@ -89,91 +49,55 @@
   border: none;
   cursor: pointer;
   position: relative;
-  overflow: hidden;
-  display: block;
-  padding: 0;
-  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px 90px 16px;
+  text-align: left;
+  border-radius: 10px;
 }
 
 .ego-store-lite-game-buttons-list-item-icon {
   position: absolute;
-  bottom: 15px;
-  left: 15px;
-  font-size: 8em;
-  opacity: 0.7;
+  bottom: 12px;
+  left: 12px;
+  font-size: 5em;
+  opacity: 0.6;
   z-index: 1;
   filter: none;
   transform: rotate(-5deg);
   transition: all 0.3s ease;
-  text-shadow: 
-    2px 2px 4px rgba(0, 0, 0, 0.3),
-    -1px -1px 2px rgba(255, 255, 255, 0.1);
 }
 
 .ego-store-lite-game-buttons-list-item:hover .ego-store-lite-game-buttons-list-item-icon {
   transform: rotate(0deg) scale(1.05);
-  opacity: 0.9;
-  text-shadow: 
-    3px 3px 6px rgba(0, 0, 0, 0.4),
-    -2px -2px 4px rgba(255, 255, 255, 0.2);
+  opacity: 0.85;
 }
 
 .ego-store-lite-game-buttons-list-item-info {
-  position: relative;
+  position: static;
   z-index: 2;
-  padding: 20px 20px 10px 20px;
-  flex: 1;
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   background: transparent;
-  border-radius: 0;
-  margin: 0;
-  box-shadow: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
 }
 
 .ego-store-lite-game-buttons-list-item-title {
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: 700;
-  margin: 0 0 10px 0;
+  margin: 0 0 6px 0;
   user-select: none;
-  color: var(--tw-foreground, #2d3748);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   line-height: 1.2;
-  /* 荧光笔效果 */
-  background: rgba(255, 255, 255, 0.6);
-  padding: 2px 6px;
-  border-radius: 3px;
-  display: inline-block;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-
-/* 深色模式下文字颜色调整 */
-@media (prefers-color-scheme: dark) {
-  .ego-store-lite-game-buttons-list-item-title {
-    color: var(--tw-foreground, #e2e8f0);
-    background: rgba(0, 0, 0, 0.4);
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
-  }
 }
 
 .ego-store-lite-game-buttons-list-item-reward {
-  font-size: 1em;
-  font-weight: 600;
-  color: var(--tw-accent, #f56500);
+  font-size: 0.9em;
+  font-weight: 700;
   user-select: none;
-  background: var(--tw-primary, linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: none;
   margin: 0;
+  color: #b8860b;
 }
 
 .ego-store-lite-game-buttons-list-item-edit {
@@ -239,47 +163,18 @@
 
 .ego-store-lite-game-buttons-list-description {
   user-select: none;
-  overflow: visible;
-  position: absolute;
+  overflow: hidden;
+  position: static;
   z-index: 2;
-  top: 45%;
-  right: 20px;
-  transform: translateY(-50%);
-  padding: 12px 16px;
-  color: var(--tw-muted, #4a5568);
-  font-size: 1em;
+  margin-top: 8px;
+  font-size: 0.9em;
   line-height: 1.4;
-  background: transparent;
-  border-radius: 6px;
-  max-height: 180px;
-  text-overflow: ellipsis;
+  opacity: 0.75;
+  flex: 1;
   display: -webkit-box;
-  -webkit-line-clamp: 6;
-  line-clamp: 6;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
   -webkit-box-orient: vertical;
-  width: 65%;
-  max-width: 250px;
-}
-
-/* 深色模式下描述文字颜色调整 */
-@media (prefers-color-scheme: dark) {
-  .ego-store-lite-game-buttons-list-description {
-    color: var(--tw-muted, #cbd5e0);
-  }
-}
-
-/* 错位背景效果 */
-.ego-store-lite-game-buttons-list-description::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -3px;
-  right: 3px;
-  bottom: 2px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 4px;
-  z-index: -1;
-  transform: rotate(-1deg);
 }
 
 /* 自定义颜色支持 - 从color字段动态生成渐变 */

@@ -1,50 +1,75 @@
 title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/background/simple-activity-chart
 
 \procedure series()
-<$list filter="[range[-1],[0]]" variable="weekIndex">
 <$let
-  startDate={{{ [daystart<weekIndex>,[1]format:date[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
-  endDate={{{ [dayend<weekIndex>,[7]format:date[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
+  refreshSeed={{{ [[$:/state/ego-store-lite/chart-refresh]get[modified]] }}}
   logTitle={{{ [<currentTiddler>get[activity-log]] ~[<currentTiddler>addsuffix[-Log]] }}}
-  counts={{{ [<logTitle>activitydaycounts<startDate>,<endDate>] ~[[0,0,0,0,0,0,0]] }}}
+  previousWeekStart={{{ [daystart[-1],[1]format:date[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
+  previousWeekEnd={{{ [dayend[-1],[7]format:date[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
+  currentWeekStart={{{ [daystart[0],[1]format:date[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
+  currentWeekEnd={{{ [dayend[0],[7]format:date[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
+  previousCounts={{{ [<logTitle>activitydaycounts<previousWeekStart>,<previousWeekEnd>] ~[[0,0,0,0,0,0,0]] }}}
+  currentCounts={{{ [<logTitle>activitydaycounts<currentWeekStart>,<currentWeekEnd>] ~[[0,0,0,0,0,0,0]] }}}
 >
 {
-  name: 'Week <<weekIndex>>',
-  type: 'bar',
-  stack: 'total',
-  data: [<<counts>>],
-  itemStyle: { 
-    color: '<$list filter="[<weekIndex>match[-1]]">rgba(255, 206, 86, 0.7)</$list><$list filter="[<weekIndex>match[0]]">rgba(75, 192, 192, 0.7)</$list>' 
-  },
-  barWidth: '70%'
+  name: 'Previous Week',
+  type: 'line',
+  smooth: true,
+  symbol: 'none',
+  lineStyle: { width: 2, color: 'rgba(148, 163, 184, 0.9)' },
+  areaStyle: { color: 'rgba(148, 163, 184, 0.10)' },
+  data: normalizeCounts('<<previousCounts>>')
 },
+{
+  name: 'Current Week',
+  type: 'line',
+  smooth: true,
+  symbol: 'circle',
+  symbolSize: 7,
+  lineStyle: { width: 3, color: 'rgba(37, 99, 235, 1)' },
+  itemStyle: { color: 'rgba(37, 99, 235, 1)' },
+  areaStyle: { color: 'rgba(96, 165, 250, 0.22)' },
+  data: normalizeCounts('<<currentCounts>>')
+}
 </$let>
-</$list>
 \end
 
 \procedure render-background-chart()
 <$wikify name="seriesText" text=<<series>>>
 <div class="ego-store-lite-action-background-chart">
   <$echarts $text=```
+    const _refreshSeed = '<<refreshSeed>>';
+    const normalizeCounts = (raw) => {
+      const parsed = String(raw || '')
+        .split(/[,\s]+/)
+        .map((item) => Number(item))
+        .filter((item) => !Number.isNaN(item));
+      if (parsed.length === 0) return [0, 0, 0, 0, 0, 0, 0];
+      return Array(Math.max(0, 7 - parsed.length)).fill(0).concat(parsed).slice(-7);
+    };
+
     option = {
       animation: false,
       silent: true,
       grid: {
-        left: 5,
-        right: 5,
-        bottom: 5,
-        top: 5,
+        left: 8,
+        right: 8,
+        bottom: 8,
+        top: 8,
         containLabel: false
       },
+      tooltip: { show: false },
       xAxis: {
         type: 'category',
+        boundaryGap: false,
         show: false,
         data: ['一', '二', '三', '四', '五', '六', '日']
       },
       yAxis: {
         type: 'value',
         show: false,
-        min: 0
+        min: 0,
+        max: function(value) { return Math.max(value.max, 1); }
       },
       series: [
         $(seriesText)$
@@ -55,6 +80,4 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/backgroun
 </$wikify>
 \end
 
-<% if [<currentTiddler>get[show-background-visualization]match[yes]] %>
-  <<render-background-chart>>
-<% endif %>
+<<render-background-chart>>

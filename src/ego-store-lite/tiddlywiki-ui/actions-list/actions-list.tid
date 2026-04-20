@@ -73,6 +73,7 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsLi
           $param="$:/plugins/linonetwo/tw-gamification/tiddlywiki-ui/notification/on-reality-action-event"
           message={{!!reality-event-message}}
         />
+        <$action-setfield $tiddler="$:/state/ego-store-lite/chart-refresh" text="" $timestamp="yes"/>
         
         <!-- Background visualization chart -->
         <$transclude $tiddler="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/background/simple-activity-chart"/>

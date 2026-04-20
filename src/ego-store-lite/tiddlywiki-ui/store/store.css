@@ -18,12 +18,31 @@
 
 /* 商店特有的金币价格样式 */
 .ego-store-lite-game-buttons-list-item-reward {
-  background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: none;
   font-weight: 700;
+  color: #b8860b;
+}
+
+/* 商品详情页中的活动日志面板 */
+.ego-store-lite-goods-activity-log-panel {
+  margin-top: 1.25rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(127, 127, 127, 0.25);
+}
+
+.ego-store-lite-goods-activity-log-panel h3 {
+  margin: 0 0 0.5rem;
+}
+
+.ego-store-lite-goods-activity-log-link {
+  margin-bottom: 0.75rem;
+  opacity: 0.8;
+}
+
+.ego-store-lite-goods-activity-log-panel .hyper-table-container,
+.ego-store-lite-goods-activity-log-panel .hyper-table-wrapper,
+.ego-store-lite-goods-activity-log-panel .vt-table-holder {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 /* 商店购买成功动画 */

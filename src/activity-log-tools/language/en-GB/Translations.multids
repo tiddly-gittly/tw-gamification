@@ -1,5 +1,8 @@
 title: $:/plugins/linonetwo/activity-log-tools/language/en-GB/
 
+ActivityLog/Table/Key: Timestamp / Key
+ActivityLog/Table/Value: Log Data
+
 Name: Activity Log Tools
 Description: Filter and library to read and write to daily activity save log tiddlers, for gamification frameworks, visualization frameworks, etc.
 RealityEventLog/Type/DayInterval/Caption: Day Interval

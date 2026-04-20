@@ -1,4 +1,4 @@
-import { IActivityLogFile, LogFileTypes } from 'src/activity-log-tools/log-file-types/LogFileTypes';
+import { IActivityLogFile, LogFileTypes } from '../../../activity-log-tools/log-file-types/LogFileTypes';
 import { IRealityEventCacheCacheItem } from 'src/tw-gamification/types/RealityEventCacheTypes';
 import type { formatDuplicationFields } from '../deduplication/formatDuplicationFields';
 

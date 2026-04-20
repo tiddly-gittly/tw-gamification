@@ -9,11 +9,8 @@ caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lin
 <% if [<currentTiddler>get[color]!is[blank]] %>
   <style>
     .ego-store-lite-game-buttons-list-item[data-title="<<currentTiddler>>"] {
-      background: linear-gradient(135deg, 
-        {{!!color}}cc 0%, 
-        {{!!color}}99 30%,
-        {{!!color}}66 60%,
-        transparent 100%) !important;
+      border-color: {{!!color}} !important;
+      background: linear-gradient(135deg, {{!!color}}18 0%, transparent 60%) !important;
     }
   </style>
 <% endif %>
@@ -71,6 +68,7 @@ caption: {{$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/icons/store}} <<lin
             message={{!!purchase-message}}
           />
         </$action-consume-value-tiddler>
+        <$action-setfield $tiddler="$:/state/ego-store-lite/chart-refresh" text="" $timestamp="yes"/>
         
         <!-- Background visualization chart -->
         <$transclude $tiddler="$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/background/simple-activity-chart"/>

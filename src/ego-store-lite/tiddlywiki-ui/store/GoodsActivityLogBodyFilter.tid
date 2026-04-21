@@ -1,4 +1,0 @@
-title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/GoodsActivityLogBodyFilter
-tags: $:/tags/ViewTemplateBodyFilter
-
-[tag[$:/tags/ego-store-lite/goods]then[$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/GoodsActivityLogBody]]

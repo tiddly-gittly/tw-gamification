@@ -23,24 +23,22 @@
 }
 
 /* 商品详情页中的活动日志面板 */
-.ego-store-lite-goods-activity-log-panel {
+.ego-store-lite-activity-log-panel {
   margin-top: 1.25rem;
   padding-top: 0.75rem;
   border-top: 1px solid rgba(127, 127, 127, 0.25);
 }
 
-.ego-store-lite-goods-activity-log-panel h3 {
+.ego-store-lite-activity-log-panel h3 {
   margin: 0 0 0.5rem;
 }
 
-.ego-store-lite-goods-activity-log-link {
+.ego-store-lite-activity-log-link {
   margin-bottom: 0.75rem;
   opacity: 0.8;
 }
 
-.ego-store-lite-goods-activity-log-panel .hyper-table-container,
-.ego-store-lite-goods-activity-log-panel .hyper-table-wrapper,
-.ego-store-lite-goods-activity-log-panel .vt-table-holder {
+.ego-store-lite-activity-log-panel .tw-gamification-activity-log-body {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }

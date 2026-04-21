@@ -1,0 +1,5 @@
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/ActivityLogBodyFilter
+tags: $:/tags/ViewTemplateBodyFilter
+
+[tag[$:/tags/ego-store-lite/goods]then[$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/ActivityLogBody]]
+[tag[$:/Tags/Gamification/RealityAction]then[$:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/store/ActivityLogBody]]

@@ -44,6 +44,7 @@ CreateAction/Enabled/Description: Toggle to enable or disable the action.
 EditAction/Caption: Edit Action
 EditGoods/Caption: Edit Goods
 VisualizeAction/Caption: Visual Analysis
+OpenActivityLog: Open Activity Log
 OpenTiddler: Open Tiddler
 ActionsList/ReceiveRewardWithCount: Click to receive <<count-reality-events>> rewards.
 Store/Title: Store
@@ -73,6 +74,3 @@ CreateGoods/Color/Description: Choose a theme color for this goods, which will b
 ConsumeGoods/NotifyAmountFailed: Insufficient gold, unable to buy this product.
 ConsumeGoods/NotifyConditionFailed: The purchase condition is not met.
 ConsumeGoods/Success: The purchase was successful!
-ActivityLog/Title: Activity Log and Visualizations
-ActivityLog/EntryLabel: Log Tiddler:
-ActivityLog/Empty: No activity record yet. Click this goods item once in the store to generate and display the data.

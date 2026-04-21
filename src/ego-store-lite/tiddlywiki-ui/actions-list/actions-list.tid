@@ -43,6 +43,10 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsLi
   />
 <% elseif [<drop-down-menu-select-state>get[text]match[open]] %>
   <$action-navigate $to=<<currentTiddler>> />
+<% elseif [<drop-down-menu-select-state>get[text]match[activity-log]] %>
+  <$let activityLogTitle={{{ [<currentTiddler>function[activity-log-title]] }}}>
+    <$action-navigate $to=<<activityLogTitle>> />
+  </$let>
 <% endif %>
 <$action-deletetiddler $tiddler=<<drop-down-menu-select-state>>/>
 \end
@@ -57,6 +61,7 @@ caption: {{$:/plugins/linonetwo/tw-gamification/icons/action}} <<lingo ActionsLi
         <$select tiddler=<<drop-down-menu-select-state>> actions=<<on-drop-down-menu-select>>>
           <option value="edit"><<lingo EditAction/Caption>></option>
           <option value="visual"><<lingo VisualizeAction/Caption>></option>
+          <option value="activity-log"><<lingo OpenActivityLog>></option>
           <option value="open"><<lingo OpenTiddler>></option>
         </$select>
         <div>…</div>

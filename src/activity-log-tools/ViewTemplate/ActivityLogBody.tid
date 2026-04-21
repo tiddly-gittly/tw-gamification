@@ -1,28 +1,29 @@
 title: $:/plugins/linonetwo/activity-log-tools/ViewTemplate/ActivityLogBody
 
-\procedure lingo-base() $:/plugins/linonetwo/activity-log-tools/language/
+\procedure activity-log-columns()
+[
+  {
+    field: "title",
+    title: "<<lingo ActivityLog/Table/Key>>",
+    width: 250,
+    sort: "number"
+  },
+  {
+    field: "value",
+    title: "<<lingo ActivityLog/Table/Value>>",
+    width: "auto",
+    template: "$:/plugins/linonetwo/activity-log-tools/ViewTemplate/ActivityLogValueTemplate"
+  }
+]
+\end
 
-<div class="tw-gamification-activity-log-body health-buff-debuff-tracker-dynamic-table">
-  <div class="hyper-table-container">
-    <div class="hyper-table-wrapper">
-      <div class="vt-table-holder">
-        <table class="tc-table">
-          <thead>
-            <tr>
-              <th><<lingo ActivityLog/Table/Key>></th>
-              <th><<lingo ActivityLog/Table/Value>></th>
-            </tr>
-          </thead>
-          <tbody>
-            <$list filter="[<currentTiddler>indexes[]sort[-title]]" variable="currentRecord">
-              <tr>
-                <td><$text text=<<currentRecord>>/></td>
-                <td><$text text={{{ [<currentTiddler>getindex<currentRecord>] }}} /></td>
-              </tr>
-            </$list>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+<div class="tw-gamification-activity-log-body">
+<$basic-table
+  filter="[<currentTiddler>indexes[]]"
+  columns=<<activity-log-columns>>
+  width="100%"
+  height="420px"
+  search="search-bar-top"
+  sort="-title"
+/>
 </div>

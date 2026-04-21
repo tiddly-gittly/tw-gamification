@@ -10,14 +10,15 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/backgroun
   currentWeekEnd={{{ [dayend[0],[7]format:date[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
   previousCounts={{{ [<logTitle>activitydaycounts<previousWeekStart>,<previousWeekEnd>] ~[[0,0,0,0,0,0,0]] }}}
   currentCounts={{{ [<logTitle>activitydaycounts<currentWeekStart>,<currentWeekEnd>] ~[[0,0,0,0,0,0,0]] }}}
+  themeColor={{{ [<currentTiddler>get[color]!is[blank]] ~[[#2563eb]] }}}
 >
 {
   name: 'Previous Week',
   type: 'line',
   smooth: true,
   symbol: 'none',
-  lineStyle: { width: 2, color: 'rgba(148, 163, 184, 0.9)' },
-  areaStyle: { color: 'rgba(148, 163, 184, 0.10)' },
+  lineStyle: { width: 2, color: '<<themeColor>>66' },
+  areaStyle: { color: '<<themeColor>>1a' },
   data: normalizeCounts('<<previousCounts>>')
 },
 {
@@ -26,9 +27,9 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/backgroun
   smooth: true,
   symbol: 'circle',
   symbolSize: 7,
-  lineStyle: { width: 3, color: 'rgba(37, 99, 235, 1)' },
-  itemStyle: { color: 'rgba(37, 99, 235, 1)' },
-  areaStyle: { color: 'rgba(96, 165, 250, 0.22)' },
+  lineStyle: { width: 3, color: '<<themeColor>>' },
+  itemStyle: { color: '<<themeColor>>' },
+  areaStyle: { color: '<<themeColor>>38' },
   data: normalizeCounts('<<currentCounts>>')
 }
 </$let>

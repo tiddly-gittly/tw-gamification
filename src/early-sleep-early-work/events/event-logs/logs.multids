@@ -6,5 +6,4 @@ activity-log-type: day-interval
 
 actions/early-sleep: 
 actions/early-work: 
-actions/complete-task-plan: 
 generators/pre-early-sleep: 

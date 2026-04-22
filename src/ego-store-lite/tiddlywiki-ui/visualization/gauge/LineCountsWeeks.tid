@@ -9,7 +9,7 @@ description: <<lingo Gauges/LineCountsWeeks/Description $:/plugins/linonetwo/ego
 \procedure series()
 <$list filter="[range[0],[3]]" variable="weekIndex">
 {
-  name: '{{{ [weekstart<weekIndex>format:date[YYYY MMM DD]] }}} - {{{ [weekend<weekIndex>format:date[YYYY MMM DD]] }}}',
+  name: '{{{ [<weekStartDate>format:date[YYYY-MM-DD]] }}} - {{{ [<weekEndDate>format:date[YYYY-MM-DD]] }}}',
   type: 'line',
   areaStyle: {},
   emphasis: {
@@ -36,9 +36,7 @@ description: <<lingo Gauges/LineCountsWeeks/Description $:/plugins/linonetwo/ego
         tooltip: {
           trigger: 'axis',
           axisPointer: {
-            type: 'cross',
-            label: {
-            }
+            type: 'cross'
           }
         },
         toolbox: {
@@ -56,17 +54,142 @@ description: <<lingo Gauges/LineCountsWeeks/Description $:/plugins/linonetwo/ego
           {
             type: 'category',
             boundaryGap: false,
-            data: $(montosun)$,
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
           }
         ],
         yAxis: [
           {
             type: 'value'
           }
-        ],
+        ]
       };
     ```/>
   </div>
 </$wikify>
 </$wikify>
 </$wikify>
+*** Add File: e:\dongwu\Github\tw-gamification\src\ego-store-lite\tiddlywiki-ui\visualization\chart\ActionMiniChart.tid
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/chart/ActionMiniChart
+echarts-refresh-trigger: [all[tiddlers]tag[$:/Tags/ActivityLog]get[modified]] [[$:/state/ego-store-lite/chart-refresh]get[modified]]
+\whitespace trim
+
+(function() {
+  var counts = "{{{ [<countsCsv>] }}}"
+    .split(",")
+    .map(function(item) { return Number(item); })
+    .filter(function(item) { return Number.isFinite(item); });
+
+  while (counts.length < 28) {
+    counts.unshift(0);
+  }
+  counts = counts.slice(-28);
+
+  return {
+    tooltip: { trigger: "axis" },
+    grid: {
+      left: "2px",
+      right: "2px",
+      bottom: "4px",
+      top: "4px",
+      containLabel: false
+    },
+    xAxis: {
+      type: "category",
+      show: false,
+      data: counts.map(function(_, index) { return index; }),
+      boundaryGap: false
+    },
+    yAxis: {
+      type: "value",
+      show: false,
+      minInterval: 1
+    },
+    series: [{
+      type: "line",
+      smooth: false,
+      showSymbol: true,
+      symbol: "circle",
+      symbolSize: 5,
+      data: counts,
+      areaStyle: {
+        opacity: 0.4,
+        color: "#3b82f6"
+      },
+      lineStyle: {
+        width: 1.5,
+        color: "#3b82f6"
+      }
+    }]
+  };
+})()
+*** Add File: e:\dongwu\Github\tw-gamification\src\ego-store-lite\tiddlywiki-ui\visualization\chart\ActionTrendChart.tid
+title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/chart/ActionTrendChart
+echarts-refresh-trigger: [all[tiddlers]tag[$:/Tags/ActivityLog]get[modified]] [[$:/state/ego-store-lite/chart-refresh]get[modified]]
+\whitespace trim
+
+(function() {
+  var counts = "{{{ [<countsCsv>] }}}"
+    .split(",")
+    .map(function(item) { return Number(item); })
+    .filter(function(item) { return Number.isFinite(item); });
+  var windowDays = 28;
+  var days = [];
+  var now = new Date();
+  now.setHours(0, 0, 0, 0);
+
+  while (counts.length < windowDays) {
+    counts.unshift(0);
+  }
+  counts = counts.slice(-windowDays);
+
+  var windowStart = new Date(now);
+  windowStart.setDate(now.getDate() - (windowDays - 1));
+  windowStart.setHours(0, 0, 0, 0);
+
+  for (var index = 0; index < windowDays; index++) {
+    var day = new Date(windowStart);
+    day.setDate(windowStart.getDate() + index);
+    days.push((day.getMonth() + 1) + "/" + day.getDate());
+  }
+
+  return {
+    tooltip: { trigger: "axis" },
+    grid: {
+      left: "3%",
+      right: "4%",
+      bottom: "25px",
+      top: "15px",
+      containLabel: true
+    },
+    xAxis: {
+      type: "category",
+      data: days,
+      axisLabel: {
+        fontSize: 10,
+        interval: 6
+      },
+      boundaryGap: false
+    },
+    yAxis: {
+      type: "value",
+      minInterval: 1,
+      splitNumber: 3
+    },
+    series: [{
+      type: "line",
+      smooth: false,
+      showSymbol: true,
+      symbol: "circle",
+      symbolSize: 8,
+      data: counts,
+      areaStyle: {
+        opacity: 0.3,
+        color: "#3b82f6"
+      },
+      lineStyle: {
+        width: 2,
+        color: "#3b82f6"
+      }
+    }]
+  };
+})()

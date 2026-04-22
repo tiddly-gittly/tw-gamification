@@ -4,15 +4,14 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/backgroun
 <$let
   refreshSeed={{{ [[$:/state/ego-store-lite/chart-refresh]get[modified]] }}}
   logTitle={{{ [<currentTiddler>get[activity-log]] ~[<currentTiddler>addsuffix[-Log]] }}}
-  previousWeekStart={{{ [daystart[-1],[1]format:date[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
-  previousWeekEnd={{{ [dayend[-1],[7]format:date[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
-  currentWeekStart={{{ [daystart[0],[1]format:date[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
-  currentWeekEnd={{{ [dayend[0],[7]format:date[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
+  previousWeekStart={{{ [daystart[-1],[1]] }}}
+  previousWeekEnd={{{ [dayend[-1],[7]] }}}
+  currentWeekStart={{{ [daystart[0],[1]] }}}
+  currentWeekEnd={{{ [dayend[0],[7]] }}}
   previousCounts={{{ [<logTitle>activitydaycounts<previousWeekStart>,<previousWeekEnd>] ~[[0,0,0,0,0,0,0]] }}}
   currentCounts={{{ [<logTitle>activitydaycounts<currentWeekStart>,<currentWeekEnd>] ~[[0,0,0,0,0,0,0]] }}}
   themeColor={{{ [<currentTiddler>get[color]!is[blank]] ~[[#2563eb]] }}}
->
-{
+>{
   name: 'Previous Week',
   type: 'line',
   smooth: true,
@@ -36,6 +35,7 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/backgroun
 \end
 
 \procedure render-background-chart()
+<$let refreshSeed={{{ [[$:/state/ego-store-lite/chart-refresh]get[modified]] }}}>
 <$wikify name="seriesText" text=<<series>>>
 <div class="ego-store-lite-action-background-chart">
   <$echarts $text=```
@@ -79,6 +79,7 @@ title: $:/plugins/linonetwo/ego-store-lite/tiddlywiki-ui/visualization/backgroun
   ```/>
 </div>
 </$wikify>
+</$let>
 \end
 
 <<render-background-chart>>

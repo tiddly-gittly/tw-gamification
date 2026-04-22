@@ -1,0 +1,16 @@
+.tw-gamification-activity-log-trend-chart {
+  width: 100%;
+  min-height: 200px;
+  height: 200px;
+  margin-bottom: 0.75em;
+  border: 1px solid rgba(127, 127, 127, 0.2);
+  border-radius: 10px;
+  background: rgba(127, 127, 127, 0.04);
+}
+
+@media (max-width: 768px) {
+  .tw-gamification-activity-log-trend-chart {
+    min-height: 160px;
+    height: 160px;
+  }
+}

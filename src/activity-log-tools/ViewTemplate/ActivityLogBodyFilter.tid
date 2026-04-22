@@ -1,4 +1,5 @@
 title: $:/plugins/linonetwo/activity-log-tools/ViewTemplate/ActivityLogBodyFilter
 tags: $:/tags/ViewTemplateBodyFilter
+list-before: $:/config/ViewTemplateBodyFilters/hide-body
 
 [tag[$:/Tags/ActivityLog]then[$:/plugins/linonetwo/activity-log-tools/ViewTemplate/ActivityLogBody]]

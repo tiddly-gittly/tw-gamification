@@ -2,6 +2,26 @@ title: $:/plugins/linonetwo/activity-log-tools/ViewTemplate/ActivityLogBody
 
 \procedure lingo-base() $:/plugins/linonetwo/activity-log-tools/language/
 
+\procedure activity-log-columns()
+[
+  {
+    "field": "title",
+    "title": "<<lingo ActivityLog/Table/Key>>",
+    "width": 250,
+    "sort": "number"
+  },
+  {
+    "field": "value",
+    "title": "<<lingo ActivityLog/Table/Value>>",
+    "width": "auto"
+  }
+]
+\end
+
+\procedure activity-log-records()
+[<$list filter="[<currentTiddler>indexes[]]" variable="logKey" join=",">{"title":"<<logKey>>","value":"{{{ [<currentTiddler>getindex<logKey>] }}}"}</$list>]
+\end
+
 \procedure activity-log-chart-series()
 <$let counts={{{ [<currentTiddler>activitydaycounts[-27],[0]] ~[[]] }}}>
 {
@@ -40,18 +60,16 @@ title: $:/plugins/linonetwo/activity-log-tools/ViewTemplate/ActivityLogBody
 <<render-activity-log-chart>>
 
 <div class="tw-gamification-activity-log-body">
-<table class="tw-gamification-activity-log-table">
-<thead><tr>
-  <th><<lingo ActivityLog/Table/Key>></th>
-  <th><<lingo ActivityLog/Table/Value>></th>
-</tr></thead>
-<tbody>
-<$list filter="[<currentTiddler>indexes[]]" variable="logKey">
-<tr>
-  <td class="tw-gamification-activity-log-key"><<logKey>></td>
-  <td class="tw-gamification-activity-log-value">{{{ [<currentTiddler>getindex<logKey>] }}}</td>
-</tr>
-</$list>
-</tbody>
-</table>
+<$wikify name="columnsJson" text=<<activity-log-columns>>>
+<$wikify name="recordsJson" text=<<activity-log-records>>>
+<$basic-table
+  records=<<recordsJson>>
+  columns=<<columnsJson>>
+  width="100%"
+  height="420px"
+  search="search-bar-top"
+  sort="-title"
+/>
+</$wikify>
+</$wikify>
 </div>

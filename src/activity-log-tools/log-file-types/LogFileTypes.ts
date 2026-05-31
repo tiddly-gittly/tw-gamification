@@ -61,16 +61,20 @@ export type IActivityLogFile = {
   items: Map<IDailyCountKey, string>;
   title: string;
   type: LogFileTypes.DailyCount;
+  /** Timestamp (ms) of tiddler's `modified` field, captured before writing. */
+  modifiedAt?: number;
 } | {
   exists: boolean;
   items: Map<IDayIntervalKey, string>;
   title: string;
   type: LogFileTypes.DayInterval;
+  modifiedAt?: number;
 } | {
   exists: boolean;
   items: Map<IDateKey, string>;
   title: string;
   type: LogFileTypes.Date;
+  modifiedAt?: number;
 };
 
 export interface IActivityLogTiddlerFields extends ITiddlerFields {

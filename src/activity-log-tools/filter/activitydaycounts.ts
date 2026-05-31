@@ -23,34 +23,28 @@ export const activitydaycounts = ((source, operator): string[] => {
     const { items, type: logTypes } = activityLog;
     switch (logTypes) {
       case LogFileTypes.DailyCount: {
-        const dateWithCount = [...items]
-          .flatMap(([rowEndDateString, rowOfCountsString]) => {
-            const rowEndDate = new Date(Number(rowEndDateString.replace(LogFileTypes.DailyCount, '')));
-            rowEndDate.setHours(0, 0, 0, 0);
-            const rowOfCounts = rowOfCountsString.split(',').map(item => {
-              const count = Number(item);
-              if (Number.isInteger(count)) return count;
-              return 0;
-            });
-            return rowOfCounts.map((count, index) => {
-              const date = new Date(rowEndDate);
-              date.setDate(rowEndDate.getDate() - (rowOfCounts.length - 1 - index));
-              date.setHours(0, 0, 0, 0);
-              return [date, count] as const;
-            });
+        const dateCounts = new Map<number, number>();
+        (items as Map<string, string>).forEach((rowOfCountsString: string, rowEndDateString: string) => {
+          const rowEndDate = new Date(Number(rowEndDateString.replace(LogFileTypes.DailyCount, '')));
+          rowEndDate.setHours(0, 0, 0, 0);
+          rowOfCountsString.split(',').forEach((item: string, index: number, rowOfCounts: string[]) => {
+            const date = new Date(rowEndDate);
+            date.setDate(rowEndDate.getDate() - (rowOfCounts.length - 1 - index));
+            date.setHours(0, 0, 0, 0);
+            if (date < filterRangeStartDate || date > filterRangeEndDate) return;
+
+            const count = Number(item);
+            const dateKey = date.getTime();
+            dateCounts.set(dateKey, (dateCounts.get(dateKey) ?? 0) + (Number.isInteger(count) ? count : 0));
           });
-        const filteredAndSortedCounts = dateWithCount
-          .filter(([date]) => date >= filterRangeStartDate && date <= filterRangeEndDate)
-          .sort(([dateA], [dateB]) => dateA.getTime() - dateB.getTime())
-          .map(([, count]) => count)
-          .join(',');
-        results.push(filteredAndSortedCounts);
+        });
+        results.push(getSortedCount(filterRangeStartDate, filterRangeEndDate, dateCounts));
         break;
       }
 
       case LogFileTypes.Date: {
         const dateCounts = new Map<number, number>();
-        items.forEach(dateString => {
+        (items as Map<string, string>).forEach((dateString: string) => {
           const currentDate = new Date(Number(dateString));
           if (currentDate >= filterRangeStartDate && currentDate <= filterRangeEndDate) {
             // Normalize to YYYY-MM-DD to count same day, then use number for key
@@ -64,12 +58,12 @@ export const activitydaycounts = ((source, operator): string[] => {
 
       case LogFileTypes.DayInterval: {
         const dateCounts = new Map<number, number>();
-        items.forEach((intervalsString, key) => {
+        (items as Map<string, string>).forEach((intervalsString: string, key: string) => {
           const lastDateString = key.replace('day-interval', '');
           const intervals = intervalsString.split(',').map(Number);
           let currentDate = new Date(Number(lastDateString));
 
-          intervals.reverse().forEach(interval => {
+          intervals.reverse().forEach((interval: number) => {
             // Subtract the interval from the current date to find the event date
             currentDate = new Date(currentDate.getTime() - interval * DAY_INTERVAL); // Subtract interval days
             if (currentDate >= filterRangeStartDate && currentDate <= filterRangeEndDate) {

@@ -28,14 +28,21 @@ class ActionAddActivityToLog extends Widget {
   logTitle?: string;
   logType?: LogFileTypes;
   timestamp?: number;
+  hasInvalidTimestamp = false;
 
   public execute() {
     this.logTitle = this.getAttribute('$logTitle');
     this.logType = toLogFileType(this.getAttribute('$logType'));
 
     const attributeTimestamp = this.getAttribute('$timestamp');
-    const parsedTimestamp = attributeTimestamp === undefined ? Number.NaN : Number(attributeTimestamp);
-    this.timestamp = Number.isFinite(parsedTimestamp) ? parsedTimestamp : undefined;
+    if (attributeTimestamp === undefined) {
+      this.timestamp = undefined;
+      this.hasInvalidTimestamp = false;
+    } else {
+      const parsedTimestamp = Number(attributeTimestamp);
+      this.timestamp = Number.isFinite(parsedTimestamp) && parsedTimestamp > 0 ? parsedTimestamp : undefined;
+      this.hasInvalidTimestamp = this.timestamp === undefined;
+    }
     super.execute();
   }
 
@@ -45,9 +52,12 @@ class ActionAddActivityToLog extends Widget {
 
   public invokeAction(_triggeringWidget: Widget, _event: IWidgetEvent): boolean | undefined {
     if (!this.logTitle || this.logTitle.trim() === '') return false;
+    if (this.hasInvalidTimestamp) return false;
+    const timestamp = this.timestamp ?? Date.now();
+    if (!Number.isFinite(timestamp) || timestamp <= 0) return false;
     const logType = this.logType ?? LogFileTypes.Date;
     const activityLog = getActivityLog(this.logTitle, logType);
-    addActivityToLog(activityLog, this.timestamp ?? Date.now());
+    addActivityToLog(activityLog, timestamp);
     return true;
   }
 }

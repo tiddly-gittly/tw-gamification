@@ -1,0 +1,13 @@
+title: $:/plugins/linonetwo/activity-log-tools/changelog
+
+! 更新日志
+
+!! 0.2.0
+* 修复 daily-count 写入逻辑：同一天多次打卡只增量计数，不同天自动按 `modified` 间隔补 `0`
+* 超过 30 天未打卡时保留旧行、另起新行，避免历史数据丢失
+* 写回时清理 tiddler fields 中旧的 `daily-count*` 残留字段
+* action-add-activity-to-log 现在对无效 `$timestamp` 拒绝写入，不再 fallback 到当前时间
+* activitydaycounts 筛选器对 daily-count 多行之间缺失的日期输出 `0`
+
+!! 0.1.0
+* 初始版本：支持 date、daily-count、day-interval 三种活动日志格式的创建与读取

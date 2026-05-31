@@ -18,7 +18,22 @@ describe('activitydaycounts filter', function() {
 
     it('should parse daily count log tiddler', function() {
       expect($tw.wiki.filterTiddlers(`[[ActivityLogDailyCountExample]] +[activitydaycounts[${startDateString}],[${endDateString}]]`).join(',')).toBe(
-        '0,2,3,4,5,6,7,8',
+        '0,2,3,4,5,6,7,8,0,0,0,0,0,0',
+      );
+    });
+
+    it('should fill missing days as zero between daily-count rows', function() {
+      $tw.wiki.addTiddler({
+        title: 'ActivityLogDailyCountGapRows',
+        type: 'application/x-tiddler-dictionary',
+        'activity-log-type': 'daily-count',
+        text: 'daily-count1609459200000: 2\ndaily-count1609804800000: 1',
+      });
+
+      const rangeStart = $tw.utils.formatDateString(new Date(1_609_459_200_000), '[UTC]YYYY0MM0DD0hh0mm0ss0XXX');
+      const rangeEnd = $tw.utils.formatDateString(new Date(1_609_804_800_000), '[UTC]YYYY0MM0DD0hh0mm0ss0XXX');
+      expect($tw.wiki.filterTiddlers(`[[ActivityLogDailyCountGapRows]] +[activitydaycounts[${rangeStart}],[${rangeEnd}]]`).join(',')).toBe(
+        '2,0,0,0,1',
       );
     });
   });

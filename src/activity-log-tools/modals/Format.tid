@@ -1,0 +1,37 @@
+title: $:/plugins/linonetwo/activity-log-tools/modals/Format
+subtitle: <<lingo UI/ChooseFormat $:/plugins/linonetwo/activity-log-tools/language/>>
+footer: <$button message="tm-close-tiddler">{{$:/language/Buttons/Close/Caption}}</$button>
+
+\procedure lingo-base() $:/plugins/linonetwo/activity-log-tools/language/
+
+\procedure format-action(format)
+<$list filter="[<logTitle>!field:activity-log-type<format>]" variable="ignore" emptyMessage="<<lingo UI/Current $:/plugins/linonetwo/activity-log-tools/language/>>">
+<$button>
+  <$action-manage-activity-log $operation="convert" $logTitle=<<logTitle>> $format=<<format>>/>
+  <$let label={{{ [<format>addprefix[Switch/]] }}}><$transclude $variable="lingo" title=<<label>>/></$let>
+</$button>
+</$list>
+\end
+
+<<lingo UI/Log>>：<$link to=<<logTitle>>><$text text=<<logTitle>>/></$link>
+
+<<lingo UI/CurrentFormat>>：<$let format={{{ [<logTitle>get[activity-log-type]addprefix[Format/]] }}}><$transclude $variable="lingo" title=<<format>>/></$let>
+
+<$echarts $tiddler="$:/plugins/linonetwo/activity-log-tools/charts/FormatComparison" logTitle=<<logTitle>> $height="350px"/>
+
+<<lingo UI/ChartHint>>
+
+|<<lingo UI/Format>>|<<lingo UI/Content>>|<<lingo UI/Action>>|h
+|<<lingo Format/date>>|<<lingo Content/date>>|<<format-action date>>|
+|<<lingo Format/daily-count>>|<<lingo Content/daily-count>>|<<format-action daily-count>>|
+|<<lingo Format/daily-count-rle>>|<<lingo Content/daily-count-rle>>|<<format-action daily-count-rle>>|
+|<<lingo Format/day-interval>>|<<lingo Content/day-interval>>|<<format-action day-interval>>|
+
+<<lingo UI/DailyPrecision>>
+
+<$list filter="[<logTitle>activitylogcanundo[]]" variable="ignore">
+<$button tooltip=<<lingo UI/RestoreHint>>>
+  <$action-manage-activity-log $operation="restore" $logTitle=<<logTitle>>/>
+  <<lingo UI/Restore>>
+</$button>
+</$list>

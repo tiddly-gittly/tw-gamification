@@ -102,3 +102,32 @@ Calculates the number of activities per day for a given time frame. (The followi
 ```scss
 [[logFileTitle]activitydaycounts<weekstart>,<weekend>[]]
 ```
+
+
+!! Check-ins in a time range
+
+`activityevents<start>,<end>` returns one JSON string per check-in, or per day for daily-count formats. Each record contains `title`, `timestamp` (UTC TiddlyWiki date), `start`, `allDay`, and `extendedProps.activityCount`. The range includes its start and excludes its end. Use local `YYYY-MM-DD` dates, ISO dates with an offset, or UTC TiddlyWiki dates as bounds.
+
+* `activityevents:titles<start>,<end>`: titles of logs containing check-ins in the range.
+* `activityevents:timestamps<start>,<end>`: check-in timestamps; daily counts use the start of their local day.
+* `activityevents<start>,<end>`: event JSON records, keeping each title with its timestamp and count.
+
+```wikitext
+<$let start="2026-11-01" end="2026-12-01" events={{{ [tag[$:/Tags/ActivityLog]activityevents<start>,<end>] }}}>
+<$list filter="[(events)]" variable="event">
+<$text text={{{ [<event>jsonget[title]] }}}/> · <$text text={{{ [<event>jsonget[timestamp]] }}}/><br/>
+</$list>
+</$let>
+```
+
+Multi-valued variables require TiddlyWiki 5.4.0. Each event remains a single JSON string because filters return lists of strings.
+
+With the Calendar plugin's `eventFilter` support:
+
+```wikitext
+<$calendar filter="[all[]limit[0]]" eventFilter="[tag[$:/Tags/ActivityLog]activityevents<calendarStart>,<calendarEnd>]" />
+```
+
+Timestamp and interval formats retain exact times. Daily counts and RLE display all-day counts. Date-only history remains all-day after conversion, while new timed check-ins appear at their recorded times. `activity-log-type` identifies the storage format; `activity-log-day-counts` stores date-only counts in timestamp and interval logs. The event index uses the core's tiddler cache and is invalidated when the log changes; daily counts are not expanded into individual events.
+
+Conversion undo is held in memory until the page is reloaded; no backup tiddler is saved.

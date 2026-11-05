@@ -11,3 +11,53 @@ RealityEventLog/Type/Date/Caption: Specific date
 RealityEventLog/Type/Date/Description: store specific dates one by one, suitable for events that occur centrally for a period of time, and rarely occur thereafter, or events that occur more irregularly. Save file large, calculation fast, vis is good.
 RealityEventLog/Type/DailyCount/Caption: Counter on day
 RealityEventLog/Type/DailyCount/Description: store count of events in days, only save the number of times per day, not the specific time point to save space, suitable for events that occur very frequently. Save file small, calculation fast, vis is bad.
+
+UI/Yesterday: Log yesterday
+UI/ChooseDate: Log another date
+UI/ChooseFormat: Choose log format
+UI/Log: Log
+UI/Date: Date
+UI/Record: Add check-in
+UI/CurrentFormat: Current format
+UI/ChartHint: Longer bars show an advantage. Hover for details.
+UI/Format: Format
+UI/Content: Records
+UI/Action: Action
+UI/DailyPrecision: Daily counts and run-length encoding store dates and counts, without times.
+UI/Restore: Undo last conversion
+UI/RestoreHint: Restore the record before conversion. Available until this page is reloaded.
+Format/date: Timestamps
+Format/daily-count: Daily counts
+Format/daily-count-rle: Run-length encoding
+Format/day-interval: Time intervals
+Content/date: The time of each check-in
+Content/daily-count: Check-ins per day
+Content/daily-count-rle: Consecutive equal daily counts
+Content/day-interval: Time between check-ins
+Switch/date: Use timestamps
+Switch/daily-count: Use daily counts
+Switch/daily-count-rle: Use run-length encoding
+Switch/day-interval: Use time intervals
+Chart/Storage: Storage efficiency
+Chart/Precision: Time precision
+Chart/ReadCost: Daily lookup ease
+Chart/Readability: Raw data readability
+Chart/Bytes: Bytes
+Chart/Size: Storage size
+Chart/StorageHint: Based on this log: smaller storage scores higher.
+Chart/PrecisionHint: Timestamps and intervals retain times; daily counts and RLE retain dates.
+Chart/ReadCostHint: Daily counts read directly; RLE expands runs; timestamps and intervals require per-event calculation.
+Chart/ReadabilityHint: Timestamps and daily counts stand alone; runs and intervals need expansion or accumulation.
+Calendar/Timed: Calendar: each check-in appears at its recorded time.
+Calendar/AllDay: Calendar: daily check-in counts appear as all-day entries.
+Notification/Converted: Format changed
+Notification/Restored: Conversion undone
+Notification/Recorded: Added $date$ · $count$ check-ins that day
+Error/InvalidDate: Choose a date
+Error/DateInFuture: Choose today or an earlier date
+Error/UnknownFormat: Unknown log format
+Error/InvalidTimestamp: Invalid check-in time
+Error/InvalidInterval: Invalid time interval
+Error/InvalidCount: Invalid daily count
+UI/Current: Current format
+Calendar/Converted: Calendar: $count$ historical check-ins have dates only; new check-ins appear at their recorded times.

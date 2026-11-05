@@ -22,42 +22,9 @@ title: $:/plugins/linonetwo/activity-log-tools/ViewTemplate/ActivityLogBody
 [<$list filter="[<currentTiddler>indexes[]]" variable="logKey" join=",">{"title":"<<logKey>>","value":"{{{ [<currentTiddler>getindex<logKey>] }}}"}</$list>]
 \end
 
-\procedure activity-log-chart-series()
-<$let counts={{{ [<currentTiddler>activitydaycounts[-27],[0]] ~[[]] }}}>
-{
-  type: 'line',
-  smooth: false,
-  symbol: 'circle',
-  symbolSize: 8,
-  data: normalizeCounts28('<<counts>>'),
-  areaStyle: { opacity: 0.3, color: '#3b82f6' },
-  lineStyle: { width: 2, color: '#3b82f6' }
-}
-</$let>
-\end
+<$transclude $tiddler="$:/plugins/linonetwo/activity-log-tools/ViewTemplate/ActivityLogToolbar"/>
 
-\procedure render-activity-log-chart()
-<$wikify name="seriesText" text=<<activity-log-chart-series>>>
-<div class="tw-gamification-activity-log-trend-chart">
-  <$echarts $text=```
-    const normalizeCounts28 = (raw) => {
-      const parsed = String(raw || '').split(',').map(Number).filter(n => !isNaN(n));
-      while (parsed.length < 28) parsed.unshift(0);
-      return parsed.slice(-28);
-    };
-    option = {
-      tooltip: { trigger: 'axis' },
-      grid: { left: '3%', right: '4%', bottom: '25px', top: '15px', containLabel: true },
-      xAxis: { type: 'category', boundaryGap: false, show: false },
-      yAxis: { type: 'value', minInterval: 1, splitNumber: 3 },
-      series: [ $(seriesText)$ ]
-    };
-  ```/>
-</div>
-</$wikify>
-\end
-
-<<render-activity-log-chart>>
+<$echarts $tiddler="$:/plugins/linonetwo/activity-log-tools/charts/ActivityTrend" logTitle=<<currentTiddler>> $height="300px"/>
 
 <div class="tw-gamification-activity-log-body">
 <$wikify name="columnsJson" text=<<activity-log-columns>>>

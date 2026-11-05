@@ -5,6 +5,7 @@ import { getActivityLog } from '../log-file-tools/getActivityLog';
 import { LogFileTypes } from '../log-file-types/LogFileTypes';
 
 function toLogFileType(input: string | undefined): LogFileTypes {
+  if (input === LogFileTypes.DailyCountRLE) return LogFileTypes.DailyCountRLE;
   if (input === LogFileTypes.DailyCount) return LogFileTypes.DailyCount;
   if (input === LogFileTypes.DayInterval) return LogFileTypes.DayInterval;
   return LogFileTypes.Date;

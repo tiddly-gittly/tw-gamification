@@ -20,6 +20,8 @@ export enum LogFileTypes {
    * Each row starts with `daily-count`, and follow with a date representing the last date of modification, created by `new Date('2021-01-01').getTime()`, and updated on each modify. Each line is for a month, if the value in this row is more than 30, then need to start a new row.
    */
   DailyCount = 'daily-count',
+  /** Run-length encoded daily counts: 1*7,0*3,2. Exact event times are not stored. */
+  DailyCountRLE = 'daily-count-rle',
   /**
    * Store each date. Suitable for very infrequent events, or events that happened in a short period, but won't happened for a long period.
    * We only include the date here for visualization, and for privacy not recoding the title here.
@@ -60,7 +62,7 @@ export type IActivityLogFile = {
   exists: boolean;
   items: Map<IDailyCountKey, string>;
   title: string;
-  type: LogFileTypes.DailyCount;
+  type: LogFileTypes.DailyCount | LogFileTypes.DailyCountRLE;
   /** Timestamp (ms) of tiddler's `modified` field, captured before writing. */
   modifiedAt?: number;
 } | {

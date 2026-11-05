@@ -1,0 +1,14 @@
+title: $:/plugins/linonetwo/activity-log-tools/modals/Backfill
+subtitle: <<lingo UI/ChooseDate $:/plugins/linonetwo/activity-log-tools/language/>>
+footer: <$button message="tm-close-tiddler">{{$:/language/Buttons/Close/Caption}}</$button>
+
+\procedure lingo-base() $:/plugins/linonetwo/activity-log-tools/language/
+
+<<lingo UI/Log>>：<$link to=<<logTitle>>><$text text=<<logTitle>>/></$link>
+
+<label><<lingo UI/Date>>：<$edit-text tiddler=<<dateTitle>> field="date" type="date"/></label>
+
+<$button>
+  <$action-manage-activity-log $operation="date" $logTitle=<<logTitle>> $date={{{ [<dateTitle>get[date]] }}}/>
+  <<lingo UI/Record>>
+</$button>

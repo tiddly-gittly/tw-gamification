@@ -130,3 +130,32 @@ const activityLog = getActivityLog(title, logTiddlerType);
 <!-- 如果有数据，counts 的值类似 "2,0,1,3,0,1,2" -->
 </$let>
 ```
+
+
+!! 按时间范围读取打卡
+
+`activityevents<start>,<end>` 返回打卡事件的 JSON 字符串，每日次数格式按天返回。每条记录包含 `title`、`timestamp`（UTC 太微时间戳）、`start`、`allDay` 和 `extendedProps.activityCount`。范围包含开始、不包含结束。参数支持本地 `YYYY-MM-DD` 日期、带时区的 ISO 日期和 UTC 太微时间戳。
+
+* `activityevents:titles<start>,<end>`：范围内含打卡的日志标题。
+* `activityevents:timestamps<start>,<end>`：打卡时间戳；每日次数使用当天本地零点。
+* `activityevents<start>,<end>`：事件 JSON，同一条记录保留日志标题、时间和次数的对应关系。
+
+```wikitext
+<$let start="2026-11-01" end="2026-12-01" events={{{ [tag[$:/Tags/ActivityLog]activityevents<start>,<end>] }}}>
+<$list filter="[(events)]" variable="event">
+<$text text={{{ [<event>jsonget[title]] }}}/> · <$text text={{{ [<event>jsonget[timestamp]] }}}/><br/>
+</$list>
+</$let>
+```
+
+多值变量需要太微 5.4.0。筛选器返回字符串列表，因此每个事件用一条 JSON 保留多个字段。
+
+配合日历插件的 `eventFilter`：
+
+```wikitext
+<$calendar filter="[all[]limit[0]]" eventFilter="[tag[$:/Tags/ActivityLog]activityevents<calendarStart>,<calendarEnd>]" />
+```
+
+时间戳和时间间隔保留具体时刻，每日次数和游程编码按全天显示次数。转换前只有日期的历史记录按全天显示，转换后的新打卡显示具体时刻。`activity-log-type` 标明存储格式；时间戳和时间间隔日志的 `activity-log-day-counts` 字段保存只有日期的次数。事件索引使用核心条目缓存，日志变动后自动失效；每日次数不展开成多份事件。
+
+撤销转换的数据只保留在内存，页面刷新后清除，不保存备份条目。

@@ -1,6 +1,6 @@
 import { getActivityLog } from '$:/plugins/linonetwo/activity-log-tools/log-file-tools/getActivityLog';
 import { IFilterOperator, Tiddler } from 'tiddlywiki';
-import { DAY_INTERVAL, LogFileTypes } from '../log-file-types/LogFileTypes';
+import { LogFileTypes } from '../log-file-types/LogFileTypes';
 
 /**
  * Output comma separated numbers like the one in `LogFileTypes.DailyCount`.
@@ -20,69 +20,16 @@ export const activitydaycounts = ((source, operator): string[] => {
       return;
     }
     const [filterRangeStartDate, filterRangeEndDate, activityLog] = rangeAndLogFile;
-    const { items, type: logTypes } = activityLog;
-    switch (logTypes) {
-      case LogFileTypes.DailyCount: {
-        const dateCounts = new Map<number, number>();
-        (items as Map<string, string>).forEach((rowOfCountsString: string, rowEndDateString: string) => {
-          const rowEndDate = new Date(Number(rowEndDateString.replace(LogFileTypes.DailyCount, '')));
-          rowEndDate.setHours(0, 0, 0, 0);
-          rowOfCountsString.split(',').forEach((item: string, index: number, rowOfCounts: string[]) => {
-            const date = new Date(rowEndDate);
-            date.setDate(rowEndDate.getDate() - (rowOfCounts.length - 1 - index));
-            date.setHours(0, 0, 0, 0);
-            if (date < filterRangeStartDate || date > filterRangeEndDate) return;
-
-            const count = Number(item);
-            const dateKey = date.getTime();
-            dateCounts.set(dateKey, (dateCounts.get(dateKey) ?? 0) + (Number.isInteger(count) ? count : 0));
-          });
-        });
-        results.push(getSortedCount(filterRangeStartDate, filterRangeEndDate, dateCounts));
-        break;
-      }
-
-      case LogFileTypes.Date: {
-        const dateCounts = new Map<number, number>();
-        (items as Map<string, string>).forEach((dateString: string) => {
-          const currentDate = new Date(Number(dateString));
-          if (currentDate >= filterRangeStartDate && currentDate <= filterRangeEndDate) {
-            // Normalize to YYYY-MM-DD to count same day, then use number for key
-            const dateKey = getLocaleDateKey(currentDate);
-            dateCounts.set(dateKey, (dateCounts.get(dateKey) ?? 0) + 1);
-          }
-        });
-        results.push(getSortedCount(filterRangeStartDate, filterRangeEndDate, dateCounts));
-        break;
-      }
-
-      case LogFileTypes.DayInterval: {
-        const dateCounts = new Map<number, number>();
-        (items as Map<string, string>).forEach((intervalsString: string, key: string) => {
-          const lastDateString = key.replace('day-interval', '');
-          const intervals = intervalsString.split(',').map(Number);
-          let currentDate = new Date(Number(lastDateString));
-
-          intervals.reverse().forEach((interval: number) => {
-            // Subtract the interval from the current date to find the event date
-            currentDate = new Date(currentDate.getTime() - interval * DAY_INTERVAL); // Subtract interval days
-            if (currentDate >= filterRangeStartDate && currentDate <= filterRangeEndDate) {
-              // count activities by day, use locale date.
-              // Normalize to YYYY-MM-DD to count same day, then use number for key
-              const dateKey = getLocaleDateKey(currentDate);
-              dateCounts.set(dateKey, (dateCounts.get(dateKey) ?? 0) + 1);
-            }
-          });
-        });
-
-        results.push(getSortedCount(filterRangeStartDate, filterRangeEndDate, dateCounts));
-        break;
-      }
-
-      default: {
-        results.push('');
-      }
+    const codec = require('../log-file-tools/activityLogCodec');
+    const counts = new Map<number, number>();
+    for (const timestamp of codec.decode(Object.fromEntries(activityLog.items), activityLog.type)) {
+      const date = new Date(timestamp);
+      if (date < filterRangeStartDate || date > filterRangeEndDate) continue;
+      const key = getLocaleDateKey(date);
+      counts.set(key, (counts.get(key) ?? 0) + 1);
     }
+    results.push(getSortedCount(filterRangeStartDate, filterRangeEndDate, counts));
+
   });
   return results;
 }) satisfies IFilterOperator;
@@ -121,7 +68,8 @@ function getRangeAndLogFile(tiddler: Tiddler | undefined, title: string, dateSta
 
 function getSortedCount(filterRangeStartDate: Date, filterRangeEndDate: Date, dateCounts: Map<number, number>) {
   // Ensure every date in the range is accounted for in dateCounts
-  for (let day = filterRangeStartDate.getTime(); day <= filterRangeEndDate.getTime(); day += 86_400_000) { // Add one day in milliseconds
+  for (const date = new Date(filterRangeStartDate); date <= filterRangeEndDate; date.setDate(date.getDate() + 1)) {
+    const day = date.getTime();
     if (!dateCounts.has(day)) {
       dateCounts.set(day, 0);
     }

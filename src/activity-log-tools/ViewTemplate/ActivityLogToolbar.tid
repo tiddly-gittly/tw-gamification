@@ -1,0 +1,19 @@
+title: $:/plugins/linonetwo/activity-log-tools/ViewTemplate/ActivityLogToolbar
+
+\procedure lingo-base() $:/plugins/linonetwo/activity-log-tools/language/
+
+<$let logTitle=<<currentTiddler>> dateTitle={{{ [<currentTiddler>addprefix[$:/temp/activity-log-tools/date/]] }}}>
+<$button>
+  <$action-manage-activity-log $logTitle=<<logTitle>> $operation="yesterday"/>
+  <<lingo UI/Yesterday>>
+</$button>
+<$button>
+  <$action-sendmessage $message="tm-modal" $param="$:/plugins/linonetwo/activity-log-tools/modals/Backfill" logTitle=<<logTitle>> dateTitle=<<dateTitle>>/>
+  <<lingo UI/ChooseDate>>
+</$button>
+<$button>
+  <$action-sendmessage $message="tm-modal" $param="$:/plugins/linonetwo/activity-log-tools/modals/Format" logTitle=<<logTitle>> dateTitle=<<dateTitle>>/>
+  <<lingo UI/ChooseFormat>>
+</$button>
+
+</$let>
